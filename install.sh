@@ -21,5 +21,5 @@ sudo $MANAGER install -y zsh chroma
 cp ./zshrc $HOME/.zshrc
 cp -r ./oh-my-zsh $HOME/.oh-my-zsh
 
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 source $HOME/.zshrc
