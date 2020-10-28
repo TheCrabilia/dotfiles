@@ -1,4 +1,2 @@
-# My ZSH env
-
-## Installation
+# Installation
 Run install.sh script.
