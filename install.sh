@@ -24,6 +24,6 @@ cp ./zshrc $HOME/.zshrc
 cp -r ./oh-my-zsh $HOME/.oh-my-zsh
 
 #chsh -s $(which zsh)
-usermod --shell $(which zsh) $USER
+sudo usermod --shell $(which zsh) $USER
 # source $HOME/.zshrc
 echo "All done! Please restart your terminal!"
