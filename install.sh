@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Colors
-GREEN='\033[0;32m'
-NC='\033[0;m'
-
 if [ ! $(command -v sudo) ]; then
 	echo "Sudo not found! Please install Sudo."
 	exit 1
@@ -13,8 +9,8 @@ fi
 if [ $(command -v apt) ]; then
 	echo "Apt manager found!"
 	echo "Installing required staff..."
-	sudo apt update >/dev/null
-	sudo apt install -q -y curl git zsh chroma >/dev/null
+	sudo apt update -q 
+	sudo apt install -yq curl git zsh chroma
 fi
 
 # RHEL, etc.
