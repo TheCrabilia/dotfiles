@@ -7,19 +7,18 @@ fi
 
 # Debian, etc.
 if [ $(command -v apt) ]; then
-	echo "Apt manager found!"
-	echo "Installing required staff..."
-	sudo apt update -q 
-	sudo apt install -yq curl git zsh chroma
+	echo "Apt manager found! Installing required staff..."
+	MANAGER=apt
 fi
 
 # RHEL, etc.
 if [ $(command -v yum) ]; then
-	echo "Yum manager found!"
-	echo "Installing required staff..."
-	sudo yum update -yq
-	sudo yum install -yq curl git zsh libchromaprint-devel
+	echo "Yum manager found! Installing required staff..."
+	MANAGER=yum
+	sudo $MANAGER install -yq epel-release
 fi
+
+sudo $MANAGER install -yq curl git zsh python3-pygments
 
 echo "Installing Oh-My-Zsh framework..."
 yes | bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
