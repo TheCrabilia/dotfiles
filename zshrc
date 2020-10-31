@@ -26,6 +26,10 @@ ZSH_COLORIZE_TOOL=pygmentize
 ZSH_COLORIZE_STYLE="native"
 ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
 
+function chpwd {
+	ls
+}
+
 alias exp='explorer.exe .'
 alias code='code .'
 alias cat='ccat'
