@@ -24,4 +24,7 @@ sudo $MANAGER install -yq curl git zsh python3-pygments vim
 cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
 
+# Change default user shell
+sudo usermod --silent -s /bin/zsh $USER
+
 echo "Done!"
