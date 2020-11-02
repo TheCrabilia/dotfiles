@@ -32,9 +32,4 @@ else
 	sudo usermod -s /bin/zsh $USER
 fi
 
-source $HOME/.zshrc &2>/dev/null
-
-echo "Installing ZInit..."
-install_zinit
-
-echo "Done!"
+echo "Done! To install ZSH plugins restart your terminal and write install_zinit command!"
