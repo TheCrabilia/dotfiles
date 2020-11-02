@@ -32,8 +32,7 @@ else
 	sudo usermod -s /bin/zsh $USER
 fi
 
-export SHELL=/bin/zsh
-source $HOME/.zshrc
+source $HOME/.zshrc &2>/dev/null
 
 echo "Installing ZInit..."
 install_zinit
