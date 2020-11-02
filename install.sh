@@ -18,13 +18,24 @@ if which yum >/dev/null; then
 	sudo $MANAGER install -yq epel-release
 fi
 
-sudo $MANAGER install -yq curl git zsh python3-pygments vim
+sudo $MANAGER install -yq zsh python3-pygments vim
 
 # Copy required files to user home directory
 cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
 
 # Change default user shell
-sudo usermod -s /bin/zsh $USER
+echo "Changing user default shell to ZSH..."
+if which chsh >/dev/null; then
+	chsh -s /bin/zsh $USER
+else
+	sudo usermod -s /bin/zsh $USER
+fi
+
+export SHELL=/bin/zsh
+source $HOME/.zshrc
+
+echo "Installing ZInit..."
+install_zinit
 
 echo "Done!"

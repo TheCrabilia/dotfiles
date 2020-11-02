@@ -31,6 +31,7 @@ fi
 function install_zinit {
 	mkdir ~/.zinit
 	git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+	source $HOME/.zshrc
 }
 
 function update_zsh_plugins {
