@@ -25,6 +25,6 @@ cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
 
 # Change default user shell
-sudo usermod --silent -s /bin/zsh $USER
+sudo usermod -s /bin/zsh $USER
 
 echo "Done!"
