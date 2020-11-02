@@ -1,9 +1,18 @@
-#export ZSH="/home/ispirts/.oh-my-zsh"
-HIST_STAMPS="dd.mm.yyyy"
+if [[ -d $HOME/.mtenv ]]; then
+	repo_folder=.mtenv
+elif [[ -d $HOME/mtenv ]]; then
+	repo_folder=mtenv
+else
+	echo "Please name downloaded repository root folder as mtenv or .mtenv and put it in home directory! Then try again!"
+	exit 1
+fi
 
-#source $ZSH/oh-my-zsh.sh
+# Load custom modules
+for file in $HOME/$repo_folder/zsh/*.zsh; do
+        source $file
+done;
 
-# load custom modules
-for file in $HOME/mtenv/zsh/*sh; do
+# Load Oh-My-Zsh libs
+for file in $HOME/$repo_folder/zsh/omz_lib/*.zsh; do
         source $file
 done;
