@@ -23,6 +23,7 @@ sudo $MANAGER install -yq zsh python3-pygments vim
 # Copy required files to user home directory
 cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
+cp ./vimrc $HOME/.vimrc
 
 # Change default user shell
 echo "Changing user default shell to ZSH..."
@@ -32,4 +33,4 @@ else
 	sudo usermod -s /bin/zsh $USER
 fi
 
-echo "Done! To install ZSH plugins restart your terminal and write install_zinit command!"
+echo "Done! Now you can run zsh!"
