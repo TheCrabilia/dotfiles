@@ -40,11 +40,11 @@ set backupdir=~/.vim/tmp/
 syntax on
 filetype plugin indent on
 
-set smartindent
+"set smartindent							" not recommended
 set autoindent
 set scrolloff=5
 
-"set expandtab								" tab emulates 2 spaces
+"set expandtab								" tab emulates 4 spaces
 set shiftwidth=4
 set tabstop=4
 
