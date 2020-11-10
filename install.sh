@@ -18,7 +18,7 @@ if which yum >/dev/null; then
 	sudo $MANAGER install -yq epel-release
 fi
 
-sudo $MANAGER install -yq zsh python3-pygments vim
+sudo $MANAGER install -yq zsh python3-pygments vim curl wget
 
 # Install vim-plug
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
