@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if ! which sudo >/dev/null; then
 	echo "Sudo not found! Please install Sudo."
