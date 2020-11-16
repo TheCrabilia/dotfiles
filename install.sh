@@ -8,17 +8,15 @@ fi
 # Debian, etc.
 if which apt >/dev/null; then
 	echo "Apt manager found! Installing required staff..."
-	MANAGER=apt
+	sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq zsh python3-pygments vim curl wget < /dev/null > /dev/null
 fi
 
 # RHEL, etc.
 if which yum >/dev/null; then
 	echo "Yum manager found! Installing required staff..."
 	MANAGER=yum
-	sudo $MANAGER install -yq epel-release
+	sudo $MANAGER install -qq epel-release zsh python3-pygments vim curl wget
 fi
-
-sudo $MANAGER install -yq zsh python3-pygments vim curl wget
 
 # Install vim-plug
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
