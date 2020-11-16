@@ -28,12 +28,14 @@ cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
 cp ./vimrc $HOME/.vimrc
 
-# Change default user shell
-echo "Changing user default shell to ZSH..."
-if which chsh >/dev/null; then
-	chsh -s /bin/zsh $USER
-else
-	sudo usermod -s /bin/zsh $USER
+# Change default user shell if it is not zsh
+if [[ $SHELL != /usr/bin/zsh ]]; then
+	echo "Changing user default shell to ZSH..."
+	if which chsh >/dev/null; then
+		chsh -s /bin/zsh $USER
+	else
+		sudo usermod -s /bin/zsh $USER
+	fi
 fi
 
 echo "Done! Now you can run zsh!"
