@@ -27,4 +27,4 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%F{red}$git_symbol_dirty%f"
 
 # Prompt variables
 PROMPT='$ssh_conn$(git_prompt_info)%f$user_color$prompt_hello%f '
-RPROMPT='%~ %F{red}%?%f %F{yellow}[%T]%f'
+RPROMPT='%~ %F{red}%?%f'
