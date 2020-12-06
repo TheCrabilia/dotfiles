@@ -74,6 +74,10 @@ if has('multi_byte')
 	set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" Key binds
+" Bind paste mode enabling to F12
+set pastetoggle=<F12>
+
 " Load vimrc.local if available
 if filereadable("/etc/vim/vimrc.local")
 	source /etc/vim/vimrc.local
