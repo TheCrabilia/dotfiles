@@ -24,7 +24,7 @@ alias md='mkdir -p'
 
 # ls
 alias ls='ls --color=auto'
-alias la='ls -la'
+alias la='ls -lat'
 alias ll='ls -l'
 
 # grep
