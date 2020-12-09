@@ -22,13 +22,7 @@ echo "Installing vim plugin manager..."
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Installing vim plugins..."
-if which vim &>/dev/null; then
-	VIM=vim
-elif which nvim &>/dev/null; then
-	VIM=nvim
-fi
-
-$VIM -c PlugInstall! -c qa!
+vim -c PlugInstall! -c qa!
 
 echo "Copying requered files"
 cp ./zshrc $HOME/.zshrc
