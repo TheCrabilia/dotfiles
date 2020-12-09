@@ -1,8 +1,8 @@
 # Allow variable substitution inside prompts
 setopt prompt_subst
 
-# Draw hostname if it is ssh connection
-[[ -c $SSH_TTY ]] && hn='%m '
+# Draw hostname if it is ssh connection or UID = 0 (root)
+[[ -c $SSH_TTY ]] || [[ $UID -eq 0 ]]  && hn='%m '
 
 # Red prompt if root
 local user_color='%F{green}'; [ $UID -eq 0 ] && user_color='%F{red}'
