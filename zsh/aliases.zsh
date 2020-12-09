@@ -16,8 +16,8 @@ if command -v yum >/dev/null; then
 fi
 
 ## Commonly used commands
-alias cat='ccat'
-alias less='cless'
+#alias cat='ccat'
+#alias less='cless'
 alias hn='hostname'
 alias sctl='sudo systemctl'
 alias md='mkdir -p'
