@@ -37,10 +37,10 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 
 # Sudo
-if command -v sudo >/dev/null; then
+if command -v sudo &>/dev/null; then
 	alias sudo='nocorrect sudo'
 	alias -g '#'='sudo'
-	alias -g '##'='sudo !$'
+	alias -g '##'='sudo !!'
 	alias E='sudo -E $EDITOR'
 fi
 
