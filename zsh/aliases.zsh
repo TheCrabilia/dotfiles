@@ -27,6 +27,7 @@ alias ls='ls --color=auto'
 alias la='ls -la'
 alias lt='ls -lat'
 alias ll='ls -l'
+alias l.='ls -ld .?*'
 
 # grep
 alias grep='grep --color=auto'
