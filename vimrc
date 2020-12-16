@@ -40,13 +40,17 @@ set backupdir=~/.vim/tmp/
 syntax on
 filetype plugin indent on
 
+autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType c setlocal shiftwidth=4 softtabstop=4 expandtab
+
 "set smartindent							" not recommended
 set autoindent
 set scrolloff=5
 
 "set expandtab								" tab emulates 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=8
+set tabstop=8
 
 set ignorecase
 set smartcase
