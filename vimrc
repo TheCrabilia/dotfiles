@@ -1,5 +1,6 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdcommenter'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
