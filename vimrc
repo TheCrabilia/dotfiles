@@ -42,8 +42,11 @@ syntax on
 filetype plugin indent on
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
-autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4 expandtab
-autocmd FileType c setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
+autocmd FileType c setlocal shiftwidth=4 softtabstop=4
+autocmd FileType sh setlocal shiftwidth=4 softtabstop=4
+autocmd FileType bash setlocal shiftwidth=4 softtabstop=4
+autocmd FileType zsh setlocal shiftwidth=4 softtabstop=4
 
 "set smartindent							" not recommended
 set autoindent
