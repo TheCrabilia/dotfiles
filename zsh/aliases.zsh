@@ -1,23 +1,21 @@
 ## System specific aliases
-# WSL 2
-if [[ $TERM = xterm-256color ]]; then
-	alias exp='explorer.exe .'
-	alias code='code .'
-fi
-
 # Debian
 if command -v apt >/dev/null; then
-	alias apt='sudo apt'
+    alias apt='sudo apt'
 fi
 
 # RedHat
 if command -v yum >/dev/null; then
-	alias yum='sudo yum'
+    alias yum='sudo yum'
+fi
+
+if command -v dnf >/dev/null; then
+    alias dnf='sudo dnf'
 fi
 
 ## Commonly used commands
-#alias cat='ccat'
-#alias less='cless'
+# alias cat='ccat'
+# alias less='cless'
 alias hn='hostname'
 alias sctl='sudo systemctl'
 alias md='mkdir -p'
@@ -39,10 +37,10 @@ alias -g .....='../../../..'
 
 # Sudo
 if command -v sudo &>/dev/null; then
-	alias sudo='nocorrect sudo'
-	alias -g '#'='sudo'
-	alias -g '##'='sudo !!'
-	alias E='sudo -E $EDITOR'
+    alias sudo='nocorrect sudo'
+    alias -g '#'='sudo'
+    alias -g '##'='sudo !!'
+    alias E='sudo -E $EDITOR'
 fi
 
 ## Nocorrect aliases
@@ -53,7 +51,7 @@ alias man='nocorrect man'
 
 ## Editor
 if [[ -z $EDITOR ]]; then
-	alias e=$EDITOR
+    alias e=$EDITOR
 fi
 
 ## Quick access to zshrc
