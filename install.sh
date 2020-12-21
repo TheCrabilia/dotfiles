@@ -28,5 +28,6 @@ echo "Copying requered files"
 cp ./zshrc $HOME/.zshrc
 cp ./zshenv $HOME/.zshenv
 cp ./vimrc $HOME/.vimrc
+cp ./tmux $HOME/.tmux.conf
 
 echo "Done!"
