@@ -13,7 +13,7 @@ setw -g monitor-activity on
 set -g visual-activity on
 
 # Current window highlighting
-set -g window-status-current-style bg=yellow
+set-window-option -g window-status-current-bg yellow
 
 # Pane switching using mouse
 set-option -g mouse on
