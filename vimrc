@@ -1,6 +1,9 @@
 "Plugins
 call plug#begin('~/.vim/plugged')
+" Commenter
 Plug 'preservim/nerdcommenter'
+" Emmet (HTML and CSS autocomplite)
+Plug 'mattn/emmet-vim'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -42,11 +45,7 @@ syntax on
 filetype plugin indent on
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
-autocmd FileType cpp setlocal shiftwidth=4 softtabstop=4
-autocmd FileType c setlocal shiftwidth=4 softtabstop=4
-autocmd FileType sh setlocal shiftwidth=4 softtabstop=4
-autocmd FileType bash setlocal shiftwidth=4 softtabstop=4
-autocmd FileType zsh setlocal shiftwidth=4 softtabstop=4
+autocmd FileType cpp,c,sh,bash,zsh,html,css setlocal shiftwidth=4 softtabstop=4
 
 "set smartindent							" not recommended
 set autoindent
