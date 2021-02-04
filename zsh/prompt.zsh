@@ -13,5 +13,5 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=')'
 #ZSH_THEME_GIT_PROMPT_DIRTY=' %F{red}-%f'
 
 # Prompt variables
-PROMPT='%F{red}[%F{green}$hn%f%2~%F{blue}%F{red}]%f$user_prompt '
+PROMPT='%F{red}[%F{green}$hn%f%1~%F{blue}%F{red}]%f$user_prompt '
 RPROMPT='%F{green}$(git_prompt_info)%f' 
