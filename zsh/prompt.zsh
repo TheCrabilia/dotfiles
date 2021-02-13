@@ -1,17 +1,19 @@
 # Allow variable substitution inside prompts
 setopt prompt_subst
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:git:*' formats '%F{green}(%b)%f'
 
-# Draw hostname if it is ssh connection or UID = 0 (root)
-[[ -c $SSH_TTY ]] || [[ $UID -eq 0 ]]  && hn='%m '
+# Draw hostname if it is ssh connection
+local host=''
+[[ -c $SSH_TTY ]] && host='%m '
 
-# Red prompt if root
-local user_prompt='%F{green}$%f'; [ $UID -eq 0 ] && user_prompt='%F{red}#%f'
-
-ZSH_THEME_GIT_PROMPT_PREFIX='('
-ZSH_THEME_GIT_PROMPT_SUFFIX=')'
+#ZSH_THEME_GIT_PROMPT_PREFIX='('
+#ZSH_THEME_GIT_PROMPT_SUFFIX=')'
 #ZSH_THEME_GIT_PROMPT_CLEAN=' %F{red}%F{green}+%f'
 #ZSH_THEME_GIT_PROMPT_DIRTY=' %F{red}-%f'
 
 # Prompt variables
-PROMPT='%F{red}[%F{green}$hn%f%1~%F{blue}%F{red}]%f$user_prompt '
-RPROMPT='%F{green}$(git_prompt_info)%f' 
+PROMPT='%F{red}[%F{green}%(!.%m .$host)%f%1~%F{blue}%F{red}]%f%(!.%F{red}#%f.%F{green}#%f) '
+RPROMPT='%F{red}%(?..%?)%f $vcs_info_msg_0_'
