@@ -13,6 +13,25 @@ if command -v dnf >/dev/null; then
     alias dnf='sudo dnf'
 fi
 
+## Enable color support of ls, grep, diff, ip and man (less)
+if [ -x /usr/bin/dircolors ]; then
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip --color=auto'
+
+    export LESS_TERMCAP_mb=$'\E[1;31m'	    # begin blink
+    export LESS_TERMCAP_md=$'\E[1;36m'	    # begin bold
+    export LESS_TERMCAP_me=$'\E[0m'	    # reset bold/blink
+    export LESS_TERMCAP_so=$'\E[01;33m'	    # begin reverse video
+    export LESS_TERMCAP_se=$'\E[0m'	    # reset reverse video
+    export LESS_TERMCAP_us=$'\E[1;32m'	    # begin underline
+    export LESS_TERMCAP_ue=$'\E[0m'	    # reset underline
+
+    # Take advantage of $LS_COLORSfor completion as well
+    zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}"
+fi
+
 ## Commonly used commands
 # alias cat='ccat'
 # alias less='cless'
@@ -21,14 +40,10 @@ alias sctl='sudo systemctl'
 alias md='mkdir -p'
 
 # ls
-alias ls='ls --color=auto'
 alias la='ls -la'
-alias lt='ls -lat'
+alias lt='ls -lt'
 alias ll='ls -l'
 alias l.='ls -ld .?*'
-
-# grep
-alias grep='grep --color=auto'
 
 # cd to sub-sub dirs
 alias -g ...='../..'

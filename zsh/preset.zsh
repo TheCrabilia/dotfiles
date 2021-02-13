@@ -1,4 +1,6 @@
 HIST_STAMPS="dd.mm.yyyy"
+# Hide EOL sign ('%')
+PROMPT_EOL_MARK=""
 
 # Path
 path+=$HOME/bin
@@ -13,28 +15,28 @@ export SHELL=$(which zsh)
 
 # OS specific environment settings
 case $OSTYPE in
-	linux*)
-		export HOSTNAME=$(hostname -s)
+    linux*)
+	export HOSTNAME=$(hostname -s)
 	;;
 esac
 
 # Default pager
 if which less >/dev/null; then
-	export LESS=-r
-	export PAGER=less
+    export LESS=-r
+    export PAGER=less
 fi
 
 # Set default editor
 local -a editors
 editors=(
-	nvim
-	vim
-	vi
+    nvim
+    vim
+    vi
 )
 
 foreach editor in $editors
-	if which $editor >/dev/null; then
-		export EDITOR=$editor
-		break
-	fi
+    if which $editor >/dev/null; then
+	export EDITOR=$editor
+	break
+    fi
 end
