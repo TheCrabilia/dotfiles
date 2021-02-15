@@ -3,17 +3,12 @@ setopt prompt_subst
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '%F{green}(%b)%f'
+zstyle ':vcs_info:git:*' formats '%F{214}(%b)%f'
 
 # Draw hostname if it is ssh connection
-local host=''
-[[ -c $SSH_TTY ]] && host='%m '
-
-#ZSH_THEME_GIT_PROMPT_PREFIX='('
-#ZSH_THEME_GIT_PROMPT_SUFFIX=')'
-#ZSH_THEME_GIT_PROMPT_CLEAN=' %F{red}%F{green}+%f'
-#ZSH_THEME_GIT_PROMPT_DIRTY=' %F{red}-%f'
+local hostname=''
+[[ -c $SSH_TTY ]] && hostname='%m@'
 
 # Prompt variables
-PROMPT='%F{red}[%F{green}%(!.%m .$host)%f%1~%F{blue}%F{red}]%f%(!.%F{red}#%f.%F{green}#%f) '
-RPROMPT='%F{red}%(?..%?)%f $vcs_info_msg_0_'
+PROMPT=$'%F{214}┌─(%f%F{125}%n@%m%f%F{214})-[%f%2~%F{214}]\n└─%f%F{125}%(!.#.$)%f '
+RPROMPT=$'%F{red}%(?..%?)%f $vcs_info_msg_0_'

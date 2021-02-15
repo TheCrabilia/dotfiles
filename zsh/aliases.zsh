@@ -32,6 +32,11 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}"
 fi
 
+# Replace cat with batcat if it exists
+if command -v batcat &>/dev/null; then
+    alias cat='batcat'
+fi
+
 ## Commonly used commands
 # alias cat='ccat'
 # alias less='cless'
