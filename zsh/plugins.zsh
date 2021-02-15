@@ -77,7 +77,7 @@ if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
     ZSH_HIGHLIGHT_STYLES[process-substitution]=none
     ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]=fg=magenta
     ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=magenta
-    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=33
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=magenta
     ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
     ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]=fg=blue,bold
     ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=28
