@@ -10,5 +10,5 @@ local hostname=''
 [[ -c $SSH_TTY ]] && hostname='%m@'
 
 # Prompt variables
-PROMPT=$'%F{214}┌─(%f%F{125}%n@%m%f%F{214})-[%f%2~%F{214}]\n└─%f%F{125}%(!.#.$)%f '
+PROMPT=$'%F{214}(%f%F{125}%n@%m%f%F{214})-[%f%2~%F{214}]%f%F{125}%(!.#.$)%f '
 RPROMPT=$'%F{red}%(?..%?)%f $vcs_info_msg_0_'

@@ -3,7 +3,7 @@ HIST_STAMPS="dd.mm.yyyy"
 PROMPT_EOL_MARK=""
 
 # Path
-path+=$HOME/bin
+path+=$HOME/.local/bin
 
 # Colors for ls
 export LSCOLORS="gxFxdxcxCxegedabagacad"
