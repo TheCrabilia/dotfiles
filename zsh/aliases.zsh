@@ -4,6 +4,11 @@ if command -v apt >/dev/null; then
     alias apt='sudo apt'
 fi
 
+# Arch Linux
+if command -v pacman >/dev/null; then
+	alias pacman='sudo pacman'
+fi
+
 # RedHat
 if command -v yum >/dev/null; then
     alias yum='sudo yum'
