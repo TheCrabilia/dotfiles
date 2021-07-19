@@ -75,6 +75,12 @@ if command -v kubectl &>/dev/null; then
     alias kd='kubectl delete'
 fi
 
+# ansible aliases
+if command -v ansible &>/dev/null; then
+    alias a='ansible'
+    alias ap='ansible-playbook'
+fi
+
 ## Nocorrect aliases
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
