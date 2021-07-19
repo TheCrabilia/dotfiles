@@ -68,6 +68,13 @@ if command -v sudo &>/dev/null; then
     alias E='sudo -E $EDITOR'
 fi
 
+# kubectl aliases
+if command -v kubectl &>/dev/null; then
+    alias k='kubectl'
+    alias ka='kubectl apply'
+    alias kd='kubectl delete'
+fi
+
 ## Nocorrect aliases
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
