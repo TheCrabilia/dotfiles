@@ -9,7 +9,7 @@ fi
 if which apt &>/dev/null; then
 	echo "Apt manager found! Installing required staff..."
 	OS=debian
-	sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq zsh python3-pygments vim curl wget < /dev/null > /dev/null
+	sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq zsh python3-pygments vim curl wget gawk < /dev/null > /dev/null
 fi
 
 # RHEL, etc.
