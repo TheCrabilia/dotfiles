@@ -108,7 +108,13 @@ if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
     ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
 fi
 
-# Enable complition features
+# Enable completion features
 autoload -Uz compinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
+
+# kubectl autocomletion
+if command -v kubectl >/dev/null; then
+    source <(kubectl completion zsh)
+    complete -F __start_kubectl k
+fi
