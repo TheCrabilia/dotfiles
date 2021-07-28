@@ -11,6 +11,7 @@ if [[ -d $zplug_home ]]; then
 	helm
 	tmux
 	vscode
+	golang
     )
 
     plugins=(

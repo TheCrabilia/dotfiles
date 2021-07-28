@@ -3,7 +3,14 @@ HIST_STAMPS="dd.mm.yyyy"
 PROMPT_EOL_MARK=""
 
 # Path
-path+=$HOME/.local/bin
+local -a custom_path_dirs
+custom_path_dirs=(
+    $HOME/.local/bin
+    /usr/local/go/bin
+)
+foreach dir in $custom_path_dirs
+    path+=$dir
+end
 
 # Colors for ls
 export LSCOLORS="gxFxdxcxCxegedabagacad"
