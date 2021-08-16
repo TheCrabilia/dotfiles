@@ -114,8 +114,14 @@ autoload -Uz compinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
 
-# kubectl autocomletion
+# kubectl autocompletion
 if command -v kubectl >/dev/null; then
     source <(kubectl completion zsh)
     complete -F __start_kubectl k
+fi
+
+# aws cli autocompletion
+if command -v aws >/dev/null; then
+    autoload bashcompinit
+    complete -C $(which aws_completer) aws
 fi
