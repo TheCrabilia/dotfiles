@@ -36,7 +36,7 @@ curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.
 
 echo "Copying terminal environment files..."
 cd $mtenv_path
-cfg_files=( zshrc zshenv vimrc tmux.conf )
+cfg_files=( "zshrc" "zshenv" "vimrc" "tmux.conf" )
 for file in $cfg_files; do
     cp $file $HOME/.$file
 done
