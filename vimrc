@@ -5,8 +5,8 @@ Plug 'preservim/nerdcommenter'
 " Emmet (HTML and CSS autocomplite)
 Plug 'mattn/emmet-vim'
 " Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Colorsheme
 Plug 'nanotech/jellybeans.vim'
 call plug#end()
