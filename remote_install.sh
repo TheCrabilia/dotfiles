@@ -40,9 +40,5 @@ cfg_files=( zshrc zshenv vimrc tmux.conf )
 for file in $cfg_files; do
     cp $file $HOME/.$file
 done
-cp zshrc $HOME/.zshrc
-cp zshenv $HOME/.zshenv
-cp vimrc $HOME/.vimrc
-cp tmux $HOME/.tmux.conf
 
 echo "Done."
