@@ -14,5 +14,5 @@ aka My Terminal Environment
 #### Remote installation:
 * Execute this command in your terminal:
     ~~~
-    bash $(curl -sL https://raw.githubusercontent.com/TheCrabilia/mtenv/main/install.sh)
+    curl -sL https://raw.githubusercontent.com/TheCrabilia/mtenv/main/remote_install.sh | bash -
     ~~~
