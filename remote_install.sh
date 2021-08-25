@@ -31,8 +31,8 @@ git clone https://github.com/TheCrabilia/mtenv $mtenv_path
 echo "Installing vim plugin manager..."
 curl -sfLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "Installing vim plugins..."
-vim -c PlugInstall! -c qa!
+# echo "Installing vim plugins..."
+# vim -c PlugInstall! -c qa!
 
 echo "Copying terminal environment files..."
 cd $mtenv_path
