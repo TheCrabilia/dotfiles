@@ -13,12 +13,19 @@ precmd() {
 		fi
     fi
 
-	# Print command execution time if it took longer then 2 seconds
+	# Print command execution time if it took longer then 1 second
 	if [ $timer ]; then
-		now=$(date +%s)
-		elapsed=$(($now-$timer))
-		if [[ $elapsed > 2 ]]; then
-			exec_time="    ${elapsed}s"
+		local now=$(date +%s)
+		local elapsed=$(($now-$timer))
+		if [[ $elapsed > 1 ]]; then
+			local min=$(($elapsed / 60))
+			local sec=$(($elapsed % 60))
+			local minutes
+			local seconds
+
+			[[ $min != 0 ]] && minutes="${min}m" || minutes=""
+			seconds="${sec}s"
+			exec_time="    ${minutes}${seconds}"
 		else
 			unset exec_time
 		fi
