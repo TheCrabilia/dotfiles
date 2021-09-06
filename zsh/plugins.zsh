@@ -111,6 +111,7 @@ fi
 
 # Enable completion features
 autoload -Uz compinit
+autoload bashcompinit && bashcompinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
 
@@ -122,6 +123,5 @@ fi
 
 # aws cli autocompletion
 if command -v aws >/dev/null; then
-    autoload bashcompinit
     complete -C $(which aws_completer) aws
 fi
