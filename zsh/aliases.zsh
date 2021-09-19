@@ -73,6 +73,8 @@ if command -v kubectl &>/dev/null; then
     alias k='kubectl'
     alias ka='kubectl apply'
     alias kd='kubectl delete'
+    alias kl='kubectl logs'
+    alias kg='kubectl get'
 fi
 
 # kubens aliases
