@@ -75,6 +75,16 @@ if command -v kubectl &>/dev/null; then
     alias kd='kubectl delete'
 fi
 
+# kubens aliases
+if command -v kubens &>/dev/null; then
+    alias kns='kubens'
+fi
+
+# kubectx aliases
+if command -v kubectx &>/dev/null; then
+    alias kctx='kubectx'
+fi
+
 # ansible aliases
 if command -v ansible &>/dev/null; then
     alias a='ansible'
