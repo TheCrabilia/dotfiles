@@ -5,7 +5,6 @@ if [[ -d $zplug_home ]]; then
 	docker
 	docker-compose
 	colorize
-	django
 	firewalld
 	ufw
 	helm
