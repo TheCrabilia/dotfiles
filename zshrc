@@ -7,12 +7,15 @@ else
 	exit 1
 fi
 
+# Load preset.zsh file, to load environment variables
+source $HOME/$repo_folder/zsh/preset.zsh
+
 # Load custom modules
 for file in $HOME/$repo_folder/zsh/*.zsh; do
-        source $file
+	source $file
 done;
 
 # Load Oh-My-Zsh libs
 for file in $HOME/$repo_folder/zsh/omz_lib/*.zsh; do
-        source $file
+	source $file
 done;

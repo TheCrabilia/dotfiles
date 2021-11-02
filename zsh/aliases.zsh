@@ -1,40 +1,23 @@
 ## System specific aliases
-# Debian
-if command -v apt >/dev/null; then
-    alias apt='sudo apt'
-fi
+if [[ $OSTYPE = linux* ]]; then
+    # Debian
+    if command -v apt >/dev/null; then
+        alias apt='sudo apt'
+    fi
 
-# Arch Linux
-if command -v pacman >/dev/null; then
-	alias pacman='sudo pacman'
-fi
+    # Arch Linux
+    if command -v pacman >/dev/null; then
+        alias pacman='sudo pacman'
+    fi
 
-# RedHat
-if command -v yum >/dev/null; then
-    alias yum='sudo yum'
-fi
+    # RedHat
+    if command -v yum >/dev/null; then
+        alias yum='sudo yum'
+    fi
 
-if command -v dnf >/dev/null; then
-    alias dnf='sudo dnf'
-fi
-
-## Enable color support of ls, grep, diff, ip and man (less)
-if [ -x /usr/bin/dircolors ]; then
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias diff='diff --color=auto'
-    alias ip='ip --color=auto'
-
-    export LESS_TERMCAP_mb=$'\E[1;31m'	    # begin blink
-    export LESS_TERMCAP_md=$'\E[1;36m'	    # begin bold
-    export LESS_TERMCAP_me=$'\E[0m'	    # reset bold/blink
-    export LESS_TERMCAP_so=$'\E[01;33m'	    # begin reverse video
-    export LESS_TERMCAP_se=$'\E[0m'	    # reset reverse video
-    export LESS_TERMCAP_us=$'\E[1;32m'	    # begin underline
-    export LESS_TERMCAP_ue=$'\E[0m'	    # reset underline
-
-    # Take advantage of $LS_COLORSfor completion as well
-    zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}"
+    if command -v dnf >/dev/null; then
+        alias dnf='sudo dnf'
+    fi
 fi
 
 # Replace cat with batcat if it exists
@@ -43,10 +26,20 @@ if command -v batcat &>/dev/null; then
 fi
 
 ## Commonly used commands
-# alias cat='ccat'
-# alias less='cless'
+# Enable colors for ls, grep, diff, ip and man (less)
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias diff='diff --color=auto'
+
+if command -v ip &>/dev/null; then
+    alias ip='ip --color=auto'
+fi
+
+if command -v systemctl &>/dev/null; then
+    alias sctl='sudo systemctl'
+fi
+
 alias hn='hostname'
-alias sctl='sudo systemctl'
 alias md='mkdir -p'
 
 # ls
@@ -77,12 +70,12 @@ if command -v kubectl &>/dev/null; then
     alias kg='kubectl get'
 fi
 
-# kubens aliases
+# kubens alias
 if command -v kubens &>/dev/null; then
     alias kns='kubens'
 fi
 
-# kubectx aliases
+# kubectx alias
 if command -v kubectx &>/dev/null; then
     alias kctx='kubectx'
 fi
@@ -106,4 +99,4 @@ fi
 
 ## Quick access to zshrc
 alias zshrc='vim ~/.zshrc'
-alias szshrc='source ~/.zshrc'
+alias sz='source ~/.zshrc'

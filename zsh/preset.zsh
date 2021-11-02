@@ -3,10 +3,16 @@ HIST_STAMPS="dd.mm.yyyy"
 PROMPT_EOL_MARK=""
 
 # Path
+unset path
 local -a custom_path_dirs
 custom_path_dirs=(
+    /usr/local/bin
+    /usr/bin
+    /usr/sbin
+    /bin
     $HOME/.local/bin
     /usr/local/go/bin
+    /opt/homebrew/bin
 )
 foreach dir in $custom_path_dirs
     path+=$dir
@@ -17,14 +23,26 @@ export LSCOLORS="gxFxdxcxCxegedabagacad"
 export LS_COLORS="di=36:ln=1;35:so=33:pi=32:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 export CLICOLOR=1
 
+# Enable colors in less and man commands
+export LESS_TERMCAP_mb=$'\E[1;31m'	    # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'	    # begin bold
+export LESS_TERMCAP_me=$'\E[0m'	        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;33m'	    # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'	        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'	    # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'	        # reset underline
+
 # Fix broken terminals
 export SHELL=$(which zsh)
 
 # OS specific environment settings
 case $OSTYPE in
     linux*)
-	export HOSTNAME=$(hostname -s)
+	    export HOSTNAME=$(hostname -s)
 	;;
+    darwin*)
+        export HOSTNAME=$(hostname -s)
+    ;;
 esac
 
 # Default pager
@@ -53,6 +71,3 @@ if [[ -f /usr/bin/keychain ]]; then
     /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$HOST-sh
 fi
-
-# AWS environment variables
-AWS_PROFILE=dev-skill

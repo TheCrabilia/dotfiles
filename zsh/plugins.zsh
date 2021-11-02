@@ -1,23 +1,23 @@
 local zplug_home=$HOME/.zplug
 if [[ -d $zplug_home ]]; then
     oh_my_zsh_plugins=(
-	git
-	docker
-	docker-compose
-	colorize
-	firewalld
-	ufw
-	helm
-	tmux
-	vscode
-	golang
+		git
+		docker
+		docker-compose
+		colorize
+		firewalld
+		ufw
+		helm
+		tmux
+		vscode
+		golang
     )
 
     plugins=(
-	chrissicool/zsh-256color
-	zsh-users/zsh-autosuggestions
-	zsh-users/zsh-history-substring-search
-	zsh-users/zsh-syntax-highlighting
+		chrissicool/zsh-256color
+		zsh-users/zsh-autosuggestions
+		zsh-users/zsh-history-substring-search
+		zsh-users/zsh-syntax-highlighting
     )
 
     source $zplug_home/init.zsh
@@ -63,7 +63,7 @@ if [ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]; then
 fi
 
 # ZSH-SYNTAX-HIGHLIGHT
-if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
+# if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
 #     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 #     ZSH_HIGHLIGHT_STYLES[default]=none
 #     ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=33,bold
@@ -88,11 +88,11 @@ if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
 #     ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]=fg=blue,bold
 #     ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=28
 #     ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=28
-#     ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]=fg=28
+# 	  ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]=fg=28
 #     ZSH_HIGHLIGHT_STYLES[rc-quote]=fg=magenta
 #     ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=magenta
 #     ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=magenta
-#     ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=magenta
+#	  ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=fg=magenta
 #     ZSH_HIGHLIGHT_STYLES[assign]=none
 #     ZSH_HIGHLIGHT_STYLES[redirection]=fg=magenta,bold
 #     ZSH_HIGHLIGHT_STYLES[comment]=fg=black,bold
@@ -106,13 +106,14 @@ if [ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]; then
 #     ZSH_HIGHLIGHT_STYLES[bracket-level-4]=fg=yellow,bold
 #     ZSH_HIGHLIGHT_STYLES[bracket-level-5]=fg=cyan,bold
 #     ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=standout
-fi
+# fi
 
 # Enable completion features
-autoload -Uz compinit
+autoload -Uz compinit && compinit
 autoload bashcompinit && bashcompinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
+zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}" 	# Take advantage of $LS_COLORS for completion as well
 
 # kubectl autocompletion
 if command -v kubectl >/dev/null; then
