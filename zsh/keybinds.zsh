@@ -17,6 +17,12 @@ bindkey '\e[F' end-of-line		# End (xorg)
 bindkey '\e[4~' end-of-line		# End (console)
 bindkey '\e[2~' overwrite-mode		# Ins
 bindkey '\e[3~' delete-char		# Del
-bindkey '^[[1;5C' forward-word		# ctrl + ->
-bindkey '^[[1;5D' backward-word		# ctrl + <-
+if [[ $OSTYPE = darwin* ]]; then
+    bindkey '\e\e[C' forward-word	# Opt + ->
+    bindkey '\e\e[D' backward-word	# Opt + <-
+else
+    bindkey '^[[1;5C' forward-word	# ctrl + ->
+    bindkey '^[[1;5D' backward-word	# ctrl + <-
+fi
 bindkey '^[[Z' undo			# shift + tab undo las action
+

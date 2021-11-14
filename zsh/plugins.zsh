@@ -125,3 +125,9 @@ fi
 if command -v aws >/dev/null; then
     complete -C $(which aws_completer) aws
 fi
+
+# helm completion
+if command -v helm >/dev/null; then
+    helm completion zsh > "${fpath[1]}/_helm"
+fi
+
