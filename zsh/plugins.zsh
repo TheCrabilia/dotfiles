@@ -131,3 +131,6 @@ if command -v helm >/dev/null; then
     helm completion zsh > "${fpath[1]}/_helm"
 fi
 
+if command -v minikube >/dev/null; then
+    eval "$(minikube completion zsh)"
+fi
