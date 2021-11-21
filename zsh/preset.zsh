@@ -10,6 +10,7 @@ custom_path_dirs=(
     /usr/bin
     /usr/sbin
     /bin
+    /sbin
     $HOME/.local/bin
     /usr/local/go/bin
     /opt/homebrew/bin
