@@ -12,9 +12,11 @@ fi
 bindkey '\eOH' beginning-of-line	# Home
 bindkey '\e[H' beginning-of-line	# Home (xorg)
 bindkey '\e[1~' beginning-of-line	# Home (console)
+bindkey '^A' beginning-of-line		# ctrl + A
 bindkey '\eOF' end-of-line		# End
 bindkey '\e[F' end-of-line		# End (xorg)
 bindkey '\e[4~' end-of-line		# End (console)
+bindkey '^E' end-of-line		# ctrl + E
 bindkey '\e[2~' overwrite-mode		# Ins
 bindkey '\e[3~' delete-char		# Del
 if [[ $OSTYPE = darwin* ]]; then

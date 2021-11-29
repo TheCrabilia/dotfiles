@@ -131,6 +131,10 @@ if command -v helm >/dev/null; then
     helm completion zsh > "${fpath[1]}/_helm"
 fi
 
+# minikube auto-completion
 if command -v minikube >/dev/null; then
     eval "$(minikube completion zsh)"
 fi
+
+[[ -d /opt/kubectx ]] && FPATH=/opt/kubectx/completion:$FPATH
+
