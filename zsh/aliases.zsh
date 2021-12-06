@@ -20,11 +20,6 @@ if [[ $OSTYPE = linux* ]]; then
     fi
 fi
 
-# Replace cat with batcat if it exists
-if command -v batcat &>/dev/null; then
-    alias cat='batcat'
-fi
-
 ## Commonly used commands
 # Enable colors for ls, grep, diff, ip and man (less)
 alias ls='ls --color=auto'
@@ -43,6 +38,9 @@ alias hn='hostname'
 alias md='mkdir -p'
 
 # ls
+if command -v exa &>/dev/null; then
+    alias ls='exa'
+fi
 alias la='ls -la'
 alias lt='ls -lt'
 alias ll='ls -l'
