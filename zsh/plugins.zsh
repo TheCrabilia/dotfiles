@@ -115,6 +115,8 @@ zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
 zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}" 	# Take advantage of $LS_COLORS for completion as well
 
+fpath=($HOME/.zsh/completion $fpath)
+
 # kubectl autocompletion
 if command -v kubectl >/dev/null; then
     source <(kubectl completion zsh)
@@ -135,6 +137,4 @@ fi
 if command -v minikube >/dev/null; then
     eval "$(minikube completion zsh)"
 fi
-
-[[ -d /opt/kubectx ]] && FPATH=/opt/kubectx/completion:$FPATH
 
