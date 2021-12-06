@@ -46,6 +46,7 @@ filetype plugin indent on
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType cpp,c,sh,bash,zsh,html,css setlocal shiftwidth=4 softtabstop=4
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "set smartindent							" not recommended
 set autoindent

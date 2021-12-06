@@ -40,11 +40,15 @@ alias md='mkdir -p'
 # ls
 if command -v exa &>/dev/null; then
     alias ls='exa'
+    alias la='exa --long --all --git --group'
+    alias lt='exa --long --git --group -snew'
+    alias ll='exa --long --git --group'
+else
+    alias la='ls -la'
+    alias lt='ls -lt'
+    alias ll='ls -l'
+    alias l.='ls -ld .?*'
 fi
-alias la='ls -la'
-alias lt='ls -lt'
-alias ll='ls -l'
-alias l.='ls -ld .?*'
 
 # cd to sub-sub dirs
 alias -g ...='../..'
@@ -56,7 +60,6 @@ if command -v sudo &>/dev/null; then
     alias sudo='nocorrect sudo'
     alias -g '#'='sudo'
     alias -g '##'='sudo !!'
-    alias E='sudo -E $EDITOR'
 fi
 
 # kubectl aliases
@@ -92,7 +95,7 @@ alias man='nocorrect man'
 
 ## Editor
 if [[ -z $EDITOR ]]; then
-    alias e=$EDITOR
+    alias open=$EDITOR
 fi
 
 ## Quick access to zshrc

@@ -36,16 +36,6 @@ export LESS_TERMCAP_ue=$'\E[0m'	        # reset underline
 # Fix broken terminals
 export SHELL=$(which zsh)
 
-# OS specific environment settings
-case $OSTYPE in
-    linux*)
-	    export HOSTNAME=$(hostname -s)
-	;;
-    darwin*)
-        export HOSTNAME=$(hostname -s)
-    ;;
-esac
-
 # Default pager
 if which less >/dev/null; then
     export LESS=-r
@@ -58,6 +48,7 @@ editors=(
     nvim
     vim
     vi
+    nano
 )
 
 foreach editor in $editors
