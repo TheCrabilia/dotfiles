@@ -63,6 +63,7 @@ set wildmenu								" completion menu
 set wildmode=list:longest,full				" complete longest first
 
 set number
+set relativenumber
 set linespace=0
 set cursorline								" add line with cursos highlighting
 
