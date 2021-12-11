@@ -84,7 +84,13 @@ if command -v helm >/dev/null; then
     helm completion zsh > "${fpath[1]}/_helm"
 fi
 
-# minikube auto-completion
+# minikube completion
 if command -v minikube >/dev/null; then
     eval "$(minikube completion zsh)"
 fi
+
+# tekton-cli completion
+if command -v tkn >/dev/null; then
+    tkn completion zsh > "${fpath[1]}/_tkn"
+fi
+
