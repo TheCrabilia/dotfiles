@@ -93,11 +93,12 @@ alias cp='nocorrect cp -i'
 alias mkdir='nocorrect mkdir'
 alias man='nocorrect man'
 
-## Editor
-if [[ -z $EDITOR ]]; then
-    alias open=$EDITOR
+# vim -> nvim if it exists
+if command -v nvim >/dev/null; then
+    alias vim='nvim'
 fi
 
 ## Quick access to zshrc
 alias zshrc='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
+
