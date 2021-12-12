@@ -4,3 +4,8 @@ function sshagent() {
     fi
     ssh-add $HOME/.ssh/id_rsa
 }
+
+function timezsh() {
+    shell=${1-$SHELL}
+    for i in {1..10}; do /usr/bin/time $shell -i -c exit; done
+}

@@ -1,51 +1,43 @@
 local zplug_home=$HOME/.zplug
-if [[ -d $zplug_home ]]; then
-    oh_my_zsh_plugins=(
-		git
-		docker
-		docker-compose
-		tmux
-		vscode
-		golang
-    )
 
-    plugins=(
-		chrissicool/zsh-256color
-		zsh-users/zsh-autosuggestions
-		zsh-users/zsh-history-substring-search
-		zsh-users/zsh-syntax-highlighting
-    )
-
+# Check if zplug is installed
+if [[ ! -d $zplug_home ]]; then
+    git clone https://github.com/zplug/zplug $zplug_home
     source $zplug_home/init.zsh
-    foreach plugin in $oh_my_zsh_plugins
-	zplug "plugins/$plugin", from:oh-my-zsh
-    end
-    foreach plugin in $plugins
-	zplug "$plugin"
-    end
-
-	# Install plugins if there are plugins that are not been installed
-	if ! zplug check --verbose; then
-	    printf "Install? [y/N]: "
-	    if read -q; then
-		echo; zplug install
-	    fi
-	fi
-
-	# Load zplug
-	zplug load
-
-	# Bind up/down to substring search if zsh-substring-search installed
-	if [[ -d $ZPLUG_REPOS/zsh-users/zsh-history-substring-search ]]; then
-	    zle -N history-substring-search-up
-	    zle -N history-substring-search-down
-	    bindkey '^[[A' history-substring-search-up
-	    bindkey '^[[B' history-substring-search-down
-	fi
-    else
-	# Install zplug if it is not already installed
-	git clone -q https://github.com/zplug/zplug $zplug_home
 fi
+
+source $zplug_home/init.zsh
+
+# Pluging
+zplug "chrissicool/zsh-256color"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug "stedolan/jq", from:gh-r, as:command
+
+# Install plugins if there are plugins that are not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+# Load plugins
+zplug load
+
+# Bind up/down to substring search if zsh-substring-search installed
+if [[ -d $ZPLUG_REPOS/zsh-users/zsh-history-substring-search ]]; then
+    zle -N history-substring-search-up
+    zle -N history-substring-search-down
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+fi
+
+zmodload zsh/zprof
 
 ## Plugins settings
 # ZSH-AUTOSUGGEST
