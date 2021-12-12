@@ -20,8 +20,8 @@ foreach dir in $custom_path_dirs
 end
 
 # Colors for ls
-export LSCOLORS="gxFxdxcxCxegedabagacad"
-export LS_COLORS="di=36:ln=1;35:so=33:pi=32:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+# export LSCOLORS="gxFxdxcxCxegedabagacad"
+# export LS_COLORS="di=36:ln=1;35:so=33:pi=32:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 export CLICOLOR=1
 
 # Enable colors in less and man commands
