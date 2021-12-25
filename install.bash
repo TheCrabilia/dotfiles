@@ -29,7 +29,7 @@ fi
 if [[ ! -d $HOME/.config/nvim ]]; then
     printf $GREEN "[INFO] "
     printf "Creating vim config directory and copying config\n"
-    mkdir -p .config/nvim
+    mkdir -p $HOME/.config/nvim
     ln -s $PWD/nvim/init.vim $HOME/.config/nvim/init.vim
 fi
 
