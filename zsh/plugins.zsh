@@ -86,3 +86,7 @@ if command -v tkn >/dev/null; then
     tkn completion zsh > "${fpath[1]}/_tkn"
 fi
 
+# terraform completion
+if command -v terraform >/dev/null; then
+    complete -o nospace -C $(which terraform) terraform
+fi

@@ -1,5 +1,5 @@
 ## System specific aliases
-if [[ $OSTYPE = linux* ]]; then
+if [[ $OSTYPE == linux* ]]; then
     # Debian
     if command -v apt >/dev/null; then
         alias apt='sudo apt'
@@ -23,8 +23,16 @@ fi
 ## Commonly used commands
 # Enable colors for ls, grep, diff, ip and man (less)
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+
+# Shadow BSD grep, replase with GNU grep
+if command -v ggrep >/dev/null; then
+    alias grep='ggrep --color=auto'
+    alias egrep='gegrep --color=auto'
+    alias fgrep='gfgrep --color=auto'
+else
+    alias grep='grep --color=auto'
+fi
 
 if command -v ip &>/dev/null; then
     alias ip='ip --color=auto'
@@ -85,6 +93,22 @@ fi
 if command -v ansible &>/dev/null; then
     alias a='ansible'
     alias ap='ansible-playbook'
+fi
+
+# terraform aliases
+if command -v terraform &>/dev/null; then
+    alias tf='terraform'
+    alias tfa='terraform apply'
+    alias tfd='terraform destroy'
+fi
+
+# terragrunt aliases
+if command -v terragrunt &>/dev/null; then
+    alias tg='terragrunt'
+    alias tga='terragrunt apply'
+    alias tgd='terragrunt destroy'
+    alias tgra='terragrunt run-all apply'
+    alias tgrd='terragrunt run-all destroy'
 fi
 
 ## Nocorrect aliases
