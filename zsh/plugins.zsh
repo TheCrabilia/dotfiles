@@ -1,4 +1,4 @@
-local zplug_home=$HOME/.zplug
+zplug_home=$HOME/.zplug
 
 # Check if zplug is installed
 if [[ ! -d $zplug_home ]]; then
@@ -37,8 +37,6 @@ if [[ -d $ZPLUG_REPOS/zsh-users/zsh-history-substring-search ]]; then
     bindkey '^[[B' history-substring-search-down
 fi
 
-zmodload zsh/zprof
-
 ## Plugins settings
 # ZSH-AUTOSUGGEST
 if [ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]; then
@@ -62,8 +60,7 @@ fpath=($HOME/.zsh/completion $fpath)
 
 # kubectl completion
 if command -v kubectl >/dev/null; then
-    source <(kubectl completion zsh)
-    complete -F __start_kubectl k
+    eval "$(kubectl completion zsh)"
 fi
 
 # aws cli completion
@@ -73,7 +70,7 @@ fi
 
 # helm completion
 if command -v helm >/dev/null; then
-    helm completion zsh > "${fpath[1]}/_helm"
+    eval "$(helm completion zsh)"
 fi
 
 # minikube completion
@@ -83,7 +80,7 @@ fi
 
 # tekton-cli completion
 if command -v tkn >/dev/null; then
-    tkn completion zsh > "${fpath[1]}/_tkn"
+    eval "$(tkn completion zsh)"
 fi
 
 # terraform completion
