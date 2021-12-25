@@ -60,9 +60,3 @@ foreach editor in $editors
 	break
     fi
 end
-
-# Load SSH keys to keychain
-if [[ -f /usr/bin/keychain ]]; then
-    /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
-    source $HOME/.keychain/$HOST-sh
-fi

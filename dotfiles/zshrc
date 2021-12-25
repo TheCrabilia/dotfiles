@@ -1,21 +1,24 @@
-if [[ -d $HOME/.mtenv ]]; then
-	repo_folder=.mtenv
-elif [[ -d $HOME/mtenv ]]; then
-	repo_folder=mtenv
-else
-	echo "Please name downloaded repository root folder as mtenv or .mtenv and put it in home directory! Then try again!"
-	exit 1
+ZSH_CONFIG_DIR=$HOME/.config/zsh
+
+# List of config files, to make sure thay load in correct order
+CONFIG_FILES=(
+	preset.zsh
+	plugins.zsh
+	opts.zsh
+	aliases.zsh
+	keybinds.zsh
+	functions.zsh
+	history_settings.zsh
+	prompt.zsh
+	hooks.zsh
+)
+
+# Load zsh config files
+for file in $CONFIG_FILES; do
+	source $ZSH_CONFIG_DIR/$file
+done
+
+# Load computer specific configuration, if it exists
+if [[ -f $ZSH_CONFIG_DIR/custom.zsh ]]; then
+	source $ZSH_CONFIG_DIR/custom.zsh
 fi
-
-# Load preset.zsh file, to load environment variables
-source $HOME/$repo_folder/zsh/preset.zsh
-
-# Load custom modules
-for file in $HOME/$repo_folder/zsh/*.zsh; do
-	source $file
-done;
-
-# Load Oh-My-Zsh libs
-for file in $HOME/$repo_folder/zsh/omz_lib/*.zsh; do
-	source $file
-done;

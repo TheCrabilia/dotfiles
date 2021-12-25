@@ -1,18 +1,32 @@
 # mtenv
-aka My Terminal Environment
+> aka My Terminal Environment
+
+## Prerequests
+
+* Zsh installed.
+* Vim or neovim installed.
 
 ## Installation
-#### Local installation:
-* Clone the repository to home directory. <br>
-    ~~~
-    git clone https://github.com/TheCrabilia/mtenv $HOME/.mtenv
-    ~~~
-* Run [install.sh](https://github.com/TheCrabilia/my_zsh_env/blob/main/install.sh) script.
-    ~~~
-    bash install.sh
-    ~~~
-#### Remote installation:
-* Execute this command in your terminal:
-    ~~~
-    curl -sL https://raw.githubusercontent.com/TheCrabilia/mtenv/main/remote_install.sh | bash -
-    ~~~
+Clone the repository.
+
+```bash
+git clone https://github.com/TheCrabilia/mtenv
+```
+
+Run [install.bash](install.bash) script and wait until it finishes.
+
+```bash
+bash install.bash
+```
+
+Restart your shell.
+
+## Create computer specific configuration
+
+Create `custom.zsh` file in `$HOME/.config/zsh` directory.
+
+```bash
+touch $HOME/.config/zsh/custom.zsh
+```
+
+Now you can add cumputer specific ZSH configuration in this file. After changes restart your shell.
