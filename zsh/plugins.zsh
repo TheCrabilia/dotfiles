@@ -39,13 +39,17 @@ fi
 
 ## Plugins settings
 # ZSH-AUTOSUGGEST
-if [ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]; then
+if [[ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
     ZSH_AUTOSUGGEST_HISTORY_IGNORE=("git *| rsync *| scp *")
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE=("git *| rsync *| scp *")
     ZSH_AUTOSUGGEST_USE_ASYNC="yes"
+fi
+
+if [[ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]]; then
+    ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
 fi
 
 # Enable completion features
