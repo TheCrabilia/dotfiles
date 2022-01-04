@@ -28,4 +28,3 @@ else
 fi
 bindkey '^[[Z' undo				    # shift + tab undo las action
 bindkey '^R' history-incremental-search-backward    # ctrl + R
-
