@@ -9,3 +9,10 @@ function timezsh() {
     shell=${1-$SHELL}
     for i in {1..10}; do /usr/bin/time $shell -i -c exit; done
 }
+
+function et() {
+    if [[ -z $exec_time ]]; then
+        return
+    fi
+    echo $exec_time
+}

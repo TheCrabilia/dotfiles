@@ -3,7 +3,7 @@ chpwd() {
 }
 
 local new_line_before_prompt=no
-local command_exec_timer=no
+local command_exec_timer=yes
 
 precmd() {
     # Print a new line before the prompt, but only if it is not the first line
@@ -28,7 +28,7 @@ precmd() {
 
 				[[ $min != 0 ]] && minutes="${min}m" || minutes=""
 				seconds="${sec}s"
-				exec_time="    ${minutes}${seconds}"
+				exec_time="${minutes}${seconds}"
 			else
 				unset exec_time
 			fi
