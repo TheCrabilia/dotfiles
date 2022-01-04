@@ -6,12 +6,12 @@ PROMPT_EOL_MARK=""
 unset path
 local -a custom_path_dirs
 custom_path_dirs=(
+    $HOME/.local/bin
     /usr/local/bin
     /usr/bin
     /usr/sbin
     /bin
     /sbin
-    $HOME/.local/bin
     /opt/homebrew/bin
     $HOME/.zplug/bin
 )

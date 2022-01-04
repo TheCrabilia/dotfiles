@@ -13,6 +13,11 @@ if command -v kubectl >/dev/null; then
     eval "$(kubectl completion zsh)"
 fi
 
+# kubectl certificate manager completion
+if command -v cmctl >/dev/null; then
+    cmctl completion zsh > $fpath[1]/_cmctl
+fi
+
 # aws cli completion
 if command -v aws >/dev/null; then
     complete -C $(which aws_completer) aws

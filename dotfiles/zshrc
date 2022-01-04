@@ -3,6 +3,7 @@ ZSH_CONFIG_DIR=$HOME/.config/zsh
 # List of config files, to make sure thay load in correct order
 CONFIG_FILES=(
 	preset.zsh
+	completion.zsh
 	plugins.zsh
 	opts.zsh
 	aliases.zsh
@@ -11,7 +12,6 @@ CONFIG_FILES=(
 	history_settings.zsh
 	prompt.zsh
 	hooks.zsh
-    completion.zsh
 )
 
 # Load zsh config files
