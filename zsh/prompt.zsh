@@ -14,5 +14,5 @@ RED=124
 YELLOW=214
 
 # Prompt variables
-PROMPT=$'%F{$GRAY}%m%f %F{$YELLOW}[%f${vcs_info_msg_0_}%F{$GREEN}%1~%f%F{$YELLOW}]%f %F{$GRAY}>%f '
+PROMPT=$'%F{$GRAY}%m%f %F{$YELLOW}[%f${AWS_PROFILE_PROMPT}${vcs_info_msg_0_}%F{$GREEN}%1~%f%F{$YELLOW}]%f %F{$GRAY}>%f '
 RPROMPT=$'%F{$RED}%(?..%?)%f'
