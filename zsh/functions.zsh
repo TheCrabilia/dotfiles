@@ -16,3 +16,12 @@ function et() {
     fi
     echo $exec_time
 }
+
+function flushdns() {
+    if [[ $OSTYPE == darwin* ]]; then
+        sudo dscacheutil -flushcache
+        sudo killall -HUP mDNSResponder
+    else
+        sudo killall -HUP dnsmasq
+    fi
+}
