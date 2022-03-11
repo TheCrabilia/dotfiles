@@ -23,7 +23,6 @@ fi
 ## Commonly used commands
 # Enable colors for ls, grep, diff, ip and man (less)
 alias ls='ls --color=auto'
-alias diff='diff --color=auto'
 
 # Shadow BSD grep, replase with GNU grep
 if command -v ggrep >/dev/null; then
