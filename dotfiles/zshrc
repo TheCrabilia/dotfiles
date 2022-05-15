@@ -3,7 +3,6 @@ ZSH_CONFIG_DIR=$HOME/.config/zsh
 # List of config files, to make sure thay load in correct order
 CONFIG_FILES=(
 	preset.zsh
-	completion.zsh
 	plugins.zsh
 	opts.zsh
 	aliases.zsh
@@ -12,6 +11,7 @@ CONFIG_FILES=(
 	history_settings.zsh
 	prompt.zsh
 	hooks.zsh
+	completion.zsh
 )
 
 # Load zsh config files
@@ -23,3 +23,6 @@ done
 if [[ -f $ZSH_CONFIG_DIR/custom.zsh ]]; then
 	source $ZSH_CONFIG_DIR/custom.zsh
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
