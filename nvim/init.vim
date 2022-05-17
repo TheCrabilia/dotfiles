@@ -14,6 +14,8 @@ set autoindent
 set fileformat=unix
 filetype indent on	" load filetype-specific indentation
 
+" Enable fzf support
+set rtp+=/opt/homebrew/opt/fzf
 
 " Pluggins
 call plug#begin('~/.vim/plugged')
