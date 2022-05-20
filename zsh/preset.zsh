@@ -62,3 +62,8 @@ foreach editor in $editors
 	break
     fi
 end
+
+# Init zoxide if exists
+if command -v zoxide >/dev/null; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
