@@ -24,13 +24,22 @@ fi
 # Enable colors for ls, grep, diff, ip and man (less)
 alias ls='ls --color=auto'
 
-# Shadow BSD grep, replase with GNU grep
+# Shadow BSD grep, replace with GNU grep
 if command -v ggrep >/dev/null; then
     alias grep='ggrep --color=auto'
     alias egrep='gegrep --color=auto'
     alias fgrep='gfgrep --color=auto'
 else
     alias grep='grep --color=auto'
+fi
+
+# Shadow BSD findutils, replace with GNU findutils
+if command -v gxargs >/dev/null; then
+    alias xargs='gxargs'
+fi
+
+if command -v gfind >/dev/null; then
+    alias find='gfind'
 fi
 
 if command -v ip &>/dev/null; then
@@ -55,6 +64,11 @@ else
     alias lt='ls -lt'
     alias ll='ls -l'
     alias l.='ls -ld .?*'
+fi
+
+# cat
+if command -v bat >/dev/null; then
+    alias cat='bat'
 fi
 
 # cd to sub-sub dirs
