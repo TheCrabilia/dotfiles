@@ -24,6 +24,10 @@ nest.applyKeymaps {
                 { "c", "<cmd>lua require('telescope.builtin').git_commits()<cr>" }, -- Telescope search in Git commits
                 { "s", "<cmd>lua require('telescope.builtin').git_status()<cr>" }, -- Telescope list Git status
             }},
+            { "c", {
+                { "v", "<cmd>lua require('functions').find_vim_config()<cr>" }, -- Custom find in vim config directory
+                { "z", "<cmd>lua require('functions').find_zsh_config()<cr>" }, -- Custom find in zsh config directory
+            }},
         }},
         { "g", {
             { "s", "<cmd>Git status<cr>" },

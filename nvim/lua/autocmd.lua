@@ -3,7 +3,7 @@ local exec = vim.api.nvim_exec
 
 exec([[
 " Change directory where the file is stored
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " Save file on buffer change
 autocmd BufLeave * silent! w
