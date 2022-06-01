@@ -46,3 +46,6 @@ nvim_lsp.gopls.setup {
     on_attach = on_attach,
 }
 
+nvim_lsp.terraform_lsp.setup {
+    on_attach = on_attach,
+}
