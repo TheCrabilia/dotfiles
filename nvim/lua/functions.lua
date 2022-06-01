@@ -25,4 +25,20 @@ function M.find_zsh_config()
     require("telescope.builtin").find_files(opts)
 end
 
+function M.find_in_work_dir()
+    local opts = {}
+    opts.search_dirs = {"~"}
+    opts.prompt_title = "Search in Home directory"
+    opts.shorten_path = true
+    require("telescope.builtin").find_files(opts)
+end
+
+function M.find_utils()
+    local opts = {}
+    opts.search_dirs = {"~/.local/bin"}
+    opts.prompt_title = "Search utilities"
+    opts.shorten_path = true
+    require("telescope.builtin").find_files(opts)
+end
+
 return M
