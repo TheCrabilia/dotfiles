@@ -31,23 +31,15 @@ nest.applyKeymaps {
                 { "u", "<cmd>lua require('functions').find_utils()<cr>" }, -- Custom find in local bin directory
             }},
         }},
-        { "g", {
-            { "s", "<cmd>Git status<cr>" },
-        }},
     }},
-
-    { "<F7>", "<cmd>FloatermNew<cr>" }, -- Floaterm open new window
-    { "<F8>", "<cmd>FloatermPrev<cr>" }, -- Floaterm open prev terminal
-    { "<F9>", "<cmd>FloatermNext<cr>" }, -- Floaterm open next terminal
-    { "<F12>", "<cmd>FloatermToggle<cr>" }, -- Floaterm toggle terminal
 
     -- Keymaps for Insert mode
     { mode = "i", {
         { "jk", "<esc>" }, -- Exit from insert mode
     }},
 
-    -- Keymaps for Terminal mode
-    { mode = "t", {
+    -- Keymaps for Terminal 
+    { mode = "nt", {
         { "<F7>", "<cmd>FloatermNew<cr>" }, -- Floaterm open new window
         { "<F8>", "<cmd>FloatermPrev<cr>" }, -- Floaterm open prev terminal
         { "<F9>", "<cmd>FloatermNext<cr>" }, -- Floaterm open next terminal

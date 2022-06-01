@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
                 },
                 -- Experemental feature
                 indent = {
-                    enable = true,
+                    enable = false,
                 },
             }
         end
