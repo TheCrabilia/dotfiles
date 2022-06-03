@@ -11,3 +11,8 @@
 	prune = true
 [core]
 	editor = vim
+[alias]
+	sw = switch
+	br = branch
+	ci = commit
+	st = status
