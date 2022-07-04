@@ -37,13 +37,13 @@ nest.applyKeymaps {
     { mode = "i", {
         { "jj", "<esc>" }, -- Exit from insert mode
         -- Autoclosing brackets
-        { '"', '""<left>' },
+--        { '"', '""<left>' },
         { "'", "''<left>" },
 --        { "(", "()<left>" },
 --        { "[", "[]<left>" },
-        { "{", "{}<left>" },
+--        { "{", "{}<left>" },
         { "{<cr>", "{<cr>}<esc>O" },
-        { "{;<cr>", "{<cr>};<esc>O" },
+        { "(<cr>", "(<cr>)<esc>O" },
     }},
 
     -- Keymaps for Terminal 

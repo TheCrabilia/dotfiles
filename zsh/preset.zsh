@@ -8,12 +8,13 @@ local -a custom_path_dirs
 custom_path_dirs=(
     $HOME/.local/bin
     /usr/local/bin
+    /opt/homebrew/bin
+    $HOME/.zplug/bin
+    $HOME/.cargo/bin
     /usr/bin
     /usr/sbin
     /bin
     /sbin
-    /opt/homebrew/bin
-    $HOME/.zplug/bin
 )
 foreach dir in $custom_path_dirs
     path+=$dir

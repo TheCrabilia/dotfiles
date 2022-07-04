@@ -26,6 +26,7 @@ opt.fileformat = 'unix'                         -- Set default file format
 opt.undofile = true
 opt.completeopt = 'menu,menuone,noselect'       -- Enable completion floating windows
 opt.showmode = false                            -- Hide mode in status line
+opt.updatetime = 1000                           -- Make updates happen faster
 
 -- Colorshere configuration
 opt.background = 'dark'
