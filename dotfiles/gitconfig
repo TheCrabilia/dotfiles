@@ -1,6 +1,7 @@
 [user]
 	email = 69972734+TheCrabilia@users.noreply.github.com
 	name = TheCrabilia
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILk1qTFGd1fYdVBp+dnIWiTozEkZd7gb6mWsjtZ1PXeP
 [init]
 	defaultBranch = main
 [pager]
@@ -10,7 +11,7 @@
 [fetch]
 	prune = true
 [core]
-	editor = vim
+	editor = nvim
 [alias]
 	sw = switch
 	br = branch
@@ -18,3 +19,9 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

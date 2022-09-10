@@ -135,6 +135,11 @@ if command -v nvim >/dev/null; then
     alias vim='nvim'
 fi
 
+# Geek-life ToDo manager
+if command -v geek-life >/dev/null; then
+    alias gl='geek-life'
+fi
+
 ## Quick access to zshrc
 alias zshrc='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
