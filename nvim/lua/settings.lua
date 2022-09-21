@@ -21,14 +21,15 @@ opt.tabstop = 4		                            -- Configure Tab size
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
-opt.smartindent = true
+opt.cindent = true
+opt.autoindent = true
 opt.fileformat = 'unix'                         -- Set default file format
 opt.undofile = true
 opt.completeopt = 'menu,menuone,noselect'       -- Enable completion floating windows
 opt.showmode = false                            -- Hide mode in status line
 opt.updatetime = 1000                           -- Make updates happen faster
 
--- Colorshere configuration
+-- Colorscheme configuration
 opt.background = 'dark'
 vim.cmd[[colorscheme gruvbox]]
 

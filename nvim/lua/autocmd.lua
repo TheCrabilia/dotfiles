@@ -19,4 +19,7 @@ autocmd BufWritePre *.go :silent! lua require("go.format").goimport()
 
 " Set Intel assembly syntax when .asm file is opened:
 autocmd BufNew,BufRead *.asm set ft=nasm
+
+" Disable filetype indent
+autocmd BufRead,BufNewFile * filetype indent off
 ]], false)

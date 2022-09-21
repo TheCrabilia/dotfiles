@@ -92,6 +92,13 @@ if command -v kubectl &>/dev/null; then
     alias kg='kubectl get'
 fi
 
+if command -v helm &>/dev/null; then
+    alias h='helm'
+    alias hi='helm install'
+    alias hd='helm delete'
+    alias hg='helm get'
+fi
+
 # kubens alias
 if command -v kubens &>/dev/null; then
     alias kns='kubens'
