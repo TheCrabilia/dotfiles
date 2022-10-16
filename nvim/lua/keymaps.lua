@@ -53,5 +53,9 @@ nest.applyKeymaps {
         { "<F9>", "<cmd>FloatermNext<cr>" }, -- Floaterm open next terminal
         { "<F12>", "<cmd>FloatermToggle<cr>" }, -- Floaterm toggle terminal
     }},
+    
+    -- { mode = "v", {
+    --     { "<leader>p", "\"_dP" },
+    -- }},
 }
 
