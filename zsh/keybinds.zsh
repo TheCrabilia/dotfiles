@@ -7,6 +7,8 @@ if [[ -d $ZPLUG_REPOS/zsh-users/zsh-history-substring-search ]]; then
     zle -N history-substring-search-down
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
 fi
 
 bindkey '\eOH' beginning-of-line		    # Home

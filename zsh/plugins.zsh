@@ -26,9 +26,6 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Load plugins
-zplug load
-
 ## Plugins settings
 # ZSH-AUTOSUGGEST
 if [[ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]]; then
@@ -41,5 +38,70 @@ if [[ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]]; then
 fi
 
 if [[ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]]; then
-    ZSH_HIGHLIGHT_STYLES[globbing]=fg=magenta
+    ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+    typeset -gA ZSH_HIGHLIGHT_STYLES
+
+    ## Comments
+    ZSH_HIGHLIGHT_STYLES[comment]='fg=#264653'
+    ## Constants
+    ## Functions
+    ZSH_HIGHLIGHT_STYLES[alias]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[global-alias]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[function]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[command]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[precommand]='fg=#e9c46a,italic' # changed
+    ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=#f4a261,italic' # changed
+    ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#f4a261' # changed
+    ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#f4a261' # changed
+    ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#f4a261' # changed
+    ## Keywords
+    ## Builtins
+    ZSH_HIGHLIGHT_STYLES[builtin]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#2a9d8f' # changed
+    ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=#2a9d8f' # changed
+    ## Punctuation
+    ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#e76f51' # changed
+    ## Serializable / Configuration Languages
+    ## Storage
+    ## Strings
+    ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-quoted]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#e9c46a' # changed
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#ea999c'
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#e9c46a' # changed
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#ea999c'
+    ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=#e5c890'
+    ## Variables
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#e9c46a' # changed
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#ea999c'
+    ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=#e9c46a' # changed
+    ZSH_HIGHLIGHT_STYLES[assign]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#e76f51' # changed
+    ## No category relevant in spec
+    ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#d62828' # changed
+    ZSH_HIGHLIGHT_STYLES[path]='fg=#e9c46a,underline' # changed
+    ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=#e9c46a,underline' # changed
+    ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#e9c46a,underline' # changed
+    ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#e76f51,underline' # changed
+    ZSH_HIGHLIGHT_STYLES[globbing]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#f4a261' # changed
+    #ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=?'
+    #ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]='fg=?'
+    #ZSH_HIGHLIGHT_STYLES[process-substitution]='fg=?'
+    ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]='fg=#e9c46a' # changed
+    ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#ea999c'
+    ZSH_HIGHLIGHT_STYLES[redirection]='fg=#e76f51' # changed
+    ZSH_HIGHLIGHT_STYLES[arg0]='fg=#c7c7c7' # changed
+    ZSH_HIGHLIGHT_STYLES[default]='fg=#c7c7c7' # changed
 fi
+
+# Load plugins
+zplug load
