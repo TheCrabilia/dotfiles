@@ -13,6 +13,10 @@ wk.register({
       g = { telescope.git_files, "Git files" },
       o = { telescope.oldfiles, "Old files" },
       l = { telescope.live_grep, "Live Grep" },
+      h = { telescope.help_tags, "Help Tags" },
+      k = { telescope.keymaps, "Keymaps" },
+      -- TODO: Create project view
+      -- p = {function() end, "Find projects"},
     },
     prefix = "<leader>",
   },
@@ -39,6 +43,15 @@ wk.register({
       h = { vim.cmd.tabprevious, "Previous Tab" },
     },
     prefix = "<leader>",
+  },
+
+  -- Git
+  {
+    g = { vim.cmd.Git, "Open Git" },
+    p = { function() vim.cmd.Git("push") end, "Git push" },
+    P = { function() vim.cmd.Git("pull") end, "Git pull" },
+    f = { function() vim.cmd.Git("fetch") end, "Git fetch" },
+    prefix = "<leader>g"
   },
 
   -- Hop
@@ -99,6 +112,9 @@ wk.register({
     prefix = "<leader>",
   },
 })
+
+-- Filetype keymaps
+-- vim.api.nvim_create_autocmd("")
 
 -- Keymaps for LSP on_attach
 local M = {}

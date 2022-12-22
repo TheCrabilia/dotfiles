@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup {
-  ensure_installed = {"python", "go", "help"},
+  ensure_installed = {"python", "go", "lua", "help"},
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -8,7 +8,7 @@ require("nvim-treesitter.configs").setup {
   },
   indent = {
     enable = true,
-    disable = { "yaml" },
+    disable = {},
   },
 
   -- Treesitter plugins

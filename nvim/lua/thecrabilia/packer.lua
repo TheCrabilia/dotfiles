@@ -72,6 +72,10 @@ return require("packer").startup(function(use)
       { "rafamadriz/friendly-snippets" },
     }
   }
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 
   use {
     "folke/trouble.nvim",
@@ -138,6 +142,12 @@ return require("packer").startup(function(use)
     "numToStr/Comment.nvim", -- Comment lines
     config = function()
       require("Comment").setup()
+    end,
+  }
+  use {
+    "lewis6991/impatient.nvim", -- Lua modules chuck cachecс
+    config = function()
+      require("impatient")
     end,
   }
   use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
