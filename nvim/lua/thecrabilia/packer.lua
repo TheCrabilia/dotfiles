@@ -151,6 +151,12 @@ return require("packer").startup(function(use)
     end,
   }
   use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
+  use {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup()
+    end,
+  }
 
   if packer_bootstrap then
     require('packer').sync()
