@@ -1,2 +1,4 @@
-zsh/custom.zsh
 .DS_Store
+
+zsh/custom.zsh
+nvim/plugin
