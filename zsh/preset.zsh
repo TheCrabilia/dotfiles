@@ -9,6 +9,7 @@ custom_path_dirs=(
     $HOME/.local/bin
     /usr/local/bin
     /opt/homebrew/bin
+    /opt/homebrew/sbin
     $HOME/.zplug/bin
     $HOME/.cargo/bin
     /usr/bin

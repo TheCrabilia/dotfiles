@@ -2,3 +2,4 @@
 
 zsh/custom.zsh
 nvim/plugin/*
+nvim/.luarc.json
