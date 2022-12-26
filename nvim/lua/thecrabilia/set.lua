@@ -12,6 +12,7 @@ vim.opt.fileformat = "unix"
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.updatetime = 50
+vim.opt.hidden = true
 
 vim.opt.ignorecase = true
 vim.opt.incsearch = true

@@ -37,6 +37,7 @@ wk.register({
 
   -- Git
   {
+    name = "Git",
     g = { vim.cmd.Git, "Open Git" },
     p = { function() vim.cmd.Git("push") end, "Git push" },
     P = { function() vim.cmd.Git("pull") end, "Git pull" },

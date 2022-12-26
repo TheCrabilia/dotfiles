@@ -16,7 +16,7 @@ telescope.setup {
   },
 }
 
-local extensions = { "fzf", "file_browser" }
+local extensions = { "fzf", "file_browser", "project" }
 
 for _, ext in pairs(extensions) do
   telescope.load_extension(ext)
@@ -25,7 +25,7 @@ end
 -- Keymaps
 require("which-key").register({
   e = { function()
-    telescope.extensions.file_browser.file_browser { path = "%:p:h", cwd_to_path = true }
+    telescope.extensions.file_browser.file_browser { path = "%:p:h" }
   end, "File Browser" },
   f = {
     name = "Find",
@@ -35,6 +35,11 @@ require("which-key").register({
     l = { builtin.live_grep, "Live Grep" },
     h = { builtin.help_tags, "Help Tags" },
     k = { builtin.keymaps, "Keymaps" },
-
+    p = { function() telescope.extensions.project.project() end, "List Projects" },
+    d = {
+      name = "Dotfiles",
+      n = { require("thecrabilia.telescope").edit_nvim, "Search nvim config files" },
+      z = { require("thecrabilia.telescope").edit_zsh, "Search zsh config files" },
+    },
   }
 }, { prefix = "<leader>" })

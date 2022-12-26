@@ -102,6 +102,7 @@ return require("packer").startup(function(use)
     cond = vim.fn.executable "make" == 1,
   }
   use "nvim-telescope/telescope-file-browser.nvim"
+  use "nvim-telescope/telescope-project.nvim"
 
   -- Treesitter
   use {
@@ -125,6 +126,8 @@ return require("packer").startup(function(use)
 
   -- Misc
   use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
+  use "nathom/filetype.nvim" -- Override file types
+  use "akinsho/toggleterm.nvim" -- Nvim builtin terminal
   use {
     "Pocco81/auto-save.nvim",
     disable = true,

@@ -95,7 +95,7 @@ local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
 	sources = {
-		formatting.black,
-		formatting.isort,
+		formatting.black, -- Python formatter
+		formatting.isort, -- Python import sorter
 	},
 })
