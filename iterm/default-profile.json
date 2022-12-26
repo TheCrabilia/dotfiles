@@ -95,6 +95,12 @@
   "AWDS Tab Option" : "No",
   "Title Components" : 4,
   "Keyboard Map" : {
+    "0x63-0x80000-0x8" : {
+      "Version" : 1,
+      "Action" : 38,
+      "Text" : "\\<M-c>",
+      "Label" : ""
+    },
     "0xf700-0x260000" : {
       "Text" : "[1;6A",
       "Action" : 10
@@ -147,13 +153,31 @@
       "Text" : "0x1b",
       "Action" : 11
     },
+    "0x64-0x80000-0x2" : {
+      "Version" : 1,
+      "Action" : 38,
+      "Text" : "\\<M-d>",
+      "Label" : ""
+    },
     "0xf703-0x220000" : {
       "Text" : "[1;2C",
       "Action" : 10
     },
+    "0x79-0x80000-0x10" : {
+      "Version" : 1,
+      "Action" : 38,
+      "Text" : "\\<M-y>",
+      "Label" : ""
+    },
     "0xf701-0x240000" : {
       "Text" : "[1;5B",
       "Action" : 10
+    },
+    "0x72-0x80000-0xf" : {
+      "Version" : 1,
+      "Action" : 38,
+      "Text" : "\\<M-r>",
+      "Label" : ""
     },
     "0xf70d-0x20000" : {
       "Text" : "[21;2~",
@@ -202,6 +226,12 @@
     "0xf707-0x20000" : {
       "Text" : "[1;2S",
       "Action" : 10
+    },
+    "0x6d-0x80000-0x2e" : {
+      "Version" : 1,
+      "Action" : 38,
+      "Text" : "\\<M-m>",
+      "Label" : ""
     },
     "0xf70a-0x20000" : {
       "Text" : "[18;2~",
