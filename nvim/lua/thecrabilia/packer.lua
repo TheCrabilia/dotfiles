@@ -20,6 +20,7 @@ return require("packer").startup(function(use)
 
   use {
     "nvim-tree/nvim-tree.lua",
+    disable = true,
     requires = { "nvim-tree/nvim-web-devicons" },
   }
   use {
@@ -36,12 +37,7 @@ return require("packer").startup(function(use)
   }
 
   -- Shortcuts
-  use {
-    "folke/which-key.nvim", -- Keymaps suggestions
-    config = function()
-      require("which-key").setup()
-    end,
-  }
+  use "folke/which-key.nvim"
 
   -- Git integration
   use {
@@ -57,7 +53,10 @@ return require("packer").startup(function(use)
       { "neovim/nvim-lspconfig" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
+      { "jayp0521/mason-null-ls.nvim" },
       { "folke/lsp-colors.nvim" },
+      { "jose-elias-alvarez/null-ls.nvim" },
+      { "lukas-reineke/lsp-format.nvim" },
 
       -- Autocompletion
       { "hrsh7th/nvim-cmp" },
@@ -71,10 +70,6 @@ return require("packer").startup(function(use)
       { "L3MON4D3/LuaSnip" },
       { "rafamadriz/friendly-snippets" },
     }
-  }
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" }
   }
 
   use {
@@ -106,6 +101,7 @@ return require("packer").startup(function(use)
     run = "make",
     cond = vim.fn.executable "make" == 1,
   }
+  use "nvim-telescope/telescope-file-browser.nvim"
 
   -- Treesitter
   use {
@@ -128,7 +124,15 @@ return require("packer").startup(function(use)
   }
 
   -- Misc
-  use "Pocco81/auto-save.nvim"
+  use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
+  use {
+    "Pocco81/auto-save.nvim",
+    disable = true,
+    config = function()
+      require("auto-save").setup()
+    end,
+  }
+  use "RRethy/vim-illuminate"
   use {
     "lukas-reineke/indent-blankline.nvim", -- Add indentation guides
     config = function()
@@ -150,9 +154,8 @@ return require("packer").startup(function(use)
       require("impatient")
     end,
   }
-  use "tpope/vim-sleuth" -- Detect tabstop and shiftwidth automatically
   use {
-    "folke/neodev.nvim",
+    "folke/neodev.nvim", -- Completion for nvim api
     config = function()
       require("neodev").setup()
     end,

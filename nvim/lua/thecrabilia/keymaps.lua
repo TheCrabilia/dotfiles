@@ -4,20 +4,10 @@ local telescope = require("telescope.builtin")
 local hop = require("hop")
 local hop_directions = require("hop.hint").HintDirection
 
+-- Normal mode keymaps
 wk.register({
   {
-    e = { vim.cmd.NvimTreeFindFileToggle, "Explorer" },
-    f = {
-      name = "Find",
-      f = { telescope.find_files, "Find files" },
-      g = { telescope.git_files, "Git files" },
-      o = { telescope.oldfiles, "Old files" },
-      l = { telescope.live_grep, "Live Grep" },
-      h = { telescope.help_tags, "Help Tags" },
-      k = { telescope.keymaps, "Keymaps" },
-      -- TODO: Create project view
-      -- p = {function() end, "Find projects"},
-    },
+    s = { vim.cmd.write, "Save current file" },
     prefix = "<leader>",
   },
 
@@ -111,14 +101,44 @@ wk.register({
     },
     prefix = "<leader>",
   },
-})
 
--- Filetype keymaps
--- vim.api.nvim_create_autocmd("")
+  -- Source file keymaps
+  {
+    name = "Source config files",
+    p = {
+      function()
+        local file_name = "~/.config/nvim/lua/thecrabilia/packer.lua"
+
+        if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) == file_name then
+          vim.cmd.write()
+        end
+        vim.cmd.source(file_name)
+        vim.cmd.PackerSync()
+      end, "Packer source and sync"
+    },
+    s = {
+      function()
+        local file_name = "~/.config/nvim/lua/thecrabilia/snippets.lua"
+
+        if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) == file_name then
+          vim.cmd.write()
+        end
+        vim.cmd.source(file_name)
+      end, "Source snippets config file"
+    },
+    c = {
+      function()
+        vim.cmd.write()
+        vim.cmd.source()
+      end, "Source current file"
+    },
+    prefix = "<leader><leader>",
+  },
+})
 
 -- Keymaps for LSP on_attach
 local M = {}
-M.lsp_keymaps = function(_, bufnr)
+M.lsp_on_attach = function(bufnr)
   wk.register({
     K = { vim.lsp.buf.hover, "Help" },
     {
