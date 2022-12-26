@@ -20,13 +20,13 @@ lsp.on_attach(function(client, bufnr)
 		{
 			l = {
 				name = "LSP",
-				R = { vim.lsp.buf.rename, "Rename" },
+				r = { vim.lsp.buf.rename, "Rename" },
 				f = { vim.lsp.buf.format, "Format Document" },
 				a = { vim.lsp.buf.code_action, "Code Action" },
 				d = { builtin.lsp_definitions, "Definitions" },
 				t = { builtin.lsp_type_definitions, "Type Definitions" },
 				i = { builtin.lsp_implementations, "Implementations" },
-				r = { builtin.lsp_references, "References" },
+				R = { builtin.lsp_references, "References" },
 			},
 			d = {
 				name = "Diagnostics",

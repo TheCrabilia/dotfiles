@@ -53,7 +53,7 @@ return require("packer").startup(function(use)
       { "neovim/nvim-lspconfig" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
-      { "jayp0521/mason-null-ls.nvim" },
+      { "jayp0521/mason-null-ls.nvim" }, -- TODO: Configure mason null-ls
       { "folke/lsp-colors.nvim" },
       { "jose-elias-alvarez/null-ls.nvim" },
       { "lukas-reineke/lsp-format.nvim" },
