@@ -25,11 +25,11 @@ end
 -- Keymaps
 require("which-key").register({
   e = { function()
-    telescope.extensions.file_browser.file_browser { path = "%:p:h" }
+    telescope.extensions.file_browser.file_browser { path = "%:p:h", respect_gitignore = false }
   end, "File Browser" },
   f = {
     name = "Find",
-    f = { builtin.find_files, "Find Files" },
+    f = { require("thecrabilia.telescope").find_files, "Find Files" },
     g = { builtin.git_files, "Git Files" },
     o = { builtin.oldfiles, "Old Files" },
     l = { builtin.live_grep, "Live Grep" },

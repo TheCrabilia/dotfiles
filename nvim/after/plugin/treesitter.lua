@@ -12,10 +12,6 @@ require("nvim-treesitter.configs").setup {
   },
 
   -- Treesitter plugins
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-  },
   autopairs = {
     enable = true,
   },

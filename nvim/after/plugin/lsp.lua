@@ -1,3 +1,4 @@
+local f = require("thecrabilia.functions")
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
@@ -10,9 +11,27 @@ lsp.set_preferences({
 -- Global on_attach functions
 local wk = require("which-key")
 local builtin = require("telescope.builtin")
+
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- Format only with null-ls enabled formatters
+			-- return client.name == "null-ls"
+			return true
+		end,
+		bufnr = bufnr,
+	})
+end
+
 lsp.on_attach(function(client, bufnr)
 	-- Enable format on save
-	require("lsp-format").on_attach(client)
+	local format_exclude = {}
+	if not f.has_value(format_exclude, client.name) then
+		require("lsp-format").on_attach(client)
+	end
+
+	-- Illuminate
+	require("illuminate").on_attach(client)
 
 	-- Keymaps
 	wk.register({
@@ -21,7 +40,12 @@ lsp.on_attach(function(client, bufnr)
 			l = {
 				name = "LSP",
 				r = { vim.lsp.buf.rename, "Rename" },
-				f = { vim.lsp.buf.format, "Format Document" },
+				f = {
+					function()
+						lsp_formatting(bufnr)
+					end,
+					"Format Document",
+				},
 				a = { vim.lsp.buf.code_action, "Code Action" },
 				d = { builtin.lsp_definitions, "Definitions" },
 				t = { builtin.lsp_type_definitions, "Type Definitions" },
@@ -41,6 +65,13 @@ lsp.on_attach(function(client, bufnr)
 	})
 end)
 
+-- Default configuration for all LSP servers
+lsp.set_server_config({
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
+
 -- Configure individual language server
 lsp.configure("sumneko_lua", {
 	settings = {
@@ -54,6 +85,8 @@ lsp.configure("sumneko_lua", {
 		},
 	},
 })
+
+lsp.skip_server_setup({ "jdtls" })
 
 local cmp = require("cmp")
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -75,7 +108,7 @@ lsp.setup_nvim_cmp({
 		{ name = "nvim_lsp", group_index = 1, keyword_length = 1 },
 		{ name = "nvim_lua", group_index = 2, keyword_length = 1 },
 		{ name = "path", group_index = 2, keyword_length = 2 },
-	}
+	},
 })
 
 lsp.setup()
@@ -92,10 +125,12 @@ vim.diagnostic.config({
 
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	sources = {
-		formatting.black, -- Python formatter
-		formatting.isort, -- Python import sorter
+		formatting.black,
+		formatting.isort,
+		formatting.google_java_format,
 	},
 })

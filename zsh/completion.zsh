@@ -16,8 +16,8 @@ if command -v cmctl >/dev/null; then
 fi
 
 # minikube completion
-if command -v minikube >/dev/null; then
-    eval "$(minikube completion zsh)"
+if command -v kind >/dev/null; then
+    eval "$(kind completion zsh)"
 fi
 
 # terraform completion

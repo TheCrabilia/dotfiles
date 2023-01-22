@@ -3,8 +3,7 @@ if not check_ok then
   return
 end
 
-git.setup {
+git.setup({
   default_mappings = false,
   target_branch = "main",
-}
-
+})

@@ -1,4 +1,4 @@
-require("filetype").setup {
+require("filetype").setup({
   overrides = {
     extensions = {
       tf = "terraform",
@@ -7,4 +7,4 @@ require("filetype").setup {
       hcl = "terraform",
     },
   },
-}
+})
