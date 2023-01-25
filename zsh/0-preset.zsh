@@ -10,7 +10,6 @@ custom_path_dirs=(
     /usr/local/bin
     /opt/homebrew/bin
     /opt/homebrew/sbin
-    $HOME/.zplug/bin
     $HOME/.cargo/bin
     /usr/bin
     /usr/sbin
@@ -20,6 +19,7 @@ custom_path_dirs=(
 for dir in $custom_path_dirs; do
     path+=$dir
 done
+unset custom_path_dirs
 
 # Colors for ls
 # export LSCOLORS="gxFxdxcxCxegedabagacad"
@@ -63,3 +63,17 @@ for editor in $editors; do
 	break
     fi
 done
+unset editors
+
+local -a autoload_functions
+autoload_functions=(
+    add_alias
+    et
+    flushdns
+    sshagent
+    timezsh
+)
+for func in $autoload_functions; do
+    autoload -Uz $func
+done
+unset autoload_functions

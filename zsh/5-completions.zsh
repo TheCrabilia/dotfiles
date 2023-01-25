@@ -1,25 +1,16 @@
 # Add custom completion directory to fpath
 unset fpath
+local -a completions
 completions=(
     /opt/homebrew/share/zsh/site-functions
     /opt/homebrew/share/zsh/functions
     $HOME/.local/share/zsh/site-functions
-    $HOME/.zplug/misc/completions
-    $HOME/.zplug/base/sources
-    $HOME/.zplug/autoload
-    $HOME/.zplug/base/utils
-    $HOME/.zplug/base/job
-    $HOME/.zplug/base/log
-    $HOME/.zplug/base/io
-    $HOME/.zplug/base/core
-    $HOME/.zplug/base/base
-    $HOME/.zplug/autoload/commands
-    $HOME/.zplug/autoload/options
-    $HOME/.zplug/autoload/tags
+    $ZSH_CONFIG_DIR/functions
 )
 for dir in $completions; do
     fpath+=$dir
 done
+unset completions
 
 # Enable completion features
 autoload -Uz compinit && compinit
@@ -27,8 +18,8 @@ autoload bashcompinit && bashcompinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
 zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}" 	# Take advantage of $LS_COLORS for completion as well
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
+# zstyle ':completion:*:*:docker:*' option-stacking yes
+# zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # # kubectl certificate manager completion
 if command -v cmctl >/dev/null; then
