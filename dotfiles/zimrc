@@ -1,0 +1,7 @@
+zmodule chrissicool/zsh-256color
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+
+zmodule input
+zmodule fzf
