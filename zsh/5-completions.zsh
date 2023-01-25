@@ -1,5 +1,25 @@
 # Add custom completion directory to fpath
-fpath=(/opt/homebrew/share/zsh/site-functions $HOME/.zsh/completion $fpath)
+unset fpath
+completions=(
+    /opt/homebrew/share/zsh/site-functions
+    /opt/homebrew/share/zsh/functions
+    $HOME/.local/share/zsh/site-functions
+    $HOME/.zplug/misc/completions
+    $HOME/.zplug/base/sources
+    $HOME/.zplug/autoload
+    $HOME/.zplug/base/utils
+    $HOME/.zplug/base/job
+    $HOME/.zplug/base/log
+    $HOME/.zplug/base/io
+    $HOME/.zplug/base/core
+    $HOME/.zplug/base/base
+    $HOME/.zplug/autoload/commands
+    $HOME/.zplug/autoload/options
+    $HOME/.zplug/autoload/tags
+)
+for dir in $completions; do
+    fpath+=$dir
+done
 
 # Enable completion features
 autoload -Uz compinit && compinit
@@ -10,14 +30,9 @@ zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}" 	# Take advantage of $LS
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-# kubectl certificate manager completion
+# # kubectl certificate manager completion
 if command -v cmctl >/dev/null; then
-    cmctl completion zsh > $fpath[2]/_cmctl
-fi
-
-# minikube completion
-if command -v kind >/dev/null; then
-    eval "$(kind completion zsh)"
+    cmctl completion zsh > $HOME/.local/share/zsh/site-functions/_cmctl
 fi
 
 # terraform completion

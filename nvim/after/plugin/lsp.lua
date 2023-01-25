@@ -132,5 +132,7 @@ null_ls.setup({
 		formatting.black,
 		formatting.isort,
 		formatting.google_java_format,
+		formatting.beautysh,
+		diagnostics.zsh,
 	},
 })

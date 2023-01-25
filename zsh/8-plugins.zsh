@@ -3,7 +3,6 @@ zplug_home=$HOME/.zplug
 # Check if zplug is installed
 if [[ ! -d $zplug_home ]]; then
     git clone https://github.com/zplug/zplug $zplug_home
-    source $zplug_home/init.zsh
 fi
 
 source $zplug_home/init.zsh
@@ -13,8 +12,7 @@ zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-zplug "stedolan/jq", from:gh-r, as:command
+zplug "sunlei/zsh-ssh"
 
 # Install plugins if there are plugins that are not been installed
 if ! zplug check --verbose; then

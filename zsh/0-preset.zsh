@@ -17,9 +17,9 @@ custom_path_dirs=(
     /bin
     /sbin
 )
-foreach dir in $custom_path_dirs
+for dir in $custom_path_dirs; do
     path+=$dir
-end
+done
 
 # Colors for ls
 # export LSCOLORS="gxFxdxcxCxegedabagacad"
