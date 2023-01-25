@@ -1,32 +1,6 @@
-zplug_home=$HOME/.zplug
-
-# Check if zplug is installed
-if [[ ! -d $zplug_home ]]; then
-    git clone https://github.com/zplug/zplug $zplug_home
-fi
-
-source $zplug_home/init.zsh
-
-# Pluging
-zplug "chrissicool/zsh-256color"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "sunlei/zsh-ssh"
-
-# Install plugins if there are plugins that are not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
 ## Plugins settings
 # ZSH-AUTOSUGGEST
-if [[ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]]; then
+if [[ -d $ZIM_HOME/modules/zsh-autosuggestions ]]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -35,7 +9,8 @@ if [[ -d $HOME/.zplug/repos/zsh-users/zsh-autosuggestions ]]; then
     ZSH_AUTOSUGGEST_USE_ASYNC="yes"
 fi
 
-if [[ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]]; then
+# ZSH-SYNTAX-HIGHLIGHTING
+if [[ -d $ZIM_HOME/modules/zsh-syntax-highlighting ]]; then
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
     typeset -gA ZSH_HIGHLIGHT_STYLES
 
@@ -101,5 +76,7 @@ if [[ -d $HOME/.zplug/repos/zsh-users/zsh-syntax-highlighting ]]; then
     ZSH_HIGHLIGHT_STYLES[default]='fg=#c7c7c7' # changed
 fi
 
-# Load plugins
-zplug load
+[[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
+[[ -f $HOME/.iterm2_shell_integration.zsh ]] && source $HOME/.iterm2_shell_integration.zsh
+
+command -v zoxide &>/dev/null && eval "$(zoxide init --cmd cd zsh)"

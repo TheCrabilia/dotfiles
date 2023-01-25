@@ -57,15 +57,9 @@ editors=(
     vi
     nano
 )
-
-foreach editor in $editors
-    if which $editor >/dev/null; then
+for editor in $editors; do
+    if command -v $editor &>/dev/null; then
 	export EDITOR=$editor
 	break
     fi
-end
-
-# Init zoxide if exists
-if command -v zoxide >/dev/null; then
-    eval "$(zoxide init --cmd cd zsh)"
-fi
+done
