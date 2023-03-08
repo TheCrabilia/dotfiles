@@ -33,31 +33,60 @@ return require("packer").startup(function(use)
 		"lewis6991/gitsigns.nvim",
 	})
 
+	-- LSP
 	use({
-		"VonHeikemen/lsp-zero.nvim",
-		requires = {
-			-- LSP support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-			{ "jayp0521/mason-null-ls.nvim" }, -- TODO: Configure mason null-ls
-			{ "folke/lsp-colors.nvim" },
-			{ "jose-elias-alvarez/null-ls.nvim" },
-			{ "lukas-reineke/lsp-format.nvim" },
+		"neovim/nvim-lspconfig",
+		"jose-elias-alvarez/null-ls.nvim",
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
+		-- Package manager for LSP
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"jayp0521/mason-null-ls.nvim", -- TODO: Configure mason null-ls
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"jay-babu/mason-nvim-dap.nvim",
 
-			-- Snippets
-			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
-		},
+		-- Completion sources
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"petertriho/cmp-git",
+		"rcarriga/cmp-dap",
+		"saadparwaiz1/cmp_luasnip",
+		"doxnit/cmp-luasnip-choice",
+
+		-- Snippets
+		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
 	})
+
+	-- use({
+	-- 	"VonHeikemen/lsp-zero.nvim",
+	-- 	requires = {
+	-- 		-- LSP support
+	-- 		{ "neovim/nvim-lspconfig" },
+	-- 		{ "williamboman/mason.nvim" },
+	-- 		{ "williamboman/mason-lspconfig.nvim" },
+	-- 		{ "jayp0521/mason-null-ls.nvim" }, -- TODO: Configure mason null-ls
+	-- 		{ "folke/lsp-colors.nvim" },
+	-- 		{ "jose-elias-alvarez/null-ls.nvim" },
+	-- 		{ "lukas-reineke/lsp-format.nvim" },
+	--
+	-- 		-- Autocompletion
+	-- 		{ "hrsh7th/nvim-cmp" },
+	-- 		{ "hrsh7th/cmp-buffer" },
+	-- 		{ "hrsh7th/cmp-path" },
+	-- 		{ "saadparwaiz1/cmp_luasnip" },
+	-- 		{ "hrsh7th/cmp-nvim-lua" },
+	--
+	-- 		-- Snippets
+	-- 		{ "L3MON4D3/LuaSnip" },
+	-- 		{ "rafamadriz/friendly-snippets" },
+	-- 	},
+	-- })
 
 	use({
 		"folke/trouble.nvim",
@@ -68,11 +97,8 @@ return require("packer").startup(function(use)
 
 	-- Debugging
 	use({
-		"jayp0521/mason-nvim-dap.nvim",
-		requires = {
-			{ "mfussenegger/nvim-dap" },
-			{ "rcarriga/nvim-dap-ui" },
-		},
+		"mfussenegger/nvim-dap",
+		"rcarriga/nvim-dap-ui",
 	})
 
 	-- Language support

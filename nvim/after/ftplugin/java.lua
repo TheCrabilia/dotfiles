@@ -23,6 +23,9 @@ extended_client_capabilities.resolveAdditionalTextEditsSupport = true
 
 local builtin = require("telescope.builtin")
 local on_attach = function(_, bufnr)
+	require("jdtls").setup_dap({ hotcodereplace = "auto" })
+	require("jdtls.dap").setup_dap_main_class_configs()
+
 	require("which-key").register({
 		K = { vim.lsp.buf.hover, "Help" },
 		{
@@ -145,7 +148,13 @@ local config = {
 	},
 
 	init_options = {
-		bundles = {},
+		bundles = {
+			vim.fn.glob(
+				vim.fn.getenv("HOME")
+					.. "/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+				true
+			),
+		},
 	},
 }
 

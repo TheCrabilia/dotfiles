@@ -122,17 +122,24 @@ wk.register({
 	-- Debugging
 	{
 		p = {
-			name = "Debugging",
+			name = "Debug",
 			s = { dap.continue, "Start Debug session" },
 			t = { dap.terminate, "Terminate Debug session" },
 			b = { dap.toggle_breakpoint, "Toggle Breakpoint" },
+			B = { dap.set_breakpoint, "Set Breakpoint" },
+			lp = {
+				function()
+					dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+				end,
+				"Set Breakpoint with Log Point Message",
+			},
 		},
 		prefix = "<leader>",
 	},
-	["<F1>"] = { dap.step_back, "Step Back" },
-	["<F2>"] = { dap.step_into, "Step Into" },
-	["<F3>"] = { dap.step_over, "Step Over" },
-	["<F4>"] = { dap.step_out, "Step Out" },
+	["<F5>"] = { dap.continue, "Debug continue" },
+	["<F10>"] = { dap.step_over, "Debug step over" },
+	["<F11>"] = { dap.step_into, "Debug step into" },
+	["<F12>"] = { dap.step_out, "Debug step out" },
 	-- Cool keymaps
 	["<C-c>"] = { "<ESC>", "Ctrl-C as ESC", mode = "i" },
 	{

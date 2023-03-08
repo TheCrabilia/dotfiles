@@ -1,32 +1,49 @@
-# mtenv
-> aka My Terminal Environment
+# Dotfiles
 
-## Prerequests
+## Automatic installation
 
-* Zsh installed.
-* Vim or neovim installed.
-
-## Installation
-Clone the repository.
+Run installation script
 
 ```bash
-git clone https://github.com/TheCrabilia/mtenv
+./install.sh
 ```
 
-Run [install.bash](install.bash) script and wait until it finishes.
+## Manual installation
+
+### MacOS
+
+1. Install required packages
 
 ```bash
-bash install.bash
+brew install zsh neovim fzf exa zoxide bat fd binutils findutils coreutils grep node rust pyenv pyenv-virtualenv
 ```
 
-Restart your shell.
-
-## Create computer specific configuration
-
-Create `custom.zsh` file in `$HOME/.config/zsh` directory.
+2. Install nerd font
 
 ```bash
-touch $HOME/.config/zsh/custom.zsh
+brew tap homebrew/cask-fonts
+brew install font-fira-code-nerd-font
 ```
 
-Now you can add cumputer specific ZSH configuration in this file. After changes restart your shell.
+2. Create dotfile symlinks
+
+```bash
+ln -s $(pwd)/home/zshrc ~/.zshrc
+ln -s $(pwd)/home/zimrc ~/.zimrc
+ln -s $(pwd)/home/zshenv ~/.zshenv
+``
+
+3. Create zsh and neovim configurations symlinks
+
+```bash
+ln -s $(pwd)/zsh ~/.config/zsh
+ln -s $(pwd/nvim ~/.config/zsh
+```
+
+## Additiaonal MacOS configurations
+
+- Disable press and hold popup
+
+```bash
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
