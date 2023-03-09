@@ -70,8 +70,10 @@ autoload_functions=(
     add_alias
     et
     flushdns
+    setproxy
     sshagent
     timezsh
+    unsetproxy
 )
 for func in $autoload_functions; do
     autoload -Uz $func

@@ -36,3 +36,15 @@ if command -v op >/dev/null; then
     eval "$(op completion zsh)"
     compdef _op op
 fi
+
+# colima completion
+if command -v colima &>/dev/null; then
+    eval "$(colima completion zsh)"
+    compdef _colima colima
+fi
+
+# styra cli completion
+if command -v styra &>/dev/null; then
+    eval "$(styra completion zsh)"
+    compdef _styra styra
+fi
