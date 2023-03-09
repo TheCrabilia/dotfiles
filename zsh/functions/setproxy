@@ -1,0 +1,7 @@
+function setproxy() {
+    export HTTP_PROXY="http://aproxy.corproot.net:8080"
+    export HTTPS_PROXY="http://aproxy.corproot.net:8080"
+    export http_proxy="$HTTP_PROXY"
+    export https_proxy="$HTTPS_PROXY"
+    export NO_PROXY="localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,.corproot.net,.swisscom.com"
+}
