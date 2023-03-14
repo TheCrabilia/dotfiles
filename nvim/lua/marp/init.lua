@@ -3,6 +3,11 @@ local M = {}
 M.jobid = 0
 
 function M.start_server()
+	if vim.fn.executable("marp") ~= 1 then
+		print("marp: error: marp cli executable not found")
+		return
+	end
+
 	if M.jobid ~= 0 then
 		vim.fn.jobstop(M.jobid)
 		return
