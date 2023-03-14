@@ -15,10 +15,10 @@ require("mason-tool-installer").setup({
 		"lua-language-server",
 		"marksman",
 		"nginx-language-server",
-		"pyright",
+		"python-lsp-server",
+		"ruff-lsp",
 		"terraform-ls",
 		"vim-language-server",
-		"yaml-language-server",
 
 		-- Formatters
 		"beautysh",
@@ -30,6 +30,7 @@ require("mason-tool-installer").setup({
 		-- Linters
 		"commitlint",
 		"tflint",
+		"ruff",
 
 		-- Debug adapters
 		-- "bash-debug-adapter",
@@ -46,13 +47,13 @@ local lsp_formatting = function(bufnr)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
+		timeout_ms = 2000,
 	})
+	vim.cmd.write()
 end
 
 local telescope_builtin = require("telescope.builtin")
-local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lsp_attach = function(client, bufnr)
-	-- require("illuminate").on_attach(client)
 	require("which-key").register({
 		K = { vim.lsp.buf.hover, "Help" },
 		{
@@ -90,7 +91,6 @@ require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		lspconfig[server_name].setup({
 			on_attach = lsp_attach,
-			capabilities = lsp_capabilities,
 			flags = {
 				debounce_text_changes = 150,
 			},
@@ -99,7 +99,6 @@ require("mason-lspconfig").setup_handlers({
 	["lua_ls"] = function()
 		lspconfig.lua_ls.setup({
 			on_attach = lsp_attach,
-			capabilities = lsp_capabilities,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -115,6 +114,37 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
+	["pylsp"] = function()
+		lspconfig.pylsp.setup({
+			on_attach = lsp_attach,
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							enabled = false,
+						},
+						pyflakes = {
+							enabled = false,
+						},
+						mccabe = {
+							enabled = false,
+						},
+					},
+				},
+			},
+		})
+	end,
+	["ruff_lsp"] = function()
+		lspconfig.ruff_lsp.setup({
+			on_attach = lsp_attach,
+			init_options = {
+				settings = {
+					args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
+				},
+			},
+		})
+	end,
+	-- Disable jdtls LSP server
 	["jdtls"] = function() end,
 })
 
@@ -137,11 +167,17 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	sources = {
-		formatting.black,
-		formatting.isort,
+		formatting.black.with({
+			extra_args = { "-l", "120" },
+		}),
+		-- formatting.isort,
+		formatting.ruff.with({
+			extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
+		}),
 		formatting.stylua,
 		formatting.google_java_format,
 		formatting.beautysh,
+		formatting.fixjson,
 		diagnostics.zsh,
 	},
 })
