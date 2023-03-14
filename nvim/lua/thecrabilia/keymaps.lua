@@ -119,27 +119,6 @@ wk.register({
 			"Jump before character before cursor",
 		},
 	},
-	-- Debugging
-	{
-		p = {
-			name = "Debug",
-			s = { dap.continue, "Start Debug session" },
-			t = { dap.terminate, "Terminate Debug session" },
-			b = { dap.toggle_breakpoint, "Toggle Breakpoint" },
-			B = { dap.set_breakpoint, "Set Breakpoint" },
-			lp = {
-				function()
-					dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-				end,
-				"Set Breakpoint with Log Point Message",
-			},
-		},
-		prefix = "<leader>",
-	},
-	["<F5>"] = { dap.continue, "Debug continue" },
-	["<F10>"] = { dap.step_over, "Debug step over" },
-	["<F11>"] = { dap.step_into, "Debug step into" },
-	["<F12>"] = { dap.step_out, "Debug step out" },
 	-- Cool keymaps
 	["<C-c>"] = { "<ESC>", "Ctrl-C as ESC", mode = "i" },
 	{
