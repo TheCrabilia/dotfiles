@@ -24,7 +24,6 @@ require("mason-tool-installer").setup({
 		"beautysh",
 		"black",
 		"google-java-format",
-		"isort",
 		"stylua",
 
 		-- Linters
@@ -170,7 +169,6 @@ null_ls.setup({
 		formatting.black.with({
 			extra_args = { "-l", "120" },
 		}),
-		-- formatting.isort,
 		formatting.ruff.with({
 			extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
 		}),
