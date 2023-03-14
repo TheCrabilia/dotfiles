@@ -192,6 +192,9 @@ return require("packer").startup(function(use)
 			require("glow").setup()
 		end,
 	})
+	use({
+		"Vimjas/vim-python-pep8-indent", -- Fix python indentation (waiting for tree-sitter indentation to work properly)
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
