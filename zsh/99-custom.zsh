@@ -7,6 +7,9 @@ if [[ $OSTYPE == darwin* ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 
+    # Nodenv
+    eval "$(nodenv init -)"
+
     # Increase open file count limit
     ulimit -n 10240
 fi
