@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
 		-- Snippets
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
+		"onsails/lspkind.nvim",
 	})
 
 	-- use({
@@ -194,6 +195,39 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"Vimjas/vim-python-pep8-indent", -- Fix python indentation (waiting for tree-sitter indentation to work properly)
+	})
+	use({
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					debounce = 75,
+					keymap = {
+						accept = "<C-j>",
+						accept_word = false,
+						accept_line = false,
+						next = "<C-h>",
+						prev = "<C-l>",
+						dismiss = "<C-e>",
+					},
+				},
+				panel = {
+					enabled = false,
+				},
+				copilot_node_command = vim.fn.getenv("HOME") .. "/.nodenv/versions/18.9.1/bin/node",
+			})
+		end,
+	})
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
 	})
 
 	if packer_bootstrap then
