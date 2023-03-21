@@ -2,7 +2,7 @@
 select = ["B", "E", "F", "I", "RET", "SIM", "PTH", "RUF"]
 ignore = []
 fixable = ["A", "B", "C", "D", "E", "F", "I"]
-unfixable = []
+unfixable = ["B007", "F841"]
 
 exclude = [
     ".bzr",
