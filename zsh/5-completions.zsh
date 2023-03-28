@@ -48,3 +48,8 @@ if command -v styra &>/dev/null; then
     eval "$(styra completion zsh)"
     compdef _styra styra
 fi
+
+# mdbook completion
+if command -v mdbook &>/dev/null; then
+    mdbook completions zsh > $HOME/.local/share/zsh/site-functions/_mdbook
+fi
