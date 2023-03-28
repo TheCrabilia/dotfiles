@@ -22,6 +22,7 @@ vim.opt.backspace = "2"
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
+vim.opt.pumheight = 20
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
