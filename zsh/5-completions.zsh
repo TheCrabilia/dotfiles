@@ -8,6 +8,7 @@ completions=(
     $ZSH_CONFIG_DIR/functions
 )
 for dir in $completions; do
+    [[ ! -d $dir ]] && mkdir -p $dir
     fpath+=$dir
 done
 unset completions
@@ -18,8 +19,8 @@ autoload bashcompinit && bashcompinit
 zstyle ':complition:*:*:*:*:*' menu select
 zstyle ':complition:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case insensitive tab complition
 zstyle ':complition:*' list-colors "${(s.:.)LS_COLORS}" 	# Take advantage of $LS_COLORS for completion as well
-# zstyle ':completion:*:*:docker:*' option-stacking yes
-# zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # # kubectl certificate manager completion
 if command -v cmctl >/dev/null; then
