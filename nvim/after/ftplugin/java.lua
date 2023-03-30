@@ -32,11 +32,17 @@ local on_attach = function(_, bufnr)
 			r = {
 				function()
 					local term = require("toggleterm")
-					local name = vim.fn.expand("%:t:r")
-					local full_name = vim.fn.expand("%:t")
+					-- local name = vim.fn.expand("%:t:r")
+					-- local full_name = vim.fn.expand("%:t")
 					vim.cmd.write()
 					term.exec(
-						"javac " .. full_name .. " && java " .. name .. " && rm " .. name .. ".class",
+						"javac -d "
+							.. root_dir
+							.. "/build "
+							.. root_dir
+							.. "/src/*.java && java -cp "
+							.. root_dir
+							.. "/build Main",
 						1,
 						vim.o.columns * 0.4,
 						".",
