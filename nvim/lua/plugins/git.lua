@@ -1,7 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
-    version = false,
+		version = false,
 		cmd = "Git",
 		dependencies = {
 			{ "tpope/vim-rhubarb" },
@@ -24,8 +24,9 @@ return {
 		end,
 	},
 	{
-    "lewis6991/gitsigns.nvim",
-    version = false,
-    event = { "BufReadPre", "BufNewFile" },
-  },
+		"lewis6991/gitsigns.nvim",
+		version = false,
+		event = { "BufReadPre", "BufNewFile" },
+		config = true,
+	},
 }

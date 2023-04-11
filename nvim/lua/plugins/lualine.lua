@@ -15,6 +15,7 @@ return {
 						"help",
 						"Trouble",
 						"toggleterm",
+            "fugitive"
 					},
 				},
 			},

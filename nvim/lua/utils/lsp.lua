@@ -1,6 +1,6 @@
 local M = {}
 
-M.lsp_formatting = function(bufnr)
+function M.lsp_formatting(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
 			return client.name == "null-ls"
@@ -11,7 +11,7 @@ M.lsp_formatting = function(bufnr)
 	vim.cmd.write()
 end
 
-M.on_attach = function(_, bufnr)
+function M.on_attach(_, bufnr)
 	-- Configure diagnostics
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
@@ -19,28 +19,28 @@ M.on_attach = function(_, bufnr)
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 	vim.diagnostic.config({
-		float = true,
 		serverity_sort = true,
 		signs = true,
 		underline = true,
 		update_in_insert = false,
-		virtual_text = false,
+		virtual_text = true,
 	})
 
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		callback = function()
-			local opts = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				prefix = " ",
-				scope = "cursor",
-			}
-			vim.diagnostic.open_float(nil, opts)
-		end,
-	})
+	-- Show diagnostics on cursor hold
+	-- vim.api.nvim_create_autocmd("CursorHold", {
+	-- 	buffer = bufnr,
+	-- 	callback = function()
+	-- 		local opts = {
+	-- 			focusable = false,
+	-- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+	-- 			border = "rounded",
+	-- 			source = "always",
+	-- 			prefix = " ",
+	-- 			scope = "cursor",
+	-- 		}
+	-- 		vim.diagnostic.open_float(nil, opts)
+	-- 	end,
+	-- })
 
 	-- Set keymaps
 	local builtin = require("telescope.builtin")
@@ -72,7 +72,7 @@ M.on_attach = function(_, bufnr)
 	end, { buffer = 0, remap = false, desc = "References" })
 end
 
-M.handlers = function()
+function M.handlers()
 	local border = {
 		{ "┌", "FloatBorder" },
 		{ "─", "FloatBorder" },

@@ -6,6 +6,18 @@ return {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true, enabled = false },
 			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 		},
+		config = function()
+			-- Disable semantic token provider for all LSP servers
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp-semantic-tokens", { clear = true }),
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client.name ~= "null-ls" then
+						client.server_capabilities.semanticTokensProvider = false
+					end
+				end,
+			})
+		end,
 	},
 	{
 		"williamboman/mason.nvim",
@@ -37,6 +49,7 @@ return {
 						"black",
 						"google-java-format",
 						"stylua",
+						"fixjson",
 
 						-- Linters
 						"commitlint",
@@ -60,7 +73,7 @@ return {
 						function(server_name)
 							lspconfig[server_name].setup({
 								on_attach = require("utils.lsp").on_attach,
-                handlers = require("utils.lsp").handlers(),
+								handlers = require("utils.lsp").handlers(),
 								flags = {
 									debounce_text_changes = 150,
 								},
@@ -69,16 +82,20 @@ return {
 						["lua_ls"] = function()
 							lspconfig.lua_ls.setup({
 								on_attach = require("utils.lsp").on_attach,
-                handlers = require("utils.lsp").handlers(),
+								handlers = require("utils.lsp").handlers(),
 								flags = {
 									debounce_text_changes = 150,
 								},
 								settings = {
 									Lua = {
+										runtime = { version = "LuaJIT" },
 										diagnostics = {
 											globals = { "vim" },
 										},
 										workspace = {
+											library = vim.api.nvim_get_runtime_file("", true),
+											maxPreload = 2000,
+											preloadFileSize = 50000,
 											checkThirdParty = false,
 										},
 										telemetry = {
@@ -91,13 +108,32 @@ return {
 						["ruff_lsp"] = function()
 							lspconfig.ruff_lsp.setup({
 								on_attach = require("utils.lsp").on_attach,
-                handlers = require("utils.lsp").handlers(),
+								handlers = require("utils.lsp").handlers(),
 								flags = {
 									debounce_text_changes = 150,
 								},
 								init_options = {
 									settings = {
 										args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
+									},
+								},
+							})
+						end,
+						["pyright"] = function()
+							lspconfig.pyright.setup({
+								on_attach = function(client, _)
+									client.server_capabilities.codeActionProvider = false
+								end,
+								handlers = {
+									["textDocument/publishDiagnostics"] = function() end,
+								},
+								settings = {
+									pyright = {
+										alalysis = {
+											autoSearchPaths = true,
+											typeCheckingMode = "basic",
+											useLibraryCodeForTypes = true,
+										},
 									},
 								},
 							})

@@ -89,6 +89,15 @@ return {
 		opts = {
 			delay = 120,
 		},
+		config = function(_, opts)
+			require("mini.cursorword").setup(opts)
+			vim.api.nvim_create_autocmd("BufEnter", {
+				pattern = "TelescopePrompt",
+				callback = function()
+					vim.b.minicursorword_disable = true
+				end,
+			})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
