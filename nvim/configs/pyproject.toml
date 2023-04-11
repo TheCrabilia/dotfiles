@@ -1,7 +1,7 @@
 [tool.ruff]
 select = ["B", "E", "F", "I", "RET", "SIM", "PTH", "RUF"]
 ignore = []
-fixable = ["A", "B", "C", "D", "E", "F", "I"]
+fixable = ["A", "B", "C", "D", "E", "F", "I", "SIM"]
 unfixable = ["B007", "F841"]
 
 exclude = [
