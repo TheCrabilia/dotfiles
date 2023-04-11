@@ -15,7 +15,8 @@ return {
 						"help",
 						"Trouble",
 						"toggleterm",
-            "fugitive"
+						"fugitive",
+						"vim",
 					},
 				},
 			},
