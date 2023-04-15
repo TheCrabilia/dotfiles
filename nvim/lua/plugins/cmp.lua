@@ -93,6 +93,7 @@ return {
 		end,
 		config = function(_, opts)
 			local cmp = require("cmp")
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			cmp.setup(opts)
 
 			cmp.setup.filetype("gitcommit", {
@@ -124,6 +125,8 @@ return {
 					{ name = "cmdline" },
 				}),
 			})
+
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 }

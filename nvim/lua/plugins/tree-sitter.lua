@@ -6,8 +6,7 @@ return {
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs",
 		dependencies = {
-			{ "p00f/nvim-ts-rainbow" },
-			{ "windwp/nvim-autopairs", enabled = false },
+			{ "windwp/nvim-autopairs", config = true },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{ "nvim-treesitter/playground", enabled = false },
 			{
@@ -53,7 +52,7 @@ return {
 			},
 			indent = {
 				enable = true,
-				disable = { "yaml", "python" },
+				disable = { "yaml" },
 			},
 			incremental_selection = {
 				enable = true,
@@ -65,7 +64,6 @@ return {
 				},
 			},
 			context_commentstring = { enable = true, enable_autocmd = false },
-			autopairs = { enable = false },
 			playground = { enable = false },
 		},
 	},

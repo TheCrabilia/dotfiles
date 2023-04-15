@@ -1,19 +1,19 @@
 return {
-	{
-		"echasnovski/mini.pairs",
-		version = false,
-		event = { "BufReadPre", "BufNewFile" },
-		main = "mini.pairs",
-		dependencies = {
-			{
-				"echasnovski/mini.nvim",
-				version = false,
-			},
-		},
-		opts = {
-			modes = { insert = true, command = false, terminal = false },
-		},
-	},
+	-- {
+	-- 	"echasnovski/mini.pairs",
+	-- 	version = false,
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	main = "mini.pairs",
+	-- 	dependencies = {
+	-- 		{
+	-- 			"echasnovski/mini.nvim",
+	-- 			version = false,
+	-- 		},
+	-- 	},
+	-- 	opts = {
+	-- 		modes = { insert = true, command = false, terminal = false },
+	-- 	},
+	-- },
 	-- surround
 	-- {
 	-- 	"echasnovski/mini.surround",
