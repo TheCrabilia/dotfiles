@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/noice.nvim",
-    enabled = false,
+		enabled = false,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",

@@ -17,6 +17,7 @@ return {
 							"Trouble",
 							"toggleterm",
 							"vim",
+							"gitcommit",
 						},
 					},
 				},
