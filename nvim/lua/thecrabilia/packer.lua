@@ -15,13 +15,14 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Color schemes
-	use("ellisonleao/gruvbox.nvim")
 	use("navarasu/onedark.nvim")
 
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 	use("nvim-lualine/lualine.nvim")
-	use("kdheepak/tabline.nvim")
-	use("goolord/alpha-nvim") -- Cute welcome screen
+	use({
+		"kdheepak/tabline.nvim",
+		disable = true,
+	})
 
 	-- Shortcuts
 	use("folke/which-key.nvim")
@@ -63,31 +64,6 @@ return require("packer").startup(function(use)
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
 	})
-
-	-- use({
-	-- 	"VonHeikemen/lsp-zero.nvim",
-	-- 	requires = {
-	-- 		-- LSP support
-	-- 		{ "neovim/nvim-lspconfig" },
-	-- 		{ "williamboman/mason.nvim" },
-	-- 		{ "williamboman/mason-lspconfig.nvim" },
-	-- 		{ "jayp0521/mason-null-ls.nvim" }, -- TODO: Configure mason null-ls
-	-- 		{ "folke/lsp-colors.nvim" },
-	-- 		{ "jose-elias-alvarez/null-ls.nvim" },
-	-- 		{ "lukas-reineke/lsp-format.nvim" },
-	--
-	-- 		-- Autocompletion
-	-- 		{ "hrsh7th/nvim-cmp" },
-	-- 		{ "hrsh7th/cmp-buffer" },
-	-- 		{ "hrsh7th/cmp-path" },
-	-- 		{ "saadparwaiz1/cmp_luasnip" },
-	-- 		{ "hrsh7th/cmp-nvim-lua" },
-	--
-	-- 		-- Snippets
-	-- 		{ "L3MON4D3/LuaSnip" },
-	-- 		{ "rafamadriz/friendly-snippets" },
-	-- 	},
-	-- })
 
 	use({
 		"folke/trouble.nvim",
@@ -146,13 +122,6 @@ return require("packer").startup(function(use)
 	use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
 	use("nathom/filetype.nvim") -- Override file types
 	use("akinsho/toggleterm.nvim") -- Nvim builtin terminal
-	use({
-		"Pocco81/auto-save.nvim",
-		disable = true,
-		config = function()
-			require("auto-save").setup()
-		end,
-	})
 	use("RRethy/vim-illuminate")
 	use({
 		"lukas-reineke/indent-blankline.nvim", -- Add indentation guides
@@ -170,7 +139,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"lewis6991/impatient.nvim", -- Lua modules chuck cachecс
+		"lewis6991/impatient.nvim", -- Lua modules chunk caching
 		config = function()
 			require("impatient")
 		end,
@@ -195,6 +164,7 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"Vimjas/vim-python-pep8-indent", -- Fix python indentation (waiting for tree-sitter indentation to work properly)
+		disable = false,
 	})
 	use({
 		"zbirenbaum/copilot.lua",
