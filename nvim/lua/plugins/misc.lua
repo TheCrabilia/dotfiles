@@ -1,32 +1,4 @@
 return {
-	-- {
-	-- 	"echasnovski/mini.pairs",
-	-- 	version = false,
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	main = "mini.pairs",
-	-- 	dependencies = {
-	-- 		{
-	-- 			"echasnovski/mini.nvim",
-	-- 			version = false,
-	-- 		},
-	-- 	},
-	-- 	opts = {
-	-- 		modes = { insert = true, command = false, terminal = false },
-	-- 	},
-	-- },
-	-- surround
-	-- {
-	-- 	"echasnovski/mini.surround",
-	-- 	version = false,
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	main = "mini.surround",
-	--    dependencies = {
-	-- 		{
-	-- 			"echasnovski/mini.nvim",
-	-- 			version = false,
-	-- 		},
-	--    }
-	-- },
 	{
 		"echasnovski/mini.comment",
 		version = false,
@@ -76,26 +48,21 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.cursorword",
-		version = false,
+		"RRethy/vim-illuminate",
 		event = { "BufReadPre", "BufNewFile" },
-		main = "mini.cursorword",
-		dependencies = {
-			{
-				"echasnovski/mini.nvim",
-				version = false,
-			},
-		},
-		opts = {
-			delay = 120,
-		},
-		config = function(_, opts)
-			require("mini.cursorword").setup(opts)
-			vim.api.nvim_create_autocmd("BufEnter", {
-				pattern = "TelescopePrompt",
-				callback = function()
-					vim.b.minicursorword_disable = true
-				end,
+		config = function()
+			require("illuminate").configure({
+				filetypes_denylist = {
+					"fugitive",
+					"gitcommit",
+					"help",
+					"dapui_breakpoints",
+					"dapui_scopes",
+					"dapui_console",
+					"dapui_watches",
+					"dapui_stacks",
+					"dap-repl",
+				},
 			})
 		end,
 	},
@@ -103,9 +70,25 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
-			indent_blankline_char_blankline = "|",
+			char = "┆",
+			use_treesitter = true,
 			show_trailing_blankline_indent = true,
-			indent_blankline_use_treesitter = true,
+			show_first_indent_level = false,
+			filetype_exclude = {
+				"lspinfo",
+				"lazy",
+				"checkhelth",
+				"help",
+				"man",
+				"fugitive",
+				"gitcommit",
+				"dapui_breakpoints",
+				"dapui_scopes",
+				"dapui_console",
+				"dapui_watches",
+				"dapui_stacks",
+				"dap-repl",
+			},
 		},
 		config = function(_, opts)
 			require("indent_blankline").setup(opts)
