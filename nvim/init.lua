@@ -13,11 +13,4 @@ vim.opt.rtp:prepend(lazypath)
 -- Source vim options
 require("opts")
 
-require("lazy").setup({import="plugins"})
-
--- require("thecrabilia.packer")
--- require("thecrabilia.set")
--- require("thecrabilia.globals")
-
--- require("marp")
--- require("mdbook")
+require("lazy").setup({ import = "plugins" })
