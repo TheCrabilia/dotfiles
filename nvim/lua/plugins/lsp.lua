@@ -42,7 +42,6 @@ return {
 				-- Formatters
 				"beautysh",
 				"black",
-				"google-java-format",
 				"stylua",
 				"fixjson",
 
@@ -50,11 +49,6 @@ return {
 				"commitlint",
 				"ruff",
 				"tflint",
-
-				-- Debug adapters
-				-- "bash-debug-adapter",
-				-- "go-debug-adapter",
-				-- "java-debug-adapter",
 			},
 			auto_update = false,
 		},
@@ -156,7 +150,6 @@ return {
 					extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
 				}),
 				formatting.stylua,
-				formatting.google_java_format,
 				formatting.beautysh,
 				formatting.fixjson,
 				diagnostics.zsh,
