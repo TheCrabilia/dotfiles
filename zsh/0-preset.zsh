@@ -6,6 +6,7 @@ PROMPT_EOL_MARK=""
 unset path
 local -a custom_path_dirs
 custom_path_dirs=(
+    $HOME/.pyenv/bin
     $HOME/.local/bin
     /usr/local/bin
     /opt/homebrew/bin
@@ -65,17 +66,11 @@ for editor in $editors; do
 done
 unset editors
 
-local -a autoload_functions
-autoload_functions=(
-    add_alias
-    et
-    flushdns
-    setproxy
-    sshagent
-    timezsh
-    unsetproxy
-)
-for func in $autoload_functions; do
+# TODO: Implement autoload function exclude
+local -a autoload_exclude
+autoload_exclude=()
+
+for func in $(ls -d $XDG_CONFIG_HOME/zsh/functions/*); do
     autoload -Uz $func
 done
-unset autoload_functions
+unset autoload_exclude

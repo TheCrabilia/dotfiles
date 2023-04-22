@@ -77,7 +77,5 @@ if [[ -d $ZIM_HOME/modules/zsh-syntax-highlighting ]]; then
 fi
 
 [[ -f $HOME/.fzf.zsh ]] && source $HOME/.fzf.zsh
-[[ -f $HOME/.iterm2_shell_integration.zsh ]] && source $HOME/.iterm2_shell_integration.zsh
-[[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
-
-command -v zoxide &>/dev/null && eval "$(zoxide init --cmd cd zsh)"
+# [[ -f $HOME/.iterm2_shell_integration.zsh ]] && source $HOME/.iterm2_shell_integration.zsh
+# [[ -f $HOME/.config/op/plugins.sh ]] && source $HOME/.config/op/plugins.sh
