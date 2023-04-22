@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 ZSH_CONFIG_DIR=$HOME/.config/zsh
 ZIM_HOME=$HOME/.zim
 

@@ -1,3 +1,10 @@
+zmodule joke/zim-rtx
+
+zmodule TheCrabilia/zim-colima
+zmodule TheCrabilia/zim-zoxide
+zmodule TheCrabilia/zim-1password
+zmodule TheCrabilia/zim-styra
+
 zmodule chrissicool/zsh-256color
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-syntax-highlighting
@@ -5,3 +12,6 @@ zmodule zsh-users/zsh-autosuggestions
 
 zmodule input
 zmodule fzf
+
+# This should be always at the end
+zmodule TheCrabilia/completion
