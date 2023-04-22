@@ -8,7 +8,7 @@ return {
 		dependencies = {
 			{ "windwp/nvim-autopairs", config = true },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{ "nvim-treesitter/playground", enabled = false },
+			{ "nvim-treesitter/playground", enabled = true },
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				opts = {
@@ -64,7 +64,7 @@ return {
 				},
 			},
 			context_commentstring = { enable = true, enable_autocmd = false },
-			playground = { enable = false },
+			playground = { enable = true },
 		},
 	},
 }

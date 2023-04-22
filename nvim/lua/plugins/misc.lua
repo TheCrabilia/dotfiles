@@ -62,6 +62,7 @@ return {
 					"dapui_watches",
 					"dapui_stacks",
 					"dap-repl",
+					"tsplayground",
 				},
 			})
 		end,
@@ -88,6 +89,7 @@ return {
 				"dapui_watches",
 				"dapui_stacks",
 				"dap-repl",
+				"tsplayground",
 			},
 		},
 		config = function(_, opts)
