@@ -4,3 +4,5 @@ function sshagent() {
     fi
     ssh-add $HOME/.ssh/id_rsa
 }
+
+# vim:ft=zsh

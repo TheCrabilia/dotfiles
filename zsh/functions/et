@@ -4,3 +4,5 @@ function et() {
     fi
     echo $exec_time
 }
+
+# vim:ft=zsh

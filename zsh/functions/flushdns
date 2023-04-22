@@ -6,3 +6,5 @@ function flushdns() {
         sudo killall -HUP dnsmasq
     fi
 }
+
+# vim:ft=zsh

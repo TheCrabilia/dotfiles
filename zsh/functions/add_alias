@@ -41,3 +41,5 @@ function add_alias() {
 
     unset aliases opt condition
 }
+
+# vim:ft=zsh
