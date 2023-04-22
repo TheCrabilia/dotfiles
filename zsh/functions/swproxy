@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh -x
+
+function swproxy() {
+    if [[ $(is_corpnet)$? -eq 0 || $(is_vpn)$? -eq 0 ]]; then
+        export HTTP_PROXY="http://aproxy.corproot.net:8080"
+        export HTTPS_PROXY="http://aproxy.corproot.net:8080"
+        export http_proxy="$HTTP_PROXY"
+        export https_proxy="$HTTPS_PROXY"
+        export NO_PROXY="localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,.corproot.net,.swisscom.com"
+    else
+        unset HTTP_PROXY HTTPS_PROXY http_proxy https_proxy NO_PROXY
+    fi
+}
+
+function is_corpnet() {
+    local airport="/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport"
+    [[ $($airport -I | awk -F ": " '/ SSID/ { print $2 }') == "corpnet01" ]] && return 0 || return 1
+}
+
+function is_vpn() {
+    return $(ifconfig | grep -E "^utun" -A 2 | grep -E "inet .*? -->" &>/dev/null)$?
+}
+
+# vim:ts=4:sw=4:ft=zsh
