@@ -5,7 +5,8 @@ if not jdtls_ok then
 end
 
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
-local WORKSPACE_PATH = os.getenv("HOME") .. "/workspace/java/"
+local CACHE_DIR = os.getenv("XDG_CACHE_HOME") or os.getenv("HOME") .. "/.cache"
+local WORKSPACE_PATH = CACHE_DIR .. "/java/workspaces/"
 
 local SYSTEM = "linux"
 if vim.fn.has("mac") == 1 then
