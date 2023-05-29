@@ -4,3 +4,5 @@ zsh/custom.zsh
 nvim/plugin/*
 **/.luarc.json
 lazy-lock.json
+
+tmux/plugins
