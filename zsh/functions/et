@@ -1,8 +1,0 @@
-function et() {
-    if [[ -z $exec_time ]]; then
-        return
-    fi
-    echo $exec_time
-}
-
-# vim:ft=zsh
