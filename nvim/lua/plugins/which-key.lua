@@ -16,6 +16,7 @@ return {
 			local wk = require("which-key")
 			wk.setup(opts)
 
+      local nvim_tmux_nav = require('nvim-tmux-navigation')
 			local keymaps = {
 				{
 					["L"] = { vim.cmd.bnext, "Next Buffer" },
@@ -39,25 +40,25 @@ return {
 				{
 					["<M-h>"] = {
 						function()
-							vim.cmd.wincmd("h")
+              nvim_tmux_nav.NvimTmuxNavigateLeft()
 						end,
 						"Jump to left window",
 					},
 					["<M-j>"] = {
 						function()
-							vim.cmd.wincmd("j")
+              nvim_tmux_nav.NvimTmuxNavigateDown()
 						end,
 						"Jump to bottom window",
 					},
 					["<M-k>"] = {
 						function()
-							vim.cmd.wincmd("k")
+              nvim_tmux_nav.NvimTmuxNavigateUp()
 						end,
 						"Jump to top window",
 					},
 					["<M-l>"] = {
 						function()
-							vim.cmd.wincmd("l")
+              nvim_tmux_nav.NvimTmuxNavigateRight()
 						end,
 						"Jump to right window",
 					},

@@ -1,6 +1,9 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		config = function()
 			-- Disable semantic token provider for all LSP servers
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -150,6 +153,8 @@ return {
 					extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
 				}),
 				formatting.stylua,
+				formatting.gofmt,
+				formatting.goimports,
 				formatting.beautysh,
 				formatting.fixjson,
 				diagnostics.zsh,

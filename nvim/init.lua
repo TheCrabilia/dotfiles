@@ -13,4 +13,24 @@ vim.opt.rtp:prepend(lazypath)
 -- Source vim options
 require("opts")
 
-require("lazy").setup({ import = "plugins" })
+require("lazy").setup({ import = "plugins" }, {
+	defaults = {
+		lazy = false,
+		version = nil,
+		cond = nil,
+	},
+	install = {
+		missing = true,
+		colorscheme = { "onedark", "habamax" },
+	},
+	checker = {
+		enabled = true,
+		concurrency = nil,
+		notify = false,
+		frequency = 3600,
+	},
+	change_detection = {
+		enabled = true,
+		notify = false,
+	},
+})

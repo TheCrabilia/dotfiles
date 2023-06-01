@@ -16,7 +16,7 @@ end
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
-local root_markers = { ".git", "mvnw", "gradlew" }
+local root_markers = { ".git", "mvnw", "gradlew", "Makefile" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
 local extended_client_capabilities = jdtls.extendedClientCapabilities

@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		event = { "BufReadPost", "BufNewFile" },
 		build = function()
-			require("treesitter.install").update({ with_sync = true })
+			vim.cmd.TSUpdate()
 		end,
 		main = "nvim-treesitter.configs",
 		dependencies = {

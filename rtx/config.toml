@@ -2,4 +2,10 @@
 missing_runtime_behavior = "warn"
 legacy_version_file = true
 always_keep_download = false
-experimental = false
+experimental = true
+
+[tools]
+python = "3.11.3"
+go = "1.20.3"
+node = "18"
+java = "20"
