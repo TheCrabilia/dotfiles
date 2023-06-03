@@ -31,7 +31,7 @@ brew install font-fira-code-nerd-font
 ln -s $(pwd)/home/zshrc ~/.zshrc
 ln -s $(pwd)/home/zimrc ~/.zimrc
 ln -s $(pwd)/home/zshenv ~/.zshenv
-``
+```
 
 3. Create zsh and neovim configurations symlinks
 
