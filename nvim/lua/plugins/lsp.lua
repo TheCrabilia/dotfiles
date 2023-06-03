@@ -58,10 +58,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"mason.nvim",
-			"nvim-lspconfig",
-		},
+		dependencies = { "mason.nvim", "nvim-lspconfig" },
 		config = function()
 			local lspconfig = require("lspconfig")
 			require("mason-lspconfig").setup_handlers({
@@ -120,8 +117,13 @@ return {
 						on_attach = function(client, _)
 							client.server_capabilities.codeActionProvider = false
 						end,
-						handlers = {
-							["textDocument/publishDiagnostics"] = function() end,
+						handlers = vim.tbl_extend(
+							"force",
+							require("utils.lsp").handlers(),
+							{ ["textDocument/publishDiagnostics"] = function() end }
+						),
+						flags = {
+							debounce_text_changes = 150,
 						},
 						settings = {
 							pyright = {

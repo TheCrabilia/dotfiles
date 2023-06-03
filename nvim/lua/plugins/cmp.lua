@@ -39,7 +39,7 @@ return {
 				}),
 				formatting = {
 					format = require("lspkind").cmp_format({
-						mode = "symbol_text",
+						mode = "text",
 						maxwidth = 50,
 						ellipsis_chat = "...",
 						symbol_map = {
@@ -73,7 +73,6 @@ return {
 				},
 				experimental = {
 					ghost_text = false,
-					native_menu = false,
 				},
 				preselect = cmp.PreselectMode.None,
 			}
