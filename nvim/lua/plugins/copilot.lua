@@ -7,14 +7,14 @@ return {
 		opts = {
 			suggestion = {
 				enabled = true,
-				auto_trigger = false,
+				auto_trigger = true,
 				debounce = 75,
 				keymap = {
 					accept = "<C-j>",
 					accept_word = false,
 					accept_line = false,
-					next = "<C-h>",
-					prev = "<C-l>",
+					next = "<C-l>",
+					prev = "<C-h>",
 					dismiss = "<C-e>",
 				},
 			},
@@ -22,10 +22,5 @@ return {
 				enabled = false,
 			},
 		},
-		config = function(_, opts)
-			require("copilot").setup(opts)
-
-			local set = vim.keymap.set
-		end,
 	},
 }
