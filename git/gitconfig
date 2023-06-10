@@ -13,6 +13,12 @@
 [core]
 	editor = nvim
 	excludesFile = /Users/ispirts/.gitignore_global
+[merge]
+  tool = fugitive
+[mergetool]
+	keepBackup = false
+[mergetool "fugitive"]
+  cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
 [alias]
 	sw = switch
 	br = branch
