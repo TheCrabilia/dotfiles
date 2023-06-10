@@ -1,25 +1,5 @@
 return {
 	{
-		"echasnovski/mini.comment",
-		version = false,
-		event = { "BufReadPre", "BufNewFile" },
-		main = "mini.comment",
-		dependencies = {
-			{
-				"echasnovski/mini.nvim",
-				version = false,
-			},
-			"JoosepAlviste/nvim-ts-context-commentstring",
-		},
-		opts = {
-			hooks = {
-				pre = function()
-					require("ts_context_commentstring.internal").update_commentstring({})
-				end,
-			},
-		},
-	},
-	{
 		"echasnovski/mini.ai",
 		version = false,
 		event = { "BufReadPre", "BufNewFile" },
@@ -92,9 +72,6 @@ return {
 				"tsplayground",
 			},
 		},
-		config = function(_, opts)
-			require("indent_blankline").setup(opts)
-		end,
 	},
 	{
 		"folke/neoconf.nvim",
