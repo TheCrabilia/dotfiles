@@ -8,6 +8,7 @@ return {
 		end,
 		main = "nvim-treesitter.configs",
 		dependencies = {
+			{ "JoosepAlviste/nvim-ts-context-commentstring" },
 			{ "windwp/nvim-autopairs", config = true },
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{ "nvim-treesitter/playground", enabled = true },
@@ -72,7 +73,7 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
-			context_commentstring = { enable = true, enable_autocmd = false },
+			context_commentstring = { enable = true },
 			playground = { enable = true },
 		},
 	},

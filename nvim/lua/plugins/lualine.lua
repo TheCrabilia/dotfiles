@@ -22,15 +22,9 @@ return {
 					},
 				},
 				sections = {
-					lualine_a = {
-						"mode",
-					},
-					lualine_b = {
-						"branch",
-						"diff",
-						"diagnostics",
-					},
-					lualine_c = {},
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
 					lualine_x = {
 						"encoding",
 						{
@@ -47,16 +41,25 @@ return {
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				},
-				winbar = {
-					lualine_a = { "buffers" },
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
 				},
-				inactive_winbar = {
-					lualine_a = { "buffers" },
-				},
+				-- winbar = {
+				-- 	lualine_a = { "buffers" },
+				-- },
+				-- inactive_winbar = {
+				-- 	lualine_a = { "buffers" },
+				-- },
 				extensions = {
 					ext.fugitive,
 					ext.nvim_dap_ui,
 					ext.help,
+					ext.telescope,
 				},
 			}
 		end,

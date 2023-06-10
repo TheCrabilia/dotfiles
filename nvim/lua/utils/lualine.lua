@@ -50,4 +50,31 @@ M.extensions.help = {
 	filetypes = { "help" },
 }
 
+M.extensions.telescope = {
+	sections = {
+		lualine_a = {
+			"mode",
+		},
+		lualine_b = {
+			"branch",
+		},
+		lualine_c = {},
+		lualine_x = {
+			{
+				"fileformat",
+				icons_enabled = true,
+				symbols = {
+					unix = "LF",
+					dos = "CRLF",
+					mac = "CR",
+				},
+			},
+			"filetype",
+		},
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+	filetypes = { "TelescopePrompt" },
+}
+
 return M
