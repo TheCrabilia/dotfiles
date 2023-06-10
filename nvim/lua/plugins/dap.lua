@@ -16,39 +16,19 @@ return {
 			end
 
 			local set = vim.keymap.set
-			set("n", "<leader>ps", function()
-				dap.continue()
-			end, { desc = "Start Debug Session" })
-			set("n", "<leader>pt", function()
-				dap.terminate()
-			end, { desc = "Terminate Debug Session" })
-			set("n", "<leader>pb", function()
-				dap.toggle_breakpoint()
-			end, { desc = "Toggle Breakpoint" })
-			set("n", "<leader>pB", function()
-				dap.set_breakpoint()
-			end, { desc = "Set Breadpoint" })
+			set("n", "<leader>ps", dap.continue, { desc = "Start Debug Session" })
+			set("n", "<leader>pt", dap.terminate, { desc = "Terminate Debug Session" })
+			set("n", "<leader>pb", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+			set("n", "<leader>pB", dap.set_breakpoint, { desc = "Set Breadpoint" })
 			set("n", "<leader>plp", function()
 				dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 			end, { desc = "Set Breakpoint with Log Point Message" })
-			set("n", "<leader>puo", function()
-				dapui.open()
-			end, { desc = "Open DAP UI" })
-			set("n", "<leader>puc", function()
-				dapui.close()
-			end, { desc = "Close DAP UI" })
-			set("n", "<F1>", function()
-				dap.step_out()
-			end, { desc = "Debug Step Out" })
-			set("n", "<F2>", function()
-				dap.step_into()
-			end, { desc = "Debug Step Into" })
-			set("n", "<F3>", function()
-				dap.step_over()
-			end, { desc = "Debug Step Over" })
-			set("n", "<F4>", function()
-				dap.continue()
-			end, { desc = "Debug Continue" })
+			set("n", "<leader>puo", dapui.open, { desc = "Open DAP UI" })
+			set("n", "<leader>puc", dapui.close, { desc = "Close DAP UI" })
+			set("n", "<F1>", dap.step_out, { desc = "Debug Step Out" })
+			set("n", "<F2>", dap.step_into, { desc = "Debug Step Into" })
+			set("n", "<F3>", dap.step_over, { desc = "Debug Step Over" })
+			set("n", "<F4>", dap.continue, { desc = "Debug Continue" })
 		end,
 	},
 	{
@@ -84,5 +64,12 @@ return {
 			ensure_installed = { "javadbg", "python" },
 			handlers = {},
 		},
+	},
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		dependencies = {
+			"nvim-dap",
+		},
+		config = true,
 	},
 }
