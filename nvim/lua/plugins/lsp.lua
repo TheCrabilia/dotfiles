@@ -3,6 +3,11 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+			{
+				"folke/neodev.nvim",
+				event = { "BufEnter *.lua" },
+				config = true,
+			},
 		},
 		config = function()
 			-- Disable semantic token provider for all LSP servers
@@ -159,20 +164,9 @@ return {
 				formatting.goimports,
 				formatting.beautysh,
 				formatting.fixjson,
+				formatting.terraform_fmt,
 				diagnostics.zsh,
 			}
 		end,
-	},
-	{
-		"folke/neodev.nvim",
-		event = { "BufEnter *.lua" },
-		dependencies = {
-			"nvim-lspconfig",
-		},
-		opts = {
-			experimental = {
-				pathStrict = true,
-			},
-		},
 	},
 }
