@@ -1,17 +1,13 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		version = false,
-		cmd = "Git",
 		dependencies = {
 			{ "tpope/vim-rhubarb" },
 		},
 		init = function()
 			local set = vim.keymap.set
 
-			set("n", "<leader>gg", function()
-				vim.cmd.Git()
-			end, { desc = "Open Git" })
+			set("n", "<leader>gg", vim.cmd.Git, { desc = "Open Git" })
 			set("n", "<leader>gp", function()
 				vim.cmd.Git("push")
 			end, { desc = "Git Push" })
@@ -25,8 +21,42 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		version = false,
 		event = { "BufReadPre", "BufNewFile" },
-		config = true,
+		opts = function()
+			return {
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
+
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+
+					map("n", "]c", function()
+						if vim.wo.diff then
+							return "]c"
+						end
+						vim.schedule(function()
+							gs.next_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true, desc = "Jump to the next hunk" })
+
+					map("n", "[c", function()
+						if vim.wo.diff then
+							return "[c"
+						end
+						vim.schedule(function()
+							gs.prev_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true, desc = "Jump to the previous hunk" })
+
+					map("n", "<leader>gs", gs.preview_hunk_inline, { desc = "Preview hunk" })
+					map("n", "<leader>gr", gs.reset_hunk, { desc = "Reset hunk" })
+				end,
+			}
+		end,
 	},
 }
