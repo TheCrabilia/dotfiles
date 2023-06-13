@@ -1,7 +1,7 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		cmd = "Git",
+		event = "VeryLazy",
 		dependencies = { "tpope/vim-rhubarb" },
 		init = function()
 			local set = vim.keymap.set
