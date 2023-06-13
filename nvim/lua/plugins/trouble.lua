@@ -1,6 +1,4 @@
 return {
-	{
-		"folke/trouble.nvim",
-		cmd = "Trouble",
-	},
+	"folke/trouble.nvim",
+	cmd = "Trouble",
 }

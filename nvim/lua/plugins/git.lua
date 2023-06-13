@@ -1,9 +1,8 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		dependencies = {
-			{ "tpope/vim-rhubarb" },
-		},
+		cmd = "Git",
+		dependencies = { "tpope/vim-rhubarb" },
 		init = function()
 			local set = vim.keymap.set
 
@@ -25,7 +24,7 @@ return {
 		opts = function()
 			return {
 				on_attach = function(bufnr)
-					local gs = package.loaded.gitsigns
+					local gs = require("gitsigns")
 
 					local function map(mode, l, r, opts)
 						opts = opts or {}
