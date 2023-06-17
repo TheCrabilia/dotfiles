@@ -173,6 +173,7 @@ return {
 				formatting.beautysh,
 				formatting.fixjson,
 				formatting.terraform_fmt,
+				formatting.prettierd,
 				diagnostics.zsh,
 			}
 		end,
