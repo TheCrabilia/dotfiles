@@ -25,12 +25,12 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lua" },
-				}, {
-					{ name = "path" },
 					{ name = "luasnip", max_item_count = 5 },
 					{ name = "luasnip_choice" },
+					{ name = "nvim_lsp_signature_help" },
+				}, {
+					{ name = "path" },
 				}, {
 					{ name = "copilot" },
 				}, {
