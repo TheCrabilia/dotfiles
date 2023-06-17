@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			{
@@ -25,13 +25,13 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		build = ":MasonUpdate",
 		config = true,
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = { "mason.nvim" },
 		opts = {
 			ensure_installed = {
@@ -66,7 +66,7 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = { "mason.nvim", "nvim-lspconfig" },
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -152,7 +152,7 @@ return {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		dependencies = {
 			"nvim-lspconfig",
 			"nvim-lua/plenary.nvim",

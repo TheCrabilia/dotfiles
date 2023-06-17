@@ -30,16 +30,16 @@ function M.on_attach(_, bufnr)
 	local builtin = require("telescope.builtin")
 	local set = vim.keymap.set
 
-	set("n", "K", vim.lsp.buf.hover, { buffer = 0, remap = false, desc = "Help" })
-	set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = 0, remap = false, desc = "Rename" })
-	set("n", "<leader>lf", function()
-		M.lsp_formatting(bufnr)
-	end, { buffer = 0, remap = false, desc = "Format Document" })
-	set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = 0, remap = false, desc = "Code Action" })
-	set("n", "<leader>ld", builtin.lsp_definitions, { buffer = 0, remap = false, desc = "Definitions" })
-	set("n", "<leader>lt", builtin.lsp_type_definitions, { buffer = 0, remap = false, desc = "Type Definitions" })
-	set("n", "<leader>li", builtin.lsp_implementiotions, { buffer = 0, remap = false, desc = "Implementations" })
-	set("n", "<leader>lR", builtin.lsp_references, { buffer = 0, remap = false, desc = "References" })
+   -- stylua: ignore start
+	set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Help" })
+	set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
+	set("n", "<leader>lf", function() M.lsp_formatting(bufnr) end, { buffer = bufnr, remap = false, desc = "Format Document" })
+	set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code Action" })
+	set("n", "<leader>ld", function() builtin.lsp_definitions() end, { buffer = bufnr, remap = false, desc = "Definitions" })
+	set("n", "<leader>lt", function() builtin.lsp_type_definitions() end, { buffer = bufnr, remap = false, desc = "Type Definitions" })
+	set("n", "<leader>li", function() builtin.lsp_implementations() end, { buffer = bufnr, remap = false, desc = "Implementations" })
+	set("n", "<leader>lR", function() builtin.lsp_references() end, { buffer = bufnr, remap = false, desc = "References" })
+	-- stylua: ignore end
 end
 
 function M.handlers()

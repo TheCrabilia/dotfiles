@@ -54,9 +54,8 @@ return {
 			require("telescope").load_extension(ext)
 		end
 
-		set("n", "<leader>e", function()
-			telescope.extensions.file_browser.file_browser({ path = "%:p:h", respect_gitignore = false })
-		end, { desc = "File Browser" })
+      -- stylua: ignore start
+		set("n", "<leader>e", function() telescope.extensions.file_browser.file_browser({ path = "%:p:h", respect_gitignore = false }) end, { desc = "File Browser" })
 		set("n", "<leader>ff", utils.find_files, { desc = "Find Files" })
 		set("n", "<leader>fg", utils.git_files, { desc = "Find Files" })
 		set("n", "<leader>fo", builtin.oldfiles, { desc = "Old Files" })
@@ -66,10 +65,9 @@ return {
 		set("n", "<leader>fb", utils.buffers, { desc = "Buffers" })
 		set("n", "<leader>ft", builtin.treesitter, { desc = "Buffer symbols" })
 		set("n", "<leader>gb", builtin.git_branches, { desc = "Branches" })
-		set("n", "<leader>fp", function()
-			telescope.extensions.project.project({ display_type = "full" })
-		end, { desc = "List Projects" })
+		set("n", "<leader>fp", function() telescope.extensions.project.project({ display_type = "full" }) end, { desc = "List Projects" })
 		set("n", "<leader>fdn", utils.find_in_nvim_config, { desc = "Search nvim config files" })
 		set("n", "<leader>fdz", utils.find_in_zsh_config, { desc = "Search zsh config files" })
+		-- stylua: ignore end
 	end,
 }
