@@ -14,6 +14,7 @@ zmodule zsh-users/zsh-syntax-highlighting
 
 zmodule TheCrabilia/completion
 zmodule TheCrabilia/zim-modules --root zoxide
+zmodule TheCrabilia/zim-modules --root fzf
 
 # Tools
 zmodule joke/zim-rtx
