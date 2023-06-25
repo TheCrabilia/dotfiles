@@ -7,5 +7,5 @@ experimental = true
 [tools]
 python = "3.11.3"
 go = "1.20.3"
-node = "18"
+node = "latest"
 java = "20"
