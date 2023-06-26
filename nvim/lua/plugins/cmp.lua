@@ -25,14 +25,11 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "nvim_lua" },
 					{ name = "luasnip", max_item_count = 5 },
 					{ name = "luasnip_choice" },
 					{ name = "nvim_lsp_signature_help" },
 				}, {
 					{ name = "path" },
-				}, {
-					{ name = "copilot" },
 				}, {
 					{ name = "buffer" },
 				}),
@@ -120,11 +117,6 @@ return {
 		dependencies = { "nvim-cmp" },
 	},
 	{
-		"hrsh7th/cmp-nvim-lua",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
 		"hrsh7th/cmp-buffer",
 		event = "InsertEnter",
 		dependencies = { "nvim-cmp" },
@@ -161,6 +153,7 @@ return {
 	},
 	{
 		"zbirenbaum/copilot-cmp",
+		enabled = false,
 		event = "InsertEnter",
 		dependencies = { "nvim-cmp" },
 		cond = function()

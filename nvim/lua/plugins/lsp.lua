@@ -7,7 +7,7 @@ return {
 			{
 				"folke/neodev.nvim",
 				event = { "BufEnter *.lua" },
-				config = true,
+				opts = {},
 			},
 		},
 		config = function()
