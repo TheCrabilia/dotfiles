@@ -29,16 +29,16 @@ return {
 					ls.expand_or_jump()
 				end
 			end, { silent = true, desc = "Expand current snippet or jump to the next" })
-			set({ "i", "s" }, "<C-j>", function()
-				if ls.is_jumpable(-1) then
-					ls.jump(-1)
-				end
-			end, { silent = true, desc = "Jump to previous snippet" })
-			set("i", "<C-l>", function()
-				if ls.choice_active() then
-					ls.change_choice(1)
-				end
-			end, { silent = true, desc = "Select node from list" })
+			-- set({ "i", "s" }, "<C-j>", function()
+			-- 	if ls.is_jumpable(-1) then
+			-- 		ls.jump(-1)
+			-- 	end
+			-- end, { silent = true, desc = "Jump to previous snippet" })
+			-- set("i", "<C-l>", function()
+			-- 	if ls.choice_active() then
+			-- 		ls.change_choice(1)
+			-- 	end
+			-- end, { silent = true, desc = "Select node from list" })
 
 			require("snippets").load()
 		end,
