@@ -582,6 +582,7 @@ key_bindings:
   - { key: 33,        mods: Alt,        chars: "\x1b["                }
   - { key: 30,        mods: Alt,        chars: "\x1b]"                }
   - { key: Backslash, mods: Alt,        chars: "\\"                   }
+  - { key: Key6,      mods: Control,    chars: "\x1e"                 }
 
   - { key: Space,   mods: Alt,      chars: " "                        }
   - { key: Left,    mods: Alt,      chars: "\x1bb"                    }
