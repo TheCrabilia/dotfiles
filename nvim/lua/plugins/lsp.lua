@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			{
@@ -10,28 +10,18 @@ return {
 				opts = {},
 			},
 		},
-		config = function()
-			-- Disable semantic token provider for all LSP servers
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("lsp-semantic-tokens", { clear = true }),
-				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if client.name ~= "null-ls" then
-						client.server_capabilities.semanticTokensProvider = false
-					end
-				end,
-			})
-		end,
 	},
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
-		build = ":MasonUpdate",
-		config = true,
+		build = function()
+			vim.cmd.MasonUpdate()
+		end,
+		cmd = "Mason",
+		opts = {},
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		lazy = false,
+		event = "VeryLazy",
 		dependencies = { "mason.nvim" },
 		opts = {
 			ensure_installed = {
@@ -61,12 +51,12 @@ return {
 				"ruff",
 				"tflint",
 			},
-			auto_update = false,
+			auto_update = true,
 		},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = { "mason.nvim", "nvim-lspconfig" },
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -123,7 +113,7 @@ return {
 				end,
 				["pyright"] = function()
 					lspconfig.pyright.setup({
-						on_attach = function(client, _)
+						on_attach = function(client)
 							client.server_capabilities.codeActionProvider = false
 						end,
 						handlers = vim.tbl_extend(
@@ -145,6 +135,60 @@ return {
 						},
 					})
 				end,
+				["gopls"] = function()
+					lspconfig.gopls.setup({
+						on_attach = function(client, bufnr)
+							client.server_capabilities.semanticTokensProvider = {
+								full = true,
+								legend = {
+									tokenTypes = {
+										"namespace",
+										"type",
+										"class",
+										"enum",
+										"interface",
+										"struct",
+										"typeParameter",
+										"parameter",
+										"variable",
+										"property",
+										"enumMember",
+										"event",
+										"function",
+										"method",
+										"macro",
+										"keyword",
+										"modifier",
+										"comment",
+										"string",
+										"number",
+										"regexp",
+										"operator",
+										"decorator",
+									},
+									tokenModifiers = {
+										"declaration",
+										"definition",
+										"readonly",
+										"static",
+										"deprecated",
+										"abstract",
+										"async",
+										"modification",
+										"documentation",
+										"defaultLibrary",
+									},
+								},
+							}
+							require("utils.lsp").on_attach(_, bufnr)
+						end,
+						settings = {
+							gopls = {
+								semanticTokens = true,
+							},
+						},
+					})
+				end,
 				-- Disable jdtls LSP server
 				["jdtls"] = function() end,
 			})
@@ -152,29 +196,31 @@ return {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"nvim-lspconfig",
 			"nvim-lua/plenary.nvim",
 		},
-		opts = function(_, opts)
+		opts = function()
 			local formatting = require("null-ls").builtins.formatting
 			local diagnostics = require("null-ls").builtins.diagnostics
-			opts.sources = {
-				formatting.black.with({
-					extra_args = { "-l", "120" },
-				}),
-				formatting.ruff.with({
-					extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
-				}),
-				formatting.stylua,
-				formatting.gofmt,
-				formatting.goimports,
-				formatting.beautysh,
-				formatting.fixjson,
-				formatting.terraform_fmt,
-				formatting.prettierd,
-				diagnostics.zsh,
+			return {
+				sources = {
+					formatting.black.with({
+						extra_args = { "-l", "120" },
+					}),
+					formatting.ruff.with({
+						extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
+					}),
+					formatting.stylua,
+					formatting.gofmt,
+					formatting.goimports,
+					formatting.beautysh,
+					formatting.fixjson,
+					formatting.terraform_fmt,
+					formatting.prettierd,
+					diagnostics.zsh,
+				},
 			}
 		end,
 	},
