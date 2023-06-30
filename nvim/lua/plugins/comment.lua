@@ -3,6 +3,9 @@ return {
 	event = { "InsertEnter" },
 	opts = function()
 		return {
+			filetype_commentstring = {
+				["terraform-vars"] = "#%s",
+			},
 			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 		}
 	end,
@@ -10,6 +13,8 @@ return {
 		require("Comment").setup(opts)
 
 		local ft = require("Comment.ft")
-		ft.set("terraform-vars", "#%s")
+		for filetype, commentstring in pairs(opts.filetype_commentstring) do
+			ft.set(filetype, commentstring)
+		end
 	end,
 }

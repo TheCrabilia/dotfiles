@@ -48,12 +48,6 @@ return {
 					lualine_y = {},
 					lualine_z = {},
 				},
-				-- winbar = {
-				-- 	lualine_a = { "buffers" },
-				-- },
-				-- inactive_winbar = {
-				-- 	lualine_a = { "buffers" },
-				-- },
 				extensions = {
 					ext.fugitive,
 					ext.nvim_dap_ui,

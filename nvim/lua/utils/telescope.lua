@@ -4,7 +4,7 @@ if not ts_ok then
 end
 
 local find_files_theme = require("telescope.themes").get_dropdown({
-	winblend = 10,
+	winblend = 0,
 	width = 0.5,
 	prompt = " ",
 	results_height = 15,

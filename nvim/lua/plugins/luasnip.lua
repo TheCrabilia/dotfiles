@@ -4,6 +4,9 @@ return {
 		version = "1.*",
 		build = "make install_jsregexp",
 		event = "InsertEnter",
+		dependencies = {
+			{ "rafamadriz/friendly-snippets", enabled = false },
+		},
 		opts = function()
 			local types = require("luasnip.util.types")
 			return {
@@ -19,35 +22,19 @@ return {
 				},
 			}
 		end,
-		config = function(_, opts)
-			local ls = require("luasnip")
-			ls.setup(opts)
-
-			local set = vim.keymap.set
-			set({ "i", "s" }, "<C-k>", function()
-				if ls.expand_or_jumpable() then
-					ls.expand_or_jump()
-				end
-			end, { silent = true, desc = "Expand current snippet or jump to the next" })
-			-- set({ "i", "s" }, "<C-j>", function()
-			-- 	if ls.is_jumpable(-1) then
-			-- 		ls.jump(-1)
-			-- 	end
-			-- end, { silent = true, desc = "Jump to previous snippet" })
-			-- set("i", "<C-l>", function()
-			-- 	if ls.choice_active() then
-			-- 		ls.change_choice(1)
-			-- 	end
-			-- end, { silent = true, desc = "Select node from list" })
-
-			require("snippets").load()
-		end,
-	},
-	{
-		"rafamadriz/friendly-snippets",
-		event = "InsertEnter",
-		dependencies = {
-			"LuaSnip",
+		keys = {
+			{
+				"<C-k>",
+				mode = { "i", "s" },
+				function()
+					local ls = require("luasnip")
+					if ls.expand_or_jumpable() then
+						ls.expand_or_jump()
+					end
+				end,
+				silent = true,
+				desc = "Expand current snippet or jump to the next",
+			},
 		},
 	},
 }

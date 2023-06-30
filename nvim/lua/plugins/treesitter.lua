@@ -69,7 +69,7 @@ return {
 		"windwp/nvim-autopairs",
 		event = { "InsertEnter" },
 		dependencies = { "nvim-treesitter" },
-		config = true,
+		opts = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",

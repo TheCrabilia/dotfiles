@@ -14,22 +14,73 @@ return {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
-
-			local set = vim.keymap.set
-			set("n", "<leader>ps", dap.continue, { desc = "Start Debug Session" })
-			set("n", "<leader>pt", dap.terminate, { desc = "Terminate Debug Session" })
-			set("n", "<leader>pb", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-			set("n", "<leader>pB", dap.set_breakpoint, { desc = "Set Breadpoint" })
-			set("n", "<leader>plp", function()
-				dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-			end, { desc = "Set Breakpoint with Log Point Message" })
-			set("n", "<leader>puo", dapui.open, { desc = "Open DAP UI" })
-			set("n", "<leader>puc", dapui.close, { desc = "Close DAP UI" })
-			set("n", "<F1>", dap.step_out, { desc = "Debug Step Out" })
-			set("n", "<F2>", dap.step_into, { desc = "Debug Step Into" })
-			set("n", "<F3>", dap.step_over, { desc = "Debug Step Over" })
-			set("n", "<F4>", dap.continue, { desc = "Debug Continue" })
 		end,
+		keys = {
+			{
+				"<leader>ps",
+				mode = "n",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Start Debug Session",
+			},
+			{
+				"<leader>pt",
+				mode = "n",
+				function()
+					require("dap").terminate()
+				end,
+				desc = "Terminate Debug Session",
+			},
+			{
+				"<leader>pb",
+				mode = "n",
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				desc = "Toggle Breakpoint",
+			},
+			{
+				"<leader>plp",
+				mode = "n",
+				function()
+					require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+				end,
+				desc = "Set Breakpoint with Log Point Message",
+			},
+			{
+				"<F1>",
+				mode = "n",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "Debug Step Out",
+			},
+			{
+				"<F2>",
+				mode = "n",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Debug Step Into",
+			},
+			{
+				"<F3>",
+				mode = "n",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "Debug Step Over",
+			},
+			{
+				"<F4>",
+				mode = "n",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Debug Continue",
+			},
+		},
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -53,12 +104,30 @@ return {
 				},
 			},
 		},
+		keys = {
+			{
+				"<leader>puo",
+				mode = "n",
+				function()
+					require("dapui").open()
+				end,
+				desc = "Open UI",
+			},
+			{
+				"<leader>puc",
+				mode = "n",
+				function()
+					require("dapui").close()
+				end,
+				desc = "Close UI",
+			},
+		},
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"mason.nvim",
-			"nvim-dap",
 		},
 		opts = {
 			ensure_installed = { "javadbg", "python" },
@@ -67,9 +136,7 @@ return {
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
-		dependencies = {
-			"nvim-dap",
-		},
-		config = true,
+		dependencies = { "nvim-dap" },
+		opts = {},
 	},
 }

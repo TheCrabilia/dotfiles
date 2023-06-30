@@ -10,17 +10,12 @@ return {
 			buftypes = { "Telescope" },
 			filetypes = { "TelescopePrompt" },
 		},
-	},
-	config = function(_, opts)
-		local wk = require("which-key")
-		wk.setup(opts)
-
-		local nvim_tmux_nav = require("nvim-tmux-navigation")
-		local keymaps = {
+		keymaps = {
+			-- Misc keymaps
 			{
-				["L"] = { vim.cmd.bnext, "Next Buffer" },
-				["H"] = { vim.cmd.bprevious, "Previous Buffer" },
 				["J"] = { "mzJ'z", "Join lines" },
+				["<C-d>"] = { "<C-d>zz", "Page down" },
+				["<C-u>"] = { "<C-u>zz", "Page up" },
 				mode = "n",
 			},
 			{
@@ -36,14 +31,27 @@ return {
 				["<leader>y"] = { '"+y', "Copy to system clipboard" },
 				mode = { "v", "n" },
 			},
+			-- Intermediate keymap descriptions
 			{
-				["<M-h>"] = { nvim_tmux_nav.NvimTmuxNavigateLeft, "Jump to left window" },
-				["<M-j>"] = { nvim_tmux_nav.NvimTmuxNavigateDown, "Jump to bottom window" },
-				["<M-k>"] = { nvim_tmux_nav.NvimTmuxNavigateUp, "Jump to top window" },
-				["<M-l>"] = { nvim_tmux_nav.NvimTmuxNavigateRight, "Jump to right window" },
-				mode = { "n", "t" },
+				["<leader>"] = {
+					["f"] = {
+						desc = "Find",
+						["d"] = { desc = "Dot files" },
+					},
+					["g"] = { desc = "Git" },
+					["h"] = { desc = "Harpoon" },
+					["l"] = { desc = "LSP" },
+					["p"] = {
+						desc = "Debug",
+						["u"] = { desc = "UI" },
+					},
+				},
 			},
-		}
-		wk.register(keymaps)
+		},
+	},
+	config = function(_, opts)
+		local wk = require("which-key")
+		wk.setup(opts)
+		wk.register(opts.keymaps)
 	end,
 }
