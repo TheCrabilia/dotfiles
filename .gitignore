@@ -5,4 +5,5 @@ nvim/plugin/*
 **/.luarc.json
 lazy-lock.json
 
-tmux/plugins
+tmux/plugins/*
+!tmux/plugins/tpm
