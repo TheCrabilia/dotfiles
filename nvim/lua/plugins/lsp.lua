@@ -189,6 +189,32 @@ return {
 						},
 					})
 				end,
+				["yamlls"] = function()
+					lspconfig.yamlls.setup({
+						on_attach = require("utils.lsp").on_attach,
+						settings = {
+							yaml = {
+								schemaStore = {
+									enable = true,
+									url = "https://www.schemastore.org/api/json/catalog.json",
+								},
+							},
+						},
+					})
+				end,
+				["jsonls"] = function()
+					lspconfig.jsonls.setup({
+						on_attach = require("utils.lsp").on_attach,
+						settings = {
+							json = {
+								schemas = require("schemastore").json.schemas(),
+								validate = {
+									enable = true,
+								},
+							},
+						},
+					})
+				end,
 				-- Disable jdtls LSP server
 				["jdtls"] = function() end,
 			})
