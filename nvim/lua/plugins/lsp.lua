@@ -113,22 +113,20 @@ return {
 				end,
 				["pyright"] = function()
 					lspconfig.pyright.setup({
-						on_attach = function(client)
-							client.server_capabilities.codeActionProvider = false
-						end,
-						handlers = vim.tbl_extend(
-							"force",
-							require("utils.lsp").handlers(),
-							{ ["textDocument/publishDiagnostics"] = function() end }
-						),
+						on_attach = require("utils.lsp").on_attach,
+						handlers = require("utils.lsp").handlers(),
 						flags = {
 							debounce_text_changes = 150,
 						},
 						settings = {
 							pyright = {
+								disableOrganizeImports = true,
+							},
+							python = {
 								alalysis = {
 									autoSearchPaths = true,
-									typeCheckingMode = "basic",
+									diagnosticMode = "workspace",
+									typeCheckingMode = "strict",
 									useLibraryCodeForTypes = true,
 								},
 							},
