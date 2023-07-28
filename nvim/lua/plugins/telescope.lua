@@ -1,10 +1,8 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.2",
-	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-project.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -27,17 +25,13 @@ return {
 					},
 				},
 			},
-			extensions_enable = { "fzf", "file_browser", "project" },
+			extensions_enable = { "fzf", "project" },
 			extensions = {
 				fzf = {
 					fuzzy = true,
 					override_generic_sorter = true,
 					override_file_sorter = true,
 					case_mode = "smart_case",
-				},
-				file_browser = {
-					theme = "ivy",
-					hijack_netrw = true,
 				},
 			},
 		}
@@ -51,17 +45,6 @@ return {
 		end
 	end,
 	keys = {
-		{
-			"<leader>e",
-			mode = "n",
-			function()
-				require("telescope").extensions.file_browser.file_browser({
-					path = "%:p:h",
-					respect_gitignore = false,
-				})
-			end,
-			desc = "File Browser",
-		},
 		{
 			"<leader>ff",
 			mode = "n",
