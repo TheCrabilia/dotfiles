@@ -5,7 +5,7 @@ always_keep_download = false
 experimental = true
 
 [tools]
-python = "3.11.3"
-go = "1.20.3"
+python = "latest"
+go = "latest"
 node = "latest"
-java = "20"
+java = "latest"
