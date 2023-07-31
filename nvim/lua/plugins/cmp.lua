@@ -25,9 +25,9 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "luasnip", max_item_count = 5 },
 					{ name = "luasnip_choice" },
-					{ name = "nvim_lsp_signature_help" },
 				}, {
 					{ name = "path" },
 				}, {
@@ -38,33 +38,6 @@ return {
 						mode = "text",
 						maxwidth = 50,
 						ellipsis_chat = "...",
-						symbol_map = {
-							Text = "󰉿",
-							Method = "󰆧",
-							Function = "󰊕",
-							Constructor = "",
-							Field = "󰜢",
-							Variable = "󰀫",
-							Class = "󰠱",
-							Interface = "",
-							Module = "",
-							Property = "󰜢",
-							Unit = "󰑭",
-							Value = "󰎠",
-							Enum = "",
-							Keyword = "󰌋",
-							Snippet = "",
-							Color = "󰏘",
-							File = "󰈙",
-							Reference = "󰈇",
-							Folder = "󰉋",
-							EnumMember = "",
-							Constant = "󰏿",
-							Struct = "󰙅",
-							Event = "",
-							Operator = "󰆕",
-							TypeParameter = "",
-						},
 					}),
 				},
 				experimental = {
@@ -102,9 +75,9 @@ return {
 			cmp.setup.cmdline(":", {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
 					{ name = "cmdline" },
+				}, {
+					{ name = "path" },
 				}),
 			})
 
