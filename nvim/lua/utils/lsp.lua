@@ -59,4 +59,39 @@ function M.handlers()
 	}
 end
 
+-- Automate pylsp module installation in it's virtual environment
+function M.mason_post_install(pkg)
+	if pkg.name ~= "python-lsp-server" then
+		return
+	end
+
+	local venv = vim.fn.stdpath("data") .. "/mason/packages/python-lsp-server/venv"
+	local Job = require("plenary.job")
+
+	Job:new({
+		command = venv .. "/bin/pip",
+		args = {
+			"install",
+			"--upgrade",
+			"--disable-pip-version-check",
+			"python-lsp-ruff",
+		},
+		cwd = venv,
+		env = { VIRTUAL_ENV = venv },
+		on_exit = function()
+			print("Finished installing pylsp modules.")
+		end,
+		on_start = function()
+			print("Installing pylsp modules...")
+		end,
+	}):start()
+end
+
+function M.set_default_config(opts)
+	opts = opts or {}
+
+	local lspconfig = require("lspconfig")
+	lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, opts)
+end
+
 return M

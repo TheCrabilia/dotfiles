@@ -10,14 +10,31 @@ return {
 				opts = {},
 			},
 		},
+		config = function()
+			require("utils.lsp").set_default_config({
+				on_attach = require("utils.lsp").on_attach,
+				handlers = require("utils.lsp").handlers(),
+				flags = {
+					debounce_text_changes = 150,
+				},
+			})
+		end,
 	},
 	{
 		"williamboman/mason.nvim",
 		build = function()
 			vim.cmd.MasonUpdate()
 		end,
-		cmd = "Mason",
-		opts = {},
+		cmd = { "Mason", "MasonInstall", "MasonUninstall" },
+		config = function()
+			require("mason").setup()
+
+			-- Run custom mason post install handlers
+			require("mason-registry"):on(
+				"package:install:success",
+				vim.schedule_wrap(require("utils.lsp").mason_post_install)
+			)
+		end,
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -35,10 +52,9 @@ return {
 				"lua-language-server",
 				"marksman",
 				"nginx-language-server",
-				"pyright",
-				"ruff-lsp",
 				"terraform-ls",
 				"vim-language-server",
+				"python-lsp-server",
 
 				-- Formatters
 				"beautysh",
@@ -61,23 +77,8 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			require("mason-lspconfig").setup_handlers({
-				-- Default handler
-				function(server_name)
-					lspconfig[server_name].setup({
-						on_attach = require("utils.lsp").on_attach,
-						handlers = require("utils.lsp").handlers(),
-						flags = {
-							debounce_text_changes = 150,
-						},
-					})
-				end,
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup({
-						on_attach = require("utils.lsp").on_attach,
-						handlers = require("utils.lsp").handlers(),
-						flags = {
-							debounce_text_changes = 150,
-						},
 						settings = {
 							Lua = {
 								runtime = { version = "LuaJIT" },
@@ -97,38 +98,24 @@ return {
 						},
 					})
 				end,
-				["ruff_lsp"] = function()
-					lspconfig.ruff_lsp.setup({
-						on_attach = require("utils.lsp").on_attach,
-						handlers = require("utils.lsp").handlers(),
-						flags = {
-							debounce_text_changes = 150,
-						},
-						init_options = {
-							settings = {
-								args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
+				["pylsp"] = function()
+					lspconfig.pylsp.setup({
+						settings = {
+							pylsp = {
+								plugins = {
+									ruff = {
+										enabled = true,
+									},
+								},
 							},
 						},
 					})
 				end,
-				["pyright"] = function()
-					lspconfig.pyright.setup({
-						on_attach = require("utils.lsp").on_attach,
-						handlers = require("utils.lsp").handlers(),
-						flags = {
-							debounce_text_changes = 150,
-						},
-						settings = {
-							pyright = {
-								disableOrganizeImports = true,
-							},
-							python = {
-								alalysis = {
-									autoSearchPaths = true,
-									diagnosticMode = "workspace",
-									typeCheckingMode = "strict",
-									useLibraryCodeForTypes = true,
-								},
+				["ruff_lsp"] = function()
+					lspconfig.ruff_lsp.setup({
+						init_options = {
+							settings = {
+								args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
 							},
 						},
 					})
@@ -189,7 +176,6 @@ return {
 				end,
 				["yamlls"] = function()
 					lspconfig.yamlls.setup({
-						on_attach = require("utils.lsp").on_attach,
 						settings = {
 							yaml = {
 								schemaStore = {
@@ -202,7 +188,6 @@ return {
 				end,
 				["jsonls"] = function()
 					lspconfig.jsonls.setup({
-						on_attach = require("utils.lsp").on_attach,
 						settings = {
 							json = {
 								schemas = require("schemastore").json.schemas(),

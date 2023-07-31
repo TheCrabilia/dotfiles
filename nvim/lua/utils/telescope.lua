@@ -5,7 +5,7 @@ end
 
 local find_files_theme = require("telescope.themes").get_dropdown({
 	winblend = 0,
-	width = 0.5,
+	width = 0.7,
 	prompt = " ",
 	results_height = 15,
 	previewer = false,
@@ -39,9 +39,17 @@ function M.find_files()
 		no_ignore = true,
 		file_ignore_patterns = {
 			".git/",
-			".cache",
-			"%.class",
+
+			-- Node
 			"node_modules",
+
+			-- Python
+			".venv",
+			"__pycache__",
+			"%.pyc",
+
+			-- Java
+			"%.class",
 		},
 	}
 	builtin.find_files(vim.tbl_extend("force", find_files_theme, opts))
