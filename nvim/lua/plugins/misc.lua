@@ -43,6 +43,7 @@ return {
 					"dapui_stacks",
 					"dap-repl",
 					"tsplayground",
+					"oil",
 				},
 			})
 		end,
@@ -74,6 +75,7 @@ return {
 				"dapui_stacks",
 				"dap-repl",
 				"tsplayground",
+				"oil",
 			},
 		},
 	},
