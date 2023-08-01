@@ -8,8 +8,8 @@ local find_files_theme = require("telescope.themes").get_dropdown({
 	prompt = " ",
 	previewer = false,
 	layout_config = {
-		width = 0.8,
-		height = 0.6,
+		width = 0.7,
+		height = 0.3,
 	},
 })
 
