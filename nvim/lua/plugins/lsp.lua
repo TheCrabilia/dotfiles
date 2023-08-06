@@ -43,7 +43,6 @@ return {
 		opts = {
 			ensure_installed = {
 				-- Language servers
-				"actionlint",
 				"bash-language-server",
 				"gopls",
 				"html-lsp",
@@ -58,13 +57,10 @@ return {
 
 				-- Formatters
 				"beautysh",
-				"black",
 				"stylua",
 				"fixjson",
 
 				-- Linters
-				"commitlint",
-				"ruff",
 				"tflint",
 			},
 			auto_update = true,
@@ -77,6 +73,9 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					lspconfig[server_name].setup({})
+				end,
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup({
 						settings = {
@@ -105,17 +104,26 @@ return {
 								plugins = {
 									ruff = {
 										enabled = true,
+										select = { "ALL" },
+										ignore = { "T", "D407" },
+										format = { "ALL" },
+										exclude = {
+											".git",
+											".venv",
+											"venv",
+											"__pycache__",
+										},
+										lineLength = 120,
+									},
+									black = {
+										enabled = true,
+										line_length = 120,
+									},
+									rope_autoimport = {
+										enabled = true,
+										memory = true,
 									},
 								},
-							},
-						},
-					})
-				end,
-				["ruff_lsp"] = function()
-					lspconfig.ruff_lsp.setup({
-						init_options = {
-							settings = {
-								args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
 							},
 						},
 					})
@@ -215,12 +223,6 @@ return {
 			local diagnostics = require("null-ls").builtins.diagnostics
 			return {
 				sources = {
-					formatting.black.with({
-						extra_args = { "-l", "120" },
-					}),
-					formatting.ruff.with({
-						extra_args = { "--config=$HOME/.config/nvim/configs/pyproject.toml" },
-					}),
 					formatting.stylua,
 					formatting.gofmt,
 					formatting.goimports,

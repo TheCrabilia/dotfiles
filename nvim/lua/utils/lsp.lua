@@ -3,7 +3,7 @@ local M = {}
 function M.lsp_formatting(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			return client.name == "null-ls"
+			return client.name == "null-ls" or client.name == "pylsp"
 		end,
 		bufnr = bufnr,
 		timeout_ms = 2000,
@@ -31,14 +31,14 @@ function M.on_attach(_, bufnr)
 	local set = vim.keymap.set
 
    -- stylua: ignore start
-	set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Help" })
-	set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
-	set("n", "<leader>lf", function() M.lsp_formatting(bufnr) end, { buffer = bufnr, remap = false, desc = "Format Document" })
-	set("n", "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code Action" })
-	set("n", "<leader>ld", function() builtin.lsp_definitions() end, { buffer = bufnr, remap = false, desc = "Definitions" })
-	set("n", "<leader>lt", function() builtin.lsp_type_definitions() end, { buffer = bufnr, remap = false, desc = "Type Definitions" })
-	set("n", "<leader>li", function() builtin.lsp_implementations() end, { buffer = bufnr, remap = false, desc = "Implementations" })
-	set("n", "<leader>lR", function() builtin.lsp_references() end, { buffer = bufnr, remap = false, desc = "References" })
+   set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Help" })
+   set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
+   set("n", "<leader>lf", function() M.lsp_formatting(bufnr) end, { buffer = bufnr, remap = false, desc = "Format Document" })
+   set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code Action" })
+   set("n", "<leader>ld", function() builtin.lsp_definitions() end, { buffer = bufnr, remap = false, desc = "Definitions" })
+   set("n", "<leader>lt", function() builtin.lsp_type_definitions() end, { buffer = bufnr, remap = false, desc = "Type Definitions" })
+   set("n", "<leader>li", function() builtin.lsp_implementations() end, { buffer = bufnr, remap = false, desc = "Implementations" })
+   set("n", "<leader>lR", function() builtin.lsp_references() end, { buffer = bufnr, remap = false, desc = "References" })
 	-- stylua: ignore end
 end
 
@@ -75,6 +75,8 @@ function M.mason_post_install(pkg)
 			"--upgrade",
 			"--disable-pip-version-check",
 			"python-lsp-ruff",
+			"python-lsp-black",
+			"pylsp-rope",
 		},
 		cwd = venv,
 		env = { VIRTUAL_ENV = venv },
