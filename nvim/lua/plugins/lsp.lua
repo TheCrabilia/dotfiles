@@ -105,7 +105,7 @@ return {
 									ruff = {
 										enabled = true,
 										select = { "ALL" },
-										ignore = { "T", "D407" },
+										ignore = { "T", "D407", "FIX" },
 										format = { "ALL" },
 										exclude = {
 											".git",
