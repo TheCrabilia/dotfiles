@@ -44,6 +44,7 @@ function M.find_files()
 
 			-- Node
 			"node_modules",
+			".angular",
 
 			-- Python
 			".venv",

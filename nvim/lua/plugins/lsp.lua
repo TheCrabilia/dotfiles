@@ -51,16 +51,19 @@ return {
 				"lua-language-server",
 				"marksman",
 				"nginx-language-server",
+				"ruff-lsp",
 				"terraform-ls",
 				"vim-language-server",
-				"python-lsp-server",
+				"pyright",
 
 				-- Formatters
 				"beautysh",
-				"stylua",
+				"black",
 				"fixjson",
+				"stylua",
 
 				-- Linters
+				"ruff",
 				"tflint",
 			},
 			auto_update = true,
@@ -97,6 +100,14 @@ return {
 						},
 					})
 				end,
+				["ruff_lsp"] = function()
+					lspconfig.ruff_lsp.setup({
+						on_attach = function(client, bufnr)
+							client.server_capabilities.hoverProvider = false
+							require("utils.lsp").on_attach(client, bufnr)
+						end,
+					})
+				end,
 				["pylsp"] = function()
 					lspconfig.pylsp.setup({
 						settings = {
@@ -130,51 +141,7 @@ return {
 				end,
 				["gopls"] = function()
 					lspconfig.gopls.setup({
-						on_attach = function(client, bufnr)
-							client.server_capabilities.semanticTokensProvider = {
-								full = true,
-								legend = {
-									tokenTypes = {
-										"namespace",
-										"type",
-										"class",
-										"enum",
-										"interface",
-										"struct",
-										"typeParameter",
-										"parameter",
-										"variable",
-										"property",
-										"enumMember",
-										"event",
-										"function",
-										"method",
-										"macro",
-										"keyword",
-										"modifier",
-										"comment",
-										"string",
-										"number",
-										"regexp",
-										"operator",
-										"decorator",
-									},
-									tokenModifiers = {
-										"declaration",
-										"definition",
-										"readonly",
-										"static",
-										"deprecated",
-										"abstract",
-										"async",
-										"modification",
-										"documentation",
-										"defaultLibrary",
-									},
-								},
-							}
-							require("utils.lsp").on_attach(_, bufnr)
-						end,
+						on_attach = require("utils.lsp").on_attach,
 						settings = {
 							gopls = {
 								semanticTokens = true,
@@ -223,6 +190,8 @@ return {
 			local diagnostics = require("null-ls").builtins.diagnostics
 			return {
 				sources = {
+					formatting.black,
+					formatting.ruff,
 					formatting.stylua,
 					formatting.gofmt,
 					formatting.goimports,

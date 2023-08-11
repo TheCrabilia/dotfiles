@@ -3,7 +3,7 @@ local M = {}
 function M.lsp_formatting(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
-			local allowed_clients = { "null-ls", "pylsp" }
+			local allowed_clients = { "null-ls" }
 			return vim.tbl_contains(allowed_clients, client.name)
 		end,
 		bufnr = bufnr,
