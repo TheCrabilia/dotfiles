@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-_auto_ls () {
+_autols () {
     emulate -L zsh
     (( ${+commands[exa]} )) && exa || ls
 }

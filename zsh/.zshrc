@@ -5,6 +5,29 @@
 ## Plugin manager
 ZIM_HOME=$XDG_DATA_HOME/zim
 
+## Set up path and fpath
+typeset -aU path
+typeset -aU fpath
+path=(
+    $HOME/.local/scripts
+    $HOME/.local/bin
+    /usr/local/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    $HOME/.cargo/bin
+    /usr/bin
+    /usr/sbin
+    /bin
+    /sbin
+)
+fpath=(
+    /opt/homebrew/share/zsh/site-functions
+    /opt/homebrew/share/zsh/functions
+    $XDG_DATA_HOME/zsh/site-functions
+    $XDG_CONFIG_HOME/zsh/site-functions
+    $fpath
+)
+
 zstyle ':zim:completion' dumpfile ${XDG_CACHE_HOME}/zsh/zcompdump
 zstyle ':zim:completion' compcache ${XDG_CACHE_HOME}/zsh/zcompcache
 zstyle ':zim:completion' case-sensitivity sensitive

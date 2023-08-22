@@ -3,28 +3,6 @@
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
-## Set up path and fpath
-typeset -aU path
-typeset -aU fpath
-
-path=(
-    $HOME/.local/scripts
-    $HOME/.local/bin
-    /usr/local/bin
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    $HOME/.cargo/bin
-    /usr/bin
-    /usr/sbin
-    /bin
-    /sbin
-)
-fpath=(
-    /opt/homebrew/share/zsh/functions
-    /opt/homebrew/share/zsh/site-functions
-    $XDG_DATA_HOME/zsh/site-functions
-    $XDG_CONFIG_HOME/zsh/site-functions
-)
 
 ## Load zsh functions
 local autoloaded_functions=(
@@ -46,8 +24,8 @@ unset autoloaded_functions
 local corp_proxy="off"
 
 # Auto ls
-autoload -Uz _auto_ls
-add-zsh-hook chpwd _auto_ls
+autoload -Uz _autols
+add-zsh-hook chpwd _autols
 
 # Proxy auto configuration for corporate network
 if [[ $corp_proxy == "on" ]]; then
