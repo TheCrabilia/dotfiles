@@ -3,7 +3,23 @@ return {
 	lazy = false,
 	cmd = { "TodoTrouble", "TodoTelescope" },
 	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {},
+	opts = {
+		highlight = {
+			keyword = "fg",
+			pattern = [[.*<(KEYWORDS)(.*)\s*:]],
+		},
+		search = {
+			command = "rg",
+			args = {
+				"--color=never",
+				"--no-heading",
+				"--with-filename",
+				"--line-number",
+				"--column",
+			},
+			pattern = [[\b(KEYWORDS)(.*):]],
+		},
+	},
 	keys = {
 		{
 			"]t",
