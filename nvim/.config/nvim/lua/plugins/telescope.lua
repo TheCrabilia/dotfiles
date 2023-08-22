@@ -4,7 +4,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"ThePrimeagen/git-worktree.nvim",
-		"nvim-telescope/telescope-project.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -27,7 +26,7 @@ return {
 					},
 				},
 			},
-			extensions_enable = { "fzf", "project", "git_worktree", "file_browser" },
+			extensions_enable = { "fzf", "git_worktree", "file_browser" },
 			extensions = {
 				fzf = {
 					fuzzy = true,
@@ -39,10 +38,10 @@ return {
 					theme = "dropdown",
 					hijack_netrw = true,
 					previewer = false,
-               hidden = {
-                  file_browser = true,
-                  folder_browser = true,
-               },
+					hidden = {
+						file_browser = true,
+						folder_browser = true,
+					},
 					layout_config = {
 						width = 0.7,
 						height = 0.3,
@@ -142,14 +141,6 @@ return {
 				require("telescope").extensions.git_worktree.git_worktrees()
 			end,
 			desc = "Git Worktrees",
-		},
-		{
-			"<leader>fp",
-			mode = "n",
-			function()
-				require("telescope").extensions.project.project({ display_type = "full" })
-			end,
-			desc = "List Projects",
 		},
 		{
 			"<leader>fdn",
