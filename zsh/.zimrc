@@ -14,7 +14,7 @@ zmodule TheCrabilia/zim-modules --root zoxide
 zmodule TheCrabilia/zim-modules --root fzf
 
 # Tools
-zmodule joke/zim-rtx
+# zmodule joke/zim-rtx
 zmodule TheCrabilia/zim-modules --root 1password
 zmodule TheCrabilia/zim-modules --root colima
 zmodule TheCrabilia/zim-modules --root styra

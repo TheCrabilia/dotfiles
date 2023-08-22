@@ -3,6 +3,29 @@
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
+## Set up path and fpath
+typeset -aU path
+typeset -aU fpath
+
+path=(
+    $HOME/.local/scripts
+    $HOME/.local/bin
+    /usr/local/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    $HOME/.cargo/bin
+    /usr/bin
+    /usr/sbin
+    /bin
+    /sbin
+)
+fpath=(
+    /opt/homebrew/share/zsh/functions
+    /opt/homebrew/share/zsh/site-functions
+    $XDG_DATA_HOME/zsh/site-functions
+    $XDG_CONFIG_HOME/zsh/site-functions
+)
+
 ## Load zsh functions
 local autoloaded_functions=(
     dotfiles
@@ -51,3 +74,5 @@ if [[ -d $ZIM_HOME/modules/zsh-autosuggestions ]]; then
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE=("git *| rsync *| scp *")
     ZSH_AUTOSUGGEST_USE_ASYNC="yes"
 fi
+
+eval "$(rtx activate zsh)"
