@@ -12,7 +12,7 @@
 	prune = true
 [core]
 	editor = nvim
-	excludesFile = /Users/ispirts/.gitignore_global
+	excludesFile = ${HOME}/.gitignore_global
 [merge]
   tool = fugitive
 [mergetool]

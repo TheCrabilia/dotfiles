@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+# TODO: Add support for linux
+
+_swproxy () {
+    is_corpnet () {
+        local airport="/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport"
+        [[ $($airport -I | awk -F ": " '/ SSID/ {print $2}') == "corpnet01" ]] && true || false
+    }
+    is_vpn () {
+        return $(ifconfig | grep -E "^utun" -A 2 | grep -E "inet .*? -->" &>/dev/null)$?
+    }
+    if is_corpnet || is_vpn; then
+        export HTTP_PROXY="http://aproxy.corproot.net:8080"
+        export HTTPS_PROXY="http://aproxy.corproot.net:8080"
+        export NO_PROXY="localhost,127.0.0.1/32,.swisscom.com,.swisscom.ch,.corproot.net,192.168.5.0/24"
+        export http_proxy=$HTTP_PROXY
+        export https_proxy=$HTTPS_PROXY
+        export no_proxy=$NO_PROXY
+    else
+        unset HTTP_PROXY HTTPS_PROXY NO_PROXY http_proxy https_proxy no_proxy
+    fi
+}

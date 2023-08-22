@@ -2,18 +2,15 @@
 
 set -e
 
-# Stow zsh config files
-stow -v --target="$HOME" --dotfiles zsh
-
 config_pkg=(
     alacritty
+    bin
     nvim
     rtx
     tmux
+    zsh
 )
-for pkg in $config_pkg; do
-    [[ ! -d ${XDG_CONFIG_HOME:-$HOME/.config}/$pkg ]] && mkdir ${XDG_CONFIG_HOME:-$HOME/.config}/$pkg
-    stow -v --target=${XDG_CONFIG_HOME:-$HOME/.config}/$pkg $pkg
-done
 
-# vim:ft=zsh
+for pkg in $config_pkg; do
+    stow -v --target=$HOME $pkg
+done

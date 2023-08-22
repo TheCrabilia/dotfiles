@@ -1,9 +1,9 @@
 .DS_Store
 
-zsh/custom.zsh
-nvim/plugin/*
 **/.luarc.json
-lazy-lock.json
+**/lazy-lock.json
 
-tmux/plugins/*
-!tmux/plugins/tpm
+tmux/.config/tmux/plugins/*
+!tmux/.config/tmux/plugins/tpm
+
+**/*.zwc

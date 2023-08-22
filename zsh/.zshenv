@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # disable global RCS files
 unsetopt global_rcs
 
@@ -17,18 +19,7 @@ if [[ -z $TMUX ]]; then
     export LC_ALL='en_US.UTF-8'
     export SHELL=$(which zsh)
 
-    typeset -aU path
-    path=(
-        $HOME/.local/bin
-        /usr/local/bin
-        /opt/homebrew/bin
-        /opt/homebrew/sbin
-        $HOME/.cargo/bin
-        /usr/bin
-        /usr/sbin
-        /bin
-        /sbin
-    )
+    export PATH=/opt/homebrew/bin:$PATH
 
     # Default pager
     (( ${+commands[less]} )) && () {
@@ -51,5 +42,3 @@ if [[ -z $TMUX ]]; then
     done
     unset editors
 fi
-
-# vim:ft=zsh

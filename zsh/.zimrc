@@ -1,7 +1,4 @@
-zmodule TheCrabilia/zim-modules --root aliases
 zmodule TheCrabilia/zim-modules --root environment
-zmodule TheCrabilia/zim-modules --root functions
-zmodule TheCrabilia/zim-modules --root hooks
 zmodule TheCrabilia/zim-modules --root input
 zmodule TheCrabilia/zim-modules --root prompt
 

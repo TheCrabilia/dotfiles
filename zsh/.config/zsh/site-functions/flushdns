@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+flushdns() {
+    if [[ $OSTYPE == darwin* ]]; then
+        sudo dscacheutil -flushcache && \
+        sudo killall -HUP mDNSResponder
+    else
+        sudo killall -HUP dnsmasq
+    fi
+}

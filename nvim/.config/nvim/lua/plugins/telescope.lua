@@ -39,6 +39,10 @@ return {
 					theme = "dropdown",
 					hijack_netrw = true,
 					previewer = false,
+               hidden = {
+                  file_browser = true,
+                  folder_browser = true,
+               },
 					layout_config = {
 						width = 0.7,
 						height = 0.3,
