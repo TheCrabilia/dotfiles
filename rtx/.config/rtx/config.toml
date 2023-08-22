@@ -8,4 +8,4 @@ experimental = true
 python = "latest"
 go = "latest"
 node = "latest"
-java = "latest"
+java = "20"

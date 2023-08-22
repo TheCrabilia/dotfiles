@@ -8,6 +8,7 @@ typeset -aU path
 typeset -aU fpath
 
 path=(
+    $HOME/.local/scripts
     $HOME/.local/bin
     /usr/local/bin
     /opt/homebrew/bin
