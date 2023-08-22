@@ -234,10 +234,10 @@ live_config_reload: true
 #   - (Windows) powershell
 shell:
   program: /opt/homebrew/bin/zsh
-  args:
-    - -l
-    - -c
-    - "tmux new-session -ADs main"
+  # args:
+  #   - -l
+  #   - -c
+  #   - "tmux new-session -ADs main"
 
 # Startup directory
 #
