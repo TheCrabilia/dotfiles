@@ -1,8 +1,18 @@
 local M = {}
 
+local function fugitive_branch()
+	return " " .. vim.fn.FugitiveHead()
+end
+
 M.extensions = {}
 
 M.extensions.fugitive = {
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { fugitive_branch },
+		lualine_x = { "filetype" },
+		lualine_z = { "location" },
+	},
 	winbar = {
 		lualine_a = {
 			function()
@@ -52,29 +62,22 @@ M.extensions.help = {
 
 M.extensions.telescope = {
 	sections = {
-		lualine_a = {
-			"mode",
-		},
-		lualine_b = {
-			"branch",
-		},
-		lualine_c = {},
-		lualine_x = {
-			{
-				"fileformat",
-				icons_enabled = true,
-				symbols = {
-					unix = "LF",
-					dos = "CRLF",
-					mac = "CR",
-				},
-			},
-			"filetype",
-		},
-		lualine_y = { "progress" },
+		lualine_a = { "mode" },
+		lualine_b = { fugitive_branch },
+		lualine_x = { "filetype" },
 		lualine_z = { "location" },
 	},
 	filetypes = { "TelescopePrompt" },
+}
+
+M.extensions.lazy = {
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { fugitive_branch },
+		lualine_x = { "filetype" },
+		lualine_z = { "location" },
+	},
+	filetypes = { "lazy" },
 }
 
 return M

@@ -2,7 +2,11 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		priority = 999,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"vim-fugitive",
+		},
 		opts = function()
 			local ext = require("utils.lualine").extensions
 			return {
@@ -10,6 +14,8 @@ return {
 					icons_enabled = true,
 					theme = "auto",
 					globalstatus = true,
+					component_separators = { left = "|", right = "|" },
+					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
 						statusline = {},
 						winbar = {
@@ -22,8 +28,16 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = { "filename" },
+					lualine_b = {
+						{ "FugitiveHead", icon = "" },
+						{
+							"diagnostics",
+							symbols = { error = "E", warn = "W", info = "I", hint = "H" },
+						},
+					},
+					lualine_c = {
+						{ "filename", path = 4 },
+					},
 					lualine_x = {
 						"encoding",
 						{
@@ -35,7 +49,7 @@ return {
 								mac = "CR",
 							},
 						},
-						"filetype",
+						{ "filetype", icons_enabled = false },
 					},
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -50,8 +64,9 @@ return {
 				},
 				extensions = {
 					ext.fugitive,
-					ext.nvim_dap_ui,
 					ext.help,
+					ext.lazy,
+					ext.nvim_dap_ui,
 					ext.telescope,
 				},
 			}
