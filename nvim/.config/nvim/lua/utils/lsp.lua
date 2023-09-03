@@ -9,7 +9,6 @@ function M.lsp_formatting(bufnr)
 		bufnr = bufnr,
 		timeout_ms = 2000,
 	})
-	vim.cmd.write()
 end
 
 function M.on_attach(_, bufnr)

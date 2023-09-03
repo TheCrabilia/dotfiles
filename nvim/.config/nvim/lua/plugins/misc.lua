@@ -1,33 +1,5 @@
 return {
 	{
-		"echasnovski/mini.ai",
-		version = false,
-		event = { "BufReadPre", "BufNewFile" },
-		main = "mini.ai",
-		dependencies = {
-			{
-				"echasnovski/mini.nvim",
-				version = false,
-			},
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-		},
-		opts = function()
-			local ai = require("mini.ai")
-			return {
-				n_lines = 500,
-				custom_textobjects = {
-					o = ai.gen_spec.treesitter({
-						a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-					}, {}),
-					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
-					C = ai.gen_spec.treesitter({ a = "@call.outer", i = "@call.inner" }, {}),
-				},
-			}
-		end,
-	},
-	{
 		"RRethy/vim-illuminate",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
@@ -51,6 +23,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
+		enabled = false,
 		opts = {
 			char = "┆",
 			use_treesitter = true,
