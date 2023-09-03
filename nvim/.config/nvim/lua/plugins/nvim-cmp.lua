@@ -1,9 +1,18 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"nvim-lspconfig",
 			"onsails/lspkind.nvim",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"saadparwaiz1/cmp_luasnip",
+			"petertriho/cmp-git",
+			"doxnit/cmp-luasnip-choice",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -16,13 +25,17 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<Tab>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
 				}),
+				completion = {
+					completeopt = "menu,menuone,preview,noselect",
+				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lsp_signature_help" },
@@ -48,7 +61,6 @@ return {
 		end,
 		config = function(_, opts)
 			local cmp = require("cmp")
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			cmp.setup(opts)
 
 			cmp.setup.filetype("gitcommit", {
@@ -81,56 +93,10 @@ return {
 				}),
 			})
 
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-buffer",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-path",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-cmdline",
-		event = "CmdlineChanged",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp-signature-help",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"petertriho/cmp-git",
-		event = "CmdlineChanged",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"saadparwaiz1/cmp_luasnip",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"doxnit/cmp-luasnip-choice",
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		enabled = false,
-		event = "InsertEnter",
-		dependencies = { "nvim-cmp" },
-		cond = function()
-			return require("utils.lazy").has("copilot.lua")
+			-- NOTE: Not sure that this is useful
+
+			-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 }

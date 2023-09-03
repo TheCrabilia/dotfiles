@@ -94,46 +94,4 @@ return {
 			end
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		build = function()
-			vim.cmd.MasonUpdate()
-		end,
-		cmd = { "Mason", "MasonInstall", "MasonUninstall" },
-		config = function()
-			require("mason").setup()
-
-			-- Run custom mason post install handlers
-			require("mason-registry"):on(
-				"package:install:success",
-				vim.schedule_wrap(require("utils.lsp").mason_post_install)
-			)
-		end,
-	},
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"nvim-lspconfig",
-			"nvim-lua/plenary.nvim",
-		},
-		opts = function()
-			local formatting = require("null-ls").builtins.formatting
-			local diagnostics = require("null-ls").builtins.diagnostics
-			return {
-				sources = {
-					formatting.black,
-					formatting.ruff,
-					formatting.stylua,
-					formatting.gofmt,
-					formatting.goimports,
-					formatting.beautysh,
-					formatting.fixjson,
-					formatting.terraform_fmt,
-					formatting.prettierd,
-					diagnostics.zsh,
-				},
-			}
-		end,
-	},
 }

@@ -9,7 +9,7 @@ local find_files_theme = require("telescope.themes").get_dropdown({
 	previewer = false,
 	layout_config = {
 		width = 0.7,
-		height = 0.3,
+		height = 0.5,
 	},
 })
 

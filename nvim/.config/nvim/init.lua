@@ -13,7 +13,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Source vim options
 require("opts")
 
-require("lazy").setup({ import = "plugins" }, {
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+		{ import = "plugins.colorscheme" },
+		{ import = "plugins.lsp" },
+		{ import = "plugins.treesitter" },
+	},
 	defaults = {
 		lazy = true,
 		version = nil,
