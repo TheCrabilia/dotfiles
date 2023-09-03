@@ -1,20 +1,29 @@
 # Dotfiles
 
-## Manual installation
+## MacOS installation
 
-### MacOS
-
-1. Install required packages
+1. Install packages from Homebrew bundle
 
 ```bash
-brew install zsh neovim fzf exa zoxide bat fd binutils findutils coreutils grep
+brew bundle --file Brewfile
 ```
 
-2. Install nerd font
+2. Restow configuration files
 
 ```bash
-brew tap homebrew/cask-fonts
-brew install font-fira-code-nerd-font
+zsh restow
+```
+
+3. Run git set up script
+
+```bash
+zsh setup-git
+```
+
+4. Run 1password set up script
+
+```bash
+zsh setup-1password
 ```
 
 ## Additiaonal MacOS configurations
