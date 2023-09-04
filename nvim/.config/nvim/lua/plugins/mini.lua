@@ -24,13 +24,13 @@ return {
 		config = function(_, opts)
 			require("mini.indentscope").setup(opts)
 
-			-- vim.api.nvim_create_autocmd("BufEnter", {
-			-- 	group = vim.api.nvim_create_augroup("MiniIndentscope", { clear = true }),
-			-- 	pattern = opts.disable_filetypes,
-			-- 	callback = function()
-			-- 		vim.b.miniindentscope_disable = true
-			-- 	end,
-			-- })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = vim.api.nvim_create_augroup("MiniIndentscope", { clear = true }),
+				pattern = opts.disable_filetypes,
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
 		end,
 	},
 	{
