@@ -1,6 +1,6 @@
 return {
 	"alexghergh/nvim-tmux-navigation",
-	lazy = false,
+	event = "VeryLazy",
 	opts = {
 		disable_when_zoomed = true,
 	},

@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		enabled = false,
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
@@ -84,6 +85,7 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		enabled = false,
 		dependencies = { "nvim-dap" },
 		opts = {
 			layouts = {
@@ -125,6 +127,7 @@ return {
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		dependencies = {
 			"mason.nvim",
@@ -136,6 +139,7 @@ return {
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
+		enabled = false,
 		dependencies = { "nvim-dap" },
 		opts = {},
 	},
