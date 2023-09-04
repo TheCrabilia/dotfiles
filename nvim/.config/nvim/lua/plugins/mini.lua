@@ -24,8 +24,8 @@ return {
 		config = function(_, opts)
 			require("mini.indentscope").setup(opts)
 
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = vim.api.nvim_create_augroup("MiniIndentscope", { clear = true }),
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("mini_indentscope", { clear = true }),
 				pattern = opts.disable_filetypes,
 				callback = function()
 					vim.b.miniindentscope_disable = true
