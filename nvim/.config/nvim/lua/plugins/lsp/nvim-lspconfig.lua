@@ -37,13 +37,29 @@ return {
 						},
 					},
 				},
-				-- TODO: Configure pyright
-				pyright = {},
+				pyright = {
+					on_attach = function(client)
+						client.server_capabilities.codeActionProvider = false
+					end,
+					handlers = vim.tbl_extend("force", require("utils.lsp").handlers(), {
+						["textDocument/publishDiagnostics"] = function() end,
+					}),
+					settings = {
+						pyright = {
+							disableOrganizeImports = true,
+						},
+					},
+				},
 				ruff_lsp = {
 					on_attach = function(client, bufnr)
 						client.server_capabilities.hoverProvider = false
 						require("utils.lsp").on_attach(client, bufnr)
 					end,
+					init_options = {
+						settings = {
+							args = {},
+						},
+					},
 				},
 				gopls = {
 					settings = {
