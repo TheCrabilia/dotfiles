@@ -4,36 +4,6 @@ return {
 		version = false,
 	},
 	{
-		"echasnovski/mini.indentscope",
-		version = false,
-		event = { "BufReadPre", "BufNewFile" },
-		main = "mini.indentscope",
-		dependencies = { "mini.nvim" },
-		opts = function()
-			return {
-				disable_filetypes = {
-					"lazy",
-					"help",
-				},
-				draw = {
-					animation = require("mini.indentscope").gen_animation.none(),
-				},
-				symbol = "┆",
-			}
-		end,
-		config = function(_, opts)
-			require("mini.indentscope").setup(opts)
-
-			vim.api.nvim_create_autocmd("FileType", {
-				group = vim.api.nvim_create_augroup("mini_indentscope", { clear = true }),
-				pattern = opts.disable_filetypes,
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
-	},
-	{
 		"echasnovski/mini.ai",
 		version = false,
 		event = { "BufReadPre", "BufNewFile" },
