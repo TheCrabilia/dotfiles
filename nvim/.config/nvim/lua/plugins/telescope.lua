@@ -81,14 +81,6 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>fg",
-			mode = "n",
-			function()
-				require("utils.telescope").git_files()
-			end,
-			desc = "Find Git Files",
-		},
-		{
 			"<leader>fl",
 			mode = "n",
 			function()
@@ -103,14 +95,6 @@ return {
 				require("telescope.builtin").help_tags()
 			end,
 			desc = "Help Tags",
-		},
-		{
-			"<leader>fk",
-			mode = "n",
-			function()
-				require("telescope.builtin").keymaps()
-			end,
-			desc = "Keymaps",
 		},
 		{
 			"<leader>fb",
@@ -129,6 +113,14 @@ return {
 			desc = "Buffer symbols",
 		},
 		{
+			"<leader>fd",
+			mode = "n",
+			function()
+				require("telescope.builtin").diagnostics()
+			end,
+			desc = "Workspace Diagnostics",
+		},
+		{
 			"<leader>gb",
 			mode = "n",
 			function()
@@ -143,22 +135,6 @@ return {
 				require("telescope").extensions.git_worktree.git_worktrees()
 			end,
 			desc = "Git Worktrees",
-		},
-		{
-			"<leader>fdn",
-			mode = "n",
-			function()
-				require("utils.telescope").find_in_nvim_config()
-			end,
-			desc = "Search nvim config files",
-		},
-		{
-			"<leader>fdz",
-			mode = "n",
-			function()
-				require("utils.telescope").find_in_zsh_config()
-			end,
-			desc = "Search zsh config files",
 		},
 	},
 }
