@@ -1,6 +1,6 @@
 return {
 	"williamboman/mason.nvim",
-	event = "VeryLazy",
+	lazy = false,
 	build = function()
 		vim.cmd.MasonUpdate()
 	end,

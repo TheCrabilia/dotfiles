@@ -1,5 +1,7 @@
+-- TODO: Remove if formatter.nvim works well
 return {
 	"jose-elias-alvarez/null-ls.nvim",
+	enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "plenary.nvim" },
 	opts = function()
