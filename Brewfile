@@ -38,6 +38,7 @@ brew "watch"
 brew "wget"
 brew "xclip"
 brew "zsh"
+brew "gpg"
 
 # Kubernetes
 brew "helm"
