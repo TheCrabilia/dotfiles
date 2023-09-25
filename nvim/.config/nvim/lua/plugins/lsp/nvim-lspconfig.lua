@@ -7,10 +7,14 @@ return {
 		"cmp-nvim-lsp",
 	},
 	opts = function()
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 		return {
 			default = {
 				on_attach = require("utils.lsp").on_attach,
 				handlers = require("utils.lsp").handlers(),
+				capabilities = capabilities,
 				flags = {
 					debounce_text_changes = 150,
 				},
@@ -22,7 +26,7 @@ return {
 						Lua = {
 							runtime = { version = "LuaJIT" },
 							diagnostics = {
-								disable = { "undefined-doc-name" },
+								disable = { "undefined-doc-name", "missing-fields" },
 								globals = { "vim" },
 							},
 							workspace = {
