@@ -7,19 +7,25 @@ return {
 					require("formatter.filetypes.lua").stylua,
 				},
 				python = {
-					require("formatter.filetypes.python").black,
 					function()
 						return {
 							exe = "ruff",
-							args = { "--fix", "-e", "-n", "--stdin-filename", vim.api.nvim_buf_get_name(0), "-" },
+							args = {
+								"--fix",
+								"-e",
+								"-n",
+								"--stdin-filename",
+								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
+							},
 							stdin = true,
 							no_append = true,
 						}
 					end,
+					require("formatter.filetypes.python").black,
 				},
 				go = {
-					require("formatter.filetypes.go").gofmt,
 					require("formatter.filetypes.go").goimports,
+					require("formatter.filetypes.go").gofmt,
 				},
 				toml = {
 					require("formatter.filetypes.toml").taplo,
@@ -38,6 +44,19 @@ return {
 				},
 				graphql = {
 					require("formatter.filetypes.graphql").prettierd,
+				},
+				cpp = {
+					function()
+						return {
+							exe = "clang-format",
+							args = {
+								"-assume-filename",
+								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
+							},
+							stdin = true,
+							try_node_modules = true,
+						}
+					end,
 				},
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,

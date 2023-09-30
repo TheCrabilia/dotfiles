@@ -92,6 +92,11 @@ return {
 						},
 					},
 				},
+				clangd = {
+					capabilities = vim.tbl_extend("force", capabilities, {
+						offsetEncoding = { "utf-16" },
+					}),
+				},
 				dockerls = {},
 				marksman = {},
 				terraformls = {},
