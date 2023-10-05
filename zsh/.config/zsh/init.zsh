@@ -30,7 +30,7 @@ add-zsh-hook chpwd _autols
 # Proxy auto configuration for corporate network
 if [[ $corp_proxy == "on" ]]; then
     autoload -Uz _swproxy
-    add-zsh-hook precmd _swproxy
+    add-zsh-hook preexec _swproxy
 fi
 unset corp_proxy
 

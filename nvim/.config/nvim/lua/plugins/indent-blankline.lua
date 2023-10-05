@@ -9,7 +9,7 @@ return {
 		},
 		scope = {
 			enabled = true,
-			context_char = "│",
+			char = "│",
 			show_start = false,
 			show_end = false,
 		},
