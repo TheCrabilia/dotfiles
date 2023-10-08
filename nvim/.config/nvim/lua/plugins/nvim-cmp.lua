@@ -27,6 +27,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lsp_signature_help" },
+					{ name = "neorg" },
 					{ name = "luasnip", max_item_count = 5 },
 					{ name = "luasnip_choice" },
 				}, {
@@ -124,7 +125,7 @@ return {
 	},
 	{
 		"doxnit/cmp-luasnip-choice",
-		enabled = false,
+		enabled = true,
 		event = { "InsertEnter" },
 		dependencies = { "nvim-cmp" },
 	},
