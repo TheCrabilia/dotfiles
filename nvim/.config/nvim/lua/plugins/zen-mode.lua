@@ -3,7 +3,7 @@ return {
 	cmd = { "ZenMode" },
 	opts = {
 		window = {
-			width = 1,
+         width = 0.9,
 			height = 1,
 			options = {
 				signcolumn = "no",
