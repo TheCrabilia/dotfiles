@@ -19,6 +19,7 @@ require("lazy").setup({
 		{ import = "plugins.colorscheme" },
 		{ import = "plugins.lsp" },
 		{ import = "plugins.treesitter" },
+		{ import = "plugins.git" },
 	},
 	defaults = {
 		lazy = true,
