@@ -8,7 +8,7 @@ return {
 			char = "┆",
 		},
 		scope = {
-			enabled = true,
+			enabled = false,
 			char = "│",
 			show_start = false,
 			show_end = false,
