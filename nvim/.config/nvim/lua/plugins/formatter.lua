@@ -69,7 +69,7 @@ return {
 			"<leader>lf",
 			mode = "n",
 			function()
-				vim.cmd.Format()
+				vim.cmd.FormatLock()
 			end,
 			desc = "Format file",
 		},
