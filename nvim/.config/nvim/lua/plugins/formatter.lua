@@ -45,16 +45,27 @@ return {
 				graphql = {
 					require("formatter.filetypes.graphql").prettierd,
 				},
+				c = {
+					function()
+						return {
+							exe = "clang-format",
+							args = {
+								"--style='{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 120}'",
+								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
+							},
+							stdin = true,
+						}
+					end,
+				},
 				cpp = {
 					function()
 						return {
 							exe = "clang-format",
 							args = {
-								"-assume-filename",
+								"--style='{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 120}'",
 								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
 							},
 							stdin = true,
-							try_node_modules = true,
 						}
 					end,
 				},
