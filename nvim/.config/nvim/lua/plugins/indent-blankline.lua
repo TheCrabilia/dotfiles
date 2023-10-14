@@ -1,6 +1,5 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	main = "ibl",
 	version = "3.*",
@@ -16,6 +15,7 @@ return {
 		},
 		exclude = {
 			filetypes = {
+				"DressingInput",
 				"checkhelth",
 				"dap-repl",
 				"dapui_breakpoints",
@@ -31,7 +31,6 @@ return {
 				"man",
 				"mason",
 				"tsplayground",
-				"DressingInput",
 			},
 		},
 	},
