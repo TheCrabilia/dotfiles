@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
-	event = { "InsertEnter" },
+	event = { "BufReadPost", "BufNewFile" },
 	opts = function()
 		return {
 			filetype_commentstring = {

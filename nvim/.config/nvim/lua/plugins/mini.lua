@@ -6,7 +6,7 @@ return {
 	{
 		"echasnovski/mini.ai",
 		version = false,
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		main = "mini.ai",
 		dependencies = {
 			"mini.nvim",
