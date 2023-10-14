@@ -1,8 +1,14 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"onsails/lspkind.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -52,14 +58,6 @@ return {
 			local cmp = require("cmp")
 			cmp.setup(opts)
 
-			cmp.setup.filetype("gitcommit", {
-				sources = cmp.config.sources({
-					{ name = "cmp_git" },
-				}, {
-					{ name = "buffer" },
-				}),
-			})
-
 			cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
 				sources = {
 					{ name = "dap" },
@@ -72,61 +70,6 @@ return {
 					{ name = "buffer" },
 				},
 			})
-
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "cmdline" },
-				}, {
-					{ name = "path" },
-				}),
-			})
-
-			-- NOTE: Not sure that this is useful
-
-			-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-buffer",
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-path",
-		event = { "InsertEnter", "CmdlineEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-cmdline",
-		event = { "CmdlineEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp-signature-help",
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"petertriho/cmp-git",
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"saadparwaiz1/cmp_luasnip",
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
-	},
-	{
-		"doxnit/cmp-luasnip-choice",
-		enabled = true,
-		event = { "InsertEnter" },
-		dependencies = { "nvim-cmp" },
 	},
 }

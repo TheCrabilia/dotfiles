@@ -34,10 +34,7 @@ return {
 			-- Intermediate keymap descriptions
 			{
 				["<leader>"] = {
-					["f"] = {
-						desc = "Find",
-						["d"] = { desc = "Dot files" },
-					},
+					["f"] = { desc = "Find" },
 					["g"] = { desc = "Git" },
 					["h"] = { desc = "Harpoon" },
 					["l"] = { desc = "LSP" },

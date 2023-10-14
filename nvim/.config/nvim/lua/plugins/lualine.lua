@@ -5,7 +5,6 @@ return {
 		priority = 999,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"vim-fugitive",
 		},
 		opts = function()
 			local ext = require("utils.lualine").extensions
@@ -29,7 +28,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = {
-						{ "FugitiveHead", icon = "" },
+						{ "branch" },
 						{
 							"diagnostics",
 							symbols = { error = "E", warn = "W", info = "I", hint = "H" },
@@ -42,7 +41,6 @@ return {
 						"encoding",
 						{
 							"fileformat",
-							icons_enabled = true,
 							symbols = {
 								unix = "LF",
 								dos = "CRLF",
@@ -55,19 +53,12 @@ return {
 					lualine_z = { "location" },
 				},
 				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
 					lualine_c = { "filename" },
 					lualine_x = { "location" },
-					lualine_y = {},
-					lualine_z = {},
 				},
 				extensions = {
-					ext.fugitive,
-					ext.help,
-					ext.lazy,
+					ext.common,
 					ext.nvim_dap_ui,
-					ext.telescope,
 				},
 			}
 		end,

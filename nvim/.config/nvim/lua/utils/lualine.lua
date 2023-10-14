@@ -1,26 +1,19 @@
 local M = {}
 
-local function fugitive_branch()
-	return " " .. vim.fn.FugitiveHead()
-end
-
 M.extensions = {}
 
-M.extensions.fugitive = {
+M.extensions.common = {
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { fugitive_branch },
+		lualine_b = { "branch" },
 		lualine_x = { "filetype" },
 		lualine_z = { "location" },
 	},
-	winbar = {
-		lualine_a = {
-			function()
-				return "Fugitive"
-			end,
-		},
+	filetypes = {
+		"fugitive",
+		"TelescopePrompt",
+		"lazy",
 	},
-	filetypes = { "fugitive" },
 }
 
 M.extensions.nvim_dap_ui = {
@@ -47,37 +40,6 @@ M.extensions.nvim_dap_ui = {
 		"dapui_stacks",
 		"dap-repl",
 	},
-}
-
-M.extensions.help = {
-	winbar = {
-		lualine_a = {
-			function()
-				return "Help"
-			end,
-		},
-	},
-	filetypes = { "help" },
-}
-
-M.extensions.telescope = {
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { fugitive_branch },
-		lualine_x = { "filetype" },
-		lualine_z = { "location" },
-	},
-	filetypes = { "TelescopePrompt" },
-}
-
-M.extensions.lazy = {
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { fugitive_branch },
-		lualine_x = { "filetype" },
-		lualine_z = { "location" },
-	},
-	filetypes = { "lazy" },
 }
 
 return M
