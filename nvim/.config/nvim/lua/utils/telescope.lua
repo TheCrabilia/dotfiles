@@ -20,15 +20,15 @@ function M.find_files()
 		hidden = true,
 		no_ignore = true,
 		file_ignore_patterns = {
-			".git",
+			"^.git/",
 
 			-- Node
-			"node_modules",
-			".angular",
+			"^node_modules/",
+			"^.angular/",
 
 			-- Python
-			".venv",
-			"__pycache__",
+			"^.venv/",
+			"^__pycache__/",
 			"%.pyc",
 
 			-- Java
