@@ -2,7 +2,7 @@
 return {
 	"jose-elias-alvarez/null-ls.nvim",
 	enabled = false,
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPost", "BufNewFile" },
 	dependencies = { "plenary.nvim" },
 	opts = function()
 		local formatting = require("null-ls").builtins.formatting
