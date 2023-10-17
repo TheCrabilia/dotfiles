@@ -6,8 +6,9 @@ return {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-cmdline",
+			"FelipeLema/cmp-async-path",
 			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
@@ -28,7 +29,7 @@ return {
 					}),
 				}),
 				completion = {
-					completeopt = "menu,menuone,preview,noselect",
+					completeopt = "menu,menuone,preview,noselect,noinsert",
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
@@ -37,19 +38,16 @@ return {
 					{ name = "luasnip", max_item_count = 5 },
 					{ name = "luasnip_choice" },
 				}, {
-					{ name = "path" },
+					{ name = "async_path" },
 				}, {
 					{ name = "buffer" },
 				}),
 				formatting = {
 					format = require("lspkind").cmp_format({
 						mode = "text",
-						maxwidth = 50,
-						ellipsis_chat = "...",
+						maxwidth = 30,
+						ellipsis_char = "...",
 					}),
-				},
-				experimental = {
-					ghost_text = false,
 				},
 				preselect = cmp.PreselectMode.None,
 			}
@@ -58,17 +56,20 @@ return {
 			local cmp = require("cmp")
 			cmp.setup(opts)
 
-			cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-				sources = {
-					{ name = "dap" },
-				},
-			})
-
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
 					{ name = "buffer" },
 				},
+			})
+
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "async_path", keyword_length = 3 },
+				}, {
+					{ name = "cmdline", keyword_length = 3 },
+				}),
 			})
 		end,
 	},
