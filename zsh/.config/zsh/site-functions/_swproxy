@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 _swproxy () {
-    if nc -z aproxy.corproot.net 8080 &>/dev/null; then
+    if nc -z -w 1 aproxy.corproot.net 8080 &>/dev/null; then
         export HTTP_PROXY="http://aproxy.corproot.net:8080"
         export HTTPS_PROXY="http://aproxy.corproot.net:8080"
         export NO_PROXY="localhost,127.0.0.1/32,.swisscom.com,.swisscom.ch,.corproot.net,192.168.5.0/24"
