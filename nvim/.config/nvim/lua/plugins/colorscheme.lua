@@ -39,8 +39,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-         variant = "moon",
-      },
+			variant = "moon",
+		},
 		config = function(_, opts)
 			require("rose-pine").setup(opts)
 			vim.cmd.colorscheme("rose-pine")
