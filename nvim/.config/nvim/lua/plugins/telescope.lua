@@ -1,7 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.4",
-	cmd = "Telescope",
+	cmd = { "Telescope" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"ThePrimeagen/git-worktree.nvim",
@@ -14,6 +14,15 @@ return {
 	opts = function()
 		local actions = require("telescope.actions")
 		local action_layout = require("telescope.actions.layout")
+		local find_files_theme = require("telescope.themes").get_dropdown({
+			winblend = 0,
+			prompt = " ",
+			previewer = false,
+			layout_config = {
+				width = 0.7,
+				height = 0.5,
+			},
+		})
 		return {
 			defaults = {
 				mappings = {
@@ -27,7 +36,37 @@ return {
 					},
 				},
 			},
-			extensions_enable = { "fzf", "git_worktree", "file_browser" },
+			pickers = {
+				find_files = vim.tbl_extend("force", find_files_theme, {
+					hidden = true,
+					no_ignore = true,
+					file_ignore_patterns = {
+						"^.git/",
+
+						-- Node
+						"^node_modules/",
+						"^.angular/",
+
+						-- Python
+						"^.venv/",
+						"^__pycache__/",
+						"%.pyc",
+
+						-- Java
+						"%.class",
+					},
+				}),
+				buffers = {
+					show_all_buffers = true,
+					ignore_current_buffer = true,
+					sort_lastused = true,
+					sort_mru = true,
+				},
+				live_grep = {
+					additional_args = { "--hidden" },
+				},
+			},
+			extensions_enable = { "fzf", "file_browser" },
 			extensions = {
 				fzf = {
 					fuzzy = true,
@@ -59,81 +98,85 @@ return {
 			telescope.load_extension(ext)
 		end
 	end,
-	keys = {
-		{
-			"<leader>e",
-			mode = "n",
-			function()
-				require("telescope").extensions.file_browser.file_browser({
-					path = "%:p:h",
-					respect_gitignore = false,
-				})
-			end,
-			desc = "File Browser",
-		},
-		{
-			"<leader>ff",
-			mode = "n",
-			function()
-				require("utils.telescope").find_files()
-			end,
-			desc = "Find Files",
-		},
-		{
-			"<leader>fl",
-			mode = "n",
-			function()
-				require("telescope.builtin").live_grep()
-			end,
-			desc = "Live Grep",
-		},
-		{
-			"<leader>fh",
-			mode = "n",
-			function()
-				require("telescope.builtin").help_tags()
-			end,
-			desc = "Help Tags",
-		},
-		{
-			"<leader>fb",
-			mode = "n",
-			function()
-				require("utils.telescope").buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			"<leader>ft",
-			mode = "n",
-			function()
-				require("telescope.builtin").treesitter()
-			end,
-			desc = "Buffer symbols",
-		},
-		{
-			"<leader>fd",
-			mode = "n",
-			function()
-				require("telescope.builtin").diagnostics()
-			end,
-			desc = "Workspace Diagnostics",
-		},
-		{
-			"<leader>gb",
-			mode = "n",
-			function()
-				require("telescope.builtin").git_branches()
-			end,
-			desc = "Git Branches",
-		},
-		{
-			"<leader>gw",
-			mode = "n",
-			function()
-				require("telescope").extensions.git_worktree.git_worktrees()
-			end,
-			desc = "Git Worktrees",
-		},
-	},
+	keys = function()
+		local telescope = require("telescope")
+		local builtin = require("telescope.builtin")
+		return {
+			{
+				"<leader>e",
+				mode = "n",
+				function()
+					telescope.extensions.file_browser.file_browser({
+						path = "%:p:h",
+						respect_gitignore = false,
+					})
+				end,
+				desc = "File Browser",
+			},
+			{
+				"<leader>ff",
+				mode = "n",
+				function()
+					builtin.find_files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader>fl",
+				mode = "n",
+				function()
+					builtin.live_grep()
+				end,
+				desc = "Live Grep",
+			},
+			{
+				"<leader>fh",
+				mode = "n",
+				function()
+					builtin.help_tags()
+				end,
+				desc = "Help Tags",
+			},
+			{
+				"<leader>fb",
+				mode = "n",
+				function()
+					builtin.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>ft",
+				mode = "n",
+				function()
+					builtin.treesitter()
+				end,
+				desc = "Buffer symbols",
+			},
+			{
+				"<leader>fd",
+				mode = "n",
+				function()
+					builtin.diagnostics()
+				end,
+				desc = "Workspace Diagnostics",
+			},
+			{
+				"<leader>gb",
+				mode = "n",
+				function()
+					builtin.git_branches()
+				end,
+				desc = "Git Branches",
+			},
+			{
+				"<leader>gw",
+				mode = "n",
+				function()
+					telescope.extensions.git_worktree.git_worktrees()
+				end,
+				desc = "Git Worktrees",
+			},
+		}
+	end,
 }
