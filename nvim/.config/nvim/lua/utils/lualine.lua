@@ -12,7 +12,6 @@ M.extensions.common = {
 	filetypes = {
 		"fugitive",
 		"TelescopePrompt",
-		"lazy",
 	},
 }
 

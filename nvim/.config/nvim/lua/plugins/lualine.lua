@@ -58,7 +58,10 @@ return {
 				},
 				extensions = {
 					ext.common,
-					ext.nvim_dap_ui,
+					require("lualine.extensions.mason"),
+					require("lualine.extensions.lazy"),
+					require("lualine.extensions.nvim-dap-ui"),
+					require("lualine.extensions.quickfix"),
 				},
 			}
 		end,
