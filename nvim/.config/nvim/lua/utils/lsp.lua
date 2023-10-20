@@ -38,6 +38,7 @@ function M.on_attach(_, bufnr)
    set("n", "<leader>lt", function() builtin.lsp_type_definitions() end, { buffer = bufnr, remap = false, desc = "Type Definitions" })
    set("n", "<leader>li", function() builtin.lsp_implementations() end, { buffer = bufnr, remap = false, desc = "Implementations" })
    set("n", "<leader>lR", function() builtin.lsp_references() end, { buffer = bufnr, remap = false, desc = "References" })
+	set("n", "<leader>l/", vim.diagnostic.open_float, { buffer = bufnr, remap = false, desc = "Show current line diagnostics" })
 	-- stylua: ignore end
 end
 
