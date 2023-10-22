@@ -1,10 +1,20 @@
 vim.filetype.add({
 	extension = {
 		tf = function()
-			return "terraform"
+			return "terraform",
+				function()
+					vim.opt_local.tabstop = 2
+					vim.opt_local.shiftwidth = 2
+					vim.opt_local.softtabstop = 2
+				end
 		end,
 		tfvars = function()
-			return "terraform-vars"
+			return "terraform-vars",
+				function()
+					vim.opt_local.tabstop = 2
+					vim.opt_local.shiftwidth = 2
+					vim.opt_local.softtabstop = 2
+				end
 		end,
 		yaml = function()
 			local ft = "yaml"
@@ -18,7 +28,12 @@ vim.filetype.add({
 			then
 				ft = "helm"
 			end
-			return ft
+			return ft,
+				function()
+					vim.opt_local.tabstop = 2
+					vim.opt_local.shiftwidth = 2
+					vim.opt_local.softtabstop = 2
+				end
 		end,
 	},
 	filename = {
