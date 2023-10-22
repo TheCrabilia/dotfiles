@@ -48,8 +48,10 @@ return {
 						"^.angular/",
 
 						-- Python
+						"^venv/",
 						"^.venv/",
 						"^__pycache__/",
+						"^.pytest_cache/",
 						"%.pyc",
 
 						-- Java
