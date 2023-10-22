@@ -19,6 +19,7 @@ require("lazy").setup({
 		{ import = "plugins.lsp" },
 		{ import = "plugins.treesitter" },
 		{ import = "plugins.git" },
+		{ import = "plugins.debugging" },
 	},
 	defaults = {
 		lazy = true,
