@@ -38,5 +38,6 @@ vim.filetype.add({
 	},
 	filename = {
 		["Jenkinsfile"] = "groovy",
+		[os.getenv("HOME") .. "/.kube/config"] = "yaml",
 	},
 })
