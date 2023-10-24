@@ -29,7 +29,11 @@ zsh setup-1password
 ## Additiaonal MacOS configurations
 
 - Disable press and hold popup
+    ```bash
+    defaults write -g ApplePressAndHoldEnabled -bool false
+    ```
 
-```bash
-defaults write -g ApplePressAndHoldEnabled -bool false
-```
+- Fix shared clipboard
+    ```bash
+    defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
+    ```
