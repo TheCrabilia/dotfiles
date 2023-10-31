@@ -8,7 +8,7 @@ return {
 		},
 		disable = {
 			buftypes = { "Telescope" },
-			filetypes = { "TelescopePrompt", "oil" },
+			filetypes = { "TelescopePrompt" },
 		},
 		keymaps = {
 			-- Misc keymaps
