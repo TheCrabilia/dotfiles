@@ -7,5 +7,7 @@ experimental = true
 [tools]
 python = "latest"
 go = "latest"
-node = "latest"
+node = "lts"
 java = "20"
+rust = "latest"
+awscli = "latest"
