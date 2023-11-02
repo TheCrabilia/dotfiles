@@ -42,15 +42,24 @@ return {
 					},
 				},
 				pyright = {
-					on_attach = function(client)
-						client.server_capabilities.codeActionProvider = false
-					end,
-					handlers = vim.tbl_extend("force", require("utils.lsp").handlers(), {
-						["textDocument/publishDiagnostics"] = function() end,
-					}),
+					-- on_attach = function(client)
+					-- 	client.server_capabilities.codeActionProvider = false
+					-- end,
+					-- handlers = vim.tbl_extend("force", require("utils.lsp").handlers(), {
+					-- 	["textDocument/publishDiagnostics"] = function() end,
+					-- }),
 					settings = {
 						pyright = {
 							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								typeCheckingMode = "basic",
+								useLibraryCodeFroTypes = true,
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								diagnosticSeverityOverrides = {},
+							},
 						},
 					},
 				},
