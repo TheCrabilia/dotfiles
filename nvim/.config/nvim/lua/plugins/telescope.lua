@@ -6,6 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"ThePrimeagen/git-worktree.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
+		"TheCrabilia/telescope-http.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -68,7 +69,7 @@ return {
 					additional_args = { "--hidden" },
 				},
 			},
-			extensions_enable = { "fzf", "file_browser" },
+			extensions_enable = { "fzf", "file_browser", "http" },
 			extensions = {
 				fzf = {
 					fuzzy = true,
