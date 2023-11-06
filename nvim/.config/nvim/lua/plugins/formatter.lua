@@ -50,7 +50,7 @@ return {
 						return {
 							exe = "clang-format",
 							args = {
-								"--style='{BasedOnStyle: Google, UseTab: Always, IndentWidth: 8, TabWidth: 8, ColumnLimit: 120}'",
+								"--style='{BasedOnStyle: Google, UseTab: Always, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120}'",
 								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
 							},
 							stdin = true,
@@ -62,7 +62,7 @@ return {
 						return {
 							exe = "clang-format",
 							args = {
-								"--style='{BasedOnStyle: Google, UseTab: Always, IndentWidth: 8, TabWidth: 8, ColumnLimit: 120}'",
+								"--style='{BasedOnStyle: Google, UseTab: Always, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120}'",
 								vim.fn.shellescape(vim.api.nvim_buf_get_name(0), true),
 							},
 							stdin = true,
