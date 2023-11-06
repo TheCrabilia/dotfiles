@@ -57,6 +57,10 @@ return {
 
 						-- Java
 						"%.class",
+
+						-- Terraform
+						"^.terraform/",
+						".terraform.lock.hcl",
 					},
 				}),
 				buffers = {
