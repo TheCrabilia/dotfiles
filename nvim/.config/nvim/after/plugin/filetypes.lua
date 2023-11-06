@@ -1,3 +1,5 @@
+local home = os.getenv("HOME")
+
 vim.filetype.add({
 	extension = {
 		tf = function()
@@ -38,6 +40,7 @@ vim.filetype.add({
 	},
 	filename = {
 		["Jenkinsfile"] = "groovy",
-		[os.getenv("HOME") .. "/.kube/config"] = "yaml",
+		[home .. "/.kube/config"] = "yaml",
+		[home .. "/.terraformrc"] = "terraform",
 	},
 })
