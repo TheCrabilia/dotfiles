@@ -1,10 +1,10 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "VeryLazy" },
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-web-devicons",
 		"neodev.nvim",
-		"cmp-nvim-lsp",
+		"nvim-cmp",
 	},
 	opts = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()

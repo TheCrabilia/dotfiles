@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	event = { "VeryLazy" },
+	event = { "BufReadPost" },
 	dependencies = { "plenary.nvim" },
 	opts = function()
 		local formatting = require("null-ls").builtins.formatting

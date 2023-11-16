@@ -22,10 +22,10 @@ return {
 				},
 			}
 		end,
-      config = function(_, opts)
-         require("luasnip").setup(opts)
-         require("snippets").load()
-      end,
+		config = function(_, opts)
+			require("luasnip").setup(opts)
+			require("snippets").load()
+		end,
 		keys = {
 			{
 				"<C-k>",

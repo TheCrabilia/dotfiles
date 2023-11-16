@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "VeryLazy" },
+	event = "VeryLazy",
 	cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
 	build = function()
 		vim.cmd.TSUpdate()

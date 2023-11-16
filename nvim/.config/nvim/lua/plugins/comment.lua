@@ -1,6 +1,5 @@
 return {
 	"numToStr/Comment.nvim",
-	event = { "VeryLazy" },
 	opts = function()
 		return {
 			filetype_commentstring = {
@@ -17,4 +16,8 @@ return {
 			ft.set(filetype, commentstring)
 		end
 	end,
+	keys = {
+		{ "gcc", mode = "n" },
+		{ "gc", mode = "v" },
+	},
 }

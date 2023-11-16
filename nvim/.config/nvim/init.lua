@@ -21,11 +21,7 @@ require("lazy").setup({
 		{ import = "plugins.git" },
 		{ import = "plugins.debugging" },
 	},
-	defaults = {
-		lazy = true,
-		version = nil,
-		cond = nil,
-	},
+	defaults = { lazy = true },
 	install = {
 		missing = true,
 		colorscheme = { "rose-pine" },
@@ -40,7 +36,11 @@ require("lazy").setup({
 		enabled = true,
 		notify = false,
 	},
+	ui = { border = "rounded" },
 	performance = {
+		cache = {
+			enabled = true,
+		},
 		rtp = {
 			disabled_plugins = {
 				"gzip",
