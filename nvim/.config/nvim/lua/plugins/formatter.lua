@@ -1,5 +1,6 @@
 return {
 	"mhartington/formatter.nvim",
+	enabled = false,
 	opts = function()
 		return {
 			filetype = {

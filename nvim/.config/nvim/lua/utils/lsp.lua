@@ -32,6 +32,7 @@ function M.on_attach(_, bufnr)
 
    -- stylua: ignore start
    set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Help" })
+	set("n", "<leader>lf", function() M.lsp_formatting(bufnr) end, { buffer = bufnr, remap = false, desc = "Format Document"})
    set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
    set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code Action" })
    set("n", "<leader>ld", function() builtin.lsp_definitions() end, { buffer = bufnr, remap = false, desc = "Definitions" })

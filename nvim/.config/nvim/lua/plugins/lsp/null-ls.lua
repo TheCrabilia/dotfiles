@@ -1,24 +1,49 @@
--- TODO: Remove if formatter.nvim works well
 return {
-	"jose-elias-alvarez/null-ls.nvim",
-	enabled = false,
-	event = { "BufReadPost", "BufNewFile" },
+	"nvimtools/none-ls.nvim",
+	event = { "VeryLazy" },
 	dependencies = { "plenary.nvim" },
 	opts = function()
 		local formatting = require("null-ls").builtins.formatting
 		local diagnostics = require("null-ls").builtins.diagnostics
+		local code_actions = require("null-ls").builtins.code_actions
 		return {
 			sources = {
-				formatting.black,
+				-- python
 				formatting.ruff,
+				formatting.ruff_format,
+
+				-- lua
 				formatting.stylua,
-				formatting.gofmt,
+
+				-- golang
 				formatting.goimports,
-				formatting.beautysh,
-				formatting.fixjson,
+				formatting.gofmt,
+				code_actions.impl,
+
+				-- c/c++, java
+				formatting.clang_format.with({
+					extra_args = {
+						"--style='{BasedOnStyle: Google, UseTab: Always, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120}'",
+					},
+				}),
+
+				-- terraform
 				formatting.terraform_fmt,
-				formatting.prettierd,
-				diagnostics.zsh,
+
+				-- js, ts, css
+				formatting.prettierd.with({
+					disabled_filetypes = { "json", "jsonc" },
+				}),
+
+				-- sql
+				diagnostics.sqlfluff.with({
+					extra_args = { "--dialect", "postgres" },
+				}),
+
+				-- misc
+				formatting.taplo,
+				formatting.fixjson,
+				diagnostics.hadolint,
 			},
 		}
 	end,
