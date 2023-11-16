@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "VeryLazy" },
 	cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
 	build = function()
 		vim.cmd.TSUpdate()
@@ -49,7 +49,7 @@ return {
 		},
 		indent = {
 			enable = true,
-			disable = { "yaml" },
+			disable = {},
 		},
 		context_commentstring = { enable = true },
 		playground = { enable = true },

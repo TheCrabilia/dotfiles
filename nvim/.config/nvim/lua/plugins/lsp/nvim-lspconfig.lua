@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "VeryLazy" },
 	dependencies = {
 		"nvim-web-devicons",
 		"neodev.nvim",
@@ -42,12 +42,6 @@ return {
 					},
 				},
 				pyright = {
-					-- on_attach = function(client)
-					-- 	client.server_capabilities.codeActionProvider = false
-					-- end,
-					-- handlers = vim.tbl_extend("force", require("utils.lsp").handlers(), {
-					-- 	["textDocument/publishDiagnostics"] = function() end,
-					-- }),
 					settings = {
 						pyright = {
 							disableOrganizeImports = true,

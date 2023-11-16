@@ -1,7 +1,7 @@
 return {
 	"RRethy/vim-illuminate",
 	enabled = false,
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "VeryLazy" },
 	config = function()
 		require("illuminate").configure({
 			filetypes_denylist = {
