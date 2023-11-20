@@ -6,7 +6,6 @@ return {
 		vim.cmd.TSUpdate()
 	end,
 	dependencies = {
-		"nvim-ts-context-commentstring",
 		"nvim-treesitter-textobjects",
 		"nvim-treesitter-context",
 	},
