@@ -48,7 +48,7 @@ return {
 		},
 		indent = {
 			enable = true,
-			disable = {},
+			disable = { "yaml" },
 		},
 		context_commentstring = { enable = true },
 		playground = { enable = true },
