@@ -36,7 +36,7 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 vim.opt.guicursor = "n-v-c:blinkon0-block-Cursor" -- Cursor styling
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.pumheight = 20
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -46,6 +46,7 @@ vim.opt.shortmess:append("I") -- Disable intro message
 vim.opt.cmdheight = 1
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.virtualedit = "block"
 
 -- Tabs
 vim.opt.autoindent = true

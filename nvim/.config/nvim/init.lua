@@ -1,3 +1,5 @@
+require("opts")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -9,9 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
--- Source vim options
-require("opts")
 
 require("lazy").setup({
 	spec = {
@@ -53,3 +52,5 @@ require("lazy").setup({
 		},
 	},
 })
+
+require("statusline")

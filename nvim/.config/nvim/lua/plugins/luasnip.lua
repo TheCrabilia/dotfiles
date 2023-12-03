@@ -4,9 +4,6 @@ return {
 		version = "2.*",
 		build = "make install_jsregexp",
 		event = "InsertEnter",
-		dependencies = {
-			{ "rafamadriz/friendly-snippets", enabled = false },
-		},
 		opts = function()
 			local types = require("luasnip.util.types")
 			return {
@@ -26,19 +23,5 @@ return {
 			require("luasnip").setup(opts)
 			require("snippets").load()
 		end,
-		keys = {
-			{
-				"<C-k>",
-				mode = { "i", "s" },
-				function()
-					local ls = require("luasnip")
-					if ls.expand_or_jumpable() then
-						ls.expand_or_jump()
-					end
-				end,
-				silent = true,
-				desc = "Expand current snippet or jump to the next",
-			},
-		},
 	},
 }
