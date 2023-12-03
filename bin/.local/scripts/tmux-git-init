@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+read -p "Repository name: " -r repo_name
+dst=$(find $HOME/Documents -type d -mindepth 1 -maxdepth 1 | fzf)
+
+if [[ -z "$dst" ]]; then
+    exit 0
+fi
+
+if ! tmux has-session -t git-init &>/dev/null; then
+    tmux new-session -d -s git-init
+fi
+
+tmux wait-for -L init\; \
+    send-keys -t git-init "cd $dst && git init $repo_name" Enter 'tmux wait-for -U init' Enter\; \
+    wait-for -L init\; \
+    run-shell "~/.local/scripts/tmux-sessionizer $dst/$repo_name"\; \
+    wait-for -U init
