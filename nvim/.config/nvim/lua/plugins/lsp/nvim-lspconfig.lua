@@ -48,7 +48,7 @@ return {
 						},
 						python = {
 							analysis = {
-								typeCheckingMode = "basic",
+								typeCheckingMode = "off",
 								useLibraryCodeFroTypes = true,
 								autoSearchPaths = true,
 								diagnosticMode = "workspace",

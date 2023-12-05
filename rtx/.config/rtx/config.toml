@@ -1,6 +1,5 @@
 [settings]
-missing_runtime_behavior = "warn"
-legacy_version_file = true
+legacy_version_file = false
 always_keep_download = false
 experimental = true
 
