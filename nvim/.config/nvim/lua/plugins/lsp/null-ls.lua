@@ -43,7 +43,6 @@ return {
 				-- misc
 				formatting.taplo,
 				formatting.fixjson,
-				diagnostics.hadolint,
 			},
 		}
 	end,
