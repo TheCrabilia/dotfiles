@@ -4,7 +4,6 @@ zmodule TheCrabilia/zim-modules --root prompt
 
 # 3rd party plugins
 zmodule chrissicool/zsh-256color
-zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 zmodule REALERvolker1/onedark-pro-zsh-syntax-highlighter --source one-dark-syntax-highlighter.zsh
 zmodule zsh-users/zsh-syntax-highlighting
