@@ -11,7 +11,10 @@ function M.lsp_formatting(bufnr)
 	})
 end
 
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
+	-- Disable semantic token hightlighting
+	client.server_capabilities.semanticTokensProvider = nil
+
 	-- Configure diagnostics
 	local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
 	for type, icon in pairs(signs) do
