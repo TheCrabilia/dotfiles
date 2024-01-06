@@ -12,6 +12,8 @@ return {
 		highlight_groups = {
 			ColorColumn = { bg = "text", blend = 10 },
 			CursorLine = { bg = "text", blend = 10 },
+			TelescopeSelection = { bg = "text", blend = 10 },
+			PmenuSel = { bg = "text", blend = 10 },
 		},
 	},
 	config = function(_, opts)

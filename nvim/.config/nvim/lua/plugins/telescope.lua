@@ -4,7 +4,6 @@ return {
 	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"ThePrimeagen/git-worktree.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"TheCrabilia/telescope-http.nvim",
 		{
@@ -175,14 +174,6 @@ return {
 					builtin.git_branches()
 				end,
 				desc = "Git Branches",
-			},
-			{
-				"<leader>gw",
-				mode = "n",
-				function()
-					telescope.extensions.git_worktree.git_worktrees()
-				end,
-				desc = "Git Worktrees",
 			},
 		}
 	end,
