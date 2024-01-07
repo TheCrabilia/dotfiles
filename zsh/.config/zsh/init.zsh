@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
 
+if [[ $OSTYPE =~ "darwin" ]]; then
+    bindkey -s '^[`' '`' # fix Option+` binding
+fi
+
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
-
 
 ## Load zsh functions
 local autoloaded_functions=(
