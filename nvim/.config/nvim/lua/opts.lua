@@ -2,8 +2,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Disable builtin plugins
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Misc
 vim.opt.autowrite = true

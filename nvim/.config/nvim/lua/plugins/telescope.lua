@@ -1,10 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.4",
+	tag = "0.1.5",
 	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-file-browser.nvim",
+		-- "nvim-telescope/telescope-file-browser.nvim",
 		"TheCrabilia/telescope-http.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -72,7 +72,7 @@ return {
 					additional_args = { "--hidden" },
 				},
 			},
-			extensions_enable = { "fzf", "file_browser", "http" },
+			extensions_enable = { "fzf", "http" },
 			extensions = {
 				fzf = {
 					fuzzy = true,
@@ -105,20 +105,20 @@ return {
 		end
 	end,
 	keys = function()
-		local telescope = require("telescope")
+		-- local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		return {
-			{
-				"<leader>e",
-				mode = "n",
-				function()
-					telescope.extensions.file_browser.file_browser({
-						path = "%:p:h",
-						respect_gitignore = false,
-					})
-				end,
-				desc = "File Browser",
-			},
+			-- {
+			-- 	"<leader>e",
+			-- 	mode = "n",
+			-- 	function()
+			-- 		telescope.extensions.file_browser.file_browser({
+			-- 			path = "%:p:h",
+			-- 			respect_gitignore = false,
+			-- 		})
+			-- 	end,
+			-- 	desc = "File Browser",
+			-- },
 			{
 				"<leader>ff",
 				mode = "n",
