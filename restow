@@ -5,8 +5,8 @@ set -e
 config_pkg=(
     alacritty
     bin
+    mise
     nvim
-    rtx
     tmux
     zsh
 )

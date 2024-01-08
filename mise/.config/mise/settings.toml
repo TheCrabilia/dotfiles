@@ -2,10 +2,3 @@
 legacy_version_file = false
 always_keep_download = false
 experimental = true
-
-[tools]
-python = "latest"
-go = "latest"
-node = "lts"
-java = "20"
-rust = "latest"
