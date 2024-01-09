@@ -56,4 +56,4 @@ if [[ -d $ZIM_HOME/modules/zsh-autosuggestions ]]; then
     ZSH_AUTOSUGGEST_USE_ASYNC="yes"
 fi
 
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
