@@ -1,4 +1,10 @@
-#!/usr/bin/env zsh
+autoload -Uz add-zsh-hook
+
+_autols () {
+    emulate -L zsh
+    (( ${+commands[exa]} )) && exa || ls
+}
+add-zsh-hook chpwd _autols
 
 _swproxy () {
     if nc -z -w 1 aproxy.corproot.net 8080 &>/dev/null; then
@@ -12,3 +18,4 @@ _swproxy () {
         unset HTTP_PROXY HTTPS_PROXY NO_PROXY http_proxy https_proxy no_proxy
     fi
 }
+# add-zsh-hook preexec _swproxy
