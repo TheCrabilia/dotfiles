@@ -18,7 +18,7 @@
         ${XDG_CONFIG_HOME}/zsh/completions/^(*.zwc)(N)
     )
     for f in $compile; do
-        [[ -f "${f}.zwc.old" ]] && rm "${f}.zwc.old"
+        [[ -f "${f}.zwc.old" ]] && rm -f "${f}.zwc.old"
         [[ ! -d "${f}" && (! -e "${f}.zwc" || "${f}.zwc" -ot "${f}") ]] && zrecompile -pq "${f}"
     done
 ) &!
