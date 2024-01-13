@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
-configs=(
+local -a configs=(
     options.zsh
     keybinds.zsh
     hooks.zsh
+    prompt.zsh
     completion.zsh
     aliases.zsh
     plugins.zsh

@@ -14,7 +14,6 @@ if [[ -f "${fzf_dir}/shell/completion.zsh" && -f "${fzf_dir}/shell/key-bindings.
     source "${fzf_dir}/shell/completion.zsh"
     source "${fzf_dir}/shell/key-bindings.zsh"
 fi
-unset fzf_dir
 
 _evalcache zoxide init zsh --cmd cd
 eval "$(mise activate zsh)" # do not use evalcache for mise, because it messes up PATH in new terminal windows
