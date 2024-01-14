@@ -65,5 +65,8 @@ autoload -Uz compinit && compinit -C -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # Load external tool completions
 for f in $(ls ${0:h:a}/completions/*.zsh); do
-    source "${f}"
+    cmd=$(basename "${f%.zsh}")
+    if (( ${+commands[$cmd]} )); then
+        source "${f}"
+    fi
 done

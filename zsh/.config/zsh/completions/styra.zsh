@@ -1,1 +1,1 @@
-(( ${+commands[styra]} )) && _evalcache styra completion zsh
+_evalcache styra completion zsh
