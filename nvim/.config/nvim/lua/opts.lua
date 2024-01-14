@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 
 -- Netrw
 vim.g.netrw_altfile = 1
+vim.g.netrw_banner = 0
 
 -- Misc
 vim.opt.autowrite = true
