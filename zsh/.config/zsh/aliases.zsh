@@ -69,9 +69,9 @@ fi
 
 # cd to subdirs
 alias -g ...="../.."
-alias -g ....="../../.."
-alias -g .....="../../../.."
-alias -g ......="../../../../.."
+alias -g .3="../../.."
+alias -g .4="../../../.."
+alias -g .5="../../../../.."
 
 alias sudo="nocorrect sudo"
 alias mv="nocorrect mv -i"

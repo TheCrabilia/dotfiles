@@ -1,5 +1,5 @@
 ## Completion
-zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' completer _extensions _complete
 
 # Enable caching
 zstyle ':completion::complete:*' use-cache on
