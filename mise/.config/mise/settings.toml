@@ -1,3 +1,6 @@
 legacy_version_file = false
 always_keep_download = false
 experimental = true
+
+python_compile = true
+node_compile = true
