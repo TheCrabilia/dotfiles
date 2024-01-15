@@ -1,6 +1,6 @@
-setopt ALWAYS_TO_END
-setopt CASE_GLOB
-setopt NO_LIST_BEEP             # Don't beep on ambiguous completions.
+setopt ALWAYS_TO_END            # when completing a word, move the cursor to the end of the word
+setopt CASE_GLOB                # make globbing (filename generation) sensitive to case
+setopt NO_LIST_BEEP             # don't beep on ambiguous completions.
 
 setopt APPEND_HISTORY           # append history to the history file
 setopt EXTENDED_HISTORY         # save timestamp and duration of command in the history file
@@ -18,6 +18,7 @@ setopt CD_SILENT                # don't print the working direcotry after a cd
 
 setopt AUTO_LIST		        # automatically list choises on an ambiguouse completion
 setopt EXTENDED_GLOB	        # treat the # ~ ^ as part of patterns for filename generation
+setopt GLOB_DOTS                # include dot files in regular globs
 setopt NOTIFY		            # report the status of background jobs immediately
 setopt NO_CORRECT_ALL	        # do not correct commands and arguments
 setopt NO_BEEP		            # disable beep
