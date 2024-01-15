@@ -1,6 +1,6 @@
 .DS_Store
 Brewfile.lock.json
-rtx/.config/rtx/trusted-configs
+mise/.config/mise/config.toml
 
 **/.luarc.json
 **/lazy-lock.json
