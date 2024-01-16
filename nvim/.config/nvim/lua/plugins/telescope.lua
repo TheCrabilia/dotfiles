@@ -60,6 +60,10 @@ return {
 						-- Terraform
 						"^.terraform/",
 						".terraform.lock.hcl",
+
+						-- Zsh
+						"%.zwc",
+						"%.zwc.old",
 					},
 				}),
 				buffers = {

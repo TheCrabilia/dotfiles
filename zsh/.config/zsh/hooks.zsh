@@ -7,7 +7,15 @@ _autols () {
 add-zsh-hook chpwd _autols
 
 _swproxy () {
-    if nc -z -w 1 aproxy.corproot.net 8080 &>/dev/null; then
+    _is_corpnet () {
+        local airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+        $airport --getinfo | grep "corpnet01" &>/dev/null
+    }
+    _is_vpn () {
+        ifconfig utun4 &>/dev/null
+    }
+
+    if _is_corpnet || _is_vpn; then
         export HTTP_PROXY="http://aproxy.corproot.net:8080"
         export HTTPS_PROXY="http://aproxy.corproot.net:8080"
         export NO_PROXY="localhost,127.0.0.1/32,.swisscom.com,.swisscom.ch,.corproot.net,192.168.5.0/24"

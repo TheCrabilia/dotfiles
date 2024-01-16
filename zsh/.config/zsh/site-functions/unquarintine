@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
+    xattr -r -d "${attribute}" "$@"
+done
