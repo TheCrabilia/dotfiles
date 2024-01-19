@@ -1,10 +1,5 @@
 vim.g.mapleader = " "
 
--- Netrw
-vim.g.netrw_altfile = 1
-vim.g.netrw_banner = 0
-vim.g.netrw_localcopydircmd = "cp -r"
-
 -- Misc
 vim.opt.autowrite = true
 vim.opt.autoread = true

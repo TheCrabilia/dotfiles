@@ -13,7 +13,6 @@ return {
 		keymaps = {
 			-- Misc keymaps
 			{
-				["<leader>e"] = { vim.cmd.Ex, "Open Netrw" },
 				["J"] = { "mzJ'z", "Join lines" },
 				["<C-d>"] = { "<C-d>zz", "Page down" },
 				["<C-u>"] = { "<C-u>zz", "Page up" },
