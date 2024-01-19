@@ -3,6 +3,8 @@ return {
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
+		skip_confirm_for_simple_edits = true,
+		lsp_rename_autosave = true,
 		columns = {
 			"permissions",
 			"size",
