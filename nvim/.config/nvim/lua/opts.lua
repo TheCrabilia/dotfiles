@@ -23,6 +23,7 @@ vim.opt.wildignore = { "__pycache__", "*.o", "*~", "*.pyc" }
 
 -- Scrolling
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 -- UI
 vim.opt.updatetime = 250
