@@ -36,6 +36,9 @@ return {
 				}),
 
 				-- sql
+				formatting.sqlfluff.with({
+					extra_args = { "--dialect", "postgres" },
+				}),
 				diagnostics.sqlfluff.with({
 					extra_args = { "--dialect", "postgres" },
 				}),

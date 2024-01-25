@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.g.omni_sql_no_default_maps = 1
+
 -- Misc
 vim.opt.autowrite = true
 vim.opt.autoread = true

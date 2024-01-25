@@ -1,4 +1,5 @@
 local cursorline_group = vim.api.nvim_create_augroup("CursorLine", { clear = true })
+
 local function set_cursorline(event, value, pattern)
 	vim.api.nvim_create_autocmd(event, {
 		group = cursorline_group,
