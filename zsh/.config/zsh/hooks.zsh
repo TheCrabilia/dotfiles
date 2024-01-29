@@ -12,7 +12,7 @@ _swproxy () {
         $airport --getinfo | grep "corpnet01" &>/dev/null
     }
     _is_vpn () {
-        ifconfig utun4 &>/dev/null
+        ifconfig -X utun | grep -E 'inet.*-->.*' &>/dev/null
     }
 
     if _is_corpnet || _is_vpn; then
