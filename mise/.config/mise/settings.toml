@@ -3,4 +3,6 @@ always_keep_download = false
 experimental = true
 
 python_compile = true
+python_venv_auto_create = true
+
 node_compile = true
