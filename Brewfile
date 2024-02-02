@@ -39,6 +39,7 @@ brew "wget"
 brew "xclip"
 brew "zsh"
 brew "gpg"
+brew "libpq" # postgres utilities, keg-only
 
 # Kubernetes
 brew "helm"
