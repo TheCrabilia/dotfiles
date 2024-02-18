@@ -1,10 +1,10 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "VeryLazy",
 	dependencies = {
-		"nvim-web-devicons",
-		"neodev.nvim",
+		"nvim-tree/nvim-web-devicons",
 		"nvim-cmp",
+		"fidget.nvim",
+		{ "folke/neodev.nvim", tag = "stable", opts = {} },
 	},
 	opts = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -46,11 +46,13 @@ return {
 						},
 						python = {
 							analysis = {
-								typeCheckingMode = "off",
+								typeCheckingMode = "strict",
 								useLibraryCodeFroTypes = true,
 								autoSearchPaths = true,
 								diagnosticMode = "workspace",
-								diagnosticSeverityOverrides = {},
+								diagnosticSeverityOverrides = {
+									reportUndefinedVariable = "none",
+								},
 							},
 						},
 					},

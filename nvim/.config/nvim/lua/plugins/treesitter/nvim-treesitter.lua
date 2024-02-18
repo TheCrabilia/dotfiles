@@ -1,14 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "VeryLazy",
 	cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
 	build = function()
 		vim.cmd.TSUpdate()
 	end,
-	dependencies = {
-		"nvim-treesitter-textobjects",
-		"nvim-treesitter-context",
-	},
 	main = "nvim-treesitter.configs",
 	opts = {
 		ensure_installed = {

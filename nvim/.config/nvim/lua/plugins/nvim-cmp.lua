@@ -23,6 +23,7 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
 			}),

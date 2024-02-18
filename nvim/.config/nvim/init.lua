@@ -22,7 +22,7 @@ require("lazy").setup({
 		{ import = "plugins.git" },
 		{ import = "plugins.debugging" },
 	},
-	defaults = { lazy = true },
+	defaults = { lazy = false },
 	install = {
 		missing = true,
 		colorscheme = { "rose-pine" },

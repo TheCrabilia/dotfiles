@@ -1,10 +1,8 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.5",
-	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		-- "nvim-telescope/telescope-file-browser.nvim",
 		"TheCrabilia/telescope-http.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -41,7 +39,7 @@ return {
 					hidden = true,
 					no_ignore = true,
 					file_ignore_patterns = {
-						"^.git/",
+						"git/",
 
 						-- Node
 						"^node_modules/",
@@ -50,15 +48,16 @@ return {
 						-- Python
 						"^venv/",
 						"^.venv/",
-						"^__pycache__/",
+						"__pycache__/",
 						"^.pytest_cache/",
+						".ruff_cache/",
 						"%.pyc",
 
 						-- Java
 						"%.class",
 
 						-- Terraform
-						"^.terraform/",
+						".terraform/",
 						".terraform.lock.hcl",
 
 						-- Zsh
