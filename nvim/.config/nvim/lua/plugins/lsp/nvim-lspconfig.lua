@@ -91,6 +91,7 @@ return {
 				vimls = {},
 				html = {},
 				sqls = {},
+				taplo = {},
 			},
 		}
 	end,

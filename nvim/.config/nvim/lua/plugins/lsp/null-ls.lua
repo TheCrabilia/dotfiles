@@ -8,10 +8,6 @@ return {
 		local code_actions = require("null-ls").builtins.code_actions
 		return {
 			sources = {
-				-- python
-				formatting.ruff,
-				formatting.ruff_format,
-
 				-- lua
 				formatting.stylua,
 
@@ -42,10 +38,6 @@ return {
 				diagnostics.sqlfluff.with({
 					extra_args = { "--dialect", "postgres" },
 				}),
-
-				-- misc
-				formatting.taplo,
-				formatting.fixjson,
 			},
 		}
 	end,
