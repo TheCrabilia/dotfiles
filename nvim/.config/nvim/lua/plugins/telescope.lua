@@ -57,7 +57,7 @@ return {
 						"%.class",
 
 						-- Terraform
-						".terraform/",
+						"\\.terraform/",
 						".terraform.lock.hcl",
 
 						-- Zsh
