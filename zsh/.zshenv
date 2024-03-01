@@ -19,3 +19,13 @@ export PROMPT_EOL_MARK=""
 
 # Set locale
 export LC_ALL='en_US.UTF-8'
+
+# Proxy settings (if local proxy running)
+if nc -z 127.0.0.1 3128 &>/dev/null; then
+    export ALL_PROXY="http://127.0.0.1:3128"
+    export HTTP_PROXY="http://127.0.0.1:3128"
+    export HTTPS_PROXY="http://127.0.0.1:3128"
+    export http_proxy="http://127.0.0.1:3128"
+    export https_proxy="http://127.0.0.1:3128"
+    export ftp_proxy="http://127.0.0.1:3128"
+fi
