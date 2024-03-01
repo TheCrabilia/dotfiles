@@ -24,40 +24,6 @@ local snippets = {
 		s("afun", { t("function("), i(1), t({ ")", "\t" }), i(2), t({ "", "end" }) }),
 		s("fun", { t("function "), i(1), t("("), i(2), t({ ")", "\t" }), i(3), t({ "", "end" }) }),
 	},
-	terraform = {
-		s("res", {
-			t('resource "'),
-			i(1, "type"),
-			t('" "'),
-			i(2, "name"),
-			t({ '" {', "\t" }),
-			i(3),
-			t({ "", "}" }),
-		}),
-		s("data", {
-			t('data "'),
-			i(1, "type"),
-			t('" "'),
-			i(2, "name"),
-			t({ '" {', "\t" }),
-			i(3),
-			t({ "", "}" }),
-		}),
-		s("var", {
-			t('variable "'),
-			i(1, "name"),
-			t({ '" {', "\t" }),
-			i(2),
-			t({ "", "}" }),
-		}),
-		s("out", {
-			t('output "'),
-			i(1, "name"),
-			t({ '" {', "\t" }),
-			i(2),
-			t({ "", "}" }),
-		}),
-	},
 	go = {
 		s("struct", {
 			t("type "),
