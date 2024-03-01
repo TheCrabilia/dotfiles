@@ -22,18 +22,6 @@ return {
 			},
 		})
 		return {
-			defaults = {
-				mappings = {
-					i = {
-						["<esc>"] = actions.close,
-						["<C-u>"] = false,
-						["<M-p>"] = action_layout.toggle_preview,
-					},
-					n = {
-						["<M-p>"] = action_layout.toggle_preview,
-					},
-				},
-			},
 			pickers = {
 				find_files = vim.tbl_extend("force", find_files_theme, {
 					hidden = true,
@@ -64,12 +52,22 @@ return {
 						"%.zwc",
 						"%.zwc.old",
 					},
+					mappings = {
+						i = {
+							["<C-u>"] = false,
+						},
+					},
 				}),
 				buffers = {
 					show_all_buffers = true,
 					ignore_current_buffer = true,
 					sort_lastused = true,
 					sort_mru = true,
+					mappings = {
+						i = {
+							["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+						},
+					},
 				},
 				live_grep = {
 					additional_args = { "--hidden" },
@@ -82,19 +80,6 @@ return {
 					override_generic_sorter = true,
 					override_file_sorter = true,
 					case_mode = "smart_case",
-				},
-				file_browser = {
-					theme = "dropdown",
-					hijack_netrw = true,
-					previewer = false,
-					hidden = {
-						file_browser = true,
-						folder_browser = true,
-					},
-					layout_config = {
-						width = 0.7,
-						height = 0.5,
-					},
 				},
 			},
 		}
