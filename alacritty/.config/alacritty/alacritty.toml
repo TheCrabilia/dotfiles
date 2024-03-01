@@ -20,9 +20,10 @@ style = "Bold"
 
 [keyboard]
 bindings = [
-    { key = "Key6",     mods = "Control",   chars = "\u001E" },
-    { key = "Left",     mods = "Command",   chars = "\u001BOH",     mode = "AppCursor" },
-    { key = "Right",    mods = "Command",   chars = "\u001BOF",     mode = "AppCursor" },
+    { key = "Key6", mods = "Control", chars = "\u001E" },
+    { key = "Left", mods = "Command", chars = "\u001BOH", mode = "AppCursor" },
+    { key = "Right", mods = "Command", chars = "\u001BOF", mode = "AppCursor" },
+    { key = "Return", mods = "Control", chars = "\u001B[13;5u" },
 ]
 
 [scrolling]
