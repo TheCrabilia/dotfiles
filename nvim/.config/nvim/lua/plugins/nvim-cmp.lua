@@ -6,7 +6,6 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-cmdline",
-		"FelipeLema/cmp-async-path",
 		"saadparwaiz1/cmp_luasnip",
 	},
 	opts = function()
@@ -36,8 +35,6 @@ return {
 				{ name = "neorg" },
 				{ name = "luasnip", max_item_count = 5 },
 				{ name = "luasnip_choice" },
-			}, {
-				{ name = "async_path" },
 			}, {
 				{ name = "buffer" },
 			}),
