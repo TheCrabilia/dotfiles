@@ -20,6 +20,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
+vim.opt.inccommand = "split"
 
 vim.opt.wildignore = { "__pycache__", "*.o", "*~", "*.pyc" }
 
@@ -45,6 +46,8 @@ vim.opt.cmdheight = 1
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.virtualedit = "block"
+vim.opt.list = true
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Tabs
 vim.opt.autoindent = true

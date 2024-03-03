@@ -1,12 +1,16 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.5",
+	event = "VimEnter",
+	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"TheCrabilia/telescope-http.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
+			cond = function()
+				return vim.fn.executable("make") == 1
+			end,
 		},
 	},
 	opts = function()
