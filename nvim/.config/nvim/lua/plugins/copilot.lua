@@ -5,12 +5,12 @@ return {
 	opts = {
 		suggestion = {
 			enabled = true,
-			auto_trigger = false,
+			auto_trigger = true,
 			debounce = 75,
 			keymap = {
 				accept_word = false,
 				accept_line = false,
-				accept = "<C-l>",
+				accept = "<tab>",
 				next = "<C-]>",
 				prev = "<C-[>",
 				dismiss = "<C-e>",
@@ -21,6 +21,7 @@ return {
 		},
 		filetypes = {
 			norg = false,
+			lua = false,
 		},
 	},
 	config = function(_, opts)

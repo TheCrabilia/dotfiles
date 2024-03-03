@@ -111,11 +111,18 @@ return {
 			update_in_insert = false,
 			virtual_text = {
 				format = function(diagnostic)
-					return string.format(
-						"%s: %s",
-						require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
-						diagnostic.message
-					)
+					local exclude_ft = { "lazy", "mason" }
+
+					local ft = vim.bo[diagnostic.bufnr].filetype
+					if exclude_ft[ft] ~= nil then
+						return string.format(
+							"%s: %s",
+							require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
+							diagnostic.message
+						)
+					else
+						return diagnostic.message
+					end
 				end,
 			},
 		})
@@ -141,7 +148,6 @@ return {
 				local opts = { buffer = bufnr }
 
 				map("n", "K", vim.lsp.buf.hover, opts)
-				map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 				map("n", "gd", vim.lsp.buf.definition, opts)
 				map("n", "gD", vim.lsp.buf.declaration, opts)
 				map("n", "gi", vim.lsp.buf.implementation, opts)
