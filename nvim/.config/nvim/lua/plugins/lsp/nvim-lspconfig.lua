@@ -2,9 +2,9 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"nvim-cmp",
-		"fidget.nvim",
-		{ "folke/neodev.nvim", tag = "stable", opts = {} },
+		"hrsh7th/nvim-cmp",
+		"j-hui/fidget.nvim",
+		"folke/neodev.nvim",
 	},
 	opts = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -57,8 +57,6 @@ return {
 						},
 					},
 				},
-				ruff_lsp = {},
-				gopls = {},
 				yamlls = {
 					settings = {
 						yaml = {
@@ -84,6 +82,8 @@ return {
 						offsetEncoding = { "utf-16" },
 					}),
 				},
+				ruff_lsp = {},
+				gopls = {},
 				dockerls = {},
 				marksman = {},
 				terraformls = {},
@@ -109,8 +109,17 @@ return {
 			signs = true,
 			underline = true,
 			update_in_insert = false,
-			virtual_text = true,
+			virtual_text = {
+				format = function(diagnostic)
+					return string.format(
+						"%s: %s",
+						require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
+						diagnostic.message
+					)
+				end,
+			},
 		})
+
 		local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
@@ -139,9 +148,6 @@ return {
 				map("n", "gr", vim.lsp.buf.references, opts)
 				map("n", "<leader>lr", vim.lsp.buf.rename, opts)
 				map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
-				map("n", "<leader>lf", function()
-					require("utils.lsp").lsp_format(bufnr)
-				end, opts)
 
 				-- Disable semantic token hightlighting
 				client.server_capabilities.semanticTokensProvider = nil
