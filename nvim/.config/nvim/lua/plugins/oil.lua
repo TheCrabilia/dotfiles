@@ -3,7 +3,10 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		skip_confirm_for_simple_edits = true,
-		lsp_rename_autosave = true,
+		lsp_file_methods = {
+			timeout_ms = 1000,
+			autosave_changes = true,
+		},
 		columns = {
 			"permissions",
 			"size",
