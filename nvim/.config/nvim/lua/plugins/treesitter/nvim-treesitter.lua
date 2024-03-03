@@ -1,6 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
 	build = function()
 		vim.cmd.TSUpdate()
 	end,
