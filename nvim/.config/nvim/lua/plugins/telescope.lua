@@ -27,7 +27,7 @@ return {
 					hidden = true,
 					no_ignore = true,
 					file_ignore_patterns = {
-						"git/",
+						"^.git/",
 
 						-- Node
 						"^node_modules/",
@@ -96,17 +96,6 @@ return {
 		-- local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		return {
-			-- {
-			-- 	"<leader>e",
-			-- 	mode = "n",
-			-- 	function()
-			-- 		telescope.extensions.file_browser.file_browser({
-			-- 			path = "%:p:h",
-			-- 			respect_gitignore = false,
-			-- 		})
-			-- 	end,
-			-- 	desc = "File Browser",
-			-- },
 			{
 				"<leader>ff",
 				mode = "n",
