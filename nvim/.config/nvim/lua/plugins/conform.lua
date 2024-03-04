@@ -15,6 +15,7 @@ return {
 			c = { "clang_format" },
 			cpp = { "clang_format" },
 			java = { "clang_format" },
+			markdown = { "prettierd" },
 			["_"] = { "trim_whitespace" },
 		},
 		formatters = {
