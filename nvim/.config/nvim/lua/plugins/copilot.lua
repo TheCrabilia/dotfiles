@@ -10,7 +10,7 @@ return {
 			keymap = {
 				accept_word = false,
 				accept_line = false,
-				accept = "<tab>",
+				accept = "<C-l>",
 				next = "<C-]>",
 				prev = "<C-[>",
 				dismiss = "<C-e>",

@@ -114,14 +114,14 @@ return {
 					local exclude_ft = { "lazy", "mason" }
 
 					local ft = vim.bo[diagnostic.bufnr].filetype
-					if exclude_ft[ft] ~= nil then
+					if vim.tbl_contains(exclude_ft, ft) then
+						return diagnostic.message
+					else
 						return string.format(
 							"%s: %s",
 							require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
 							diagnostic.message
 						)
-					else
-						return diagnostic.message
 					end
 				end,
 			},

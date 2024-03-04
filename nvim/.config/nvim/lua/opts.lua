@@ -43,6 +43,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.termguicolors = true -- Enable 24-bit RGB colors
 vim.opt.shortmess:append("I") -- Disable intro message
 vim.opt.cmdheight = 1
+vim.opt.showmode = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.virtualedit = "block"
