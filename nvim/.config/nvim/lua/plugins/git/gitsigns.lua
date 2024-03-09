@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
 	"lewis6991/gitsigns.nvim",
 	event = "BufReadPre",
@@ -11,7 +12,18 @@ return {
 			untracked = { text = "~" },
 		},
 	},
-	config = function(_, opts)
-		require("gitsigns").setup(opts)
-	end,
+	keys = {
+		{
+			"<leader>gs",
+			mode = "n",
+			require("gitsigns").preview_hunk_inline,
+			desc = "Preview hunk",
+		},
+		{
+			"<leader>gr",
+			mode = "n",
+			require("gitsigns").reset_hunk,
+			desc = "Reset hunk",
+		},
+	},
 }
