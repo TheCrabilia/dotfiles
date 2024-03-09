@@ -1,167 +1,161 @@
+---@type LazySpec
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"hrsh7th/nvim-cmp",
+		{
+			"williamboman/mason.nvim",
+			build = function()
+				vim.cmd.MasonUpdate()
+			end,
+		},
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"j-hui/fidget.nvim",
-		"folke/neodev.nvim",
+		{ "folke/neodev.nvim", opts = {} },
 	},
-	opts = function()
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-		return {
-			default = {
-				handlers = require("utils.lsp").handlers(),
-				capabilities = capabilities,
-				flags = {
-					debounce_text_changes = 150,
-				},
-			},
-			servers = {
-				lua_ls = {
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							diagnostics = {
-								disable = { "undefined-doc-name", "missing-fields" },
-								globals = { "vim" },
-							},
-							workspace = {
-								checkThirdParty = false,
-							},
-							telemetry = {
-								enable = false,
-							},
-							format = {
-								enabled = false,
-							},
-						},
-					},
-				},
-				pyright = {
-					settings = {
-						pyright = {
-							disableOrganizeImports = true,
-						},
-						python = {
-							analysis = {
-								typeCheckingMode = "strict",
-								useLibraryCodeFroTypes = true,
-								autoSearchPaths = true,
-								diagnosticMode = "workspace",
-								diagnosticSeverityOverrides = {
-									reportUndefinedVariable = "none",
-								},
-							},
-						},
-					},
-				},
-				yamlls = {
-					settings = {
-						yaml = {
-							schemaStore = {
-								enable = true,
-								url = "https://www.schemastore.org/api/json/catalog.json",
-							},
-						},
-					},
-				},
-				jsonls = {
-					settings = {
-						json = {
-							schemas = require("schemastore").json.schemas(),
-							validate = {
-								enable = true,
-							},
-						},
-					},
-				},
-				clangd = {
-					capabilities = vim.tbl_extend("force", capabilities, {
-						offsetEncoding = { "utf-16" },
-					}),
-				},
-				ruff_lsp = {},
-				gopls = {},
-				dockerls = {},
-				marksman = {},
-				terraformls = {},
-				tflint = {},
-				vimls = {},
-				html = {},
-				sqls = {},
-				taplo = {},
-			},
-		}
-	end,
-	config = function(_, opts)
-		local lspconfig = require("lspconfig")
-
-		lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, opts.default)
-
-		for server_name, server_opts in pairs(opts.servers) do
-			lspconfig[server_name].setup(server_opts)
-		end
-
-		vim.diagnostic.config({
-			serverity_sort = true,
-			signs = true,
-			underline = true,
-			update_in_insert = false,
-			virtual_text = {
-				format = function(diagnostic)
-					local exclude_ft = { "lazy", "mason" }
-
-					local ft = vim.bo[diagnostic.bufnr].filetype
-					if vim.tbl_contains(exclude_ft, ft) then
-						return diagnostic.message
-					else
-						return string.format(
-							"%s: %s",
-							require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
-							diagnostic.message
-						)
-					end
-				end,
-			},
-		})
-
-		local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-
-		-- Global mappings
-		local map = vim.keymap.set
-		map("n", "<leader>l/", vim.diagnostic.open_float)
-		map("n", "[d", vim.diagnostic.goto_prev)
-		map("n", "]d", vim.diagnostic.goto_next)
+	config = function()
+		require("utils.lsp").setup_diagnostics()
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function(args)
-				local bufnr = args.buf
-				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				---@diagnostic disable-next-line: redefined-local
-				local opts = { buffer = bufnr }
+			callback = function(event)
+				local bufnr = event.buf
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				local builtin = require("telescope.builtin")
 
-				map("n", "K", vim.lsp.buf.hover, opts)
-				map("n", "gd", vim.lsp.buf.definition, opts)
-				map("n", "gD", vim.lsp.buf.declaration, opts)
-				map("n", "gi", vim.lsp.buf.implementation, opts)
-				map("n", "gr", vim.lsp.buf.references, opts)
-				map("n", "<leader>lr", vim.lsp.buf.rename, opts)
-				map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
+				local function map(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+				end
 
-				-- Disable semantic token hightlighting
-				client.server_capabilities.semanticTokensProvider = nil
+				map("K", vim.lsp.buf.hover, "Open documentstion in floating window")
+				map("gd", builtin.lsp_definitions, "Go to definition")
+				map("gD", vim.lsp.buf.declaration, "Go to declaration")
+				map("gi", builtin.lsp_implementations, "Go to implementation")
+				map("gr", builtin.lsp_references, "List references")
+				map("<leader>lr", vim.lsp.buf.rename, "Rename symbol")
+				map("<leader>la", vim.lsp.buf.code_action, "Code action")
+				map("<leader>ds", builtin.lsp_document_symbols, "Document symbols")
+				map("<leader>ws", builtin.lsp_workspace_symbols, "Workspace symbols")
 
-				if client.name == "ruff_lsp" then
-					client.server_capabilities.hoverProvider = false
+				if client and client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_autocmd({ "CursorHold" }, {
+						buffer = bufnr,
+						callback = vim.lsp.buf.document_highlight,
+					})
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+						buffer = bufnr,
+						callback = vim.lsp.buf.clear_references,
+					})
 				end
 			end,
+		})
+
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		local handlers = require("utils.lsp").handlers()
+
+		local servers = {
+			lua_ls = {
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = {
+							disable = { "undefined-doc-name", "missing-fields" },
+							globals = { "vim" },
+						},
+						workspace = {
+							checkThirdParty = false,
+							library = {
+								"${3rd}/luv/library",
+								unpack(vim.api.nvim_get_runtime_file("", true)),
+							},
+						},
+						telemetry = {
+							enable = false,
+						},
+						format = {
+							enabled = false,
+						},
+					},
+				},
+			},
+			pyright = {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							typeCheckingMode = "strict",
+							useLibraryCodeFroTypes = true,
+							autoSearchPaths = true,
+							diagnosticMode = "workspace",
+							diagnosticSeverityOverrides = {
+								reportUndefinedVariable = "none",
+							},
+						},
+					},
+				},
+			},
+			yamlls = {
+				settings = {
+					yaml = {
+						schemaStore = {
+							enable = true,
+							url = "https://www.schemastore.org/api/json/catalog.json",
+						},
+					},
+				},
+			},
+			jsonls = {
+				settings = {
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = {
+							enable = true,
+						},
+					},
+				},
+			},
+			clangd = {
+				capabilities = {
+					offsetEncoding = { "utf-16" },
+				},
+			},
+			ruff_lsp = {
+				capabilities = {
+					hoverProvider = nil,
+				},
+			},
+		}
+
+		require("mason").setup()
+
+		local ensure_installed = vim.tbl_keys(servers or {})
+		vim.list_extend(ensure_installed, {
+			"stylua",
+			"clang-format",
+			"debugpy",
+			"dockerls",
+			"goimports",
+			"ruff",
+			"tflint",
+		})
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		require("neodev").setup()
+		require("mason-lspconfig").setup({
+			handlers = {
+				function(server_name)
+					local server = servers[server_name] or {}
+
+					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					server.handlers = vim.tbl_deep_extend("force", {}, handlers, server.handlers or {})
+					server.flags = vim.tbl_deep_extend("force", { debounce_text_changes = 150 }, server.flags or {})
+
+					require("lspconfig")[server_name].setup(server)
+				end,
+			},
 		})
 	end,
 }

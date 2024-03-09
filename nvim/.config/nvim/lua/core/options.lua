@@ -34,7 +34,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 vim.opt.guicursor = "n-v-c:blinkon0-block-Cursor" -- Cursor styling
 vim.opt.showmode = true
-vim.opt.pumheight = 20
+vim.opt.pumheight = 10
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -64,3 +64,9 @@ vim.opt.wrap = false
 vim.opt.breakindent = true
 vim.opt.showbreak = string.rep(" ", 3)
 vim.opt.linebreak = true
+
+-- Use ripgrep if available
+if vim.fn.executable("rg") == 1 then
+	vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+	vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+end

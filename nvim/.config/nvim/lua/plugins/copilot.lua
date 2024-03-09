@@ -21,7 +21,6 @@ return {
 		},
 		filetypes = {
 			norg = false,
-			lua = false,
 		},
 	},
 	config = function(_, opts)
