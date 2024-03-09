@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
 	"ThePrimeagen/harpoon",
 	opts = function()
