@@ -10,3 +10,7 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("i", "<C-c>", "<ESC>")
 
 map({ "v", "n" }, "<leader>y", '"+y')
+
+map("n", "<leader>l/", vim.diagnostic.open_float)
+map("n", "[d", vim.diagnostic.goto_prev)
+map("n", "]d", vim.diagnostic.goto_next)

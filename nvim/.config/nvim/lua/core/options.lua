@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.g.omni_sql_no_default_maps = 1
+vim.g.omni_sql_no_default_maps = 1 -- Disable annoying default mappings for sql files
 
 -- Misc
 vim.opt.autowrite = true
@@ -12,8 +13,6 @@ vim.opt.undofile = true
 vim.opt.encoding = "utf-8"
 vim.opt.fileformat = "unix"
 vim.opt.hidden = true
-
--- vim.opt.clipboard:append("unnamedplus") -- Copy to system clipboard
 
 -- Search
 vim.opt.ignorecase = true
