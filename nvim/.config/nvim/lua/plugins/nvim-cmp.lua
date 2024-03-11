@@ -60,6 +60,7 @@ return {
 			formatting = {
 				format = function(entry, vim_item)
 					-- Remove the kind from the completion menu
+					-- TODO: Maybe add icons
 					vim_item.kind = nil
 
 					local source_menu = {

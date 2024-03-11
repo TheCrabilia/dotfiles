@@ -65,10 +65,6 @@ return {
 						},
 						workspace = {
 							checkThirdParty = false,
-							library = {
-								"${3rd}/luv/library",
-								unpack(vim.api.nvim_get_runtime_file("", true)),
-							},
 						},
 						telemetry = {
 							enable = false,
@@ -132,6 +128,15 @@ return {
 		require("mason").setup()
 
 		local ensure_installed = vim.tbl_keys(servers or {})
+
+		-- Don't install excluded servers
+		local exclude = { "clangd" }
+		for i, server in ipairs(ensure_installed) do
+			if vim.tbl_contains(exclude, server) then
+				table.remove(ensure_installed, i)
+			end
+		end
+
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"clang-format",
@@ -144,6 +149,7 @@ return {
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("neodev").setup()
+
 		require("mason-lspconfig").setup({
 			handlers = {
 				function(server_name)
