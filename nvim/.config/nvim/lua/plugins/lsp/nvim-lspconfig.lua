@@ -115,7 +115,13 @@ return {
 			},
 			clangd = {
 				capabilities = {
-					offsetEncoding = { "utf-16" },
+					offsetEncoding = { "utf-8" },
+				},
+				init_options = {
+					fallbackFlags = {
+						"-I",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1",
+					},
 				},
 			},
 			ruff_lsp = {
@@ -128,14 +134,6 @@ return {
 		require("mason").setup()
 
 		local ensure_installed = vim.tbl_keys(servers or {})
-
-		-- Don't install excluded servers
-		local exclude = { "clangd" }
-		for i, server in ipairs(ensure_installed) do
-			if vim.tbl_contains(exclude, server) then
-				table.remove(ensure_installed, i)
-			end
-		end
 
 		vim.list_extend(ensure_installed, {
 			"stylua",
