@@ -63,12 +63,17 @@ return {
 					-- TODO: Maybe add icons
 					vim_item.kind = nil
 
+					local maxwidth = 30
+					if vim.fn.strchars(vim_item.abbr) > maxwidth then
+						vim_item.abbr = vim.fn.strcharpart(vim_item.abbr, 0, maxwidth) .. "..."
+					end
+
 					local source_menu = {
 						nvim_lsp = "[LSP]",
 						luasnip = "[Snp]",
 						buffer = "[Buf]",
 					}
-					vim_item.menu = source_menu[entry.source.name] or ""
+					vim_item.menu = string.format("%s %s", source_menu[entry.source.name], vim_item.menu or "")
 
 					return vim_item
 				end,
