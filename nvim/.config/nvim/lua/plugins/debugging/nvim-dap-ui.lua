@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-dap",
 		"neodev.nvim",
+		"nvim-neotest/nvim-nio",
 	},
 	opts = {},
 	keys = function()

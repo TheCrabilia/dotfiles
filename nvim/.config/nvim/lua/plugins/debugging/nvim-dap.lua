@@ -1,7 +1,9 @@
 ---@type LazySpec
 return {
 	"mfussenegger/nvim-dap",
-	dependencies = { "nvim-dap-virtual-text" },
+	dependencies = {
+		"nvim-dap-virtual-text",
+	},
 	keys = function()
 		local dap = require("dap")
 		return {
