@@ -36,17 +36,6 @@ return {
 				map("<leader>la", vim.lsp.buf.code_action, "Code action")
 				map("<leader>ds", builtin.lsp_document_symbols, "Document symbols")
 				map("<leader>ws", builtin.lsp_workspace_symbols, "Workspace symbols")
-
-				if client and client.server_capabilities.documentHighlightProvider then
-					vim.api.nvim_create_autocmd({ "CursorHold" }, {
-						buffer = bufnr,
-						callback = vim.lsp.buf.document_highlight,
-					})
-					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-						buffer = bufnr,
-						callback = vim.lsp.buf.clear_references,
-					})
-				end
 			end,
 		})
 
