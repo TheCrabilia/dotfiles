@@ -31,8 +31,8 @@ history = 100000
 multiplier = 3
 
 [shell]
-args = ["-l"]
 program = "/opt/homebrew/bin/zsh"
+args = ["-l"]
 
 [window]
 decorations = "full"

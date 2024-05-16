@@ -9,6 +9,8 @@ config_pkg=(
     nvim
     tmux
     zsh
+    fish
+    git
 )
 
 for pkg in $config_pkg; do
