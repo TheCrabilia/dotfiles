@@ -2,14 +2,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
-		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		{
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			init = function()
-				vim.g.skip_ts_context_commentstring_module = true
-			end,
-		},
 		{ "nvim-treesitter/nvim-treesitter-context", enabled = false },
 	},
 	build = function()
@@ -56,8 +49,6 @@ return {
 				enable = true,
 				disable = { "yaml" },
 			},
-			context_commentstring = { enable = true },
-			playground = { enable = true },
 		})
 
 		local ok, ts_context = pcall(require, "nvim-treesitter-context")

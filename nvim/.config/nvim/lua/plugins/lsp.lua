@@ -35,7 +35,6 @@ return {
 					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
 				end
 
-				map("K", vim.lsp.buf.hover, "Open documentstion in floating window")
 				map("gd", builtin.lsp_definitions, "Go to definition")
 				map("gD", vim.lsp.buf.declaration, "Go to declaration")
 				map("gi", builtin.lsp_implementations, "Go to implementation")

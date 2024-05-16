@@ -61,9 +61,3 @@ vim.opt.wrap = false
 vim.opt.breakindent = true
 vim.opt.showbreak = string.rep(" ", 3)
 vim.opt.linebreak = true
-
--- Use ripgrep if available
-if vim.fn.executable("rg") == 1 then
-	vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
-	vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
-end
