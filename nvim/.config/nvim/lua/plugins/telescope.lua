@@ -30,32 +30,33 @@ return {
 			pickers = {
 				find_files = vim.tbl_extend("force", find_files_theme, {
 					hidden = true,
-					no_ignore = true,
+					no_ignore = false,
 					file_ignore_patterns = {
 						"^.git/",
 
 						-- Node
 						"^node_modules/",
-						"^.angular/",
+						"^%.angular/",
 
 						-- Python
 						"^venv/",
-						"^.venv/",
+						"^%.venv/",
 						"__pycache__/",
-						"^.pytest_cache/",
-						".ruff_cache/",
+						"%.pytest_cache/",
+						"%.ruff_cache/",
 						"%.pyc",
+
+						-- Terraform
+						"%.terraform/",
+						"%.terraform%.lock%.hcl",
+						"%.terragrunt.cache/",
 
 						-- Java
 						"%.class",
 
-						-- Terraform
-						"\\.terraform/",
-						".terraform.lock.hcl",
-
 						-- Zsh
 						"%.zwc",
-						"%.zwc.old",
+						"%.zwc%.old",
 					},
 					mappings = {
 						i = {
