@@ -63,6 +63,10 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
 autoload -Uz compinit && compinit -C -d $XDG_CACHE_HOME/zsh/zcompdump
 
+# Docker
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
 # Load external tool completions
 for f in $(ls ${0:h:a}/completions/*.zsh); do
     cmd=$(basename "${f%.zsh}")

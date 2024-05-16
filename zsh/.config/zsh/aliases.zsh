@@ -36,36 +36,43 @@ else
     alias l.="ls -ld .?*"
 fi
 
-if (( ${+commands[helm]} )); then
-    alias h="helm"
-    alias hi="helm install"
-    alias hd="helm delete"
-    alias hl="helm ls"
-    alias hg="helm get"
-fi
+abbr add -S -q h='helm'
+abbr add -S -q hi='helm install'
+abbr add -S -q hd='helm delete'
+abbr add -S -q hl='helm ls'
+abbr add -S -q hg='helm get'
 
-if (( ${+commands[kubectl]} )); then
-    alias k="kubectl"
-    alias ka="kubectl apply"
-    alias kd="kubectl delete"
-    alias kl="kubectl logs"
-    alias kg="kubectl get"
-fi
+abbr add -S -q k='kubectl'
+abbr add -S -q --global kg='kubectl get'
+abbr add -S -q kd='kubectl delete'
+abbr add -S -q ka='kubectl apply'
+abbr add -S -q kl='kubectl logs'
 
-(( ${+commands[kubens]} )) && alias kns="kubens"
-(( ${+commands[kubectx]} )) && alias kctx="kubectx"
+abbr add -S -q kns='kubens'
+abbr add -S -q kctx='kubectx'
 
-if (( ${+commands[terraform]} )); then
-    alias tf="terraform"
-    alias tfa="terraform apply"
-    alias tfd="terraform destroy"
-fi
+abbr add -S -q tf='terraform'
+abbr add -S -q tfa='terraform apply'
+abbr add -S -q tfd='terraform destroy'
+abbr add -S -q tg='terragrunt'
+abbr add -S -q tga='terragrunt apply'
+abbr add -S -q tgd='terragrunt destroy'
+abbr add -S -q tgra='terragrunt run-all apply'
+abbr add -S -q tgrd='terragrunt run-all destroy'
 
-if (( ${+commands[terragrunt]} )); then
-    alias tg="terragrunt"
-    alias tga="terragrunt apply"
-    alias tgd="terragrunt destroy"
-fi
+abbr add -S -q d='docker'
+abbr add -S -q dps='docker ps'
+abbr add -S -q dr='docker run -it --rm'
+abbr add -S -q di='docker images'
+abbr add -S -q drm='docker rm'
+abbr add -S -q drmi='docker rmi'
+abbr add -S -q drmia='docker rmi -f $(docker images -q)'
+abbr add -S -q db='docker build'
+abbr add -S -q dbp='docker build --build-arg HTTP_PROXY=http://host.docker.internal:3128 --build-arg HTTPS_PROXY=http://host.docker.internal:3128 -t'
+
+abbr add -S -q we='watchexec -e'
+abbr add -S -q py='python'
+abbr add -S -q pip='python -m pip'
 
 # cd to subdirs
 alias -g ...="../.."

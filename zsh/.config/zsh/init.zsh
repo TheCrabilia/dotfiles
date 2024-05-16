@@ -7,7 +7,6 @@ local -a configs=(
     prompt.zsh
     completion.zsh
     aliases.zsh
-    plugins.zsh
 )
 for c in $configs; do
     source "${0:h:a}/${c}"

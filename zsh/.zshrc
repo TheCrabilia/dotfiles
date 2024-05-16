@@ -41,21 +41,40 @@ for editor in nvim vim vi nano; do
     }
 done
 
-## Plugin manager
-ZIM_HOME=$XDG_DATA_HOME/zim
+ANTIDOTE_HOME=$HOME/.cache/antidote
+ABBR_DEFAULT_BINDINGS=0
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_HISTORY_IGNORE=("git *| rsync *| scp *")
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE=("git *| rsync *| scp *")
 
-# Download zimfw plugin manager if missing
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-fi
+# Clone antidote if necessary
+[[ -e ${ZDOTDIR:-~}/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-    source ${ZIM_HOME}/zimfw.zsh init -q
-fi
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+source <(antidote init)
 
-# Initialize modules
-source ${ZIM_HOME}/init.zsh
+antidote bundle <<EOBUNDLES
+    chrissicool/zsh-256color
+    zsh-users/zsh-syntax-highlighting
+    zsh-users/zsh-completions
+    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-history-substring-search
 
-## Load additional configuration files
+    mroth/evalcache
+    olets/zsh-abbr
+    # mafredri/zsh-async
+    romkatv/zsh-bench kind:path
+    hlissner/zsh-autopair
+EOBUNDLES
+
+## Load custom configuration files
 source ${XDG_CONFIG_HOME}/zsh/init.zsh
+
+antidote bundle <<EOBUNDLES
+    ohmyzsh/ohmyzsh path:plugins/azure
+EOBUNDLES
+
+_evalcache fzf --zsh
+_evalcache zoxide init zsh --cmd cd
+eval "$(mise activate zsh)"

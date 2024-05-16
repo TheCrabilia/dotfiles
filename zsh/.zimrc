@@ -1,8 +1,9 @@
-zmodule TheCrabilia/zim-modules --root input
+# zmodule TheCrabilia/zim-modules --root input
 
 zmodule chrissicool/zsh-256color
 zmodule zsh-users/zsh-autosuggestions
-zmodule REALERvolker1/onedark-pro-zsh-syntax-highlighter --source one-dark-syntax-highlighter.zsh
+# zmodule REALERvolker1/onedark-pro-zsh-syntax-highlighter --source one-dark-syntax-highlighter.zsh
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule mafredri/zsh-async --source async.zsh
 zmodule mroth/evalcache
+zmodule olets/zsh-abbr
