@@ -29,8 +29,6 @@
     gpgsign = true
 [rerere]
 	enabled = true
-[column]
-	ui = auto
 [branch]
 	sort = -committerdate
 [rebase]

@@ -32,5 +32,4 @@ ls.add_snippets("go", {
 		i(4),
 		t({ "", "}" }),
 	}),
-	s("ife", t("if err != nil {\n\treturn err\n}")),
 })
