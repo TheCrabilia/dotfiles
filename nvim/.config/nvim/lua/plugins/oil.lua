@@ -8,17 +8,13 @@ return {
 			timeout_ms = 1000,
 			autosave_changes = true,
 		},
-		columns = {
-			"permissions",
-			"size",
-		},
 		view_options = {
 			show_hidden = true,
 		},
 	},
 	keys = {
 		{
-			"<leader>e",
+			"-",
 			mode = "n",
 			function()
 				require("oil").open()

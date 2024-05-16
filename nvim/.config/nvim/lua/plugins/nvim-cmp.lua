@@ -10,52 +10,36 @@ return {
 	},
 	opts = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
-
 		return {
 			---@type cmp.SnippetConfig
 			snippet = {
 				expand = function(args)
-					luasnip.lsp_expand(args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			---@type cmp.Mapping
 			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-y>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Insert,
-					select = true,
-				}),
-				["<C-k>"] = cmp.mapping(function(fallback)
-					if luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-				["<C-j>"] = cmp.mapping(function(fallback)
-					if luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
+				["<C-y>"] = cmp.mapping(
+					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Insert,
+						select = true,
+					}),
+					{ "i", "c" }
+				),
 			}),
 			---@type cmp.CompletionConfig
 			completion = {
-				completeopt = "menu,menuone,noselect,noinsert",
+				completeopt = "menu,menuone,noselect",
 			},
 			---@type cmp.SourceConfig
-			sources = cmp.config.sources({
+			sources = {
 				{ name = "nvim_lsp" },
-				{ name = "luasnip", max_item_count = 5 },
-			}, {
-				{ name = "nvim_lsp_signature_help" },
-			}, {
+				-- { name = "luasnip", max_item_count = 5 },
 				{ name = "buffer", max_item_count = 10 },
-			}),
+			},
 			---@type cmp.FormattingConfig
 			formatting = {
 				format = function(entry, vim_item)

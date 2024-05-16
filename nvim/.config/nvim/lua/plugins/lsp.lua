@@ -11,6 +11,14 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"j-hui/fidget.nvim",
+		"b0o/schemastore.nvim",
+		{ "mfussenegger/nvim-lint", enabled = false },
+		{
+			"stevearc/conform.nvim",
+			init = function()
+				vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+			end,
+		},
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
@@ -20,7 +28,7 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(event)
 				local bufnr = event.buf
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				-- local client = vim.lsp.get_client_by_id(event.data.client_id)
 				local builtin = require("telescope.builtin")
 
 				local function map(keys, func, desc)
@@ -148,6 +156,60 @@ return {
 
 					require("lspconfig")[server_name].setup(server)
 				end,
+			},
+		})
+
+		-- Formatters setup
+		local conform = require("conform")
+		local map = vim.keymap.set
+
+		conform.setup({
+			notify_on_error = false,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "ruff_fix", "ruff_format" },
+				go = { "goimports", "gofmt" },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
+				java = { "clang_format" },
+				markdown = { "prettierd" },
+				html = { "prettierd" },
+				hcl = { "terraform_fmt" },
+				terraform = { "terraform_fmt" },
+				["terraform-vars"] = { "terraform_fmt" },
+				["_"] = { "trim_whitespace" },
+			},
+			formatters = {
+				clang_format = {
+					inherit = true,
+					prepend_args = {
+						"-style={BasedOnStyle: Google, UseTab: Always, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120}",
+					},
+				},
+			},
+		})
+
+		map({ "n", "v" }, "<leader>lf", function()
+			conform.format({ async = true, lsp_fallback = true })
+		end, { desc = "Format buffer" })
+
+		-- Linters setup
+		local ok, lint = pcall(require, "lint")
+		if ok then
+			lint.linters_by_ft = {}
+
+			vim.api.nvim_create_autocmd("BufWritePost", {
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end
+
+		require("fidget").setup({
+			notification = {
+				window = {
+					winblend = 0,
+				},
 			},
 		})
 	end,

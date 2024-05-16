@@ -158,6 +158,14 @@ return {
 				end,
 				desc = "Git Branches",
 			},
+			{
+				"<leader>/",
+				mode = "n",
+				function()
+					builtin.current_buffer_fuzzy_find()
+				end,
+				desc = "Current Buffer Fuzzy Find",
+			},
 		}
 	end,
 }
