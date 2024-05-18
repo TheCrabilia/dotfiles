@@ -23,11 +23,11 @@ esac
 
 (( ${+commands[bat]} )) && alias cat="bat"
 
-if (( ${+commands[exa]} )); then
-    alias ls="exa"
-    alias la="exa --long --all --git --group"
-    alias lt="exa --long --git --group -snew"
-    alias ll="exa --long --git --group"
+if (( ${+commands[eza]} )); then
+    alias ls="eza"
+    alias la="eza --long --all --git --group"
+    alias lt="eza --long --git --group -snew"
+    alias ll="eza --long --git --group"
 else
     alias ls="ls --color=auto"
     alias la="ls -la"

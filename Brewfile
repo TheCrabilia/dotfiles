@@ -13,7 +13,7 @@ brew "openssl"
 
 # Built-in replacements
 brew "bat"
-brew "exa"
+brew "eza"
 brew "fd"
 brew "ripgrep"
 brew "zoxide"
