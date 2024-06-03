@@ -10,6 +10,7 @@ path=(
     $HOME/.local/bin
     $HOME/.local/share/nvim/mason/bin
     $HOME/.cargo/bin
+    $HOME/.krew/bin
     /opt/homebrew/bin
     /opt/homebrew/sbin
     /usr/local/bin
@@ -65,7 +66,6 @@ antidote bundle <<EOBUNDLES
     olets/zsh-abbr
     # mafredri/zsh-async
     romkatv/zsh-bench kind:path
-    hlissner/zsh-autopair
 EOBUNDLES
 
 ## Load custom configuration files

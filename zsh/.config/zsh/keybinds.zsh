@@ -59,7 +59,6 @@
     ## Plugin bindgins
     bindkey '^ ' autosuggest-accept
     bindkey ' ' abbr-expand-and-insert
-    bindkey '^M' abbr-expand-and-accept
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
     bindkey '^P' history-substring-search-up
