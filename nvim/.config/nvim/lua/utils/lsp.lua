@@ -35,11 +35,9 @@ function M.setup_diagnostics()
 	vim.diagnostic.config({
 		serverity_sort = true,
 		signs = true,
-		underline = true,
+		underline = false,
 		update_in_insert = false,
-		virtual_text = {
-			source = "if_many",
-		},
+		virtual_text = true,
 	})
 
 	local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
