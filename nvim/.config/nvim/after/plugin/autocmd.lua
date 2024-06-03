@@ -68,6 +68,14 @@ autocmd("BufEnter", {
 	end,
 })
 
+autocmd("ColorScheme", {
+	group = augroup,
+	pattern = "*",
+	callback = function()
+		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+	end,
+})
+
 vim.api.nvim_create_user_command("Notes", function()
 	vim.cmd.tabnew()
 	vim.cmd.edit("~/notes.md")

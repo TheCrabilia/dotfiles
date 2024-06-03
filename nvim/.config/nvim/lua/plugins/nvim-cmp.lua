@@ -7,6 +7,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"onsails/lspkind.nvim",
 	},
 	opts = function()
 		local cmp = require("cmp")
@@ -16,6 +17,9 @@ return {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
 				end,
+			},
+			window = {
+				documentation = cmp.config.window.bordered({ border = "single" }),
 			},
 			---@type cmp.Mapping
 			mapping = cmp.mapping.preset.insert({
@@ -37,30 +41,21 @@ return {
 			---@type cmp.SourceConfig
 			sources = {
 				{ name = "nvim_lsp" },
-				-- { name = "luasnip", max_item_count = 5 },
 				{ name = "buffer", max_item_count = 10 },
 			},
 			---@type cmp.FormattingConfig
 			formatting = {
-				format = function(entry, vim_item)
-					-- Remove the kind from the completion menu
-					-- TODO: Maybe add icons
-					vim_item.kind = nil
-
-					local maxwidth = 30
-					if vim.fn.strchars(vim_item.abbr) > maxwidth then
-						vim_item.abbr = vim.fn.strcharpart(vim_item.abbr, 0, maxwidth) .. "..."
-					end
-
-					local source_menu = {
-						nvim_lsp = "[LSP]",
-						luasnip = "[Snp]",
+				format = require("lspkind").cmp_format({
+					mode = "text",
+					maxwidth = function()
+						return math.floor(vim.o.columns * 0.20)
+					end,
+					ellipsis_char = "...",
+					menu = {
 						buffer = "[Buf]",
-					}
-					vim_item.menu = string.format("%s %s", source_menu[entry.source.name], vim_item.menu or "")
-
-					return vim_item
-				end,
+						nvim_lsp = "[LSP]",
+					},
+				}),
 			},
 			preselect = cmp.PreselectMode.None,
 		}

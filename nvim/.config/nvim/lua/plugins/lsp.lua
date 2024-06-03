@@ -10,8 +10,8 @@ return {
 		},
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"j-hui/fidget.nvim",
 		"b0o/schemastore.nvim",
+		{ "j-hui/fidget.nvim", opts = {} },
 		{ "mfussenegger/nvim-lint", enabled = false },
 		{
 			"stevearc/conform.nvim",
@@ -203,13 +203,5 @@ return {
 				end,
 			})
 		end
-
-		require("fidget").setup({
-			notification = {
-				window = {
-					winblend = 0,
-				},
-			},
-		})
 	end,
 }

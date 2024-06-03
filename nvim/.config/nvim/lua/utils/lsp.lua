@@ -38,20 +38,7 @@ function M.setup_diagnostics()
 		underline = true,
 		update_in_insert = false,
 		virtual_text = {
-			format = function(diagnostic)
-				local exclude_ft = { "lazy", "mason" }
-
-				local ft = vim.bo[diagnostic.bufnr].filetype
-				if vim.tbl_contains(exclude_ft, ft) then
-					return diagnostic.message
-				else
-					return string.format(
-						"%s: %s",
-						require("utils.lsp").get_server_name_by_diagnostics_ns(diagnostic.namespace),
-						diagnostic.message
-					)
-				end
-			end,
+			source = "if_many",
 		},
 	})
 
