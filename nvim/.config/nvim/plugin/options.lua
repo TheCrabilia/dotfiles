@@ -47,7 +47,7 @@ vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
 
 -- Tabs
 vim.opt.autoindent = true
-vim.opt.cindent = true
+vim.opt.cindent = false
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4

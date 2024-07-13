@@ -1,23 +1,14 @@
 ---@type LazySpec
 return {
 	"folke/todo-comments.nvim",
+	version = "*",
 	event = "BufReadPost",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
 		highlight = {
+			multiline = false,
 			keyword = "bg",
 			pattern = [[.*<(KEYWORDS)(.*)\s*:]],
-		},
-		search = {
-			command = "rg",
-			args = {
-				"--color=never",
-				"--no-heading",
-				"--with-filename",
-				"--line-number",
-				"--column",
-			},
-			pattern = [[\b(KEYWORDS)(.*):]],
 		},
 	},
 	keys = {

@@ -2,7 +2,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
-	-- branch = "0.1.x",
+	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"TheCrabilia/telescope-http.nvim",
@@ -34,13 +34,18 @@ return {
 					file_ignore_patterns = {
 						"^.git/",
 
+						-- Golang
+						".?vendor/",
+						"go%.sum",
+
 						-- Node
-						"^node_modules/",
-						"^%.angular/",
+						"node_modules/",
+						"%.angular/",
+						"dist/",
 
 						-- Python
-						"^venv/",
-						"^%.venv/",
+						"venv/",
+						"%.venv/",
 						"__pycache__/",
 						"%.pytest_cache/",
 						"%.ruff_cache/",
@@ -57,6 +62,9 @@ return {
 						-- Zsh
 						"%.zwc",
 						"%.zwc%.old",
+
+						-- Editors
+						"%.vscode/",
 					},
 					mappings = {
 						i = {
@@ -76,7 +84,7 @@ return {
 					},
 				},
 				live_grep = {
-					additional_args = { "--hidden" },
+					additional_args = { "--hidden", "-g=!{.git,node_modules,vendor}" },
 				},
 			},
 			extensions_enable = { "fzf", "http" },

@@ -2,7 +2,6 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		enabled = false,
 		config = function()
 			local map = vim.keymap.set
 
@@ -34,42 +33,19 @@ return {
 					changedelete = { text = "~" },
 					untracked = { text = "~" },
 				},
+				signs_staged = {
+					add = { text = "+" },
+					change = { text = "~" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
+					untracked = { text = "~" },
+				},
 			})
 
 			local map = vim.keymap.set
 			map("n", "<leader>gs", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
 			map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
 		end,
-	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"sindrets/diffview.nvim",
-		},
-		opts = {
-			kind = "split",
-			disable_hint = true,
-			disable_context_highlighting = true,
-			disable_insert_on_commit = true,
-			git_services = {
-				["github.com"] = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
-				["bitbucket.org"] = "https://bitbucket.org/${owner}/${repository}/pull-requests/new?source=${branch_name}&t=1",
-				["gitlab.com"] = "https://gitlab.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
-				["code.swisscom.com"] = "https://code.swisscom.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
-			},
-			highlight = {
-				italic = false,
-			},
-		},
-		keys = {
-			{
-				"<leader>gg",
-				mode = "n",
-				function()
-					require("neogit").open()
-				end,
-				desc = "Open Neogit",
-			},
-		},
 	},
 }

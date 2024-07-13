@@ -11,8 +11,8 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"b0o/schemastore.nvim",
+		"mfussenegger/nvim-lint",
 		{ "j-hui/fidget.nvim", opts = {} },
-		{ "mfussenegger/nvim-lint", enabled = false },
 		{
 			"stevearc/conform.nvim",
 			init = function()
@@ -113,6 +113,7 @@ return {
 				capabilities = {
 					offsetEncoding = { "utf-8" },
 				},
+				filetypes = { "c", "cpp", "objc", "objcpp" },
 				init_options = {
 					fallbackFlags = {
 						"-I",
@@ -175,6 +176,8 @@ return {
 				html = { "prettierd" },
 				hcl = { "terraform_fmt" },
 				terraform = { "terraform_fmt" },
+				proto = { "buf" },
+				ts = { "prettierd" },
 				["terraform-vars"] = { "terraform_fmt" },
 				["_"] = { "trim_whitespace" },
 			},
@@ -195,9 +198,23 @@ return {
 		-- Linters setup
 		local ok, lint = pcall(require, "lint")
 		if ok then
-			lint.linters_by_ft = {}
+			lint.linters_by_ft = {
+				sh = { "shellcheck" },
+				bash = { "shellcheck" },
+				proto = { "buf_lint" },
+			}
 
-			vim.api.nvim_create_autocmd("BufWritePost", {
+			lint.linters.shellcheck.args = {
+				"--format",
+				"json",
+				"--enable",
+				"all",
+				"-e",
+				"SC2154",
+				"-",
+			}
+
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
 				callback = function()
 					lint.try_lint()
 				end,

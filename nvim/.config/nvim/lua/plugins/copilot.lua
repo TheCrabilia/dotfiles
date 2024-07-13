@@ -1,33 +1,54 @@
 ---@type LazySpec
 return {
-	"zbirenbaum/copilot.lua",
-	cmd = "Copilot",
-	event = "InsertEnter",
-	opts = {
-		suggestion = {
-			enabled = true,
-			auto_trigger = true,
-			debounce = 75,
-			keymap = {
-				accept_word = false,
-				accept_line = false,
-				accept = "<C-l>",
-				next = "<C-]>",
-				prev = "<C-[>",
-				dismiss = "<C-e>",
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = {
+				enabled = true,
+				auto_trigger = true,
+				debounce = 75,
+				keymap = {
+					accept_word = false,
+					accept_line = false,
+					accept = "<C-l>",
+					next = "<C-]>",
+					prev = "<C-[>",
+					dismiss = "<C-e>",
+				},
+			},
+			panel = {
+				enabled = false,
+			},
+			filetypes = {
+				norg = false,
 			},
 		},
-		panel = {
-			enabled = false,
-		},
-		filetypes = {
-			norg = false,
-		},
-	},
-	config = function(_, opts)
-		require("copilot").setup(opts)
+		config = function(_, opts)
+			require("copilot").setup(opts)
 
-		vim.g.copilot_proxy = vim.fn.getenv("http_proxy")
-		vim.g.copilot_proxy_strict_ssl = false
-	end,
+			vim.g.copilot_proxy = vim.fn.getenv("http_proxy")
+			vim.g.copilot_proxy_strict_ssl = false
+		end,
+	},
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		cmd = {
+			"CopilotChat",
+			"CopilotChatCommit",
+			"CopilotChatCommitStaged",
+			"CopilotChatDocs",
+			"CopilotChatExplain",
+			"CopilotChatFix",
+			"CopilotChatFixDiagnostic",
+			"CopilotChatOptimize",
+			"CopilotChatTests",
+		},
+		dependencies = {
+			"zbirenbaum/copilot.lua",
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {},
+	},
 }
