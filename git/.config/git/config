@@ -21,6 +21,9 @@
     st = status
     unstage = reset HEAD --
     last = log -1 HEAD
+    hide = update-index --skip-worktree
+    unhide = update-index --no-skip-worktree
+    clone-worktree = !git-clone-worktree
 [gpg]
     format = ssh
 [gpg "ssh"]
@@ -33,3 +36,5 @@
 	sort = -committerdate
 [rebase]
 	updateRefs = true
+[push]
+	autoSetupRemote = true

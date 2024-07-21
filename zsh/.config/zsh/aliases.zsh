@@ -36,6 +36,10 @@ else
     alias l.="ls -ld .?*"
 fi
 
+if (( ${+commands[trash]} )); then
+    alias rm="trash"
+fi
+
 abbr add -S -q h='helm'
 abbr add -S -q hi='helm install'
 abbr add -S -q hd='helm delete'
@@ -47,6 +51,12 @@ abbr add -S -q --global kg='kubectl get'
 abbr add -S -q kd='kubectl delete'
 abbr add -S -q ka='kubectl apply'
 abbr add -S -q kl='kubectl logs'
+
+alias kgp="kubectl get pods"
+alias kgs="kubectl get svc"
+alias kge="kubectl get secrets"
+alias kgc="kubectl get configmap"
+alias kgd="kubectl get deployment"
 
 abbr add -S -q kns='kubens'
 abbr add -S -q kctx='kubectx'

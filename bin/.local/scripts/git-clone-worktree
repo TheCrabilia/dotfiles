@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+REPO_URL=$1
+REPO_NAME=$(basename "${REPO_URL}" .git)
+
+mkdir "${REPO_NAME}"
+cd "${REPO_NAME}" || exit 1
+git clone --bare "${REPO_URL}" .bare
+
+echo "gitdir: ./.bare" > .git
+
+DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+git worktree add "${DEFAULT_BRANCH}"
