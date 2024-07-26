@@ -138,8 +138,9 @@ return {
 			"debugpy",
 			"dockerls",
 			"goimports",
-			"ruff",
 			"tflint",
+			"prettierd",
+			"shellcheck",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
