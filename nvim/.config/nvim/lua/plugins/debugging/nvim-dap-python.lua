@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"mfussenegger/nvim-dap-python",
+	enabled = false,
 	ft = { "python" },
 	opts = function()
 		return {

@@ -1,117 +1,71 @@
 ---@type LazySpec
 return {
 	"ThePrimeagen/harpoon",
-	opts = function()
-		return {
-			menu = {
-				width = math.floor(vim.api.nvim_win_get_width(0) * 0.6),
-			},
-		}
+	branch = "harpoon2",
+	config = function()
+		require("harpoon"):setup()
 	end,
 	keys = {
 		{
 			"<leader>ha",
 			mode = "n",
 			function()
-				require("harpoon.ui").toggle_quick_menu()
+				local harpoon = require("harpoon")
+				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end,
 			desc = "Toggle Quick Menu",
 		},
 		{
-			"<leader>hj",
+			"<C-k>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_next()
+				require("harpoon"):list():next()
 			end,
-			desc = "Next File",
+			desc = "Harpoon Next File",
 		},
 		{
-			"<leader>hk",
+			"<C-j>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_prev()
+				require("harpoon"):list():prev()
 			end,
-			desc = "Prev File",
+			desc = "Harpoon Prev File",
 		},
 		{
 			"<leader>hf",
 			mode = "n",
 			function()
-				require("harpoon.mark").add_file()
+				require("harpoon"):list():add()
 			end,
 			desc = "Add File",
 		},
 		{
-			"<leader>h1",
+			"<C-S-h>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_file(1)
+				require("harpoon"):list():select(1)
 			end,
-			desc = "Go To File 1",
 		},
 		{
-			"<leader>h2",
+			"<C-S-j>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_file(2)
+				require("harpoon"):list():select(2)
 			end,
-			desc = "Go To File 2",
 		},
 		{
-			"<leader>h3",
+			"<C-S-k>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_file(3)
+				require("harpoon"):list():select(3)
 			end,
-			desc = "Go To File 3",
 		},
 		{
-			"<leader>h4",
+			"<C-S-l>",
 			mode = "n",
 			function()
-				require("harpoon.ui").nav_file(4)
+				require("harpoon"):list():select(4)
 			end,
-			desc = "Go To File 4",
-		},
-		{
-			"<leader>h5",
-			mode = "n",
-			function()
-				require("harpoon.ui").nav_file(5)
-			end,
-			desc = "Go To File 5",
-		},
-		{
-			"<leader>h6",
-			mode = "n",
-			function()
-				require("harpoon.ui").nav_file(6)
-			end,
-			desc = "Go To File 6",
-		},
-		{
-			"<leader>h7",
-			mode = "n",
-			function()
-				require("harpoon.ui").nav_file(7)
-			end,
-			desc = "Go To File 7",
-		},
-		{
-			"<leader>h8",
-			mode = "n",
-			function()
-				require("harpoon.ui").nav_file(8)
-			end,
-			desc = "Go To File 8",
-		},
-		{
-			"<leader>h9",
-			mode = "n",
-			function()
-				require("harpoon.ui").nav_file(9)
-			end,
-			desc = "Go To File 9",
 		},
 	},
 }

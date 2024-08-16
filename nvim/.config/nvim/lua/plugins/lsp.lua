@@ -78,12 +78,18 @@ return {
 					},
 					python = {
 						analysis = {
-							typeCheckingMode = "strict",
+							typeCheckingMode = "basic",
 							useLibraryCodeFroTypes = true,
 							autoSearchPaths = true,
+							autoImportCompletions = true,
 							diagnosticMode = "workspace",
 							diagnosticSeverityOverrides = {
-								reportUndefinedVariable = "none",
+								deprecateTypingAliases = true,
+								reportUndefinedVariable = false,
+								reportUnusedVariable = false,
+								reportUnusedClass = "warning",
+								reportUnusedFunction = "warning",
+								reportUnusedImport = false,
 							},
 						},
 					},
@@ -121,11 +127,6 @@ return {
 					},
 				},
 			},
-			ruff_lsp = {
-				capabilities = {
-					hoverProvider = nil,
-				},
-			},
 		}
 
 		require("mason").setup()
@@ -153,7 +154,7 @@ return {
 
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					server.handlers = vim.tbl_deep_extend("force", {}, handlers, server.handlers or {})
-					server.flags = vim.tbl_deep_extend("force", { debounce_text_changes = 150 }, server.flags or {})
+					server.flags = vim.tbl_deep_extend("force", { debounce_text_changes = 200 }, server.flags or {})
 
 					require("lspconfig")[server_name].setup(server)
 				end,
@@ -168,7 +169,7 @@ return {
 			notify_on_error = false,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "ruff_fix", "ruff_format" },
+				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				go = { "goimports", "gofmt" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
@@ -187,6 +188,18 @@ return {
 					inherit = true,
 					prepend_args = {
 						"-style={BasedOnStyle: Google, UseTab: Always, IndentWidth: 4, TabWidth: 4, ColumnLimit: 120}",
+					},
+				},
+				ruff_format = {
+					inherit = true,
+					args = {
+						"format",
+						"--force-exclude",
+						"--line-length",
+						"120",
+						"--stdin-filename",
+						"$FILENAME",
+						"-",
 					},
 				},
 			},

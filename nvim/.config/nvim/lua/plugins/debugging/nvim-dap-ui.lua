@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"rcarriga/nvim-dap-ui",
+	enabled = false,
 	dependencies = {
 		"nvim-dap",
 		"neodev.nvim",

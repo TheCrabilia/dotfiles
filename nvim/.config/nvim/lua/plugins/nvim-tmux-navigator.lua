@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"alexghergh/nvim-tmux-navigation",
+	enabled = false,
 	event = "VeryLazy",
 	opts = {
 		disable_when_zoomed = true,

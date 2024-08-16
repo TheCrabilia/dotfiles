@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
 	"nvim-telescope/telescope.nvim",
-	event = "VimEnter",
+	cmd = "Telescope",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -16,7 +16,6 @@ return {
 	},
 	opts = function()
 		local actions = require("telescope.actions")
-		local action_layout = require("telescope.actions.layout")
 		local find_files_theme = require("telescope.themes").get_dropdown({
 			winblend = 0,
 			prompt = " ",
@@ -107,14 +106,12 @@ return {
 		end
 	end,
 	keys = function()
-		-- local telescope = require("telescope")
-		local builtin = require("telescope.builtin")
 		return {
 			{
 				"<leader>ff",
 				mode = "n",
 				function()
-					builtin.find_files()
+					require("telescope.builtin").find_files()
 				end,
 				desc = "Find Files",
 			},
@@ -122,7 +119,7 @@ return {
 				"<leader>fl",
 				mode = "n",
 				function()
-					builtin.live_grep()
+					require("telescope.builtin").live_grep()
 				end,
 				desc = "Live Grep",
 			},
@@ -130,7 +127,7 @@ return {
 				"<leader>fh",
 				mode = "n",
 				function()
-					builtin.help_tags()
+					require("telescope.builtin").help_tags()
 				end,
 				desc = "Help Tags",
 			},
@@ -138,7 +135,7 @@ return {
 				"<leader>fb",
 				mode = "n",
 				function()
-					builtin.buffers()
+					require("telescope.builtin").buffers()
 				end,
 				desc = "Buffers",
 			},
@@ -146,7 +143,7 @@ return {
 				"<leader>ft",
 				mode = "n",
 				function()
-					builtin.treesitter()
+					require("telescope.builtin").treesitter()
 				end,
 				desc = "Buffer symbols",
 			},
@@ -154,7 +151,7 @@ return {
 				"<leader>fd",
 				mode = "n",
 				function()
-					builtin.diagnostics()
+					require("telescope.builtin").diagnostics()
 				end,
 				desc = "Workspace Diagnostics",
 			},
@@ -162,7 +159,7 @@ return {
 				"<leader>gb",
 				mode = "n",
 				function()
-					builtin.git_branches()
+					require("telescope.builtin").git_branches()
 				end,
 				desc = "Git Branches",
 			},
@@ -170,7 +167,7 @@ return {
 				"<leader>/",
 				mode = "n",
 				function()
-					builtin.current_buffer_fuzzy_find()
+					require("telescope.builtin").current_buffer_fuzzy_find()
 				end,
 				desc = "Current Buffer Fuzzy Find",
 			},

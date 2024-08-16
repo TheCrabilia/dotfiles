@@ -22,6 +22,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufRead",
 		config = function()
 			local gitsigns = require("gitsigns")
 			gitsigns.setup({
@@ -47,5 +48,10 @@ return {
 			map("n", "<leader>gs", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
 			map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
 		end,
+	},
+	{
+		dir = "/Users/taaspil1/Documents/plugins/git-worktree.nvim",
+		name = "git-worktree",
+		opts = {},
 	},
 }
