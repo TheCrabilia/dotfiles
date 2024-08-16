@@ -3,14 +3,13 @@
 set -e
 
 config_pkg=(
-    alacritty
     bin
+    git
     mise
     nvim
     tmux
+    wezterm
     zsh
-    fish
-    git
 )
 
 for pkg in $config_pkg; do

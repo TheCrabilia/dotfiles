@@ -44,6 +44,11 @@
     bindkey "${key_info[Control]}F" forward-word
     bindkey "${key_info[Control]}R" history-incremental-search-backward
 
+    if [[ "${TERM_PROGRAM}" == "WezTerm" ]]; then
+        autoload -Uz wezterm-clear-screen && zle -N wezterm-clear-screen && \
+            bindkey '^L' wezterm-clear-screen
+    fi
+
     autoload -Uz edit-command-line && zle -N edit-command-line && \
         bindkey "${key_info[Control]}x${key_info[Control]}e" edit-command-line
 

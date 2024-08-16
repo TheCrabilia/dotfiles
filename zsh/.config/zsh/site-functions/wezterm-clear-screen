@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+for i in {2..$(tput lines)}
+do
+    printf '\n'
+done
+zle clear-screen
