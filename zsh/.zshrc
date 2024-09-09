@@ -30,7 +30,7 @@ export SHELL=$(which zsh)
 
 # Default pager
 (( ${+commands[less]} )) && () {
-    export LESS=-r
+    export LESS="-R -S"
     export PAGER=less
 }
 

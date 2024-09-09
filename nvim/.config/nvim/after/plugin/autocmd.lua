@@ -21,7 +21,7 @@ local function set_tabstop(value, pattern, expandtab)
 		end,
 	})
 end
-set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", "helm", "fish" }, true)
+set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", "helm", "fish", "norg" }, true)
 set_tabstop(3, "lua", false)
 set_tabstop(4, { "c", "cpp", "go" }, false)
 

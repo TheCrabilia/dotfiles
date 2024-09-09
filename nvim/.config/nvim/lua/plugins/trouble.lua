@@ -7,7 +7,7 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>td",
+			"<leader>x",
 			mode = "n",
 			function()
 				vim.cmd.Trouble("diagnostics toggle")

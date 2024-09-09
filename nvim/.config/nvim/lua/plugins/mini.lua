@@ -28,6 +28,8 @@ return {
 		statusline.section_location = function()
 			return "%2l:%-2v"
 		end
+		---@diagnostic disable-next-line: duplicate-set-field
+		statusline.section_lsp = function() end
 
 		-- Force set statusline for certain filetypes
 		vim.api.nvim_create_autocmd("FileType", {

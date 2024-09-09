@@ -16,7 +16,7 @@ return {
 				vim.cmd.Git("fetch")
 			end, { desc = "Git Fetch" })
 			map("n", "<leader>gl", function()
-				vim.cmd.Git("log")
+				vim.cmd.Git("log --graph --oneline")
 			end, { desc = "Git Log" })
 		end,
 	},

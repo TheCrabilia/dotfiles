@@ -6,3 +6,5 @@ python_compile = true
 python_venv_auto_create = true
 
 node_compile = false
+
+disable_hints = ["registry"]

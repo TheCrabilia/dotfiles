@@ -1,5 +1,8 @@
 vim.g.omni_sql_no_default_maps = 1 -- Disable annoying default mappings for sql files
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Misc
 vim.opt.autowrite = true
 vim.opt.autoread = true

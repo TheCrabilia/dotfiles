@@ -26,7 +26,7 @@ zsh setup-git
 zsh setup-1password
 ```
 
-## Additiaonal MacOS configurations
+## Additional MacOS configurations
 
 - Disable press and hold popup
 

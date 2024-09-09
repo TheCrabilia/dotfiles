@@ -85,11 +85,8 @@ return {
 							diagnosticMode = "workspace",
 							diagnosticSeverityOverrides = {
 								deprecateTypingAliases = true,
-								reportUndefinedVariable = false,
-								reportUnusedVariable = false,
 								reportUnusedClass = "warning",
 								reportUnusedFunction = "warning",
-								reportUnusedImport = false,
 							},
 						},
 					},
@@ -170,7 +167,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-				go = { "goimports", "gofmt" },
+				go = { "goimports", "gofumpt", "golines" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
 				java = { "clang_format" },
@@ -200,6 +197,15 @@ return {
 						"--stdin-filename",
 						"$FILENAME",
 						"-",
+					},
+				},
+				golines = {
+					inherit = true,
+					prepend_args = {
+						"-m",
+						"120",
+						"--shorten-comments",
+						"--reformat-tags",
 					},
 				},
 			},

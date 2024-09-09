@@ -1,5 +1,4 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+require("core.options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ import = "plugins" }, {
 	install = {
 		missing = true,
+		colorscheme = { "nordic" },
 	},
 	checker = {
 		enabled = true,
@@ -27,6 +27,9 @@ require("lazy").setup({ import = "plugins" }, {
 	change_detection = {
 		enabled = true,
 		notify = false,
+	},
+	rocks = {
+		hererocks = true,
 	},
 	ui = { border = "rounded" },
 	performance = {

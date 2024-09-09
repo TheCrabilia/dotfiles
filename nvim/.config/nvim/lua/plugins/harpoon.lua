@@ -16,22 +16,6 @@ return {
 			desc = "Toggle Quick Menu",
 		},
 		{
-			"<C-k>",
-			mode = "n",
-			function()
-				require("harpoon"):list():next()
-			end,
-			desc = "Harpoon Next File",
-		},
-		{
-			"<C-j>",
-			mode = "n",
-			function()
-				require("harpoon"):list():prev()
-			end,
-			desc = "Harpoon Prev File",
-		},
-		{
 			"<leader>hf",
 			mode = "n",
 			function()
@@ -40,28 +24,28 @@ return {
 			desc = "Add File",
 		},
 		{
-			"<C-S-h>",
+			"<leader><leader>h",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(1)
 			end,
 		},
 		{
-			"<C-S-j>",
+			"<leader><leader>j",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(2)
 			end,
 		},
 		{
-			"<C-S-k>",
+			"<leader><leader>k",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(3)
 			end,
 		},
 		{
-			"<C-S-l>",
+			"<leader><leader>l",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(4)
