@@ -6,15 +6,20 @@ return {
 	opts = {
 		italic_comments = false,
 		bright_border = true,
-		override = {
-			DiagnosticVirtualTextOk = { link = "DiagnosticOk" },
-			DiagnosticVirtualTextHint = { link = "DiagnosticHint" },
-			DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" },
-			DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" },
-			DiagnosticVirtualTextError = { link = "DiagnosticError" },
-			DiagnosticVirtualTextWarning = { link = "DiagnosticWarning" },
-			Pmenu = { link = "NormalFloat" },
-		},
+		on_highlight = function(highlights)
+			highlights.DiagnosticVirtualTextOk = { link = "DiagnosticOk" }
+			highlights.DiagnosticVirtualTextHint = { link = "DiagnosticHint" }
+			highlights.DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" }
+			highlights.DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" }
+			highlights.DiagnosticVirtualTextError = { link = "DiagnosticError" }
+			highlights.DiagnosticVirtualTextWarning = { link = "DiagnosticWarning" }
+			-- highlights.Pmenu = { link = "NormalFloat" }
+
+			-- disable all italics
+			for _, hi in pairs(highlights) do
+				hi.italic = false
+			end
+		end,
 		telescope = {
 			style = "classic",
 		},

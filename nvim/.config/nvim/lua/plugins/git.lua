@@ -2,55 +2,93 @@
 return {
 	{
 		"tpope/vim-fugitive",
-		config = function()
-			local map = vim.keymap.set
-
-			map("n", "<leader>gg", vim.cmd.Git, { desc = "Open Git" })
-			map("n", "<leader>gp", function()
-				vim.cmd.Git("push")
-			end, { desc = "Git Push" })
-			map("n", "<leader>gP", function()
-				vim.cmd.Git("pull")
-			end, { desc = "Git Pull" })
-			map("n", "<leader>gf", function()
-				vim.cmd.Git("fetch")
-			end, { desc = "Git Fetch" })
-			map("n", "<leader>gl", function()
-				vim.cmd.Git("log --graph --oneline")
-			end, { desc = "Git Log" })
-		end,
+		cmd = "Git",
+		keys = {
+			{
+				"<leader>gg",
+				mode = "n",
+				function()
+					vim.cmd.Git()
+				end,
+				desc = "Open Git",
+			},
+			{
+				"<leader>gp",
+				mode = "n",
+				function()
+					vim.cmd.Git("push")
+				end,
+				desc = "Git Push",
+			},
+			{
+				"<leader>gP",
+				mode = "n",
+				function()
+					vim.cmd.Git("pull")
+				end,
+				desc = "Git Pull",
+			},
+			{
+				"<leader>gf",
+				mode = "n",
+				function()
+					vim.cmd.Git("fetch")
+				end,
+				desc = "Git Fetch",
+			},
+			{
+				"<leader>gl",
+				mode = "n",
+				function()
+					vim.cmd.Git("log --graph --outline")
+				end,
+				desc = "Git Log",
+			},
+		},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
-		config = function()
-			local gitsigns = require("gitsigns")
-			gitsigns.setup({
-				signs = {
-					add = { text = "+" },
-					change = { text = "~" },
-					delete = { text = "_" },
-					topdelete = { text = "‾" },
-					changedelete = { text = "~" },
-					untracked = { text = "~" },
-				},
-				signs_staged = {
-					add = { text = "+" },
-					change = { text = "~" },
-					delete = { text = "_" },
-					topdelete = { text = "‾" },
-					changedelete = { text = "~" },
-					untracked = { text = "~" },
-				},
-			})
-
-			local map = vim.keymap.set
-			map("n", "<leader>gs", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
-			map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
-		end,
+		opts = {
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "~" },
+			},
+			signs_staged = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "~" },
+			},
+		},
+		keys = {
+			{
+				"<leader>gs",
+				mode = "n",
+				function()
+					require("gitsigns").preview_hunk_inline()
+				end,
+				desc = "Preview hunk",
+			},
+			{
+				"<leader>gr",
+				mode = "n",
+				function()
+					require("gitsigns").reset_hunk()
+				end,
+				desc = "Reset hunk",
+			},
+		},
 	},
 	{
 		dir = "/Users/taaspil1/Documents/plugins/git-worktree.nvim",
+		enabled = false,
 		name = "git-worktree",
 		opts = {},
 	},

@@ -2,7 +2,7 @@
 return {
 	"mrjones2014/smart-splits.nvim",
 	version = ">=1.0.0",
-	lazy = false,
+	event = "VeryLazy",
 	config = function()
 		local smart_splits = require("smart-splits")
 		smart_splits.setup()

@@ -54,15 +54,24 @@ function M.switch_workspace(window, pane, opts)
 	w.GLOBAL.prev_workspace = current_workspace
 end
 
-function M.switch_to_prev_workpace(win, pane)
-	local current_workspace = win:active_workspace()
+function M.switch_to_prev_workpace(window, pane)
+	local current_workspace = window:active_workspace()
 	local workspace = w.GLOBAL.prev_workspace
 
 	if current_workspace == workspace or workspace == nil then
 		return
 	end
 
-	M.switch_workspace(win, pane, { name = workspace })
+	M.switch_workspace(window, pane, { name = workspace })
+end
+
+function M.find_workspace(window, pane)
+	local workspace = window:active_workspace()
+	window:perform_action(act.ShowLauncherArgs({ flags = "WORKSPACES|FUZZY" }), pane)
+
+	if workspace ~= window:active_workspace() then
+		w.GLOBAL.prev_workspace = workspace
+	end
 end
 
 return M

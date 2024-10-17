@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"neovim/nvim-lspconfig",
+	event = "BufRead",
 	dependencies = {
 		{
 			"williamboman/mason.nvim",
@@ -67,6 +68,21 @@ return {
 						},
 						format = {
 							enabled = false,
+						},
+					},
+				},
+			},
+			gopls = {
+				settings = {
+					gopls = {
+						staticcheck = true,
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
 						},
 					},
 				},
@@ -176,7 +192,10 @@ return {
 				hcl = { "terraform_fmt" },
 				terraform = { "terraform_fmt" },
 				proto = { "buf" },
-				ts = { "prettierd" },
+				typescript = { "prettierd" },
+				javascript = { "prettierd" },
+				css = { "prettierd" },
+				templ = { "templ" },
 				["terraform-vars"] = { "terraform_fmt" },
 				["_"] = { "trim_whitespace" },
 			},

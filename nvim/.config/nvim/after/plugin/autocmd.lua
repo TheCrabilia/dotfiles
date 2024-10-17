@@ -23,7 +23,7 @@ local function set_tabstop(value, pattern, expandtab)
 end
 set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", "helm", "fish", "norg" }, true)
 set_tabstop(3, "lua", false)
-set_tabstop(4, { "c", "cpp", "go" }, false)
+set_tabstop(4, { "c", "cpp", "go", "templ" }, false)
 
 local function set_cursorline(event, value, pattern)
 	autocmd(event, {
@@ -57,7 +57,7 @@ autocmd("BufEnter", {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions:remove("a") -- Disable auto formatting
-		vim.opt.formatoptions:remove("t") -- Don't auto-wrap text
+		vim.opt.formatoptions:append("t") -- Auto-wrap text based on textwidth
 		vim.opt.formatoptions:append("c") -- Auto-wrap comments
 		vim.opt.formatoptions:append("q") -- Allow formatting comments with gq
 		vim.opt.formatoptions:remove("o") -- Don't insert comment leader when formatting

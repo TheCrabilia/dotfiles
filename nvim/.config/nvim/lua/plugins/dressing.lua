@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
 	"stevearc/dressing.nvim",
-	event = "VeryLazy",
+	event = "BufRead",
 	opts = {
 		input = {
 			win_options = {

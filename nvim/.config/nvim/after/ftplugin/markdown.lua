@@ -1,4 +1,4 @@
 vim.opt_local.textwidth = 120
-
--- Enable spell checking
+vim.opt_local.colorcolumn = ""
+vim.opt_local.cursorline = false
 vim.opt_local.spell = true
