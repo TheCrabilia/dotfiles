@@ -41,22 +41,31 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		build = "make tiktoken",
-		opts = {
-			model = "gpt-4o",
-			mappings = {
-				close = {
-					insert = "",
+		opts = function()
+			return {
+				model = "gpt-4o",
+				mappings = {
+					close = {
+						insert = "",
+					},
+					complete = {
+						insert = "",
+					},
 				},
-				complete = {
-					insert = "",
+				prompts = {
+					CommitStaged = {
+						prompt = "Write commit message for the change with commitizen convention. Make sure the message has maximum 50 characters.",
+					},
+					Review = {
+						prompt = "/COPILOT_REVIEW Review the selected code. Do not add comments with suggestion to add comments to the code.",
+					},
+					SpellCheck = {
+						prompt = "Your task is to take the text provided and rewrite it into a clear, grammatically correct version while preserving the original meaning as closely as possible. Correct any spelling mistakes, punctuation errors, verb tense issues, word choice problems, and other grammatical mistakes.",
+						selection = require("CopilotChat.select").visual,
+					},
 				},
-			},
-			prompts = {
-				CommitStaged = {
-					prompt = "Write commit message for the change with commitizen convention. Make sure the message has maximum 50 characters.",
-				},
-			},
-		},
+			}
+		end,
 		config = function(_, opts)
 			require("CopilotChat.integrations.cmp").setup()
 			require("CopilotChat").setup(opts)

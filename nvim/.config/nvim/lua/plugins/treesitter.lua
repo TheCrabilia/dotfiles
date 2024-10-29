@@ -2,6 +2,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = "BufRead",
+	cmd = "TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		{ "nvim-treesitter/nvim-treesitter-context", enabled = false },
@@ -61,7 +62,7 @@ return {
 				line_numbers = true,
 				multiline_threshold = 20,
 				trim_scope = "outer",
-				mode = "cursor", -- "cursor" or "topline"
+				mode = "cursor",
 				separator = nil,
 				zindex = 20,
 			})

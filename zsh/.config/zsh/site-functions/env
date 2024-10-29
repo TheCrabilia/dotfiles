@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+command env | awk '!/^LS_COLORS/'

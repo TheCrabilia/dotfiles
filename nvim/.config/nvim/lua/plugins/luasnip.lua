@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
 	"L3MON4D3/LuaSnip",
+	event = "BufReadPost",
 	version = "*",
 	build = "make install_jsregexp",
 	config = function()

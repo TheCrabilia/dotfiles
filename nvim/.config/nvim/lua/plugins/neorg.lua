@@ -1,5 +1,6 @@
 return {
 	"nvim-neorg/neorg",
+	enabled = false,
 	cmd = "Neorg",
 	version = "*",
 	opts = {
@@ -9,6 +10,8 @@ return {
 				config = {
 					icons = {
 						code_block = {
+							conceal = true,
+							width = "content",
 							spell_check = false,
 						},
 					},

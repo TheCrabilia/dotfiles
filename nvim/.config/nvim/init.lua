@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ import = "plugins" }, {
 	install = {
 		missing = true,
-		colorscheme = { "nordic" },
+		colorscheme = { "catppuccin" },
 	},
 	checker = {
 		enabled = true,
@@ -44,6 +44,7 @@ require("lazy").setup({ import = "plugins" }, {
 				"tohtml",
 				"tutor",
 				"zipPlugin",
+				"editorconfig",
 			},
 		},
 	},
