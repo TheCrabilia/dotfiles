@@ -22,7 +22,7 @@ local function set_tabstop(value, pattern, expandtab)
 	})
 end
 set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", "helm", "fish", "norg" }, true)
-set_tabstop(3, "lua", false)
+set_tabstop(2, "lua", false)
 set_tabstop(4, { "c", "cpp", "go", "templ" }, false)
 
 local function set_cursorline(event, value, pattern)

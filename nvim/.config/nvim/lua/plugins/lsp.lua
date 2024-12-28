@@ -13,7 +13,6 @@ return {
 					vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 				end,
 			},
-			"folke/neodev.nvim",
 		},
 		config = function()
 			require("utils.lsp").setup_diagnostics()
@@ -22,27 +21,34 @@ return {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(event)
 					local bufnr = event.buf
-					-- local client = vim.lsp.get_client_by_id(event.data.client_id)
-					local builtin = require("telescope.builtin")
 
 					local function map(keys, func, desc)
 						vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
 					end
 
-					map("gd", builtin.lsp_definitions, "Go to definition")
+					map("gd", function()
+						require("telescope.builtin").lsp_definitions()
+					end, "Go to definition")
 					map("gD", vim.lsp.buf.declaration, "Go to declaration")
-					map("gi", builtin.lsp_implementations, "Go to implementation")
-					map("gr", builtin.lsp_references, "List references")
+					map("gi", function()
+						require("telescope.builtin").lsp_implementations()
+					end, "Go to implementation")
+					map("gr", function()
+						require("telescope.builtin").lsp_references()
+					end, "List references")
 					map("<leader>lr", vim.lsp.buf.rename, "Rename symbol")
 					map("<leader>la", vim.lsp.buf.code_action, "Code action")
-					map("<leader>ds", builtin.lsp_document_symbols, "Document symbols")
-					map("<leader>ws", builtin.lsp_workspace_symbols, "Workspace symbols")
+					map("<leader>ds", function()
+						require("telescope.builtin").lsp_document_symbols()
+					end, "Document symbols")
+					map("<leader>ws", function()
+						require("telescope.builtin").lsp_workspace_symbols()
+					end, "Workspace symbols")
 				end,
 			})
 
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-			-- local handlers = require("utils.lsp").handlers()
+			local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+			local handlers = require("utils.lsp").handlers()
 
 			local servers = {
 				lua_ls = {
@@ -149,15 +155,13 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-			require("neodev").setup()
-
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
 
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						-- server.handlers = vim.tbl_deep_extend("force", {}, handlers, server.handlers or {})
+						server.handlers = vim.tbl_deep_extend("force", {}, handlers, server.handlers or {})
 						server.flags = vim.tbl_deep_extend("force", { debounce_text_changes = 200 }, server.flags or {})
 
 						require("lspconfig")[server_name].setup(server)
@@ -263,7 +267,7 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
-		cmd = { "Mason", "MasonUpdate" },
+		event = "VeryLazy",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -271,16 +275,10 @@ return {
 		build = function()
 			vim.cmd.MasonUpdate()
 		end,
-		opts = {},
-	},
-	{
-		"folke/neodev.nvim",
-		lazy = true,
 		opts = {
-			plugins = {
-				"nvim-dap-ui",
+			ui = {
+				border = "rounded",
 			},
-			types = true,
 		},
 	},
 }

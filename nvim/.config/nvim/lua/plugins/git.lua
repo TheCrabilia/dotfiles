@@ -40,7 +40,7 @@ return {
 				"<leader>gl",
 				mode = "n",
 				function()
-					vim.cmd.Git("log --graph --outline")
+					vim.cmd.Git("log --graph --oneline")
 				end,
 				desc = "Git Log",
 			},
@@ -48,7 +48,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPost",
+		event = "VeryLazy",
 		opts = {
 			signs = {
 				add = { text = "+" },

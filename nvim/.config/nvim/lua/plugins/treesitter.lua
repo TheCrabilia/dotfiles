@@ -1,11 +1,11 @@
 ---@type LazySpec
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufRead",
+	event = "BufReadPost",
 	cmd = "TSUpdate",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		{ "nvim-treesitter/nvim-treesitter-context", enabled = false },
+		"nvim-treesitter/nvim-treesitter-context",
 	},
 	build = function()
 		vim.cmd.TSUpdate()

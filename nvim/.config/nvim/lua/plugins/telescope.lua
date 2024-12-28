@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
 	"nvim-telescope/telescope.nvim",
-	cmd = "Telescope",
+	event = "VeryLazy",
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -148,14 +148,6 @@ return {
 				desc = "Buffer symbols",
 			},
 			{
-				"<leader>fd",
-				mode = "n",
-				function()
-					require("telescope.builtin").diagnostics()
-				end,
-				desc = "Workspace Diagnostics",
-			},
-			{
 				"<leader>gb",
 				mode = "n",
 				function()
@@ -170,6 +162,14 @@ return {
 					require("telescope.builtin").current_buffer_fuzzy_find()
 				end,
 				desc = "Current Buffer Fuzzy Find",
+			},
+			{
+				"<leader>fd",
+				mode = "n",
+				function()
+					require("core.telescope").find_directories()
+				end,
+				desc = "Find Directories",
 			},
 		}
 	end,

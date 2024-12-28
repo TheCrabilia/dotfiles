@@ -35,7 +35,9 @@ return {
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		version = "v2.*",
-		cmd = "CopilotChat",
+		cmd = {
+			"CopilotChat",
+		},
 		dependencies = {
 			"zbirenbaum/copilot.lua",
 			"nvim-lua/plenary.nvim",
@@ -65,10 +67,6 @@ return {
 					},
 				},
 			}
-		end,
-		config = function(_, opts)
-			require("CopilotChat.integrations.cmp").setup()
-			require("CopilotChat").setup(opts)
 		end,
 		keys = {
 			{

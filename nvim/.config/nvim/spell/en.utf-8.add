@@ -12,3 +12,5 @@ config
 Unable
 KubeAPI
 ElasticSearch
+GitLab
+configurator

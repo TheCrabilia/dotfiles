@@ -33,7 +33,7 @@ return {
 			},
 			win_options = {
 				conceallevel = {
-					rendered = 0,
+					rendered = 3,
 				},
 			},
 		},
@@ -56,6 +56,9 @@ return {
 					path = "~/vaults/work",
 				},
 			},
+			follow_url_func = function(url)
+				vim.ui.open(url)
+			end,
 			preferred_link_style = "markdown",
 			ui = {
 				enable = false,

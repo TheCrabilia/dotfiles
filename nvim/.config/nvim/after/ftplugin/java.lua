@@ -27,7 +27,7 @@ local on_attach = function(_, bufnr)
 	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 	require("jdtls.dap").setup_dap_main_class_configs()
 
-	require("which-key").register({
+	require("which-key").add({
 		K = { vim.lsp.buf.hover, "Help" },
 		{
 			r = {

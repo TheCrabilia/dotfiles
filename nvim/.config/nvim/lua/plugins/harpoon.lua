@@ -29,6 +29,7 @@ return {
 			function()
 				require("harpoon"):list():select(1)
 			end,
+			desc = "Harpoon Select 1",
 		},
 		{
 			"<leader><leader>j",
@@ -36,6 +37,7 @@ return {
 			function()
 				require("harpoon"):list():select(2)
 			end,
+			desc = "Harpoon Select 2",
 		},
 		{
 			"<leader><leader>k",
@@ -43,6 +45,7 @@ return {
 			function()
 				require("harpoon"):list():select(3)
 			end,
+			desc = "Harpoon Select 3",
 		},
 		{
 			"<leader><leader>l",
@@ -50,6 +53,7 @@ return {
 			function()
 				require("harpoon"):list():select(4)
 			end,
+			desc = "Harpoon Select 4",
 		},
 	},
 }
