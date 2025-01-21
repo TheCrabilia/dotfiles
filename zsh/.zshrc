@@ -64,7 +64,6 @@ antidote bundle <<EOBUNDLES
     zsh-users/zsh-history-substring-search
 
     mroth/evalcache
-    olets/zsh-abbr
     # mafredri/zsh-async
     romkatv/zsh-bench kind:path
     catppuccin/zsh-syntax-highlighting path:themes/catppuccin_mocha-zsh-syntax-highlighting.zsh

@@ -1,0 +1,10 @@
+theme = "catppuccin-mocha"
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-size = 15
+
+cursor-style = "block"
+title = "Ghostty"
+
+macos-titlebar-style = "native"
+macos-titlebar-proxy-icon = "hidden"
+macos-option-as-alt = true

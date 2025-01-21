@@ -1,27 +1,31 @@
 #!/usr/bin/env zsh
 
+_alias() {
+    if (( ${+commands[$1]} )); then
+        alias "$2"
+    fi
+}
+
 case ${OSTYPE} in
     linux*)
-        (( ${+commands[apt]} )) && alias apt="sudo apt"
-        (( ${+commands[yum]} )) && alias yum="sudo yum"
-        (( ${+commands[dnf]} )) && alias dnf="sudo dnf"
-        (( ${+commands[pacman]} )) && alias pacman="sudo pacman"
-        (( ${+commands[systemctl]} )) && alias systemctl="sudo systemctl"
-        (( ${+commands[ip]} )) && alias ip="ip --color=auto"
-        (( ${+commands[grep]} )) && alias grep="grep --color=auto"
+        _alias apt apt="sudo apt"
+        _alias yum yum="sudo yum"
+        _alias dnf="sudo dnf"
+        _alias pacman pacman="sudo pacman"
+        _alias systemctl systemctl="sudo systemctl"
+        _alias ip ip="ip --color=auto"
+        _alias grep grep="grep --color=auto"
         ;;
     darwin*)
-        if (( ${+commands[ggrep]} )); then
-            alias grep="ggrep --color=auto"
-            alias egrep="gegrep --color=auto"
-            alias fgrep="gfgrep --color=auto"
-        fi
-        (( ${+commands[gxargs]} )) && alias xargs="gxargs"
-        (( ${+commands[gfind]} )) && alias find="gfind"
+        _alias ggrep grep="ggrep --color=auto"
+        _alias ggrep egrep="gegrep --color=auto"
+        _alias ggrep fgrep="gfgrep --color=auto"
+        _alias gxargs xargs="gxargs"
+        _alias gfind find="gfind"
         ;;
 esac
 
-(( ${+commands[bat]} )) && alias cat="bat"
+_alias bat cat="bat"
 
 if (( ${+commands[eza]} )); then
     alias ls="eza"
@@ -36,59 +40,64 @@ else
     alias l.="ls -ld .?*"
 fi
 
-if (( ${+commands[trash]} )); then
-    alias rm="trash"
-fi
+_alias trash rm="trash"
 
-abbr add -S -q h='helm'
-abbr add -S -q hi='helm install'
-abbr add -S -q hd='helm delete'
-abbr add -S -q hl='helm ls'
-abbr add -S -q hg='helm get'
+_alias helm h='helm'
+_alias helm hi='helm install'
+_alias helm hd='helm delete'
+_alias helm hl='helm ls'
+_alias helm hg='helm get'
 
-abbr add -S -q k='kubectl'
-abbr add -S -q --global kg='kubectl get'
-abbr add -S -q kd='kubectl delete'
-abbr add -S -q ka='kubectl apply'
-abbr add -S -q kl='kubectl logs'
+_alias kubectl k='kubectl'
+_alias kubectl kg='kubectl get'
+_alias kubectl ka='kubectl apply'
+_alias kubectl kd='kubectl delete'
+_alias kubectl kl='kubectl logs'
+_alias kubectl kgp='kubectl get pods'
+_alias kubectl kgs='kubectl get svc'
+_alias kubectl kge='kubectl get secrets'
+_alias kubectl kgc='kubectl get cm'
+_alias kubectl kgd='kubectl get deploy'
 
-alias kgp="kubectl get pods"
-alias kgs="kubectl get svc"
-alias kge="kubectl get secrets"
-alias kgc="kubectl get configmap"
-alias kgd="kubectl get deployment"
+_alias kubens kns='kubens'
+_alias kubectx kctx='kubectx'
 
-abbr add -S -q kns='kubens'
-abbr add -S -q kctx='kubectx'
+_alias terraform tf='terraform'
+_alias terraform tfa='terraform apply'
+_alias terraform tfd='terraform destroy'
 
-abbr add -S -q tf='terraform'
-abbr add -S -q tfa='terraform apply'
-abbr add -S -q tfd='terraform destroy'
-abbr add -S -q tg='terragrunt'
-abbr add -S -q tga='terragrunt apply'
-abbr add -S -q tgd='terragrunt destroy'
-abbr add -S -q tgra='terragrunt run-all apply'
-abbr add -S -q tgrd='terragrunt run-all destroy'
+_alias tofu tf='tofu'
+_alias tofu tfa='tofu apply'
+_alias tofu tfd='terraform destroy'
 
-abbr add -S -q d='docker'
-abbr add -S -q dps='docker ps'
-abbr add -S -q dr='docker run -it --rm'
-abbr add -S -q di='docker images'
-abbr add -S -q drm='docker rm'
-abbr add -S -q drmi='docker rmi'
-abbr add -S -q drmia='docker rmi -f $(docker images -q)'
-abbr add -S -q db='docker build'
-abbr add -S -q dbp='docker build --build-arg HTTP_PROXY=http://host.docker.internal:3128 --build-arg HTTPS_PROXY=http://host.docker.internal:3128 -t'
+_alias terragrunt tg='terragrunt'
+_alias terragrunt tga='terragrunt apply'
+_alias terragrunt tgd='terragrunt destroy'
+_alias terragrunt tgra='terragrunt run-all apply'
+_alias terragrunt tgrd='terragrunt run-all destroy'
 
-abbr add -S -q we='watchexec -e'
-abbr add -S -q py='python'
-abbr add -S -q pip='python -m pip'
+_alias docker d='docker'
+_alias docker dps='docker ps'
+_alias docker dr='docker run -it --rm'
+_alias docker di='docker images'
+_alias docker drm='docker rm'
+_alias docker drmi='docker rmi'
+_alias docker drmia='docker rmi -f $(docker images -q)'
+_alias docker db='docker build'
+_alias docker dbp='docker build --build-arg HTTP_PROXY=http://host.docker.internal:3128 --build-arg HTTPS_PROXY=http://host.docker.internal:3128 -t'
+
+_alias watchexec we='watchexec -e'
+
+_alias python py='python'
+_alias python pip='python -m pip'
+
+alias -g G='| grep'
 
 # cd to subdirs
 alias -g ...="../.."
-alias -g .3="../../.."
-alias -g .4="../../../.."
-alias -g .5="../../../../.."
+alias -g ....="../../.."
+alias -g .....="../../../.."
+alias -g ......="../../../../.."
 
 alias sudo="nocorrect sudo"
 alias mv="nocorrect mv -i"

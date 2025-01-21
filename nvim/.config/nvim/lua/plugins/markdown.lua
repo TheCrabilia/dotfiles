@@ -22,7 +22,7 @@ return {
 				min_width = 120,
 			},
 			link = {
-				enabled = false,
+				enabled = true,
 			},
 			overrides = {
 				buftype = {
@@ -43,8 +43,8 @@ return {
 		version = "*",
 		cmd = { "ObsidianNew" },
 		event = {
-			"BufReadPre " .. vim.fn.expand("~") .. "~/vaults",
-			"BufNewFile " .. vim.fn.expand("~") .. "~/vaults",
+			"BufReadPre " .. vim.fn.expand("~") .. "/notes",
+			"BufNewFile " .. vim.fn.expand("~") .. "/notes",
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -53,7 +53,11 @@ return {
 			workspaces = {
 				{
 					name = "work",
-					path = "~/vaults/work",
+					path = "~/notes/work",
+				},
+				{
+					name = "personal",
+					path = "~/notes/personal",
 				},
 			},
 			follow_url_func = function(url)
@@ -71,7 +75,7 @@ return {
 				function()
 					vim.cmd.ObsidianNew()
 				end,
-				desc = "Obsidian New Note",
+				desc = "Obsidian Create New Note",
 			},
 			{
 				"<leader>of",
@@ -81,16 +85,25 @@ return {
 				end,
 				desc = "Obsidian Quick Switch",
 			},
+			{
+				"<leader>ow",
+				mode = "n",
+				function()
+					vim.cmd.ObsidianWorkspace()
+				end,
+				desc = "Obsidian Switch Workspace",
+			},
 		},
 	},
 	{
 		"3rd/image.nvim",
-		enabled = false,
+		-- enabled = false,
 		lazy = true,
 		dependencies = {
 			"leafo/magick",
 		},
 		opts = {
+			-- backend = "ueberzug",
 			integrations = {
 				markdown = {
 					only_render_image_at_cursor = true,

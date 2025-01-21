@@ -19,3 +19,21 @@ map("n", "<leader><leader>x", function()
 	local line = vim.api.nvim_get_current_line()
 	vim.cmd.lua(line)
 end)
+
+map("n", "j", function()
+	local count = vim.v.count
+	if count > 1 then
+		vim.cmd("normal! m'" .. count .. "j")
+	else
+		vim.cmd("normal! j")
+	end
+end)
+
+map("n", "k", function()
+	local count = vim.v.count
+	if count > 1 then
+		vim.cmd("normal! m'" .. count .. "k")
+	else
+		vim.cmd("normal! k")
+	end
+end)

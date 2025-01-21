@@ -37,6 +37,7 @@ return {
 		version = "v2.*",
 		cmd = {
 			"CopilotChat",
+			"CopilotChatDocs",
 		},
 		dependencies = {
 			"zbirenbaum/copilot.lua",

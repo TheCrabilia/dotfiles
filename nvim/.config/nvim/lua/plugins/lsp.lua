@@ -185,7 +185,7 @@ return {
 					markdown = { "prettierd" },
 					html = { "prettierd" },
 					hcl = { "terraform_fmt" },
-					terraform = { "terraform_fmt" },
+					terraform = { "tofu_fmt", "terraform_fmt" },
 					proto = { "buf" },
 					typescript = { "prettierd" },
 					javascript = { "prettierd" },
