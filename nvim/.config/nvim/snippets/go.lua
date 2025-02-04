@@ -1,12 +1,5 @@
-require("luasnip.session.snippet_collection").clear_snippets("lua")
-
-local ls = require("luasnip")
-
-local s = ls.snippet
-local i = ls.insert_node
-local t = ls.text_node
-
-ls.add_snippets("go", {
+---@diagnostic disable: undefined-global
+return {
 	s("struct", {
 		t("type "),
 		i(1, "name"),
@@ -33,8 +26,8 @@ ls.add_snippets("go", {
 		t({ "", "}" }),
 	}),
 	s("ife", {
-		t({ "if err != nil {", "\t"}),
+		t({ "if err != nil {", "\t" }),
 		i(1),
 		t({ "", "}" }),
 	}),
-})
+}

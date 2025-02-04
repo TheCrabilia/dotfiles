@@ -14,6 +14,8 @@ export HISTFILE=$XDG_CACHE_HOME/zsh/zsh_history
 export HISTSIZE=20000
 export SAVEHIST=10000
 
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
 # Hide EOL sign ('%')
 export PROMPT_EOL_MARK=""
 

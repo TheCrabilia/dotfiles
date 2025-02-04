@@ -2,15 +2,59 @@
 return {
 	{
 		"saghen/blink.cmp",
+		enabled = true,
 		event = "InsertEnter",
-		version = "v0.*",
+		version = "*",
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+		},
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
-				preset = "default",
+				preset = "none",
+
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-e>"] = { "hide" },
+				["<C-y>"] = { "select_and_accept" },
+
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+				["<C-p>"] = { "select_prev", "fallback" },
+				["<C-n>"] = { "select_next", "fallback" },
+
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+				["<C-j>"] = { "snippet_forward", "fallback" },
+				["<C-h>"] = { "snippet_backward", "fallback" },
+
+				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+			},
+			appearance = {
+				nerd_font_variant = "mono",
 			},
 			completion = {
+				menu = {
+					draw = {
+						columns = {
+							{ "label" },
+							{ "kind" },
+							{ "source_name" },
+						},
+						components = {
+							source_name = {
+								text = function(ctx)
+									local names = {
+										Buffer = "Buf",
+										Snippets = "Snip",
+									}
+									return "[" .. (names[ctx.source_name] or ctx.source_name) .. "]"
+								end,
+							},
+						},
+					},
+				},
 				accept = {
 					auto_brackets = {
 						enabled = false,
@@ -27,21 +71,14 @@ return {
 				enabled = true,
 				window = {
 					border = "rounded",
+					show_documentation = false,
 				},
 			},
+			snippets = {
+				preset = "luasnip",
+			},
 			sources = {
-				default = function()
-					local success, node = pcall(vim.treesitter.get_node)
-					if
-						success
-						and node
-						and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
-					then
-						return { "buffer" }
-					else
-						return { "lazydev", "lsp", "path", "snippets", "buffer" }
-					end
-				end,
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 				cmdline = {},
 				providers = {
 					lazydev = {
@@ -69,7 +106,7 @@ return {
 				---@type cmp.SnippetConfig
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						vim.snippet.expand(args.body)
 					end,
 				},
 				window = {

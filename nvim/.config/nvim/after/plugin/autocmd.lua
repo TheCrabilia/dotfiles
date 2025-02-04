@@ -25,18 +25,18 @@ set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", 
 set_tabstop(2, "lua", false)
 set_tabstop(4, { "c", "cpp", "go", "templ" }, false)
 
-local function set_cursorline(event, value, pattern)
-	autocmd(event, {
-		group = augroup,
-		pattern = pattern,
-		callback = function()
-			vim.opt_local.cursorline = value
-		end,
-	})
-end
-set_cursorline("WinLeave", false)
-set_cursorline("WinEnter", true)
-set_cursorline("FileType", false, "TelescopePrompt")
+-- local function set_cursorline(event, value, pattern)
+-- 		autocmd(event, {
+-- 			group = augroup,
+-- 			pattern = pattern,
+-- 			callback = function()
+-- 				vim.opt_local.cursorline = value
+-- 			end,
+-- 		})
+-- end
+-- set_cursorline("WinLeave", false)
+-- set_cursorline("WinEnter", true)
+-- set_cursorline("FileType", false, "TelescopePrompt")
 
 -- Hightlight yanked text
 autocmd("TextYankPost", {

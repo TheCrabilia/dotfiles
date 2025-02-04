@@ -9,7 +9,6 @@ config_pkg=(
     mise
     nvim
     tmux
-    wezterm
     zsh
 )
 

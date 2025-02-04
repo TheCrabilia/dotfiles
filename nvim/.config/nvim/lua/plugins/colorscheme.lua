@@ -1,41 +1,14 @@
 ---@type LazySpec
 return {
 	{
-		"AlexvZyl/nordic.nvim",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		opts = {
-			italic_comments = false,
-			bright_border = true,
-			on_highlight = function(highlights)
-				highlights.DiagnosticVirtualTextOk = { link = "DiagnosticOk" }
-				highlights.DiagnosticVirtualTextHint = { link = "DiagnosticHint" }
-				highlights.DiagnosticVirtualTextInfo = { link = "DiagnosticInfo" }
-				highlights.DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" }
-				highlights.DiagnosticVirtualTextError = { link = "DiagnosticError" }
-				highlights.DiagnosticVirtualTextWarning = { link = "DiagnosticWarning" }
-
-				-- disable all italics
-				for _, hi in pairs(highlights) do
-					hi.italic = false
-				end
-			end,
-			telescope = {
-				style = "classic",
-			},
-		},
-		config = function(_, opts)
-			require("nordic").setup(opts)
-			vim.cmd.colorscheme("nordic")
-		end,
-	},
-	{
 		"catppuccin/nvim",
+		enabled = false,
 		name = "catppuccin",
 		priority = 1000,
 		opts = {
 			flavour = "mocha",
+			transparent_background = true,
+			show_end_of_buffer = true,
 			no_italic = true,
 			integrations = {
 				alpha = false,
@@ -57,9 +30,32 @@ return {
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
 			vim.cmd.colorscheme("catppuccin")
-
-			vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-			vim.api.nvim_set_hl(0, "FloatBorder", { link = "NormalFloat" })
+		end,
+	},
+	{
+		"rose-pine/neovim",
+		enabled = true,
+		name = "rose-pine",
+		priority = 1000,
+		opts = {
+			variant = "main",
+			enable = {
+				terminal = true,
+				legacy_highlights = false,
+				migrations = false,
+			},
+			styles = {
+				bold = true,
+				italic = false,
+				transparency = true,
+			},
+			highlight_groups = {
+				Normal = { fg = "text", bg = "#010101" },
+			},
+		},
+		config = function(_, opts)
+			require("rose-pine").setup(opts)
+			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 }

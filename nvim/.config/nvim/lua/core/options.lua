@@ -29,10 +29,10 @@ vim.opt.sidescrolloff = 10
 -- UI
 vim.opt.updatetime = 250
 vim.opt.laststatus = 3
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
-vim.opt.guicursor = "n-v-c:blinkon0-block-Cursor" -- Cursor styling
+vim.opt.guicursor = "a:block" -- Cursor styling
 vim.opt.showmode = true
 vim.opt.pumheight = 10
 vim.opt.number = true

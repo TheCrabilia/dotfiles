@@ -1,7 +1,7 @@
 require("core.options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ import = "plugins" }, {
 	install = {
 		missing = true,
-		colorscheme = { "catppuccin" },
+		colorscheme = { "rose-pine" },
 	},
 	checker = {
 		enabled = true,
@@ -47,7 +47,6 @@ require("lazy").setup({ import = "plugins" }, {
 				"tohtml",
 				"tutor",
 				"zipPlugin",
-				"editorconfig",
 			},
 		},
 	},

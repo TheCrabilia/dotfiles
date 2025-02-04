@@ -47,8 +47,15 @@ return {
 				end,
 			})
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			local handlers = require("utils.lsp").handlers()
+
+			if require("utils.lazy").has("blink.cmp") then
+				capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
+			else
+				capabilities =
+					vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			end
 
 			local servers = {
 				lua_ls = {
@@ -86,22 +93,61 @@ return {
 						},
 					},
 				},
-				pyright = {
+				-- pyright = {
+				-- 	settings = {
+				-- 		pyright = {
+				-- 			disableOrganizeImports = true,
+				-- 		},
+				-- 		python = {
+				-- 			analysis = {
+				-- 				typeCheckingMode = "basic",
+				-- 				useLibraryCodeFroTypes = true,
+				-- 				-- autoSearchPaths = true,
+				-- 				autoImportCompletions = true,
+				-- 				diagnosticMode = "workspace",
+				-- 				-- diagnosticSeverityOverrides = {
+				-- 				-- 	deprecateTypingAliases = true,
+				-- 				-- 	reportUnusedClass = "warning",
+				-- 				-- 	reportUnusedFunction = "warning",
+				-- 				-- },
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
+				basedpyright = {
 					settings = {
-						pyright = {
-							disableOrganizeImports = true,
-						},
-						python = {
+						basedpyright = {
 							analysis = {
-								typeCheckingMode = "basic",
-								useLibraryCodeFroTypes = true,
 								autoSearchPaths = true,
+								diagnosticsMode = "workspace",
+								useLibraryCodeForTypes = true,
 								autoImportCompletions = true,
-								diagnosticMode = "workspace",
-								diagnosticSeverityOverrides = {
-									deprecateTypingAliases = true,
-									reportUnusedClass = "warning",
-									reportUnusedFunction = "warning",
+							},
+						},
+					},
+				},
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								autopep8 = {
+									enabled = false,
+								},
+								mccabe = {
+									enabled = false,
+								},
+								pycodestyle = {
+									enabled = false,
+								},
+								pyflakes = {
+									enabled = false,
+								},
+								yapf = {
+									enabled = false,
+								},
+								rope_autoimport = {
+									enabled = true,
+									memory = true,
 								},
 							},
 						},
@@ -192,6 +238,7 @@ return {
 					css = { "prettierd" },
 					templ = { "templ" },
 					sql = { "sql_formatter" },
+					yaml = { "yamlfmt" },
 					["terraform-vars"] = { "terraform_fmt" },
 					["_"] = { "trim_whitespace" },
 				},
@@ -221,6 +268,13 @@ return {
 							"120",
 							"--shorten-comments",
 							"--reformat-tags",
+						},
+					},
+					yamlfmt = {
+						inherit = true,
+						prepend_args = {
+							"-formatter",
+							"retain_line_breaks=true",
 						},
 					},
 					sql_formatter = {
@@ -280,5 +334,31 @@ return {
 				border = "rounded",
 			},
 		},
+		config = function(_, opts)
+			require("mason").setup(opts)
+
+			local pylsp = require("mason-registry").get_package("python-lsp-server")
+			pylsp:on("install:success", function()
+				local python = vim.fn.stdpath("data") .. "/mason/packages/python-lsp-server/venv/bin/python"
+				local cmd = {
+					python,
+					"-m",
+					"pip",
+					"install",
+					"-U",
+					"pylsp-rope",
+				}
+
+				vim.schedule(function()
+					local obj = vim.system(cmd):wait()
+					if obj.code ~= 0 then
+						vim.notify("failed to install pylsp dependencies", vim.log.levels.ERROR)
+						return
+					end
+
+					vim.notify("pylsp dependencies installed", vim.log.levels.INFO)
+				end)
+			end)
+		end,
 	},
 }

@@ -1,9 +1,11 @@
-theme = "catppuccin-mocha"
+#theme = "catppuccin-mocha"
+background = "#000000"
 font-family = "JetBrainsMonoNL Nerd Font Mono"
 font-size = 15
 
 cursor-style = "block"
 title = "Ghostty"
+shell-integration-features = no-cursor
 
 macos-titlebar-style = "native"
 macos-titlebar-proxy-icon = "hidden"

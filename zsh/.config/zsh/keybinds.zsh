@@ -42,6 +42,7 @@
     bindkey "${key_info[Control]}E" end-of-line
     bindkey "${key_info[Control]}B" backward-word
     bindkey "${key_info[Control]}F" forward-word
+    bindkey "${key_info[Control]}W" backward-kill-word
     bindkey "${key_info[Control]}R" history-incremental-search-backward
 
     if [[ "${TERM_PROGRAM}" == "WezTerm" ]]; then
