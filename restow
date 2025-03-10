@@ -4,6 +4,7 @@ set -e
 
 config_pkg=(
     bin
+    brew
     ghostty
     git
     mise
