@@ -4,7 +4,24 @@ return {
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"theHamsta/nvim-dap-virtual-text",
+			"rcarriga/nvim-dap-ui",
 		},
+		config = function()
+			local dap, dapui = require("dap"), require("dapui")
+
+			dap.listeners.before.attach.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.launch.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited.dapui_config = function()
+				dapui.close()
+			end
+		end,
 		keys = {
 			{
 				"<F1>",
@@ -74,7 +91,6 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
-		enabled = false,
 		ft = { "python" },
 		dependencies = {
 			"mfussenegger/nvim-dap",
@@ -108,37 +124,17 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
-			"nvim-dap",
 			"nvim-neotest/nvim-nio",
 		},
 		opts = {},
-		config = function(_, opts)
-			local dapui = require("dapui")
-
-			dapui.setup(opts)
-
-			local dap = require("dap")
-			dap.listeners.before.attach.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
-			end
-		end,
 		keys = {
 			{
 				"<leader>po",
 				mode = "n",
 				function()
-					require("dapui").open()
+					require("dapui").toggle()
 				end,
-				desc = "Open UI",
+				desc = "Toggle DAP UI",
 			},
 		},
 	},

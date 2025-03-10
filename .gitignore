@@ -10,3 +10,6 @@ tmux/.config/tmux/plugins/*
 
 **/*.zwc
 **/*.zwc.old
+
+git/.config/git/config.work
+git/.config/git/config.personal

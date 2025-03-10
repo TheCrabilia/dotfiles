@@ -1,10 +1,12 @@
 ; extends
 
 (call
-  function: (identifier) @_func (#eq? @_func "gql")
-  arguments: (argument_list
+  (identifier) @_id (#eq? @_id "gql")
+  (argument_list
     (string
-      (string_content) @graphql
+      (string_content) @injection.content
     )
   )
+
+  (#set! injection.language "graphql")
 )

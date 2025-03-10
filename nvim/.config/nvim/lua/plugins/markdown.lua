@@ -41,7 +41,10 @@ return {
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*",
-		cmd = { "ObsidianNew" },
+		cmd = {
+			"ObsidianNew",
+			"ObsidianQuickSwitch",
+		},
 		event = {
 			"BufReadPre " .. vim.fn.expand("~") .. "/notes",
 			"BufNewFile " .. vim.fn.expand("~") .. "/notes",
@@ -110,5 +113,21 @@ return {
 				},
 			},
 		},
+	},
+	{
+		"arminveres/md-pdf.nvim",
+		ft = "markdown",
+		opts = {
+			output_path = "./out",
+			fonts = {
+				main_font = "Times New Roman",
+			},
+			toc = false,
+		},
+		config = function(_, opts)
+			require("md-pdf").setup(opts)
+
+			vim.keymap.set("n", "<leader>,", require("md-pdf").convert_md_to_pdf, { desc = "Convert Markdown to PDF" })
+		end,
 	},
 }

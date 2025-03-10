@@ -37,3 +37,10 @@ map("n", "k", function()
 		vim.cmd("normal! k")
 	end
 end)
+
+map("i", "<C-r>", "<C-r><C-o>")
+
+map("n", "<C-w><", "<C-w>5<")
+map("n", "<C-w>>", "<C-w>5>")
+map("n", "<C-w>-", "<C-w>5-")
+map("n", "<C-w>+", "<C-w>5+")

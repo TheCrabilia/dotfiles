@@ -93,27 +93,6 @@ return {
 						},
 					},
 				},
-				-- pyright = {
-				-- 	settings = {
-				-- 		pyright = {
-				-- 			disableOrganizeImports = true,
-				-- 		},
-				-- 		python = {
-				-- 			analysis = {
-				-- 				typeCheckingMode = "basic",
-				-- 				useLibraryCodeFroTypes = true,
-				-- 				-- autoSearchPaths = true,
-				-- 				autoImportCompletions = true,
-				-- 				diagnosticMode = "workspace",
-				-- 				-- diagnosticSeverityOverrides = {
-				-- 				-- 	deprecateTypingAliases = true,
-				-- 				-- 	reportUnusedClass = "warning",
-				-- 				-- 	reportUnusedFunction = "warning",
-				-- 				-- },
-				-- 			},
-				-- 		},
-				-- 	},
-				-- },
 				basedpyright = {
 					settings = {
 						basedpyright = {
@@ -122,33 +101,6 @@ return {
 								diagnosticsMode = "workspace",
 								useLibraryCodeForTypes = true,
 								autoImportCompletions = true,
-							},
-						},
-					},
-				},
-				pylsp = {
-					settings = {
-						pylsp = {
-							plugins = {
-								autopep8 = {
-									enabled = false,
-								},
-								mccabe = {
-									enabled = false,
-								},
-								pycodestyle = {
-									enabled = false,
-								},
-								pyflakes = {
-									enabled = false,
-								},
-								yapf = {
-									enabled = false,
-								},
-								rope_autoimport = {
-									enabled = true,
-									memory = true,
-								},
 							},
 						},
 					},
@@ -231,7 +183,6 @@ return {
 					markdown = { "prettierd" },
 					html = { "prettierd" },
 					hcl = { "terraform_fmt" },
-					terraform = { "tofu_fmt", "terraform_fmt" },
 					proto = { "buf" },
 					typescript = { "prettierd" },
 					javascript = { "prettierd" },
@@ -239,7 +190,8 @@ return {
 					templ = { "templ" },
 					sql = { "sql_formatter" },
 					yaml = { "yamlfmt" },
-					["terraform-vars"] = { "terraform_fmt" },
+					terraform = { "tofu_fmt", "terraform_fmt" },
+					["terraform-vars"] = { "tofu_fmt", "terraform_fmt" },
 					["_"] = { "trim_whitespace" },
 				},
 				formatters = {

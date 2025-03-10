@@ -34,7 +34,7 @@ return {
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		version = "v2.*",
+		version = "v3.*",
 		cmd = {
 			"CopilotChat",
 			"CopilotChatDocs",
@@ -68,6 +68,18 @@ return {
 					},
 				},
 			}
+		end,
+		config = function(_, opts)
+			require("CopilotChat").setup(opts)
+
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = vim.api.nvim_create_augroup("copilot-chat-custom", { clear = true }),
+				pattern = "copilot-*",
+				callback = function()
+					vim.opt_local.number = false
+					vim.opt_local.relativenumber = false
+				end,
+			})
 		end,
 		keys = {
 			{
@@ -139,5 +151,9 @@ return {
 				ft = "gitcommit",
 			},
 		},
+	},
+	{
+		dir = "~/Documents/personal/ai-chat.nvim",
+		opts = {},
 	},
 }

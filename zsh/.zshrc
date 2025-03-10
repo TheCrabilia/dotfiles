@@ -66,7 +66,6 @@ antidote bundle <<EOBUNDLES
     mroth/evalcache
     # mafredri/zsh-async
     romkatv/zsh-bench kind:path
-    catppuccin/zsh-syntax-highlighting path:themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
 EOBUNDLES
 
 ## Load custom configuration files

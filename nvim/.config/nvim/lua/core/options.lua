@@ -9,6 +9,7 @@ vim.opt.autoread = true
 vim.opt.autowriteall = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
+vim.opt.exrc = true
 
 vim.opt.encoding = "utf-8"
 vim.opt.fileformat = "unix"

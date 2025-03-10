@@ -24,7 +24,7 @@ return {
 			desc = "Add File",
 		},
 		{
-			"<leader><leader>h",
+			"<C-h>",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(1)
@@ -32,7 +32,7 @@ return {
 			desc = "Harpoon Select 1",
 		},
 		{
-			"<leader><leader>j",
+			"<C-j>",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(2)
@@ -40,7 +40,7 @@ return {
 			desc = "Harpoon Select 2",
 		},
 		{
-			"<leader><leader>k",
+			"<C-k>",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(3)
@@ -48,7 +48,7 @@ return {
 			desc = "Harpoon Select 3",
 		},
 		{
-			"<leader><leader>l",
+			"<C-l>",
 			mode = "n",
 			function()
 				require("harpoon"):list():select(4)

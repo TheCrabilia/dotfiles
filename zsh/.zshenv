@@ -30,4 +30,5 @@ if nc -z 127.0.0.1 3128 &>/dev/null; then
     export http_proxy="http://127.0.0.1:3128"
     export https_proxy="http://127.0.0.1:3128"
     export ftp_proxy="http://127.0.0.1:3128"
+    export NO_PROXY="localhost,127.0.0.1,192.168.5.0/24"
 fi

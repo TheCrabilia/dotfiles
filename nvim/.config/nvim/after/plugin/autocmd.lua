@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("FileType", {
 	group = augroup,
-	pattern = { "fugitive", "gitcommit", "help", "qf", "oil" },
+	pattern = { "fugitive", "git", "gitcommit", "gitrebase", "help", "qf", "oil" },
 	callback = function()
 		vim.opt_local.colorcolumn = ""
 	end,
@@ -22,8 +22,7 @@ local function set_tabstop(value, pattern, expandtab)
 	})
 end
 set_tabstop(2, { "query", "rego", "terraform", "terraform-vars", "hcl", "yaml", "helm", "fish", "norg" }, true)
-set_tabstop(2, "lua", false)
-set_tabstop(4, { "c", "cpp", "go", "templ" }, false)
+set_tabstop(4, { "c", "cpp", "go", "templ", "lua", "sh" }, false)
 
 -- local function set_cursorline(event, value, pattern)
 -- 		autocmd(event, {
@@ -67,16 +66,3 @@ autocmd("BufEnter", {
 		vim.opt.formatoptions:remove("2") -- Don't use the indent of the second line
 	end,
 })
-
-autocmd("ColorScheme", {
-	group = augroup,
-	pattern = "*",
-	callback = function()
-		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-	end,
-})
-
-vim.api.nvim_create_user_command("Notes", function()
-	vim.cmd.tabnew()
-	vim.cmd.edit("~/notes.md")
-end, {})
