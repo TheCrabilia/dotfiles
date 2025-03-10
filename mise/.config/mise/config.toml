@@ -1,0 +1,16 @@
+[tools]
+node = "latest"
+python = "latest"
+go = "latest"
+rust = "latest"
+
+[settings]
+experimental = true
+
+[settings.python]
+compile = true
+default_packages_file = "/Users/taaspil1/.default-python-packages"
+uv_venv_auto = true
+
+[settings.node]
+compile = false

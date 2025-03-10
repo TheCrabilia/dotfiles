@@ -1,6 +1,5 @@
 .DS_Store
 Brewfile.lock.json
-mise/.config/mise/config.toml
 
 **/.luarc.json
 **/lazy-lock.json
