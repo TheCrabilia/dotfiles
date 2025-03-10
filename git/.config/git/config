@@ -1,3 +1,9 @@
+[include]
+    path = ~/.config/git/config.personal
+
+[includeIf "gitdir/i:~/Documents/work/"]
+    path = ~/.config/git/config.work
+
 [init]
     defaultBranch = main
 [pager]
@@ -8,8 +14,11 @@
     prune = true
 [core]
     editor = nvim
+    abbrev = 8
+    pager = delta
 [merge]
     tool = fugitive
+    conflictStyle = zdiff3
 [mergetool]
     keepBackup = false
 [mergetool "fugitive"]
@@ -19,6 +28,8 @@
     br = branch
     ci = commit
     st = status
+    r = rebase
+    lg = log --graph --oneline
     unstage = reset HEAD --
     last = log -1 HEAD
     hide = update-index --skip-worktree
@@ -31,10 +42,16 @@
 [commit]
     gpgsign = true
 [rerere]
-	enabled = true
+    enabled = true
 [branch]
-	sort = -committerdate
+    sort = -committerdate
 [rebase]
-	updateRefs = true
+    updateRefs = true
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+    hunk-header-style = omit
