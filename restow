@@ -14,5 +14,5 @@ config_pkg=(
 )
 
 for pkg in $config_pkg; do
-    stow -v --target=$HOME $pkg
+    /opt/homebrew/bin/stow -v --target=$HOME $pkg
 done
