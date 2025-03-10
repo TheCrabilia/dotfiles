@@ -152,8 +152,4 @@ return {
 			},
 		},
 	},
-	{
-		dir = "~/Documents/personal/ai-chat.nvim",
-		opts = {},
-	},
 }
