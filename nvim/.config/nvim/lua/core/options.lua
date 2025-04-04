@@ -48,6 +48,7 @@ vim.opt.splitbelow = true
 vim.opt.virtualedit = "block"
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+-- vim.opt.winborder = "single"
 
 -- Tabs
 vim.opt.autoindent = true

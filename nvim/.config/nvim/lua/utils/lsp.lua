@@ -1,22 +1,5 @@
 local M = {}
 
-function M.handlers()
-	local border = {
-		{ "┌", "FloatBorder" },
-		{ "─", "FloatBorder" },
-		{ "┐", "FloatBorder" },
-		{ "│", "FloatBorder" },
-		{ "┘", "FloatBorder" },
-		{ "─", "FloatBorder" },
-		{ "└", "FloatBorder" },
-		{ "│", "FloatBorder" },
-	}
-	return {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-	}
-end
-
 --- Get LSP server name by diagnostics namespace
 ---@param ns number
 ---@return string
@@ -33,9 +16,8 @@ end
 --- Configure LSP diagnostics
 function M.setup_diagnostics()
 	vim.diagnostic.config({
-		serverity_sort = true,
 		signs = true,
-		underline = false,
+		underline = true,
 		update_in_insert = false,
 		virtual_text = true,
 	})

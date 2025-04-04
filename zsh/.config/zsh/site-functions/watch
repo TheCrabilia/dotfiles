@@ -1,3 +1,16 @@
 #!/usr/bin/env zsh
 
-command watch "${aliases[$@]}"
+if (( ${+aliases[$1]} )); then
+    als="${aliases[$1]}"
+
+    if [[ ${#@} -gt 1 ]]; then
+        shift
+        args="${als} ${@}"
+    else
+        args="${als}"
+    fi
+else
+    args="${@}"
+fi
+
+command watch "${args}"

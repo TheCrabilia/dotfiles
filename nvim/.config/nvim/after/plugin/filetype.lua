@@ -9,8 +9,14 @@ vim.filetype.add({
 		[".terraformrc"] = "terraform",
 		[".zimrc"] = "zsh",
 		[".antigenrc"] = "zsh",
+		["Brewfile"] = function()
+			return "brewfile", function(bufnr)
+				vim.bo[bufnr].commentstring = "# %s"
+			end
+		end,
 	},
 	pattern = {
 		[".*/templates/.*%.yaml"] = "helm",
+		[os.getenv("XDG_CONFIG_HOME") .. "/git/config%..*"] = "gitconfig",
 	},
 })

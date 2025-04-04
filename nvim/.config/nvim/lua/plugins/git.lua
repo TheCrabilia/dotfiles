@@ -86,10 +86,4 @@ return {
 			},
 		},
 	},
-	{
-		dir = "/Users/taaspil1/Documents/plugins/git-worktree.nvim",
-		enabled = false,
-		name = "git-worktree",
-		opts = {},
-	},
 }
