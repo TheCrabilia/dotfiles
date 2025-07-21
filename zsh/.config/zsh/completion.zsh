@@ -61,6 +61,7 @@ zstyle ':completion:*:rm:*' file-patterns '*:all-files'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit -C -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # Docker
