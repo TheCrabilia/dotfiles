@@ -49,9 +49,12 @@
     updateRefs = true
 [push]
     autoSetupRemote = true
+    recurseSubmodules = on-demand
 [interactive]
     diffFilter = delta --color-only
 [delta]
     navigate = true
     line-numbers = true
     hunk-header-style = omit
+[submodule]
+    recurse = true
