@@ -56,6 +56,22 @@ autocmd("BufEnter", {
 	pattern = "*",
 	callback = function()
 		vim.opt.formatoptions:remove("a") -- Disable auto formatting
+		vim.opt.formatoptions:remove("t") -- Auto-wrap text based on textwidth
+		vim.opt.formatoptions:append("c") -- Auto-wrap comments
+		vim.opt.formatoptions:append("q") -- Allow formatting comments with gq
+		vim.opt.formatoptions:remove("o") -- Don't insert comment leader when formatting
+		vim.opt.formatoptions:append("r") -- Continue comments when pressing Enter
+		vim.opt.formatoptions:append("n") -- Recognize numbered lists, when formatting
+		vim.opt.formatoptions:append("j") -- Remove comment leader when joining lines
+		vim.opt.formatoptions:remove("2") -- Don't use the indent of the second line
+	end,
+})
+
+autocmd("BufEnter", {
+	group = augroup,
+	pattern = "markdown",
+	callback = function()
+		vim.opt.formatoptions:remove("a") -- Disable auto formatting
 		vim.opt.formatoptions:append("t") -- Auto-wrap text based on textwidth
 		vim.opt.formatoptions:append("c") -- Auto-wrap comments
 		vim.opt.formatoptions:append("q") -- Allow formatting comments with gq

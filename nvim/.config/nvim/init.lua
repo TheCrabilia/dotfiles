@@ -32,7 +32,7 @@ require("lazy").setup({ import = "plugins" }, {
 		hererocks = true,
 	},
 	ui = {
-		border = "rounded",
+		border = "single",
 		backdrop = 100,
 	},
 	performance = {

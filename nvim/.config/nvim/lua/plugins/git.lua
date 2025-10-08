@@ -86,4 +86,26 @@ return {
 			},
 		},
 	},
+	{
+		"akinsho/git-conflict.nvim",
+		version = "*",
+		opts = {},
+		config = function(_, opts)
+			require("git-conflict").setup(opts)
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "GitConflictDetected",
+				callback = function()
+					vim.diagnostic.enable(false)
+				end,
+			})
+
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "GitConflictResolved",
+				callback = function()
+					vim.diagnostic.enable(true)
+				end,
+			})
+		end,
+	},
 }

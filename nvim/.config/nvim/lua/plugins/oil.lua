@@ -2,7 +2,10 @@
 return {
 	"stevearc/oil.nvim",
 	version = "*",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"benomahony/oil-git.nvim",
+	},
 	cmd = "Oil",
 	opts = {
 		columns = {

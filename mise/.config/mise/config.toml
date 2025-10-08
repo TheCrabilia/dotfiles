@@ -3,9 +3,12 @@ node = "latest"
 python = "latest"
 go = "latest"
 rust = "latest"
+java = "corretto-24.0.2.12.1"
+uv = "latest"
 
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = []
 
 [settings.python]
 compile = true

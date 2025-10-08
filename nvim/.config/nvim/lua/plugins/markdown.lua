@@ -2,7 +2,8 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = "markdown",
+		lazy = true,
+		cmd = "RenderMarkdown",
 		dependencies = {
 			"3rd/image.nvim",
 			"nvim-treesitter/nvim-treesitter",

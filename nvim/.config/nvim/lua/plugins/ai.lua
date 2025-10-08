@@ -38,6 +38,8 @@ return {
 		cmd = {
 			"CopilotChat",
 			"CopilotChatDocs",
+			"CopilotChatExplain",
+			"CopilotChatSpellCheck",
 		},
 		dependencies = {
 			"zbirenbaum/copilot.lua",

@@ -13,7 +13,6 @@ vim.diagnostic.config({
 		[vim.diagnostic.severity.HINT] = "H ",
 	},
 	virtual_text = {
-		source = "if_many",
 		spacing = 2,
 		format = function(diagnostic)
 			local diagnostic_message = {
@@ -57,15 +56,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.config("*", {
-	root_markers = { ".git" },
 	flags = { debounce_text_changes = 200 },
 })
 
 vim.lsp.enable({
-	"lua_ls",
+	"ansiblels",
 	"basedpyright",
-	"jsonls",
-	"gopls",
-	"yamlls",
 	"clangd",
+	"dockerls",
+	"gopls",
+	"helm_ls",
+	"jsonls",
+	"lua_ls",
+	"ocamllsp",
+	"taplo",
+	"terraformls",
+	"yamlls",
 })

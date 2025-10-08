@@ -49,9 +49,6 @@ return {
 				italic = false,
 				transparency = true,
 			},
-			highlight_groups = {
-				Normal = { fg = "text", bg = "#010101" },
-			},
 		},
 		config = function(_, opts)
 			require("rose-pine").setup(opts)

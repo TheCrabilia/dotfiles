@@ -28,7 +28,6 @@ return {
 						columns = {
 							{ "label" },
 							{ "kind" },
-							{ "source_name" },
 						},
 						components = {
 							source_name = {
@@ -50,15 +49,11 @@ return {
 				},
 				documentation = {
 					auto_show = true,
-					window = {
-						border = "rounded",
-					},
 				},
 			},
 			signature = {
 				enabled = true,
 				window = {
-					border = "rounded",
 					show_documentation = false,
 				},
 			},

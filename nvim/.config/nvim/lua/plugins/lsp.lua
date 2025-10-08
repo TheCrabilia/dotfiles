@@ -1,25 +1,6 @@
 ---@type LazySpec
 return {
-	{
-		"neovim/nvim-lspconfig",
-		enabled = false,
-		dependencies = {},
-		config = function()
-			-- local ensure_installed = vim.tbl_keys(servers or {})
-			--
-			-- vim.list_extend(ensure_installed, {
-			-- 	"stylua",
-			-- 	"clang-format",
-			-- 	"debugpy",
-			-- 	"dockerls",
-			-- 	"goimports",
-			-- 	"tflint",
-			-- 	"prettierd",
-			-- 	"shellcheck",
-			-- })
-			-- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-		end,
-	},
+	{ "neovim/nvim-lspconfig" },
 	{ "b0o/schemastore.nvim" },
 	{ "j-hui/fidget.nvim", opts = {} },
 	{
@@ -36,6 +17,7 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
+		cmd = "ConformInfo",
 		init = function()
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 		end,
@@ -59,6 +41,8 @@ return {
 				sql = { "sql_formatter" },
 				yaml = { "yamlfmt" },
 				terraform = { "tofu_fmt", "terraform_fmt" },
+				json = { "prettierd" },
+				ml = { "ocamlformat" },
 				["terraform-vars"] = { "tofu_fmt", "terraform_fmt" },
 				["_"] = { "trim_whitespace" },
 			},
@@ -126,7 +110,6 @@ return {
 					sh = { "shellcheck" },
 					bash = { "shellcheck" },
 					proto = { "buf_lint" },
-					-- sql = { "sqlfluff" },
 				}
 
 				lint.linters.shellcheck.args = {

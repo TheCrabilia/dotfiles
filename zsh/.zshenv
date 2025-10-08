@@ -24,11 +24,10 @@ export LC_ALL='en_US.UTF-8'
 
 # Proxy settings (if local proxy running)
 if nc -z 127.0.0.1 3128 &>/dev/null; then
-    export ALL_PROXY="http://127.0.0.1:3128"
-    export HTTP_PROXY="http://127.0.0.1:3128"
-    export HTTPS_PROXY="http://127.0.0.1:3128"
     export http_proxy="http://127.0.0.1:3128"
     export https_proxy="http://127.0.0.1:3128"
-    export ftp_proxy="http://127.0.0.1:3128"
-    export NO_PROXY="localhost,127.0.0.1,192.168.5.0/24"
+    export no_proxy="localhost,127.0.0.1,192.168.5.0/24"
+    export HTTP_PROXY="${http_proxy}"
+    export HTTPS_PROXY="${https_proxy}"
+    export NO_PROXY="${no_proxy}"
 fi

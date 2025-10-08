@@ -13,6 +13,6 @@ for c in $configs; do
 done
 
 # Initialize autoloaded functions
-for func in ${0:h:a}/site-functions/^(__*|*.zwc)(N); do
+for func in ${0:h:a}/site-functions/^(__*|_*|*.zwc)(N); do
     autoload -Uz "${func}"
 done

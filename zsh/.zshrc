@@ -20,10 +20,10 @@ path=(
     /sbin
 )
 fpath=(
-    /opt/homebrew/share/zsh/site-functions
-    /opt/homebrew/share/zsh/functions
     $XDG_DATA_HOME/zsh/site-functions
     $XDG_CONFIG_HOME/zsh/site-functions
+    /opt/homebrew/share/zsh/site-functions
+    /opt/homebrew/share/zsh/functions
 )
 
 export SHELL=$(which zsh)

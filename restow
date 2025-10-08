@@ -13,6 +13,6 @@ config_pkg=(
     zsh
 )
 
-for pkg in $config_pkg; do
-    /opt/homebrew/bin/stow -v --target=$HOME $pkg
+for pkg in "${config_pkg[@]}"; do
+    /opt/homebrew/bin/stow -v --target="${HOME}" "${pkg}"
 done
