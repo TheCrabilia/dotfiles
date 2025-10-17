@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
 	"mrjones2014/smart-splits.nvim",
-	version = ">=1.0.0",
+	version = "v2.0.4",
 	event = "VeryLazy",
 	config = function()
 		local smart_splits = require("smart-splits")

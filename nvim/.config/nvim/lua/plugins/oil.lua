@@ -4,7 +4,7 @@ return {
 	version = "*",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"benomahony/oil-git.nvim",
+		{ "benomahony/oil-git.nvim", enabled = false },
 	},
 	cmd = "Oil",
 	opts = {

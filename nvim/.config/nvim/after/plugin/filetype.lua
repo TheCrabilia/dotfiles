@@ -3,13 +3,19 @@ vim.filetype.add({
 		tf = "terraform",
 		tfvars = "terraform-vars",
 		tofu = "opentofu",
-		j2 = "jinja",
-		-- j2 = function(path)
-		-- 	local filename = vim.fs.basename(path)
-		-- 	local parts = vim.split(filename, ".", { plain = true, trimempty = true })
-		-- 	-- a little bit of magic, because we need to match "yml" to "yaml", maybe some other cases
-		-- 	return vim.filetype.match({ filename = "file." .. parts[#parts - 1] })
-		-- end,
+		j2 = function(path)
+			return "jinja",
+				function(bufnr)
+					local filename = vim.fs.basename(path)
+					local parts = vim.split(filename, ".", { plain = true, trimempty = true })
+
+					if vim.list_contains({ "yaml", "yml" }, parts[#parts - 1]) then
+						vim.bo[bufnr].tabstop = 2
+						vim.bo[bufnr].shiftwidth = 2
+						vim.bo[bufnr].commentstring = "# %s"
+					end
+				end
+		end,
 	},
 	filename = {
 		["Jenkinsfile"] = "groovy",

@@ -2,11 +2,11 @@
 
 local -a configs=(
     options.zsh
-    keybinds.zsh
     hooks.zsh
     prompt.zsh
     completion.zsh
     aliases.zsh
+    keybinds.zsh
 )
 for c in $configs; do
     source "${0:h:a}/${c}"
