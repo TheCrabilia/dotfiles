@@ -2,7 +2,6 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		lazy = true,
 		cmd = "RenderMarkdown",
 		dependencies = {
 			"3rd/image.nvim",
@@ -10,6 +9,11 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
+			completions = {
+				lsp = {
+					enabled = true,
+				},
+			},
 			indent = {
 				enabled = true,
 			},

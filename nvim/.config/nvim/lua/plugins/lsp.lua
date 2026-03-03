@@ -42,6 +42,7 @@ return {
 				yaml = { "yamlfmt" },
 				terraform = { "tofu_fmt", "terraform_fmt" },
 				json = { "prettierd" },
+				jsonc = { "prettierd" },
 				ml = { "ocamlformat" },
 				["terraform-vars"] = { "tofu_fmt", "terraform_fmt" },
 				["_"] = { "trim_whitespace" },
@@ -110,6 +111,7 @@ return {
 					sh = { "shellcheck" },
 					bash = { "shellcheck" },
 					proto = { "buf_lint" },
+					terraform = { "tflint", "tfsec" },
 				}
 
 				lint.linters.shellcheck.args = {

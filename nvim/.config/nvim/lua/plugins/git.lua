@@ -24,15 +24,15 @@ return {
 				"<leader>gP",
 				mode = "n",
 				function()
-					vim.cmd.Git("pull")
+					vim.cmd.Git("push -f")
 				end,
-				desc = "Git Pull",
+				desc = "Git Force Push",
 			},
 			{
 				"<leader>gf",
 				mode = "n",
 				function()
-					vim.cmd.Git("fetch")
+					vim.cmd.Git("fetch -a")
 				end,
 				desc = "Git Fetch",
 			},

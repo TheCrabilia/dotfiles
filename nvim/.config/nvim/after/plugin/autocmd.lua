@@ -82,3 +82,19 @@ autocmd("BufEnter", {
 		vim.opt.formatoptions:remove("2") -- Don't use the indent of the second line
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
+	group = augroup,
+	pattern = "*.md",
+	callback = function()
+		vim.cmd.mkview({ mods = { emsg_silent = true } })
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	group = augroup,
+	pattern = "*.md",
+	callback = function()
+		vim.cmd.loadview({ mods = { emsg_silent = true } })
+	end,
+})

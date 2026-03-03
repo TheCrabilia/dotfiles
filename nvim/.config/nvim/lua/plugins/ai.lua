@@ -34,7 +34,7 @@ return {
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		version = "v3.*",
+		version = "v4.*",
 		cmd = {
 			"CopilotChat",
 			"CopilotChatDocs",
@@ -48,7 +48,7 @@ return {
 		build = "make tiktoken",
 		opts = function()
 			return {
-				model = "gpt-4o",
+				model = "claude-sonnet-4.5",
 				mappings = {
 					close = {
 						insert = "",
@@ -66,7 +66,7 @@ return {
 					},
 					SpellCheck = {
 						prompt = "Your task is to take the text provided and rewrite it into a clear, grammatically correct version while preserving the original meaning as closely as possible. Correct any spelling mistakes, punctuation errors, verb tense issues, word choice problems, and other grammatical mistakes.",
-						selection = require("CopilotChat.select").visual,
+						resources = "selection",
 					},
 				},
 			}
@@ -80,6 +80,7 @@ return {
 				callback = function()
 					vim.opt_local.number = false
 					vim.opt_local.relativenumber = false
+					vim.opt_local.conceallevel = 0
 				end,
 			})
 		end,
@@ -151,6 +152,25 @@ return {
 				end,
 				desc = "Commit",
 				ft = "gitcommit",
+			},
+		},
+	},
+	{
+		"ravitemer/mcphub.nvim",
+		enabled = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		build = "bundled_build.lua",
+		opts = {
+			use_bundled_binary = true,
+			extensions = {
+				copilotchat = {
+					enabled = true,
+					convert_tools_to_functions = true,
+					convert_resources_to_functions = true,
+					add_mcp_prefix = false,
+				},
 			},
 		},
 	},

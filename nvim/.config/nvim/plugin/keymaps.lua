@@ -44,3 +44,8 @@ map("n", "<C-w><", "<C-w>5<")
 map("n", "<C-w>>", "<C-w>5>")
 map("n", "<C-w>-", "<C-w>5-")
 map("n", "<C-w>+", "<C-w>5+")
+
+map("n", "<F12>", function()
+	local filepath = vim.fn.expand("%")
+	vim.fn.setreg('"', filepath)
+end)
