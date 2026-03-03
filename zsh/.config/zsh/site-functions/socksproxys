@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+function log_info() {
+  echo "[INFO] $1" >&2
+}
+
+function log_error() {
+  echo "[ERRO] $1" >&2
+}
+
+function usage() {
+    echo "Usage: $0 [start|stop|restart] (default: restart)"
+    exit 2
+}
+
+function start_proxy() {
+    log_info "Starting proxy $1 (monitor port $2)"
+    AUTOSSH_PIDFILE=$PIDFILE_DIR/$1.pid autossh -M $2 -f -N $1
+}
+
+START_PORT=9111
+PIDFILE_DIR="$XDG_STATE_HOME/socksproxys/pids"
+PROXYS="socksproxy2-stage-zhh"
+
+export AUTOSSH_LOGFILE="$XDG_DATA_HOME/socksproxys/autossh.log"
+
+mkdir -p "$PIDFILE_DIR"
+mkdir -p $(dirname $AUTOSSH_LOGFILE)
+
+if [[ "$#" -gt "1" ]]; then
+    log_error "Extra parameter(s)."
+    usage
+else
+    if [[ "$#" = "0" ]]; then
+        cmd="restart"
+    elif [[ "$1" = "start" ]] ||  [[ "$1" = "stop" ]] ||  [[ "$1" = "restart" ]]; then
+        cmd=$1
+    else
+        usage
+    fi
+
+    if [[ "$cmd" = "stop" ]] || [[ "$cmd" = "restart" ]]; then
+        for pidfile in $(ls "$PIDFILE_DIR"); do
+            current_pid=$(<"$PIDFILE_DIR/$pidfile")
+            log_info "Killing background proxy (PID $current_pid)"
+            kill $current_pid
+        done
+    fi
+
+    if [[ "$cmd" = "start" ]] || [[ "$cmd" = "restart" ]]; then
+        port=$START_PORT
+        for prox in $PROXYS; do
+            start_proxy $prox $port
+            port=$(($port + 2))
+        done
+    fi
+fi

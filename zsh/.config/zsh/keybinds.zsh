@@ -34,7 +34,6 @@
     )
 
     ## Common bindings
-
     bindkey ${key_info[Backspace]} backward-delete-char
     bindkey ${key_info[Delete]} delete-key
 

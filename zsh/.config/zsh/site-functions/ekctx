@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+selected=$(yq '.contexts[] | select(.name == "arn:aws:eks:*").name' ~/.kube/config | fzf)
+
+if [[ -z "$selected" ]]; then
+    return 1
+fi
+
+export GRANTED_ALIAS_CONFIGURED="true"
+export GRANTED_QUIET="true"
+
+for profile in $(aws configure list-profiles); do
+    if grep $profile <<<$selected &>/dev/null; then
+        source assume $profile
+        break
+    fi
+done
+
+kubectx "$selected"
+
+unset GRANTED_QUIET

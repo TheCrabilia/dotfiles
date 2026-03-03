@@ -35,6 +35,8 @@
     hide = update-index --skip-worktree
     unhide = update-index --no-skip-worktree
     clone-worktree = !git-clone-worktree
+    prune-branches = !git-prune-branches
+    create-mr = !git-create-mr
 [gpg]
     format = ssh
 [gpg "ssh"]
@@ -58,3 +60,5 @@
     hunk-header-style = omit
 [submodule]
     recurse = true
+[url "ssh://git@code.swisscom.com:2222/"]
+	insteadOf = https://git@code.swisscom.com/

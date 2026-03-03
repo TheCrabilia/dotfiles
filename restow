@@ -3,6 +3,8 @@
 set -e
 
 config_pkg=(
+    launch-agents
+    opencode
     bin
     brew
     ghostty

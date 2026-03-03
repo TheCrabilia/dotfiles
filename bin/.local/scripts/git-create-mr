@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+branch=$(git branch --show-current)
+repo_url=$(git remote get-url origin | sed -E 's#^(ssh://)?git@([^/:]+)(:[0-9]+)?[:/]([^[:space:]]+)#https://\2/\4#; s#\.git$##')
+
+open "${repo_url}/-/merge_requests/new?merge_request[source_branch]=${branch}"
